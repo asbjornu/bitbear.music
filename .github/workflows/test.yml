@@ -27,6 +27,7 @@ jobs:
           arguments: |
             --ignore-status-codes "429,302"
             --ignore-urls "/twitter.com/,/demozoo.org/"
+            --hydra '{ "max_concurrency": 1 }'
 
   test:
     runs-on: ubuntu-latest
