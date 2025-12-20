@@ -55,12 +55,3 @@ jobs:
 
       - name: rubocop
         run: bundle exec rubocop --fail-level warning --display-only-fail-level-offenses
-
-  download-site:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - uses: actions/download-artifact@v7
-        with:
-          name: site
-          path: _site
