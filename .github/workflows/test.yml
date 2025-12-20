@@ -2,6 +2,10 @@ name: test
 
 on: [push, pull_request]
 
+env:
+  RUBY_VERSION: 3.2
+  RUBYGEMS_VERSION: 3.4.10
+
 jobs:
   build:
     uses: ./.github/workflows/_build.yml
@@ -10,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - uses: actions/checkout@v6
+
       - uses: actions/download-artifact@v7
         with:
           name: site
@@ -21,13 +27,14 @@ jobs:
           path: tmp/.htmlproofer
           key: ${{ runner.os }}-htmlproofer
 
-      - uses: chabad360/htmlproofer@v2
+      - uses: ruby/setup-ruby@v1
         with:
-          directory: _site
-          arguments: |
-            --ignore-status-codes "429,302"
-            --ignore-urls "/twitter.com/,/demozoo.org/"
-            --hydra '{ "max_concurrency": 1 }'
+          ruby-version: ${{ env.RUBY_VERSION }}
+          rubygems: ${{ env.RUBYGEMS_VERSION }}
+          bundler-cache: true
+
+      - name: htmlproofer
+        run: bundle exec rake htmlproofer
 
   test:
     runs-on: ubuntu-latest
@@ -36,8 +43,8 @@ jobs:
 
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.2
-          rubygems: 3.4.10
+          ruby-version: ${{ env.RUBY_VERSION }}
+          rubygems: ${{ env.RUBYGEMS_VERSION }}
           bundler-cache: true
 
       - name: rspec
@@ -48,12 +55,3 @@ jobs:
 
       - name: rubocop
         run: bundle exec rubocop --fail-level warning --display-only-fail-level-offenses
-
-  download-site:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - uses: actions/download-artifact@v7
-        with:
-          name: site
-          path: _site

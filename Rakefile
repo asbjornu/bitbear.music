@@ -32,4 +32,16 @@ task :clean do
   Jekyll::Commands::Clean.process({})
 end
 
+task :htmlproofer do
+  require 'html-proofer'
+
+  options = {
+    ignore_status_codes: [429, 302],
+    ignore_urls: [/twitter.com/, /demozoo.org/],
+    hydra: { max_concurrency: 1 },
+    cache: { timeframe: { external: '1w' } },
+  }
+  HTMLProofer.check_directory("./_site", options).run
+end
+
 task default: ['spec']

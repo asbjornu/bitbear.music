@@ -1,9 +1,11 @@
+@use "variables";
+
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 
 body {
     line-height: 1.2;
-    font-family: $primary-font;
+    font-family: variables.$primary-font;
     -webkit-font-smoothing: antialiased;
     font-size: 15px;
-    color: $text-color;
+    color: variables.$text-color;
 }
