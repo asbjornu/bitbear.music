@@ -4,8 +4,8 @@
 
 @charset 'utf-8';
 
-@import 'variables';
-@import 'typography';
+@use 'variables';
+@use 'typography';
 
 
 * {
@@ -14,7 +14,7 @@
 }
 
 body {
-    background-color: $body-bg-color;
+    background-color: variables.$body-bg-color;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -23,10 +23,10 @@ body {
 
 a {
     transition: .2s ease;
-    color: $nav-link-color;
+    color: variables.$nav-link-color;
 
     &:hover {
-        color: $nav-link-hover-color;
+        color: variables.$nav-link-hover-color;
         text-decoration: none;
     }
 }
@@ -47,7 +47,7 @@ main {
 header {
     position: relative;
     padding-top: 6rem;
-    background: linear-gradient(180deg, $bg-color-light 0%, $bg-color-dark 100%);
+    background: linear-gradient(180deg, variables.$bg-color-light 0%, variables.$bg-color-dark 100%);
     overflow: hidden;
     min-height: 160px;
 
@@ -114,7 +114,7 @@ header {
                 }
 
                 &.active a {
-                    color: rgba($nav-link-color, .4);
+                    color: rgba(variables.$nav-link-color, .4);
                     text-decoration: none;
                 }
 
@@ -148,7 +148,7 @@ main {
     h6 {
         font-weight: 500;
         margin: 2rem 0 .5rem 0;
-        color: $nav-link-color;
+        color: variables.$nav-link-color;
         text-transform: uppercase;
         font-weight: bold;
     }
@@ -215,7 +215,7 @@ main {
     }
 
     .jumbotron {
-        background-color: rgba($bg-color-light, .4);
+        background-color: rgba(variables.$bg-color-light, .4);
         border-radius: 1rem;
         padding: 5rem;
         margin: 3rem 0;
@@ -251,7 +251,7 @@ main {
         td {
             padding: 12px 15px;
             text-align: left;
-            border-bottom: 1px solid $bg-color-light;
+            border-bottom: 1px solid variables.$bg-color-light;
         }
 
         th:first-child,
@@ -281,7 +281,7 @@ main {
         #youtube {
             padding: .5em;
             margin: 0 0 .5em 1em;
-            border: 1px solid $bg-color-light;
+            border: 1px solid variables.$bg-color-light;
             border-radius: 10px;
         }
 
@@ -303,9 +303,9 @@ main {
     }
 
     .btn {
-        background-color: rgba($bg-color-light, .6);
+        background-color: rgba(variables.$bg-color-light, .6);
         box-shadow: inset 2px 2px 0 2px rgba(#fff, 0.02);
-        border: 1px solid $bg-color-light;
+        border: 1px solid variables.$bg-color-light;
         border-radius: 10px;
         display: block;
         padding: 1em;
@@ -313,7 +313,7 @@ main {
         text-decoration: none;
 
         &:hover {
-            background-color: rgba($bg-color-light, .4);
+            background-color: rgba(variables.$bg-color-light, .4);
             box-shadow: inset 0px 5px 10px 0px rgba(#000, 0.5);
         }
     }
@@ -321,7 +321,7 @@ main {
     blockquote {
         border-left: 10px solid #ccc;
         border-radius: 0 10px 10px 0;
-        background: rgba($bg-color-light, .4);
+        background: rgba(variables.$bg-color-light, .4);
         margin: 1.5em 10px;
         padding: 1em 1.5em;
         quotes: "\201C""\201D""\2018""\2019";
@@ -348,7 +348,7 @@ footer {
     position: relative;
     min-height: 100px;
     max-height: 300px;
-    background: linear-gradient(180deg, $bg-color-dark 0%, $bg-color-light 100%);
+    background: linear-gradient(180deg, variables.$bg-color-dark 0%, variables.$bg-color-light 100%);
     padding-top: 2rem;
 
     a {
@@ -357,7 +357,7 @@ footer {
         display: block;
         width: 14rem;
         margin: 2rem auto 0 auto;
-        color: $text-color;
+        color: variables.$text-color;
         opacity: .3;
 
         span {
@@ -413,7 +413,7 @@ footer {
             td {
                 padding: 10px 8px;
                 text-align: left;
-                border-bottom: 1px solid $bg-color-light;
+                border-bottom: 1px solid variables.$bg-color-light;
             }
 
             .format {
