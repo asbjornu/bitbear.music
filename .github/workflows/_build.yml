@@ -6,6 +6,10 @@ env:
   RUBY_VERSION: 4.0.5
   RUBYGEMS_VERSION: 4.0.11
 
+concurrency:
+  group: jekyll-build
+  queue: max
+
 jobs:
   build:
     runs-on: ubuntu-latest
