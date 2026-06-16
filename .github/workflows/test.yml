@@ -3,8 +3,8 @@ name: test
 on: [push, pull_request]
 
 env:
-  RUBY_VERSION: 3.2
-  RUBYGEMS_VERSION: 3.4.10
+  RUBY_VERSION: 4.0.5
+  RUBYGEMS_VERSION: 4.0.11
 
 jobs:
   build:
