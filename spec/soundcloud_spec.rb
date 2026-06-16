@@ -4,7 +4,7 @@ require_relative '../_plugins/soundcloud'
 
 describe Jekyll::SoundCloudTag do
   include_context 'shared'
-  music_index = File.join(@dest_dir, 'music', 'index.html')
+  music_index = File.absolute_path(File.join(@dest_dir, 'music', 'index.html'))
 
   describe music_index do
     subject { File.read(music_index) }

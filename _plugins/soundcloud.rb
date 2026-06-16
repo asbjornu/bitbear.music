@@ -21,6 +21,8 @@ module Jekyll
     def render(_context)
       html = ''
 
+      Jekyll.logger.error 'Empty list of tracks fetched from SoundCloud.' if @tracks.empty?
+
       @tracks.each do |track|
         params = build_params(track)
         src = "https://w.soundcloud.com/player/?#{params}"
@@ -51,7 +53,10 @@ module Jekyll
 
     def parse_tracks
       tracks_source = fetch_tracks
-      return [] if tracks_source.nil?
+      if tracks_source.nil?
+        Jekyll.logger.error 'Empty list of tracks fetched from SoundCloud.'
+        return []
+      end
 
       tracks_doc = Nokogiri::HTML(tracks_source)
       tracks_doc.css('section > article > h2 > a:first-of-type').map(&:track)
