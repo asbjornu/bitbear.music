@@ -2,6 +2,11 @@
 
 require 'jekyll'
 require 'rspec-html-matchers'
+require 'simplecov'
+require 'simplecov-cobertura'
+
+SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
+SimpleCov.start
 
 # Variables that should be shared across all specs in the suite.
 shared_context 'shared' do

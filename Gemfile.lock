@@ -16,9 +16,6 @@ GEM
     benchmark (0.5.0)
     bigdecimal (3.3.1)
     bytesize (0.1.2)
-    codecov (0.2.12)
-      json
-      simplecov
     colorator (1.1.0)
     concurrent-ruby (1.3.6)
     console (1.36.0)
@@ -231,6 +228,9 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
+    simplecov-cobertura (3.2.0)
+      rexml
+      simplecov (~> 0.19)
     simplecov-html (0.13.2)
     simplecov_json_formatter (0.1.4)
     terminal-table (3.0.2)
@@ -259,7 +259,6 @@ PLATFORMS
 
 DEPENDENCIES
   bytesize
-  codecov
   html-proofer
   its
   jekyll
@@ -274,6 +273,8 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rake
   rubocop-rspec
+  simplecov
+  simplecov-cobertura
 
 CHECKSUMS
   Ascii85 (2.0.1) sha256=15cb5d941808543cbb9e7e6aea3c8ec3877f154c3461e8b3673e97f7ecedbe5a
@@ -285,7 +286,6 @@ CHECKSUMS
   benchmark (0.5.0) sha256=465df122341aedcb81a2a24b4d3bd19b6c67c1530713fd533f3ff034e419236c
   bigdecimal (3.3.1) sha256=eaa01e228be54c4f9f53bf3cc34fe3d5e845c31963e7fcc5bedb05a4e7d52218
   bytesize (0.1.2) sha256=21e04b3c2ea4f3e9dc5cfe19ba9875476d87196d11cc9df616b7b22e4bbd35d3
-  codecov (0.2.12) sha256=4b5e565ad5b3fd384341fd2e4b9993fcce6f0ceba0acdb797af5c92cf3bb0463
   colorator (1.1.0) sha256=e2f85daf57af47d740db2a32191d1bdfb0f6503a0dfbc8327d0c9154d5ddfc38
   concurrent-ruby (1.3.6) sha256=6b56837e1e7e5292f9864f34b69c5a2cbc75c0cf5338f1ce9903d10fa762d5ab
   console (1.36.0) sha256=45599ea906cf80a73d8941f03abf873fe66a6a954e0bac5bc1c01e2cdc406f07
@@ -380,6 +380,7 @@ CHECKSUMS
   sass-embedded (1.101.0-x86_64-linux-gnu) sha256=ff48452b2351eaaf4e6e02f59de0e9e35f6f163e8456d520db49b4d87cf73c27
   sass-embedded (1.101.0-x86_64-linux-musl) sha256=2286feef3c7a8d9bbb075aa1651e1a81942aca1213f7c2d30cc1d6f4eb5b4104
   simplecov (0.22.0) sha256=fe2622c7834ff23b98066bb0a854284b2729a569ac659f82621fc22ef36213a5
+  simplecov-cobertura (3.2.0) sha256=70d702658677fcb20e5aceb6915ccf8bc62ff2ccd38b62b3ad5c9db5c0888740
   simplecov-html (0.13.2) sha256=bd0b8e54e7c2d7685927e8d6286466359b6f16b18cb0df47b508e8d73c777246
   simplecov_json_formatter (0.1.4) sha256=529418fbe8de1713ac2b2d612aa3daa56d316975d307244399fa4838c601b428
   terminal-table (3.0.2) sha256=f951b6af5f3e00203fb290a669e0a85c5dd5b051b3b023392ccfd67ba5abae91

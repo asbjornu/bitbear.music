@@ -10,17 +10,6 @@ RSpec::Core::RakeTask.new(:spec) do |t|
   t.rspec_opts = '--format documentation'
 end
 
-namespace :codecov do
-  desc 'Uploads the latest SimpleCov result set to codecov.io'
-  task :upload do
-    require 'simplecov'
-    require 'codecov'
-
-    formatter = SimpleCov::Formatter::Codecov.new
-    formatter.format(SimpleCov::ResultMerger.merged_result)
-  end
-end
-
 # Rake Jekyll tasks
 task :build do
   puts 'Building site...'.bold
