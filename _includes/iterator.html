@@ -4,6 +4,11 @@
   {% assign link = "/" %}
   {% assign rel = "back index" %}
   {% assign text = "Home" %}
+{% elsif page.album.slug %}
+  {% assign album_post = site.posts | where: 'slug', page.album.slug | first %}
+  {% assign link = album_post.url %}
+  {% assign rel = "back" %}
+  {% assign text = "Back to " | append: album_post.album.kind %}
 {% else %}
   {% capture link %}
     {%- for dir in path offset: 1 -%}
@@ -14,14 +19,19 @@
   {% assign text = path | last | prepend: 'Back to ' %}
 {% endif %}
 
+{% assign current_categories = page.categories %}
+{% assign previous_categories = page.previous.categories %}
+{% assign next_categories = page.next.categories %}
+
 <nav class="iterator">
   <ol>
-    {% if page.previous %}
+    {% if page.previous and previous_categories == current_categories %}
       <li>
         <a
           class="btn"
           rel="prev"
-          href="{{ page.previous.url }}">{{ page.previous.title }}</a>
+          title="{{ page.previous.title | escape }}"
+          href="{{ page.previous.url }}">{{ page.previous.title | truncate: 40 }}</a>
       </li>
     {% endif %}
     <li>
@@ -30,7 +40,7 @@
         rel="{{ rel  }}"
         href="{{ link }}">{{ text }}</a>
     </li>
-    {% if page.next %}
+    {% if page.next and next_categories == current_categories %}
       <li>
         <a
           class="btn"

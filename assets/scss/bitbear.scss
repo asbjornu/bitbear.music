@@ -278,11 +278,17 @@ main {
         margin-bottom: 1em;
         grid-template-columns: 1fr  1fr;
 
-        #youtube {
+        #youtube, #cover {
             padding: .5em;
             margin: 0 0 .5em 1em;
             border: 1px solid variables.$bg-color-light;
             border-radius: 10px;
+
+            img {
+                display: block;
+                max-width: 100%;
+                height: auto;
+            }
         }
 
         aside {
@@ -296,7 +302,7 @@ main {
                 }
             }
 
-            .download {
+            .btn {
                 margin: 1em;
             }
         }
@@ -338,8 +344,28 @@ main {
         margin-bottom: -0.51em;
     }
 
-    blockquote p {
-        display: inline;
+    blockquote {
+        p:first-of-type {
+            display: inline;
+        }
+
+        p:nth-of-type(n+2) {
+            margin-top: 2rem;
+        }
+
+        p:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    &.albums {
+        .tracks {
+            margin-bottom: 2rem;
+
+            ol {
+                margin-left: 2rem;
+            }
+        }
     }
 }
 

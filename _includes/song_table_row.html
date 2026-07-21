@@ -1,7 +1,11 @@
 <tr>
-  <td class="r date" title="{{ post.date | date_to_long_string: 'ordinal', 'US' }}">
-    {{ post.date | date: '%Y-%m-%d' }}
+  <td class="r date">
+    <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%B' }} {{ post.date | date: '%d' | ordinalize }}</time>
   </td>
-  <td class="format">{{ post.media.format }}</td>
+  {% if include.album %}
+    <td class="kind">{{ post.album.kind }}</td>
+  {% else %}
+    <td class="format">{{ post.media.format }}</td>
+  {% endif %}
   <td><a href="{{ post.url }}">{{ post.title }}</a></td>
 </tr>

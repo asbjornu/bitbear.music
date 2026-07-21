@@ -1,0 +1,66 @@
+---
+layout: default
+---
+
+<h2>{{ page.title }}</h2>
+
+{% if page.media %}
+  <div class="media">
+    <aside>
+      <table>
+        <tbody>
+          <tr>
+            <th scope="row">Released</th>
+            <td class="date"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date_to_long_string: 'ordinal', 'US' }}</time></td>
+          </tr>
+          {% if page.album.kind %}
+            <tr>
+              <th scope="row">Kind</th>
+              <td class="kind">{{ page.album.kind }}</td>
+            </tr>
+          {% endif %}
+          {% if page.album.tracks %}
+            <tr>
+              <th scope="row">Tracks</th>
+              <td class="tracks">{{ page.album.tracks }}</td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+
+      {% if page.media.bandcamp %}
+        <a class="btn download" href="https://bitbearmusic.bandcamp.com/album/{{ page.media.bandcamp }}">Download</a>
+      {% elsif page.media.soundcloud %}
+        <a class="btn listen" href="https://soundcloud.com/bitbear/{{ page.media.soundcloud }}">Listen</a>
+      {% endif %}
+    </aside>
+
+    {% if page.media.cover %}
+      <div id="cover">
+        <img src="{{ page.media.cover }}" alt="{{ page.title }} cover">
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% assign tracks = site.posts | where: 'album.slug', page.slug %}
+
+{% if tracks.size > 0 %}
+  <div class="tracks">
+    <h3>Track Listing</h3>
+
+    <ol>
+      {% for track in tracks %}
+        <li>
+          <a href="{{ track.url }}">{{ track.title }}</a>
+        </li>
+      {% endfor %}
+    </ol>
+  </div>
+{% endif %}
+
+<h3>Description</h3>
+
+{{ content }}
+
+{% include iterator.html %}
