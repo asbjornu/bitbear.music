@@ -6,13 +6,15 @@ title: License & Credits
 
 All of the content published on this web site and under the [Bitbear][bitbear]
 alias, including music and cover art, is licensed under the [Creative Commons
-Attribution 4.0 International (CC BY 4.0) license][cc-by], unless otherwise noted.
-This means you are free to share and adapt the material for any purpose, even
-commercially, as long as you provide appropriate credit.
+Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license][cc-by],
+unless otherwise noted.
+This means you are free to share and adapt the material for any
+non-commercial purpose, as long as you provide appropriate credit.
 
 {: .license}
 [![CC]({{ '/assets/images/cc.svg' }})][cc]
 [![BY]({{ '/assets/images/by.svg' }})][cc-by]
+[![NC]({{ '/assets/images/nc.svg' }})][cc-by]
 
 When using Bitbear's music or artwork, please attribute it to *Bitbear* (Asbjørn
 Ulsberg) and link back to [https://bitbear.music/][bitbear] and the [license][cc-by]
@@ -31,7 +33,7 @@ requirements][noun-attribution]:
   is designed by [Meko][meko] from [The Noun Project][noun-project].
 
 [bitbear]: https://bitbear.music/
-[cc-by]: https://creativecommons.org/licenses/by/4.0/
+[cc-by]: https://creativecommons.org/licenses/by-nc/4.0/
 [cc]: https://creativecommons.org/
 [meko]: https://thenounproject.com/creator/MekoDa/
 [noun-attribution]: https://thenounproject.com/about/#attribution

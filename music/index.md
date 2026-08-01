@@ -1,13 +1,14 @@
 ---
 title: Music
 description: |
-    Bitbear's music is licensed under the CC BY 4.0 license, meaning you can use
-    it any way you like as long as you provide attribution.
+    Bitbear's music is licensed under the CC BY-NC 4.0 license, meaning you can
+    use it for any non-commercial purpose as long as you provide attribution.
 ---
 
 {:.jumbotron}
-Bitbear's music is licensed under the [CC BY 4.0 license][cc], meaning you can
-use it any way you like as long as you provide attribution.
+Bitbear's music is licensed under the [CC BY-NC 4.0 license][cc-by-nc], meaning you
+can use it for any non-commercial purpose as long as you provide attribution.
+Read more in the [license & credits][license] section.
 
 ## Listen
 
@@ -28,10 +29,11 @@ Bitbear can also be found on the following online music platforms:
 - [SoundCloud]{:rel="me"}
 - [YouTube]{:rel="me"}
 
-[legacy]: /music/legacy/
 [bandcamp]: https://bitbearmusic.bandcamp.com
 [beatport]: https://dj.beatport.com/bitbear
-[cc]: https://creativecommons.org/licenses/by/4.0/
+[cc-by-nc]: https://creativecommons.org/licenses/by-nc/4.0/
+[legacy]: /music/legacy/
+[license]: /license/
 [mixcloud]: https://www.mixcloud.com/bitbearmusic/
 [soundcloud]: https://soundcloud.com/bitbear
 [youtube]: https://www.youtube.com/channel/UC9wb6OrUrugGg6-q9805RDQ
