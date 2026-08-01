@@ -21,7 +21,7 @@ Ulsberg) and link back to [https://bitbear.music/][bitbear] and the [license][cc
 under which it is released.
 
 The full text of the license is available in the
-[repository](https://github.com/asbjornu/bitbear.org/blob/main/LICENSE).
+[repository](https://github.com/asbjornu/bitbear.music/blob/main/LICENSE).
 
 ## Credits
 

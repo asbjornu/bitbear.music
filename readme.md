@@ -9,11 +9,11 @@ This repository contains the source of the stuff published to [bitbear.music].
 
 [banner]: https://repository-images.githubusercontent.com/89099209/95bd4180-8b68-11eb-9dbf-b449b2505aaf
 [bitbear.music]: https://bitbear.music/
-[build-badge]: https://github.com/asbjornu/bitbear.org/actions/workflows/publish.yml/badge.svg
-[build-link]: https://github.com/asbjornu/bitbear.org/actions/workflows/publish.yml
+[build-badge]: https://github.com/asbjornu/bitbear.music/actions/workflows/publish.yml/badge.svg
+[build-link]: https://github.com/asbjornu/bitbear.music/actions/workflows/publish.yml
 [coc-badge]: https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg
 [coc]: ./CODE_OF_CONDUCT.md
-[codecov-badge]: https://codecov.io/gh/asbjornu/bitbear.org/branch/main/graph/badge.svg
-[codecov]: https://codecov.io/gh/asbjornu/bitbear.org
-[license-badge]: https://img.shields.io/github/license/asbjornu/bitbear.org
+[codecov-badge]: https://codecov.io/gh/asbjornu/bitbear.music/branch/main/graph/badge.svg
+[codecov]: https://codecov.io/gh/asbjornu/bitbear.music
+[license-badge]: https://img.shields.io/github/license/asbjornu/bitbear.music
 [license]: https://opensource.org/licenses/MIT

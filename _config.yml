@@ -1,7 +1,7 @@
 markdown: kramdown
 permalink: /:categories/:title
 excerpt_separator: <!--more-->
-url: https://bitbear.org
+url: https://bitbear.music
 plugins:
   - jekyll-sitemap
   - jekyll-feed
@@ -13,7 +13,7 @@ compress_html:
 
 author:
   name: Asbjørn Ulsberg
-  email: mail@bitbear.org
+  email: mail@bitbear.music
 
 defaults:
   - values:
