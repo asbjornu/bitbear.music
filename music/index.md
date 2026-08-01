@@ -6,9 +6,12 @@ description: |
 ---
 
 {:.jumbotron}
-Bitbear's music is licensed under the [CC BY-NC 4.0 license][cc-by-nc], meaning you
-can use it for any non-commercial purpose as long as you provide attribution.
-Read more in the [license & credits][license] section.
+Bitbear's music is licensed under the [CC BY-NC 4.0 license][cc-by-nc].
+
+{:.jumbotron .subtitle}
+This means you can use it for any non-commercial purpose as long as
+you provide attribution. Read more in the [license & credits][license]
+section.
 
 ## Listen
 
