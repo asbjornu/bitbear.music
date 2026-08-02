@@ -3,6 +3,7 @@ title: Tiny Chip's Revenge
 tag: chip
 media:
   youtube: Kpp9_uwaSp8
+  soundcloud: tracks/soundcloud:tracks:1417187410
   filesize: 9827
   channels: 4
   format: S3M

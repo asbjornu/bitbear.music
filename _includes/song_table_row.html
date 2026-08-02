@@ -3,7 +3,7 @@
     <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{% date post.date, format: '%B {day}' %}</time>
   </td>
   {% if include.album %}
-    <td class="kind">{{ post.album.kind }}</td>
+    <td class="kind">{{ post.album.kind | default: 'Track' }}</td>
   {% else %}
     <td class="format">{{ post.media.format }}</td>
   {% endif %}

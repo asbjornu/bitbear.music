@@ -2,6 +2,7 @@
 title: Sunset Through The Rain (Modulo One's Night Drive)
 media:
   youtube: vlVT_WM-qvc
+  soundcloud: tracks/soundcloud:tracks:2257905686
   length: '3:38'
 obtain:
   - bandcamp: album/sunset-through-the-rain
