@@ -30,6 +30,13 @@ module Jekyll
       end
     end
 
+def sort_by(input, key)
+      input.sort_by do |item|
+        parts = key.split('.')
+        parts.reduce(item) { |obj, k| obj.respond_to?(:[]) ? obj[k] : nil } || 0
+      end
+    end
+
     def children_of(all_pages, parent)
       all_pages.select { |p| child_of?(p, parent) }
     end

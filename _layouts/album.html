@@ -4,7 +4,7 @@ layout: default
 
 <h2>{{ page.title }}</h2>
 
-{% assign tracks = site.posts | where: 'album.slug', page.slug %}
+{% assign tracks = site.posts | where: 'album.slug', page.slug | sort_by: 'album.position' %}
 
 {% if page.media or page.album or page.obtain %}
   <div class="media">

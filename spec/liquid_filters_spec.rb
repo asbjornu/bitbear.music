@@ -172,4 +172,43 @@ describe Jekyll::LiquidFilters do
     end
   end
 
+describe '#sort_by' do
+    let(:items) do
+      [
+        { 'title' => 'Rise', 'album' => { 'position' => 6 } },
+        { 'title' => 'Move', 'album' => { 'position' => 1 } },
+        { 'title' => 'Raise The Dead', 'album' => { 'position' => 3 } }
+      ]
+    end
+
+    it 'sorts items by a dot-separated path' do
+      result = instance.sort_by(items, 'album.position')
+      expect(result.map { |i| i['title'] }).to eq(['Move', 'Raise The Dead', 'Rise'])
+    end
+
+    it 'sorts items by a simple key' do
+      result = instance.sort_by(items, 'title')
+      expect(result.map { |i| i['title'] }).to eq(['Move', 'Raise The Dead', 'Rise'])
+    end
+
+    it 'sorts items with a missing nested value first' do
+      with_missing = items + [{ 'title' => 'No Album', 'album' => nil }]
+      result = instance.sort_by(with_missing, 'album.position')
+      expect(result.first['title']).to eq('No Album')
+      expect(result.map { |i| i['title'] }).to eq(['No Album', 'Move', 'Raise The Dead', 'Rise'])
+    end
+
+    it 'returns empty array for empty input' do
+      expect(instance.sort_by([], 'album.position')).to be_empty
+    end
+
+    it 'preserves order of items with equal values' do
+      tied = [
+        { 'title' => 'A', 'album' => { 'position' => 1 } },
+        { 'title' => 'B', 'album' => { 'position' => 1 } }
+      ]
+      result = instance.sort_by(tied, 'album.position')
+      expect(result.map { |i| i['title'] }).to eq(%w[A B])
+    end
+  end
 end

@@ -11,6 +11,7 @@ obtain:
   - mirlo: sunset-through-the-rain
 album:
   slug: sunset-through-the-rain
+  position: 2
 ---
 
 With the foot firmly placed on the gas pedal, Modulo One has forced this

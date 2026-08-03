@@ -14,6 +14,7 @@ obtain:
   - mirlo: sunset-through-the-rain
 album:
   slug: sunset-through-the-rain
+  position: 1
 ---
 
 "Sunset Through The Rain" was released as a tribute to the Solskogen crew
