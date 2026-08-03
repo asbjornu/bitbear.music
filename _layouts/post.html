@@ -64,6 +64,13 @@ layout: default
       <div id="cover">
         <img src="/assets/images/covers/{{ page.media.cover }}" alt="{{ page.title }} cover">
       </div>
+    {% elsif page.album.slug %}
+      {% assign album_post = site.posts | where: 'slug', page.album.slug | first %}
+      {% if album_post.media.cover %}
+        <div id="cover">
+          <img src="/assets/images/covers/{{ album_post.media.cover }}" alt="{{ album_post.title }} cover">
+        </div>
+      {% endif %}
     {% endif %}
   </div>
 {% endif %}
