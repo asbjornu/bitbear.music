@@ -22,21 +22,6 @@ to the [legacy section][legacy].
 {% assign posts=site.categories['music'] | reject: 'category', 'legacy' %}
 {% include song_table.html posts=posts album=true %}
 
-## Follow
-
-Bitbear can also be found on the following online music platforms:
-
-- [Bandcamp]{:rel="me"}
-- [Beatport]{:rel="me"}
-- [Mixcloud]{:rel="me"}
-- [SoundCloud]{:rel="me"}
-- [YouTube]{:rel="me"}
-
-[bandcamp]: https://bitbearmusic.bandcamp.com
-[beatport]: https://dj.beatport.com/bitbear
 [cc-by-nc]: https://creativecommons.org/licenses/by-nc/4.0/
 [legacy]: /music/legacy/
 [license]: /license/
-[mixcloud]: https://www.mixcloud.com/bitbearmusic/
-[soundcloud]: https://soundcloud.com/bitbear
-[youtube]: https://www.youtube.com/channel/UC9wb6OrUrugGg6-q9805RDQ
