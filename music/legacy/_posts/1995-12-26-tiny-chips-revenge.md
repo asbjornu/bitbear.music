@@ -10,6 +10,7 @@ media:
   length: 1:25 (looped)
   modarchive: 199554
   amp: 146725
+  cover: tiny-chips-revenge.jpg
 ---
 
 By late 1995 I was mostly tracking in Scream Tracker 3 and this was my first
