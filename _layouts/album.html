@@ -45,6 +45,20 @@ layout: default
           {% endif %}
         </tbody>
       </table>
+      {% if tracks.size > 0 %}
+        <div class="tracks">
+          <h3>Track Listing</h3>
+
+          <ol>
+            {% for track in tracks %}
+              <li>
+                <a href="{{ track.url }}">{{ track.title }}</a>
+              </li>
+            {% endfor %}
+          </ol>
+        </div>
+      {% endif %}
+
     </aside>
 
     {% if page.media.cover %}
@@ -52,20 +66,6 @@ layout: default
         <img src="/assets/images/covers/{{ page.media.cover }}" alt="{{ page.title }} cover">
       </div>
     {% endif %}
-  </div>
-{% endif %}
-
-{% if tracks.size > 0 %}
-  <div class="tracks">
-    <h3>Track Listing</h3>
-
-    <ol>
-      {% for track in tracks %}
-        <li>
-          <a href="{{ track.url }}">{{ track.title }}</a>
-        </li>
-      {% endfor %}
-    </ol>
   </div>
 {% endif %}
 

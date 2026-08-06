@@ -47,8 +47,6 @@
 );
 
 :root {
-    color-scheme: dark;
-
     // Typography
     --pico-font-family: #{variables.$primary-font};
     --pico-font-size: 1rem;
@@ -512,6 +510,10 @@ main {
                 width: 100%;
                 border: 0;
             }
+        }
+
+        iframe {
+            color-scheme: light;
         }
 
         aside {
