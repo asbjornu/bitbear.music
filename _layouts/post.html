@@ -37,6 +37,9 @@ layout: default
               <td>{{ page.media.length }}</td>
             </tr>
           {% endif %}
+          {% if page.obtain %}
+            {% include obtain.html %}
+          {% endif %}
         </tbody>
       </table>
 

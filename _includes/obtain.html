@@ -1,0 +1,46 @@
+<tr>
+  <th scope="row">Obtain</th>
+  <td class="obtain">
+    <ul>
+      {% for item in page.obtain %}
+        {% assign key = item.first.first %}
+        {% assign value = item.first.last %}
+        {% capture obtain_verb %}
+          {%- case key -%}
+            {%- when 'bandcamp' -%}Buy
+            {%- when 'soundcloud' -%}Listen to
+            {%- when 'apple-music' -%}Listen to
+            {%- when 'spotify' -%}Listen to
+            {%- when 'mirlo' -%}Listen to
+            {%- when 'remix-kit' -%}Download the
+          {%- endcase -%}
+        {% endcapture %}
+        {% capture obtain_url %}
+          {%- case key -%}
+            {%- when 'bandcamp' -%}https://bitbearmusic.bandcamp.com/{{ value }}
+            {%- when 'soundcloud' -%}https://soundcloud.com/bitbear/{{ value }}
+            {%- when 'apple-music' -%}https://music.apple.com/us{{ value }}
+            {%- when 'spotify' -%}https://open.spotify.com{{ value }}
+            {%- when 'mirlo' -%}https://mirlo.space/bitbear/release/{{ value }}
+            {%- when 'remix-kit' -%}/assets/remix-kits/Bitbear-{{ value }}-Remix_Kit.zip
+          {%- endcase -%}
+        {% endcapture %}
+        {% capture title %}
+          {{- obtain_verb }} “{{ page.title }}” {% comment %}{% endcomment %}
+          {%- if key == 'remix-kit' -%}
+            remix kit
+          {%- elsif key == 'apple-music' -%}
+            on Apple Music
+          {%- else -%}
+            on {{ key | capitalize }}
+          {%- endif -%}
+        {% endcapture %}
+        <li class="{{ key }}">
+          <a href="{{ obtain_url }}" target="_blank" aria-description="{{ title }}" data-tooltip="{{ title }}">
+            <span class="icon icon-{{ key }}" role="img" aria-label="{{ title }}"></span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </td>
+</tr>
