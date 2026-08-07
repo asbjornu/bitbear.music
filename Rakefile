@@ -37,7 +37,13 @@ task :htmlproofer do
 
   options = {
     ignore_status_codes: [429, 302],
-    ignore_urls: [/twitter.com/, /demozoo.org/, /bitbearmusic.bandcamp.com/, /soundcloud.com/],
+    ignore_urls: [
+      /twitter.com/,
+      /demozoo.org/,
+      /bitbearmusic.bandcamp.com/,
+      /soundcloud.com/,
+      /api.modarchive.org/,
+    ],
     hydra: { max_concurrency: 1 },
     cache: { timeframe: { external: '1w' } },
   }
