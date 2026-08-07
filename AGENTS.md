@@ -49,11 +49,19 @@ missing.
 - **Never restyle or override Pico's own component styles** (e.g. the modal's `dialog`,
   `> article`, `> header`, close-button rules). If aggregation looks right but Pico's
   built-in output is being distorted, the cause is almost always the site's own greedy
-  element selectors (bare `header`, `footer`) bleeding into Pico components. Fix that by
-  **re-scoping the greedy site styles to be more precise** (e.g. `header` → `header.site-header`,
-  `footer` → `footer.site-footer`, plus matching classes in `_layouts/*.html`) rather than
-  by layering custom overrides on top of Pico. Prefer enabling a Pico module
+  element selectors (bare `header`, `footer`, `main h1-h6`/`p`) bleeding into Pico
+  components and other markup. Fix that by **re-scoping the greedy styles to be more
+  precise** with direct parent/child selectors (e.g. `header` → `body > header`,
+  `footer` → `section.footer footer`) rather than by adding chrome classes or layering
+  custom overrides on top of Pico. Prefer enabling a Pico module
   (e.g. `components/card` for modal `article` styling) over hand-rolling the same rules.
+- The cover-art enlargement is a pure-CSS `:target` modal (no JS to open/close): its
+  static HTML lives in the `_includes/cover.html` template as a Pico `<dialog>` with the
+  `#cover-art` id, opened by `#cover-art:target { display: flex }` (Pico's own
+  `dialog:not([open]) { display: none }` keeps it closed by default). Only the inner
+  `article` is sized to hug the cover art (`padding: 0`, `width: auto`); everything else
+  is Pico's `components/modal` + `components/card` output. Reposition or scope it as
+  `#cover-art`, not by overriding Pico's `dialog`.
 
 ## Git LFS
 

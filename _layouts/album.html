@@ -62,9 +62,7 @@ layout: default
     </aside>
 
     {% if page.media.cover %}
-      <div id="cover">
-        <img src="/assets/images/covers/{{ page.media.cover }}" alt="{{ page.title }} cover">
-      </div>
+      {% include cover.html title=page.title cover=page.media.cover youtube=page.media.youtube %}
     {% endif %}
   </div>
 {% endif %}

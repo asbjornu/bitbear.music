@@ -37,7 +37,7 @@ describe 'Pico CSS integration' do
     end
 
     it 'keeps the header padding-top so main does not overlap the nav' do
-      expect(css).to match(/header\{[^}]*padding-top:6rem/)
+      expect(css).to match(/body\s*>\s*header\{[^}]*padding-top:6rem/)
     end
 
     it 'restores content-box sizing for layout while Pico buttons stay border-box' do

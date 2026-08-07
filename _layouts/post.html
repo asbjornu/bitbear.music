@@ -63,7 +63,20 @@ layout: default
       {% endif %}
     </aside>
 
-    {% if page.media.youtube %}
+    {% assign cover = nil %}
+    {% assign cover_title = page.title %}
+    {% if page.media.cover %}
+      {% assign cover = page.media.cover %}
+    {% elsif page.album.slug %}
+      {% assign album_post = site.posts | where: 'slug', page.album.slug | first %}
+      {% if album_post.media.cover %}
+        {% assign cover = album_post.media.cover %}
+        {% assign cover_title = album_post.title %}
+      {% endif %}
+    {% endif %}
+    {% if cover %}
+      {% include cover.html title=cover_title cover=cover youtube=page.media.youtube %}
+    {% elsif page.media.youtube %}
       <div id="cover">
         <iframe
           type="text/html"
@@ -73,17 +86,6 @@ layout: default
           frameborder="0"
           allowfullscreen></iframe>
       </div>
-    {% elsif page.media.cover %}
-      <div id="cover">
-        <img src="/assets/images/covers/{{ page.media.cover }}" alt="{{ page.title }} cover">
-      </div>
-    {% elsif page.album.slug %}
-      {% assign album_post = site.posts | where: 'slug', page.album.slug | first %}
-      {% if album_post.media.cover %}
-        <div id="cover">
-          <img src="/assets/images/covers/{{ album_post.media.cover }}" alt="{{ album_post.title }} cover">
-        </div>
-      {% endif %}
     {% endif %}
   </div>
 {% endif %}
