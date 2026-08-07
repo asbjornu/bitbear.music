@@ -1,0 +1,9 @@
+{
+  "name": "bitbear-music",
+  "version": "1.0.0",
+  "private": true,
+  "description": "https://bitbear.org",
+  "devDependencies": {
+    "@picocss/pico": "2.1.1"
+  }
+}

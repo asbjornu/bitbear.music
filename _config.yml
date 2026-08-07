@@ -28,13 +28,23 @@ defaults:
 sass:
   sass_dir: assets/scss
   style: compressed
+  sourcemap: never
+  silence_deprecations:
+    - if-function
+  load_paths:
+    - node_modules/@picocss/pico/scss
 
 exclude:
   - Gemfile
   - Gemfile.lock
+  - LICENSE
   - LICENSE.txt
+  - CODE_OF_CONDUCT.md
   - readme.md
+  - .DS_Store
   - .gitignore
   - spec
   - Rakefile
   - coverage
+  - package.json
+  - package-lock.json

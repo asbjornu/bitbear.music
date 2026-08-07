@@ -54,6 +54,12 @@ jobs:
           rubygems: ${{ env.RUBYGEMS_VERSION }}
           bundler-cache: true
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm ci
+
       - name: rspec
         run: bundle exec rake spec
 
