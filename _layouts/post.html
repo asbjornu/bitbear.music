@@ -11,12 +11,12 @@ layout: default
         <tbody>
           <tr>
             <th scope="row">Released</th>
-            <td class="date" title="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date_to_long_string: 'ordinal', 'US' }}</td>
+            <td class="date" aria-description="{{ page.date | date: '%Y-%m-%d' }}" data-tooltip="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date_to_long_string: 'ordinal', 'US' }}</td>
           </tr>
           {% if page.media.filesize %}
             <tr>
               <th scope="row">Filesize</th>
-              <td class="filesize" title="{{ page.media.filesize | thousands_separated }} bytes">{{ page.media.filesize | file_size }}</td>
+              <td class="filesize" aria-description="{{ page.media.filesize | thousands_separated }} bytes" data-tooltip="{{ page.media.filesize | thousands_separated }} bytes">{{ page.media.filesize | file_size }}</td>
             </tr>
           {% endif %}
           {% if page.media.format %}

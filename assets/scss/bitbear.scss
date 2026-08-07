@@ -40,7 +40,7 @@
         'components/modal': true,
         'components/nav': false,
         'components/progress': false,
-        'components/tooltip': false,
+        'components/tooltip': true,
         'utilities/accessibility': true,
         'utilities/reduce-motion': true,
     )
@@ -386,27 +386,24 @@ main {
                     }
 
                     &[rel*="prev"] {
-                        &:before {
+                        .iterator-glyph {
                             display: inline-block;
                             margin: 0 .5rem 0 0;
-                            content: "\2039";
                         }
                     }
 
                     &[rel*="back"] {
-                        &:before {
+                        .iterator-glyph {
                             display: inline-block;
                             position: relative;
                             margin-right: .5rem;
                             bottom: -.25rem;
-                            content: "\21A9";
                         }
                     }
 
-                    &[rel*="next"]:after {
+                    &[rel*="next"] .iterator-glyph {
                         display: inline-block;
                         margin: 0 0 0 .5rem;
-                        content: "\203A";
                     }
                 }
             }

@@ -24,7 +24,7 @@ module Jekyll
 
       Jekyll.logger.debug 'DateTag:', "Rendering date '#{date}' with format '#{format}'."
 
-      "<abbr title=\"#{iso8601_date}\">#{readable_date}</abbr>"
+      "<abbr aria-description=\"#{iso8601_date}\" data-tooltip=\"#{iso8601_date}\">#{readable_date}</abbr>"
     end
 
     def ordinal(day)

@@ -11,7 +11,7 @@ describe Jekyll::DateTag do
     let(:input) { "format: '%B %Y'" }
     its(:raw) { is_expected.to eq("date format: '%B %Y'") }
     its(:render, Liquid::Context.new({ 'page' => { 'date' => '2020-08-23' } })) {
-      is_expected.to eq('<abbr title="2020-08-23">August 2020</abbr>')
+      is_expected.to eq('<abbr aria-description="2020-08-23" data-tooltip="2020-08-23">August 2020</abbr>')
     }
   end
 
@@ -19,7 +19,7 @@ describe Jekyll::DateTag do
     let(:input) { "'2018-01-01', format: '%B %Y'" }
     its(:raw) { is_expected.to eq("date '2018-01-01', format: '%B %Y'") }
     its(:render, Liquid::Context.new({ 'page' => { 'date' => '2020-08-23' } })) {
-      is_expected.to eq('<abbr title="2018-01-01">January 2018</abbr>')
+      is_expected.to eq('<abbr aria-description="2018-01-01" data-tooltip="2018-01-01">January 2018</abbr>')
     }
   end
 
@@ -27,7 +27,7 @@ describe Jekyll::DateTag do
     let(:input) { '2018-01-01' }
     its(:raw) { is_expected.to eq('date 2018-01-01') }
     its(:render, Liquid::Context.new({ 'page' => { 'date' => '2020-08-23' } })) {
-      is_expected.to eq('<abbr title="2018-01-01">Monday, January 1st 2018</abbr>')
+      is_expected.to eq('<abbr aria-description="2018-01-01" data-tooltip="2018-01-01">Monday, January 1st 2018</abbr>')
     }
   end
 
@@ -35,7 +35,7 @@ describe Jekyll::DateTag do
     let(:input) { nil }
     its(:raw) { is_expected.to eq('date ') }
     its(:render, Liquid::Context.new({ 'page' => { 'date' => '2020-08-23' } })) {
-      is_expected.to eq('<abbr title="2020-08-23">Sunday, August 23rd 2020</abbr>')
+      is_expected.to eq('<abbr aria-description="2020-08-23" data-tooltip="2020-08-23">Sunday, August 23rd 2020</abbr>')
     }
   end
 
@@ -135,7 +135,7 @@ describe Jekyll::DateTag do
     let(:input) { "'2018-01-01', format: '%B {day} %Y'" }
     its(:raw) { is_expected.to eq("date '2018-01-01', format: '%B {day} %Y'") }
     its(:render, Liquid::Context.new({ 'page' => { 'date' => '2020-08-23' } })) {
-      is_expected.to eq('<abbr title="2018-01-01">January 1st 2018</abbr>')
+      is_expected.to eq('<abbr aria-description="2018-01-01" data-tooltip="2018-01-01">January 1st 2018</abbr>')
     }
   end
 
@@ -144,7 +144,7 @@ describe Jekyll::DateTag do
     its(:raw) { is_expected.to eq('date post.date') }
 
     its(:render, Liquid::Context.new({ 'page' => { 'date' => '2020-08-23' }, 'post' => { 'date' => '2018-01-01' } })) {
-      is_expected.to eq('<abbr title="2018-01-01">Monday, January 1st 2018</abbr>')
+      is_expected.to eq('<abbr aria-description="2018-01-01" data-tooltip="2018-01-01">Monday, January 1st 2018</abbr>')
     }
   end
 end
