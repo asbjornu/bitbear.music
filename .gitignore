@@ -5,3 +5,4 @@
 _site
 coverage
 tmp
+node_modules

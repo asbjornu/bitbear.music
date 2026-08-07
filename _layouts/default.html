@@ -4,7 +4,7 @@
 {%- endcapture -%}
 {%- assign description = page.excerpt | default: page.description | default: site.data.settings.description | strip_html | newline_to_br | strip_newlines | split: '<br />' | join: ' ' | strip -%}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8">
     <title>{{ title }}</title>

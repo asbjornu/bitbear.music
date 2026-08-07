@@ -41,14 +41,14 @@ layout: default
       </table>
 
       {% if page.media.modarchive %}
-        <a class="btn download" href="https://api.modarchive.org/downloads.php?moduleid={{ page.media.modarchive }}">Download</a>
+        <a role="button" href="https://api.modarchive.org/downloads.php?moduleid={{ page.media.modarchive }}">Download</a>
       {% elsif page.media.amp %}
-        <a class="btn download" href="https://amp.dascene.net/downmod.php?index={{ page.media.amp }}">Download</a>
+        <a role="button" href="https://amp.dascene.net/downmod.php?index={{ page.media.amp }}">Download</a>
       {% endif %}
     </aside>
 
     {% if page.media.youtube %}
-      <div id="youtube">
+      <div id="cover">
         <iframe
           type="text/html"
           width="560"

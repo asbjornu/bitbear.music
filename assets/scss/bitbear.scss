@@ -6,11 +6,93 @@
 
 @use 'variables';
 @use 'typography';
+@use 'pico' with (
+    $enable-viewport: false,
+    $enable-responsive-spacings: false,
+    $modules: (
+        'themes/default': true,
+        'layout/document': true,
+        'layout/landmarks': false,
+        'layout/section': false,
+        'layout/container': false,
+        'layout/grid': false,
+        'layout/overflow-auto': false,
+        'content/link': true,
+        'content/typography': true,
+        'content/embedded': true,
+        'content/button': true,
+        'content/table': true,
+        'content/code': false,
+        'content/figure': false,
+        'content/misc': true,
+        'forms/basics': false,
+        'forms/checkbox-radio-switch': false,
+        'forms/input-color': false,
+        'forms/input-date': false,
+        'forms/input-file': false,
+        'forms/input-range': false,
+        'forms/input-search': false,
+        'components/accordion': false,
+        'components/card': false,
+        'components/dropdown': false,
+        'components/group': false,
+        'components/loading': false,
+        'components/modal': false,
+        'components/nav': false,
+        'components/progress': false,
+        'components/tooltip': false,
+        'utilities/accessibility': true,
+        'utilities/reduce-motion': true,
+    )
+);
 
+:root {
+    color-scheme: dark;
 
-* {
-    margin: 0;
-    padding: 0;
+    // Typography
+    --pico-font-family: #{variables.$primary-font};
+    --pico-font-size: 1rem;
+    --pico-line-height: 1.2;
+    --pico-font-weight: 400;
+    --pico-color: #{variables.$text-color};
+
+    // Background
+    --pico-background-color: #{variables.$body-bg-color};
+
+    // Links
+    --pico-text-decoration: underline;
+    --pico-primary: #{variables.$nav-link-color};
+    --pico-primary-hover: #{variables.$nav-link-hover-color};
+    --pico-primary-underline: #{variables.$nav-link-color};
+    --pico-primary-hover-underline: #{variables.$nav-link-hover-color};
+
+    // Buttons
+    --pico-primary-background: #{rgba(variables.$bg-color-light, .6)};
+    --pico-primary-border: #{variables.$bg-color-light};
+    --pico-primary-inverse: #fff;
+    --pico-primary-hover-background: #{rgba(variables.$bg-color-light, .4)};
+    --pico-primary-hover-border: #{variables.$bg-color-light};
+    --pico-primary-focus: #{rgba(variables.$bg-color-light, .4)};
+
+    // Borders & spacing
+    --pico-border-width: 1px;
+    --pico-border-radius: 10px;
+    --pico-spacing: 1.5rem;
+    --pico-table-border-color: #{variables.$bg-color-light};
+    --pico-typography-spacing-vertical: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: content-box;
+}
+
+a[role="button"] {
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    --pico-form-element-spacing-vertical: 1.25rem;
+    --pico-form-element-spacing-horizontal: 1.5rem;
 }
 
 body {
@@ -19,14 +101,18 @@ body {
     display: flex;
     flex-direction: column;
     font-size: 1.5rem;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
 }
 
 a {
     transition: .2s ease;
-    color: variables.$nav-link-color;
 
     &:hover {
-        color: variables.$nav-link-hover-color;
+        text-decoration: none;
+    }
+
+    &:has(.icon) {
         text-decoration: none;
     }
 }
@@ -36,7 +122,13 @@ a:focus {
     text-decoration: underline;
 }
 
-header nav,
+header nav {
+    position: relative;
+    padding: 2rem 10rem;
+    max-width: 1380px;
+    margin: 0 auto;
+}
+
 main {
     position: relative;
     padding: 2rem 10rem;
@@ -78,6 +170,7 @@ header {
                 display: block;
                 width: 300px;
                 height: 49px;
+                font-size: 0;
                 text-indent: 100%;
                 overflow: hidden;
                 background-image: url('/assets/images/bitbear.png');
@@ -111,6 +204,10 @@ header {
 
                 a {
                     font-weight: 900;
+
+                    &:not(:hover) {
+                        text-decoration: underline;
+                    }
                 }
 
                 &.active a {
@@ -131,6 +228,79 @@ footer a:hover {
     opacity: 0.8;
 }
 
+.icon {
+    display: inline-block;
+    background-color: #fff;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    transition: background-color .2s ease;
+    padding: 0;
+
+    &.icon-cc {
+        mask-image: url('/assets/images/cc.svg');
+        -webkit-mask-image: url('/assets/images/cc.svg');
+        width: 30px;
+        height: 30px;
+    }
+
+    &.icon-by {
+        mask-image: url('/assets/images/by.svg');
+        -webkit-mask-image: url('/assets/images/by.svg');
+        width: 30px;
+        height: 30px;
+    }
+
+    &.icon-bandcamp {
+        mask-image: url('/assets/images/services/bandcamp.svg');
+        -webkit-mask-image: url('/assets/images/services/bandcamp.svg');
+        width: 1.25em;
+        height: .74em;
+    }
+
+    &.icon-soundcloud {
+        mask-image: url('/assets/images/services/soundcloud.svg');
+        -webkit-mask-image: url('/assets/images/services/soundcloud.svg');
+        width: 1.5em;
+        height: .65em;
+    }
+
+    &.icon-apple-music {
+        mask-image: url('/assets/images/services/apple-music.svg');
+        -webkit-mask-image: url('/assets/images/services/apple-music.svg');
+        width: .85em;
+        height: 1.13em;
+    }
+
+    &.icon-spotify {
+        mask-image: url('/assets/images/services/spotify.svg');
+        -webkit-mask-image: url('/assets/images/services/spotify.svg');
+        width: 1em;
+        height: 1.04em;
+    }
+
+    &.icon-mirlo {
+        mask-image: url('/assets/images/services/mirlo.svg');
+        -webkit-mask-image: url('/assets/images/services/mirlo.svg');
+        width: .9em;
+        height: 1.03em;
+    }
+
+    &.icon-remix-kit {
+        mask-image: url('/assets/images/remix.svg');
+        -webkit-mask-image: url('/assets/images/remix.svg');
+        width: 1.15em;
+        height: .71em;
+    }
+}
+
+a:hover .icon {
+    background-color: variables.$bg-color-light;
+}
+
 main {
     padding: 2rem 10rem;
     max-width: 70rem;
@@ -140,17 +310,44 @@ main {
     padding: 2rem 10rem;
     margin: 0 auto;
 
+    .license {
+        text-align: center;
+    }
+
     h1,
     h2,
     h3,
     h4,
     h5,
     h6 {
-        font-weight: 500;
+        font-weight: bold;
         margin: 2rem 0 .5rem 0;
         color: variables.$nav-link-color;
         text-transform: uppercase;
-        font-weight: bold;
+    }
+
+    h1 {
+        font-size: 2.625rem;
+    }
+
+    h2 {
+        font-size: 2.25rem;
+    }
+
+    h3 {
+        font-size: 1.875rem;
+    }
+
+    h4 {
+        font-size: 1.625rem;
+    }
+
+    h5 {
+        font-size: 1.3125rem;
+    }
+
+    h6 {
+        font-size: 1.1875rem;
     }
 
     p {
@@ -159,6 +356,11 @@ main {
 
     ul {
         margin-left: 1em;
+        padding-left: 0;
+    }
+
+    ol {
+        padding-left: 0;
     }
 
     nav.iterator {
@@ -167,7 +369,9 @@ main {
 
         ol {
             margin: 0;
+            padding: 0;
             display: flex;
+            gap: 1em;
 
             li {
                 flex: 1;
@@ -178,9 +382,12 @@ main {
                 a {
                     position: relative;
 
-                    &[rel*="prev"] {
-                        margin-right: 1em;
+                    &[role="button"] {
+                        display: block;
+                        width: 100%;
+                    }
 
+                    &[rel*="prev"] {
                         &:before {
                             display: inline-block;
                             margin: 0 .5rem 0 0;
@@ -189,8 +396,6 @@ main {
                     }
 
                     &[rel*="back"] {
-                        margin: 0 1em 0 0;
-
                         &:before {
                             display: inline-block;
                             position: relative;
@@ -206,10 +411,6 @@ main {
                         content: "\203A";
                     }
                 }
-
-                &:last-child a {
-                    margin-right: 0;
-                }
             }
         }
     }
@@ -220,6 +421,19 @@ main {
         padding: 5rem;
         margin: 3rem 0;
         font-size: 3rem;
+
+        &:has(+ .subtitle) {
+            border-radius: 1rem 1rem 0 0;
+            margin-bottom: 0;
+            padding-bottom: 2rem;
+        }
+
+        + .subtitle {
+            font-size: 1.1em;
+            border-radius: 0 0 1rem 1rem;
+            margin-top: 0;
+            padding-top: 0;
+        }
     }
 
     nav.years {
@@ -244,14 +458,9 @@ main {
     }
 
     table {
-        width: 100%;
-        border-collapse: collapse;
-
-        th,
-        td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid variables.$bg-color-light;
+        thead th,
+        thead td {
+            --pico-border-width: 1px;
         }
 
         th:first-child,
@@ -271,6 +480,14 @@ main {
         .format {
             width: 2em;
         }
+
+        &.songs:has(th.kind) {
+            table-layout: fixed;
+
+            .kind {
+                width: 2em;
+            }
+        }
     }
 
     .media {
@@ -278,14 +495,31 @@ main {
         margin-bottom: 1em;
         grid-template-columns: 1fr  1fr;
 
-        #youtube {
+        #cover {
+            align-self: start;
             padding: .5em;
             margin: 0 0 .5em 1em;
             border: 1px solid variables.$bg-color-light;
             border-radius: 10px;
+
+            img {
+                display: block;
+                max-width: 100%;
+                height: auto;
+            }
+
+            iframe {
+                width: 100%;
+                border: 0;
+            }
         }
 
         aside {
+            a[role="button"] {
+                display: block;
+                margin-top: 1em;
+            }
+
             table th {
                 width: 5em;
                 text-align: right;
@@ -296,25 +530,22 @@ main {
                 }
             }
 
-            .download {
-                margin: 1em;
+            .obtain ul {
+                margin: 0;
+                list-style-type: none;
+
+                > li {
+                    margin: 0;
+                    padding: 0;
+                    display: inline;
+
+                    .icon {
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin: 0 .5em 0 0;
+                    }
+                }
             }
-        }
-    }
-
-    .btn {
-        background-color: rgba(variables.$bg-color-light, .6);
-        box-shadow: inset 2px 2px 0 2px rgba(#fff, 0.02);
-        border: 1px solid variables.$bg-color-light;
-        border-radius: 10px;
-        display: block;
-        padding: 1em;
-        text-align: center;
-        text-decoration: none;
-
-        &:hover {
-            background-color: rgba(variables.$bg-color-light, .4);
-            box-shadow: inset 0px 5px 10px 0px rgba(#000, 0.5);
         }
     }
 
@@ -338,8 +569,28 @@ main {
         margin-bottom: -0.51em;
     }
 
-    blockquote p {
-        display: inline;
+    blockquote {
+        p:first-of-type {
+            display: inline;
+        }
+
+        p:nth-of-type(n+2) {
+            margin-top: 2rem;
+        }
+
+        p:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    &.albums {
+        .tracks {
+            margin-bottom: 2rem;
+
+            ol {
+                margin-left: 2rem;
+            }
+        }
     }
 }
 
@@ -365,6 +616,10 @@ footer {
             padding: 1rem 0 2rem 0;
         }
     }
+}
+
+section.footer {
+    margin-bottom: 0;
 }
 
 
@@ -409,13 +664,6 @@ footer {
         }
 
         table {
-            th,
-            td {
-                padding: 10px 8px;
-                text-align: left;
-                border-bottom: 1px solid variables.$bg-color-light;
-            }
-
             .format {
                 display: none;
             }
@@ -425,7 +673,7 @@ footer {
             display: block;
         }
 
-        #youtube {
+        #cover {
             iframe {
                 max-width: 69vw;
             }
