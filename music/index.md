@@ -15,7 +15,8 @@ You can listen to my music online. My latest tracks are conveniently provided
 below. If you would like to browse through my oldschool legacy, please head over
 to the [legacy section][legacy].
 
-{% soundcloud %}
+{% assign posts=site.categories['music'] | reject: 'category', 'legacy' %}
+{% include song_table.html posts=posts album=true %}
 
 ## Follow
 

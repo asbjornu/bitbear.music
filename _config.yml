@@ -19,9 +19,13 @@ defaults:
   - values:
       layout: default
       description: |
-        Bitbear.org is the website of electronic music producer Asbjørn Ulsberg
+        bitbear.music is the website of electronic music producer Asbjørn Ulsberg
   - scope:
-      path: music/legacy
+      path: music/albums
+    values:
+      layout: album
+  - scope:
+      path: music
     values:
       layout: post
 

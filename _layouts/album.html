@@ -1,0 +1,73 @@
+---
+layout: default
+---
+
+<h2>{{ page.title }}</h2>
+
+{% assign tracks = site.posts | where: 'album.slug', page.slug %}
+
+{% if page.media or page.album or page.obtain %}
+  <div class="media">
+    <aside>
+      <table>
+        <tbody>
+          <tr>
+            <th scope="row">Released</th>
+            <td class="date"><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date_to_long_string: 'ordinal', 'US' }}</time></td>
+          </tr>
+          {% if page.album.kind %}
+            <tr>
+              <th scope="row">Kind</th>
+              <td class="kind">{{ page.album.kind }}</td>
+            </tr>
+          {% endif %}
+          {% if tracks.size > 0 %}
+            <tr>
+              <th scope="row">Tracks</th>
+              <td class="tracks">{{ tracks.size }}</td>
+            </tr>
+          {% endif %}
+          {% if page.obtain %}
+            {% include obtain.html %}
+          {% endif %}
+        </tbody>
+      </table>
+    </aside>
+
+    {% if page.media.cover %}
+      <div id="cover">
+        <img src="/assets/images/covers/{{ page.media.cover }}" alt="{{ page.title }} cover">
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% if tracks.size > 0 %}
+  <div class="tracks">
+    <h3>Track Listing</h3>
+
+    <ol>
+      {% for track in tracks %}
+        <li>
+          <a href="{{ track.url }}">{{ track.title }}</a>
+        </li>
+      {% endfor %}
+    </ol>
+  </div>
+{% endif %}
+
+{% if page.media.soundcloud %}
+  <h3>Listen</h3>
+  <iframe width="100%"
+          height="{{ tracks.size | times: 55 | plus: 490 | divided_by: 2 }}"
+          scrolling="no"
+          frameborder="no"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/{{ page.media.soundcloud | url_encode | url_encode }}&color=%2341228e&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+  </iframe>
+{% endif %}
+
+<h3>Description</h3>
+
+{{ content }}
+
+{% include iterator.html %}

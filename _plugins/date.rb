@@ -6,42 +6,25 @@ module Jekyll
     def initialize(tag_name, input, _)
       super
 
-      (@format, input) = format(input)
-      @date = to_date(input)
+      (@format, @date_source) = format(input)
+      @date = variable?(@date_source) ? nil : to_date(@date_source)
     end
 
     def render(context)
-      date = @date || to_date(lookup(context, 'page.date'))
+      date = @date ||
+             to_date(fixed_date(context)) ||
+             to_date(lookup(context, 'page.date'))
 
       return '' if date.nil?
 
       ordinal = ordinal(date.day)
-      format = @format || default_format(ordinal)
+      format = (@format || default_format(ordinal)).gsub('{day}', ordinal)
       iso8601_date = date.strftime('%F')
       readable_date = date.strftime(format)
 
       Jekyll.logger.debug 'DateTag:', "Rendering date '#{date}' with format '#{format}'."
 
       "<abbr title=\"#{iso8601_date}\">#{readable_date}</abbr>"
-    end
-
-    private
-
-    def default_format(ordinal)
-      "%A, %B #{ordinal} %Y"
-    end
-
-    def format(input)
-      return [nil, input] if input.nil? || !input.is_a?(String) || input.empty?
-
-      match = input.match(/format:\s*['"](.*)['"]/)
-
-      return [nil, input] if match.nil?
-
-      format = match[1]
-      input = input.gsub(match[0], '').strip
-
-      [format, input]
     end
 
     def ordinal(day)
@@ -56,6 +39,35 @@ module Jekyll
         else
           'th'
         end
+    end
+
+    private
+
+    def variable?(source)
+      source.is_a?(String) && source.match?(/\A[a-zA-Z_]\w*(\.\w+)*\z/)
+    end
+
+    def fixed_date(context)
+      return nil if @date_source.nil? || @date_source.empty?
+
+      lookup(context, @date_source)
+    end
+
+    def default_format(ordinal)
+      "%A, %B #{ordinal} %Y"
+    end
+
+    def format(input)
+      return [nil, input] if input.nil? || !input.is_a?(String) || input.empty?
+
+      match = input.match(/format:\s*['"](.*)['"]/)
+
+      return [nil, input] if match.nil?
+
+      format = match[1]
+      input = input.gsub(match[0], '').sub(/,\s*\z/, '').strip
+
+      [format, input]
     end
 
     def to_date(date)

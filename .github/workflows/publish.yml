@@ -29,6 +29,13 @@ jobs:
           name: site
           path: _site
 
+      - uses: actions/checkout@v7
+        with:
+          lfs: true
+
+      - name: move git lfs files to _site
+        run: mv $(git lfs ls-files -n) _site/
+
       - uses: actions/configure-pages@v6
 
       - uses: actions/upload-pages-artifact@v5
