@@ -4,11 +4,11 @@ media:
   cover: scene-so-far.jpg
   soundcloud: playlists/soundcloud:playlists:313213317
 links:
-  - bandcamp: album/scene-so-far
-  - soundcloud: sets/scene-so-far
-  - apple-music: /album/scene-so-far-ep/1223831424
-  - spotify: /album/1U1mATmmalOlHPnX98UNFl
-  - mirlo: scene-so-far
+  - https://bitbearmusic.bandcamp.com/album/scene-so-far
+  - https://soundcloud.com/bitbear/sets/scene-so-far
+  - https://music.apple.com/us/album/scene-so-far-ep/1223831424
+  - https://open.spotify.com/album/1U1mATmmalOlHPnX98UNFl
+  - https://mirlo.space/bitbear/release/scene-so-far
 album:
   kind: EP
 ---

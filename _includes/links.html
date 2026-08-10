@@ -3,8 +3,8 @@
   <td class="links">
     <ul>
       {% for item in page.links %}
-        {% assign key = item.first.first %}
-        {% assign value = item.first.last %}
+        {% assign url = item | link_url %}
+        {% assign key = url | link_brand %}
         {% capture links_verb %}
           {%- case key -%}
             {%- when 'bandcamp' -%}Buy
@@ -14,25 +14,20 @@
             {%- when 'mirlo' -%}Listen to
           {%- endcase -%}
         {% endcapture %}
-        {% capture links_url %}
-          {%- case key -%}
-            {%- when 'bandcamp' -%}https://bitbearmusic.bandcamp.com/{{ value }}
-            {%- when 'soundcloud' -%}https://soundcloud.com/bitbear/{{ value }}
-            {%- when 'apple-music' -%}https://music.apple.com/us{{ value }}
-            {%- when 'spotify' -%}https://open.spotify.com{{ value }}
-            {%- when 'mirlo' -%}https://mirlo.space/bitbear/release/{{ value }}
-          {%- endcase -%}
-        {% endcapture %}
         {% capture title %}
-          {{- links_verb }} “{{ page.title }}” {% comment %}{% endcomment %}
-          {%- if key == 'apple-music' -%}
-            on Apple Music
+          {%- if key == 'unknown' -%}
+            {{- url | link_host -}}
           {%- else -%}
-            on {{ key | capitalize }}
+            {{- links_verb }} “{{ page.title }}” {% comment %}{% endcomment %}
+            {%- if key == 'apple-music' -%}
+              on Apple Music
+            {%- else -%}
+              on {{ key | capitalize }}
+            {%- endif -%}
           {%- endif -%}
         {% endcapture %}
         <li class="{{ key }}">
-          <a href="{{ links_url }}" target="_blank" aria-description="{{ title }}" data-tooltip="{{ title }}">
+          <a href="{{ url }}" target="_blank" aria-description="{{ title }}" data-tooltip="{{ title }}">
             <span class="icon icon-{{ key }}" role="img" aria-label="{{ title }}"></span>
           </a>
         </li>

@@ -7,10 +7,10 @@ media:
   channels: 55
   filesize: 8213546
 links:
-  - bandcamp: track/that-flateby-feeling
-  - apple-music: /album/that-flateby-feeling/1762288686?i=1762288687
-  - spotify: /track/6wVfzAgHmaOdFi6eIPG11p
-  - mirlo: that-flateby-feeling
+  - https://bitbearmusic.bandcamp.com/track/that-flateby-feeling
+  - https://music.apple.com/us/album/that-flateby-feeling/1762288686?i=1762288687
+  - https://open.spotify.com/track/6wVfzAgHmaOdFi6eIPG11p
+  - https://mirlo.space/bitbear/release/that-flateby-feeling
 ---
 
 "That Flateby Feeling" was Bitbear's entry to the [Newschool Music

@@ -3,6 +3,7 @@
 require 'bytesize'
 require 'date'
 require 'open3'
+require 'uri'
 
 module Jekyll
   # Filters for working with Jekyll::Page objects
@@ -41,6 +42,30 @@ module Jekyll
 
     def children_of(all_pages, parent)
       all_pages.select { |p| child_of?(p, parent) }
+    end
+
+    def link_url(input)
+      input.is_a?(Hash) ? input.values.first.to_s : input.to_s
+    end
+
+    def link_brand(input)
+      case link_url(input)
+      when %r{bandcamp\.com}i   then 'bandcamp'
+      when %r{soundcloud\.com}i then 'soundcloud'
+      when %r{music\.apple\.com}i then 'apple-music'
+      when %r{open\.spotify\.com}i then 'spotify'
+      when %r{mirlo\.space}i    then 'mirlo'
+      else 'unknown'
+      end
+    end
+
+    def link_host(input)
+      uri = URI.parse(link_url(input))
+      host = uri.host.to_s.sub(/\Awww\./i, '')
+      host = "#{host}:#{uri.port}" if uri.port && ![80, 443].include?(uri.port)
+      host
+    rescue URI::InvalidURIError, URI::InvalidComponentError
+      link_url(input)
     end
 
     def file_size(input)

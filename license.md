@@ -33,15 +33,19 @@ Some of the icons used on this web site are provided by [The Noun
 Project][noun-project] and are subject to their [attribution
 requirements][noun-attribution]:
 
-- The [remix][] icon, used for the remix kit download link,
-  is designed by [Meko][meko] from [The Noun Project][noun-project].
+- [Remix][remix-icon] by [Meko][meko], from [Noun Project][remix-browse] CC BY 3.0.
+- [Link chain][link-icon] by [Idwar][idwar], from [Noun Project][link-browse] CC BY 3.0.
 
 [bitbear]: https://bitbear.music/
 [cc-by]: https://creativecommons.org/licenses/by-nc/4.0/
 [cc]: https://creativecommons.org/
-[meko]: https://thenounproject.com/creator/MekoDa/
-[noun-attribution]: https://thenounproject.com/about/#attribution
-[noun-project]: https://thenounproject.com/
-[remix]: https://thenounproject.com/icon/remix-5641961/
-[mail]: mailto:mail@bitbear.music
+[idwar]: https://thenounproject.com/creator/idwar.frin/
 [license]: https://github.com/asbjornu/bitbear.music/blob/main/LICENSE
+[link-browse]: https://thenounproject.com/browse/icons/term/link-chain/
+[link-icon]: https://thenounproject.com/icon/link-chain-8147342/
+[mail]: mailto:mail@bitbear.music
+[meko]: https://thenounproject.com/creator/MekoDa/
+[noun-attribution]: https://help.thenounproject.com/hc/en-us/articles/200509928-How-do-I-give-creators-credit-in-my-work
+[noun-project]: https://thenounproject.com/
+[remix-browse]: https://thenounproject.com/browse/icons/term/remix/
+[remix-icon]: https://thenounproject.com/icon/remix-5641961/

@@ -4,11 +4,11 @@ media:
   cover: sunset-through-the-rain.jpg
   soundcloud: playlists/soundcloud:playlists:2251613897
 links:
-  - bandcamp: album/sunset-through-the-rain
-  - soundcloud: sets/sunset-through-the-rain
-  - apple-music: /album/sunset-through-the-rain-single/6786456889
-  - spotify: /album/2BlNqksVXhtmZfXP3YJbWO
-  - mirlo: sunset-through-the-rain
+  - https://bitbearmusic.bandcamp.com/album/sunset-through-the-rain
+  - https://soundcloud.com/bitbear/sets/sunset-through-the-rain
+  - https://music.apple.com/us/album/sunset-through-the-rain-single/6786456889
+  - https://open.spotify.com/album/2BlNqksVXhtmZfXP3YJbWO
+  - https://mirlo.space/bitbear/release/sunset-through-the-rain
 album:
   kind: Single
 ---

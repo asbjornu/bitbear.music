@@ -8,10 +8,10 @@ media:
   channels: 57
   length: '4:03'
 links:
-  - bandcamp: album/sunset-through-the-rain
-  - apple-music: /album/sunset-through-the-rain-single/6786456889?i=6786456890
-  - spotify: /track/21sI6zaQwpah4F6ivtcfED
-  - mirlo: sunset-through-the-rain
+  - https://bitbearmusic.bandcamp.com/album/sunset-through-the-rain
+  - https://music.apple.com/us/album/sunset-through-the-rain-single/6786456889?i=6786456890
+  - https://open.spotify.com/track/21sI6zaQwpah4F6ivtcfED
+  - https://mirlo.space/bitbear/release/sunset-through-the-rain
 album:
   slug: sunset-through-the-rain
   position: 1

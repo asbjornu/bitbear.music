@@ -287,6 +287,13 @@ section.footer footer a:hover {
         height: 1.03em;
     }
 
+    &.icon-unknown {
+        mask-image: url('/assets/images/services/unknown.svg');
+        -webkit-mask-image: url('/assets/images/services/unknown.svg');
+        width: 1.1em;
+        height: 1.1em;
+    }
+
     &.icon-remix-kit {
         mask-image: url('/assets/images/remix.svg');
         -webkit-mask-image: url('/assets/images/remix.svg');

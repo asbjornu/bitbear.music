@@ -4,10 +4,10 @@ media:
   soundcloud: tracks/soundcloud:tracks:176199298
   length: '3:29'
 links:
-  - bandcamp: album/scene-so-far
-  - apple-music: /album/raise-the-dead/1223831424?i=1223831433
-  - spotify: /track/5uSFRvX0BOrlaYCk5J0DnG
-  - mirlo: scene-so-far
+  - https://bitbearmusic.bandcamp.com/album/scene-so-far
+  - https://music.apple.com/us/album/raise-the-dead/1223831424?i=1223831433
+  - https://open.spotify.com/track/5uSFRvX0BOrlaYCk5J0DnG
+  - https://mirlo.space/bitbear/release/scene-so-far
 album:
   slug: scene-so-far
   position: 3

@@ -5,10 +5,10 @@ media:
   soundcloud: tracks/soundcloud:tracks:2257905686
   length: '3:38'
 links:
-  - bandcamp: album/sunset-through-the-rain
-  - apple-music: /album/sunset-through-the-rain-modulo-ones-night-drive/6786456889?i=6786456892
-  - spotify: /track/1EXAwpFqBhzHmVlAw7Abzg
-  - mirlo: sunset-through-the-rain
+  - https://bitbearmusic.bandcamp.com/album/sunset-through-the-rain
+  - https://music.apple.com/us/album/sunset-through-the-rain-modulo-ones-night-drive/6786456889?i=6786456892
+  - https://open.spotify.com/track/1EXAwpFqBhzHmVlAw7Abzg
+  - https://mirlo.space/bitbear/release/sunset-through-the-rain
 album:
   slug: sunset-through-the-rain
   position: 2

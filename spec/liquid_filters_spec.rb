@@ -239,4 +239,53 @@ describe '#sort_by' do
       expect(entries).to include('Presets/arp.fxp')
     end
   end
+
+  describe '#link_url' do
+    it 'passes a plain URL string through unchanged' do
+      expect(instance.link_url('https://moduloone.com/news/')).to eq('https://moduloone.com/news/')
+    end
+
+    it 'extracts the URL from a single-entry hash' do
+      expect(instance.link_url({ 'bandcamp' => 'https://bitbearmusic.bandcamp.com/album/scene-so-far' }))
+        .to eq('https://bitbearmusic.bandcamp.com/album/scene-so-far')
+    end
+  end
+
+  describe '#link_brand' do
+    {
+      'https://bitbearmusic.bandcamp.com/album/scene-so-far' => 'bandcamp',
+      'https://soundcloud.com/bitbear/sets/scene-so-far' => 'soundcloud',
+      'https://music.apple.com/us/album/scene-so-far-ep/1223831424' => 'apple-music',
+      'https://open.spotify.com/album/1U1mATmmalOlHPnX98UNFl' => 'spotify',
+      'https://mirlo.space/bitbear/release/scene-so-far' => 'mirlo'
+    }.each do |url, brand|
+      it "classifies #{url} as #{brand}" do
+        expect(instance.link_brand(url)).to eq(brand)
+      end
+    end
+
+    it 'classifies an unlisted URL as unknown' do
+      expect(instance.link_brand('https://moduloone.com/news/the-king-and-the-priest/'))
+        .to eq('unknown')
+    end
+
+    it 'derives the brand from the URL value of a single-entry hash' do
+      expect(instance.link_brand({ 'bandcamp' => 'https://bitbearmusic.bandcamp.com/album/scene-so-far' }))
+        .to eq('bandcamp')
+    end
+  end
+
+  describe '#link_host' do
+    it 'strips the scheme from the URL' do
+      expect(instance.link_host('https://moduloone.com/news/')).to eq('moduloone.com')
+    end
+
+    it 'strips a leading www subdomain' do
+      expect(instance.link_host('https://www.bandcamp.com/album/scene-so-far')).to eq('bandcamp.com')
+    end
+
+    it 'keeps the port' do
+      expect(instance.link_host('https://localhost:4000/music/move')).to eq('localhost:4000')
+    end
+  end
 end

@@ -54,6 +54,11 @@ describe 'Pico CSS integration' do
     it 'keeps the iterator buttons equally spaced with no outer margins' do
       expect(css).to include('nav.iterator ol{margin:0;padding:0;display:flex;gap:1em')
     end
+
+    it 'masks the unknown link icon with the noun project asset' do
+      expect(css).to include('.icon.icon-unknown')
+      expect(css).to include('url("/assets/images/services/unknown.svg")')
+    end
   end
 
   describe 'generated markup' do
@@ -74,6 +79,24 @@ describe 'Pico CSS integration' do
       expect(legacy).to have_tag('div', with: { id: 'cover' })
       iframe = Nokogiri::HTML(legacy).at_css('div#cover iframe')
       expect(iframe['src']).to match(%r{youtube\.com/embed/})
+    end
+
+    it 'renders unknown links with the unknown icon' do
+      page = read_utf8(File.join(site_root, '_site', 'music', 'the-king-and-the-priest.html'))
+      expect(page).to have_tag('li', with: { class: 'unknown' }) do
+        with_tag('a', with: {
+                   href: 'https://moduloone.com/news/the-king-and-the-priest-out-1-september-with-bitbear-remix/',
+                   target: '_blank',
+                   'aria-description' => 'moduloone.com'
+                 })
+        with_tag('span', with: { class: 'icon icon-unknown' })
+      end
+    end
+
+    it 'derives known link hrefs from the full URL in the link value' do
+      page = read_utf8(File.join(site_root, '_site', 'music', 'albums', 'scene-so-far.html'))
+      expect(page).to have_tag('a', with: { href: 'https://bitbearmusic.bandcamp.com/album/scene-so-far' })
+      expect(page).to have_tag('a', with: { href: 'https://open.spotify.com/album/1U1mATmmalOlHPnX98UNFl' })
     end
   end
 end
