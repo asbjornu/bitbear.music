@@ -116,9 +116,12 @@ describe 'remix kit pages' do
         expect(kit).to have_tag('a', with: { href: post_url(track, slug), rel: 'back' })
       end
 
-      it 'points the release page obtain row at the kit page' do
+      it 'points the release page remix kit row at the kit page' do
         release_page = read_utf8(built_page_path(release, slug))
-        expect(release_page).to have_tag('a', with: { href: "/music/#{slug}/remix-kit/" })
+        expect(release_page).to have_tag('tr', with: { class: 'remix-kit-row' }) do
+          with_tag('th', scope: 'row', text: /Remix kit/)
+          with_tag('a', with: { href: "/music/#{slug}/remix-kit/" })
+        end
       end
 
       it 'explains the license and links to the license page' do

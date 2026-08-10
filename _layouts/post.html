@@ -37,9 +37,9 @@ layout: default
               <td>{{ page.media.length }}</td>
             </tr>
           {% endif %}
-          {% assign remix_kit = site.remix_kits | where: 'slug', page.slug | first %}
-          {% if page.obtain or remix_kit %}
-            {% include obtain.html %}
+          {% include remix_kit_row.html %}
+          {% if page.links %}
+            {% include links.html %}
           {% endif %}
           {% if page.media.soundcloud %}
             <tr>

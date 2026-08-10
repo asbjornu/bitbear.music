@@ -6,7 +6,7 @@ layout: default
 
 {% assign tracks = site.posts | where: 'album.slug', page.slug | sort_by: 'album.position' %}
 
-{% if page.media or page.album or page.obtain %}
+{% if page.media or page.album or page.links %}
   <div class="media">
     <aside>
       <table>
@@ -27,9 +27,9 @@ layout: default
               <td class="tracks">{{ tracks.size }}</td>
             </tr>
           {% endif %}
-          {% assign remix_kit = site.remix_kits | where: 'slug', page.slug | first %}
-          {% if page.obtain or remix_kit %}
-            {% include obtain.html %}
+          {% include remix_kit_row.html %}
+          {% if page.links %}
+            {% include links.html %}
           {% endif %}
           {% if page.media.soundcloud %}
             <tr>

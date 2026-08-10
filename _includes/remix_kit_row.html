@@ -1,0 +1,12 @@
+{% assign remix_kit = site.remix_kits | where: 'slug', page.slug | first %}
+{% if remix_kit %}
+  <tr class="remix-kit-row">
+    <th scope="row">Remix kit</th>
+    <td class="remix-kit">
+      {% capture title %}View the “{{ page.title }}” remix kit{% endcapture %}
+      <a href="{{ page.slug | prepend: '/music/' | append: '/remix-kit/' }}" aria-description="{{ title }}" data-tooltip="{{ title }}">
+        <span class="icon icon-remix-kit" role="img" aria-label="{{ title }}"></span>
+      </a>
+    </td>
+  </tr>
+{% endif %}

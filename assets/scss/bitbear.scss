@@ -529,7 +529,17 @@ main {
                 }
             }
 
-            .obtain ul {
+            .remix-kit-row th {
+                white-space: nowrap;
+            }
+
+            .remix-kit .icon {
+                display: inline-block;
+                vertical-align: middle;
+                margin: 0 .5em 0 0;
+            }
+
+            .links ul {
                 margin: 0;
                 list-style-type: none;
 

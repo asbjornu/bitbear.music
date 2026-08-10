@@ -6,7 +6,7 @@ media:
   cover: that-flateby-feeling.jpg
   channels: 55
   filesize: 8213546
-obtain:
+links:
   - bandcamp: track/that-flateby-feeling
   - apple-music: /album/that-flateby-feeling/1762288686?i=1762288687
   - spotify: /track/6wVfzAgHmaOdFi6eIPG11p

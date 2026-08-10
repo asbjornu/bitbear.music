@@ -3,7 +3,7 @@ title: Scene So Far
 media:
   cover: scene-so-far.jpg
   soundcloud: playlists/soundcloud:playlists:313213317
-obtain:
+links:
   - bandcamp: album/scene-so-far
   - soundcloud: sets/scene-so-far
   - apple-music: /album/scene-so-far-ep/1223831424

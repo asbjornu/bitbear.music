@@ -7,7 +7,7 @@ media:
   format: XRNS
   channels: 57
   length: '4:03'
-obtain:
+links:
   - bandcamp: album/sunset-through-the-rain
   - apple-music: /album/sunset-through-the-rain-single/6786456889?i=6786456890
   - spotify: /track/21sI6zaQwpah4F6ivtcfED

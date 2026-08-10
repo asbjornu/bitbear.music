@@ -3,7 +3,7 @@ title: Raise The Dead
 media:
   soundcloud: tracks/soundcloud:tracks:176199298
   length: '3:29'
-obtain:
+links:
   - bandcamp: album/scene-so-far
   - apple-music: /album/raise-the-dead/1223831424?i=1223831433
   - spotify: /track/5uSFRvX0BOrlaYCk5J0DnG

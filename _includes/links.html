@@ -1,20 +1,11 @@
 <tr>
-  <th scope="row">Obtain</th>
-  <td class="obtain">
+  <th scope="row">Links</th>
+  <td class="links">
     <ul>
-      {% assign kit = site.remix_kits | where: 'slug', page.slug | first %}
-      {% if kit %}
-        {% capture title %}View the “{{ page.title }}” remix kit{% endcapture %}
-        <li class="remix-kit">
-          <a href="{{ page.slug | prepend: '/music/' | append: '/remix-kit/' }}" aria-description="{{ title }}" data-tooltip="{{ title }}">
-            <span class="icon icon-remix-kit" role="img" aria-label="{{ title }}"></span>
-          </a>
-        </li>
-      {% endif %}
-      {% for item in page.obtain %}
+      {% for item in page.links %}
         {% assign key = item.first.first %}
         {% assign value = item.first.last %}
-        {% capture obtain_verb %}
+        {% capture links_verb %}
           {%- case key -%}
             {%- when 'bandcamp' -%}Buy
             {%- when 'soundcloud' -%}Listen to
@@ -23,7 +14,7 @@
             {%- when 'mirlo' -%}Listen to
           {%- endcase -%}
         {% endcapture %}
-        {% capture obtain_url %}
+        {% capture links_url %}
           {%- case key -%}
             {%- when 'bandcamp' -%}https://bitbearmusic.bandcamp.com/{{ value }}
             {%- when 'soundcloud' -%}https://soundcloud.com/bitbear/{{ value }}
@@ -33,7 +24,7 @@
           {%- endcase -%}
         {% endcapture %}
         {% capture title %}
-          {{- obtain_verb }} “{{ page.title }}” {% comment %}{% endcomment %}
+          {{- links_verb }} “{{ page.title }}” {% comment %}{% endcomment %}
           {%- if key == 'apple-music' -%}
             on Apple Music
           {%- else -%}
@@ -41,7 +32,7 @@
           {%- endif -%}
         {% endcapture %}
         <li class="{{ key }}">
-          <a href="{{ obtain_url }}" target="_blank" aria-description="{{ title }}" data-tooltip="{{ title }}">
+          <a href="{{ links_url }}" target="_blank" aria-description="{{ title }}" data-tooltip="{{ title }}">
             <span class="icon icon-{{ key }}" role="img" aria-label="{{ title }}"></span>
           </a>
         </li>

@@ -3,7 +3,7 @@ title: Raise The Dead (Modulo One's Flying Dead Remix)
 media:
   soundcloud: tracks/soundcloud:tracks:316432480
   length: '4:53'
-obtain:
+links:
   - bandcamp: album/scene-so-far
   - apple-music: /album/raise-the-dead-feat-modulo-one-modulo-ones-flying-dead-remix/1223831424?i=1223831434
   - spotify: /track/3jDaSFNdMTkHs8FDb5t3Yt

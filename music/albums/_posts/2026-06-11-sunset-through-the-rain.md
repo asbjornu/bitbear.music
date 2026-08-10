@@ -3,7 +3,7 @@ title: Sunset Through The Rain
 media:
   cover: sunset-through-the-rain.jpg
   soundcloud: playlists/soundcloud:playlists:2251613897
-obtain:
+links:
   - bandcamp: album/sunset-through-the-rain
   - soundcloud: sets/sunset-through-the-rain
   - apple-music: /album/sunset-through-the-rain-single/6786456889

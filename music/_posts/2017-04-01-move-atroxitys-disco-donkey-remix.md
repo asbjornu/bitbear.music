@@ -3,7 +3,7 @@ title: Move (Atroxity's Disco Donkey Remix)
 media:
   soundcloud: tracks/soundcloud:tracks:316431742
   length: '5:57'
-obtain:
+links:
   - bandcamp: album/scene-so-far
   - apple-music: /album/move-feat-atroxity-atroxitys-disco-donkey-remix/1223831424?i=1223831429
   - spotify: /track/67IGXTLEcgQEKsqEfrnZnH

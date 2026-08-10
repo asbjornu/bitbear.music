@@ -3,7 +3,7 @@ title: Raise The Dead (Knofle Remix)
 media:
   soundcloud: tracks/soundcloud:tracks:316433561
   length: '5:40'
-obtain:
+links:
   - bandcamp: album/scene-so-far
   - apple-music: /album/raise-the-dead-feat-knofle-knofle-remix/1223831424?i=1223831438
   - spotify: /track/0YeVIFS0tImQiblPYQ5N7w
