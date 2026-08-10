@@ -8,8 +8,6 @@ media:
   filesize: 23904064
   channels: 59
   format: XRNS
-obtain:
-  - remix-kit: Planeswalker
 ---
 
 Inspiring horn and vocal samples forced the Planeswalker into

@@ -9,7 +9,6 @@ obtain:
   - apple-music: /album/sunset-through-the-rain-single/6786456889
   - spotify: /album/2BlNqksVXhtmZfXP3YJbWO
   - mirlo: sunset-through-the-rain
-  - remix-kit: Sunset_Through_The_Rain
 album:
   kind: Single
 ---

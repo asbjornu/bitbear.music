@@ -2,6 +2,15 @@
   <th scope="row">Obtain</th>
   <td class="obtain">
     <ul>
+      {% assign kit = site.remix_kits | where: 'slug', page.slug | first %}
+      {% if kit %}
+        {% capture title %}View the “{{ page.title }}” remix kit{% endcapture %}
+        <li class="remix-kit">
+          <a href="{{ page.slug | prepend: '/music/' | append: '/remix-kit/' }}" aria-description="{{ title }}" data-tooltip="{{ title }}">
+            <span class="icon icon-remix-kit" role="img" aria-label="{{ title }}"></span>
+          </a>
+        </li>
+      {% endif %}
       {% for item in page.obtain %}
         {% assign key = item.first.first %}
         {% assign value = item.first.last %}
@@ -12,7 +21,6 @@
             {%- when 'apple-music' -%}Listen to
             {%- when 'spotify' -%}Listen to
             {%- when 'mirlo' -%}Listen to
-            {%- when 'remix-kit' -%}Download the
           {%- endcase -%}
         {% endcapture %}
         {% capture obtain_url %}
@@ -22,14 +30,11 @@
             {%- when 'apple-music' -%}https://music.apple.com/us{{ value }}
             {%- when 'spotify' -%}https://open.spotify.com{{ value }}
             {%- when 'mirlo' -%}https://mirlo.space/bitbear/release/{{ value }}
-            {%- when 'remix-kit' -%}/assets/remix-kits/Bitbear-{{ value }}-Remix_Kit.zip
           {%- endcase -%}
         {% endcapture %}
         {% capture title %}
           {{- obtain_verb }} “{{ page.title }}” {% comment %}{% endcomment %}
-          {%- if key == 'remix-kit' -%}
-            remix kit
-          {%- elsif key == 'apple-music' -%}
+          {%- if key == 'apple-music' -%}
             on Apple Music
           {%- else -%}
             on {{ key | capitalize }}

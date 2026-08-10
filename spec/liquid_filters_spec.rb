@@ -211,4 +211,75 @@ describe '#sort_by' do
       expect(result.map { |i| i['title'] }).to eq(%w[A B])
     end
   end
+
+  describe '#zip_contents' do
+    def with_source
+      site = instance_double('Jekyll::Site', source: File.expand_path('..', __dir__))
+      context = instance_double('Liquid::Context', registers: { site: site })
+      instance.instance_variable_set(:@context, context)
+    end
+
+    it 'strips the top-level archive folder from every listing entry' do
+      with_source
+      entries = instance.zip_contents('Bitbear-Planeswalker-Remix_Kit.zip')
+      expect(entries).not_to be_empty
+      expect(entries).not_to include(start_with('Planeswalker/'))
+    end
+
+    it 'keeps the folder structure below the archive root' do
+      with_source
+      entries = instance.zip_contents('Bitbear-Planeswalker-Remix_Kit.zip')
+      expect(entries).to include(start_with('Stems/'))
+    end
+
+    it 'strips the differently named folder of the sunset kit' do
+      with_source
+      entries = instance.zip_contents('Bitbear-Sunset_Through_The_Rain-Remix_Kit.zip')
+      expect(entries).not_to include(start_with('Bitbear-Sunset-Through-The-Rain-Remix-Kit/'))
+      expect(entries).to include('Presets/arp.fxp')
+    end
+  end
+
+  describe '#high_res' do
+    def static_file(url)
+      instance_double('Jekyll::StaticFile', url: url)
+    end
+
+    def with_site(files: [])
+      site = instance_double('Jekyll::Site', static_files: files)
+      context = instance_double('Liquid::Context', registers: { site: site })
+      instance.instance_variable_set(:@context, context)
+    end
+
+    it 'returns the @2x variant URL when it exists' do
+      with_site(files: [static_file('/assets/images/covers/bitwerk@2x.jpg')])
+      expect(instance.high_res('/assets/images/covers/bitwerk.jpg'))
+        .to eq('/assets/images/covers/bitwerk@2x.jpg')
+    end
+
+    it 'returns nil when the @2x variant does not exist' do
+      with_site(files: [static_file('/assets/images/covers/bitwerk.jpg')])
+      expect(instance.high_res('/assets/images/covers/bitwerk.jpg')).to be_nil
+    end
+
+    it 'supports png and webp extensions' do
+      with_site(files: [static_file('/assets/images/covers/art@2x.webp')])
+      expect(instance.high_res('/assets/images/covers/art.webp'))
+        .to eq('/assets/images/covers/art@2x.webp')
+    end
+
+    it 'returns nil for empty input' do
+      with_site
+      expect(instance.high_res('')).to be_nil
+    end
+
+    it 'returns nil for input without an image extension' do
+      with_site
+      expect(instance.high_res('/assets/images/covers/bitwerk')).to be_nil
+    end
+
+    it 'returns nil when no Jekyll context is available' do
+      expect(instance.high_res('/assets/images/covers/bitwerk.jpg')).to be_nil
+    end
+  end
 end

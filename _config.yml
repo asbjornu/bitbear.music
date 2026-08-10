@@ -6,6 +6,11 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
 
+collections:
+  remix_kits:
+    output: true
+    permalink: /music/:title/remix-kit/
+
 compress_html:
   clippings: all
   comments: all

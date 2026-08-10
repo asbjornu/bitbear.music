@@ -4,10 +4,10 @@ title: License & Credits
 
 ## License
 
-All of the content published on this web site and under the [Bitbear][bitbear]
-alias, including music and cover art, is licensed under the [Creative Commons
-Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license][cc-by],
-unless otherwise noted.
+All of the content published on this web site and under the "Bitbear"
+or "Power of Creation" aliases, including music and cover art, is
+licensed under the [Creative Commons Attribution-NonCommercial 4.0
+International (CC BY-NC 4.0) license][cc-by], unless otherwise noted.
 This means you are free to share and adapt the material for any
 non-commercial purpose, as long as you provide appropriate credit.
 
@@ -20,8 +20,12 @@ When using Bitbear's music or artwork, please attribute it to *Bitbear* (Asbjør
 Ulsberg) and link back to [https://bitbear.music/][bitbear] and the [license][cc-by]
 under which it is released.
 
-The full text of the license is available in the
-[repository](https://github.com/asbjornu/bitbear.music/blob/main/LICENSE).
+The full text of the license is available in the [repository on
+GitHub][license].
+
+If you want to use Bitbear's music or artwork for commercial purposes,
+or have questions about licensing options, remixing opportunities,
+or anything else; please drop an e-mail to [mail@bitbear.music][mail]!
 
 ## Credits
 
@@ -39,3 +43,5 @@ requirements][noun-attribution]:
 [noun-attribution]: https://thenounproject.com/about/#attribution
 [noun-project]: https://thenounproject.com/
 [remix]: https://thenounproject.com/icon/remix-5641961/
+[mail]: mailto:mail@bitbear.music
+[license]: https://github.com/asbjornu/bitbear.music/blob/main/LICENSE

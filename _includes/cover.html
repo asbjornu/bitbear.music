@@ -1,5 +1,6 @@
 {%- if include.cover -%}
   {%- assign cover_url = '/assets/images/covers/' | append: include.cover -%}
+  {%- assign cover_2x = cover_url | high_res -%}
   {%- if include.youtube -%}
     {%- assign youtube_url = 'https://www.youtube.com/watch?v=' | append: include.youtube -%}
     {%- assign has_youtube = true -%}
@@ -25,7 +26,11 @@
         <a href="#" class="close" aria-label="Close"></a>
       </header>
       <div id="cover-media">
+        {%- if cover_2x -%}
+        <img src="{{ cover_url }}" srcset="{{ cover_url }} 1080w, {{ cover_2x }} 2160w" sizes="100vw" alt="{{ include.title | escape }} cover">
+        {%- else -%}
         <img src="{{ cover_url }}" alt="{{ include.title | escape }} cover">
+        {%- endif -%}
         {%- if has_youtube -%}
           <a id="cover-play"
              href="{{ youtube_url }}"

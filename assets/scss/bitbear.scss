@@ -488,7 +488,7 @@ main {
     .media {
         display: grid;
         margin-bottom: 1em;
-        grid-template-columns: 1fr  1fr;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 
         #cover {
             align-self: start;
@@ -545,6 +545,14 @@ main {
                     }
                 }
             }
+        }
+    }
+
+    .contents {
+        overflow-wrap: anywhere;
+
+        ul {
+            margin-left: 1em;
         }
     }
 
