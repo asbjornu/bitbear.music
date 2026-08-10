@@ -67,6 +67,7 @@ task :htmlproofer do
       /bitbearmusic.bandcamp.com/,
       /soundcloud.com/,
       /api.modarchive.org/,
+      /moduloone.com/,
     ],
     hydra: { max_concurrency: 1 },
     cache: { timeframe: { external: '1w' } },
