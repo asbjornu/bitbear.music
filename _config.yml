@@ -55,5 +55,6 @@ exclude:
   - spec
   - Rakefile
   - coverage
+  - covers-master
   - package.json
   - package-lock.json

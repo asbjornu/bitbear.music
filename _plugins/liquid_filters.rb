@@ -83,20 +83,6 @@ module Jekyll
       end
     end
 
-    def high_res(input)
-      return nil if input.nil? || input.empty?
-
-      match = input.match(/\A(.*?)(\.(?:jpe?g|png|webp))\z/i)
-      return nil if match.nil?
-
-      candidate = "#{match[1]}@2x#{match[2]}"
-      site = @context && @context.registers[:site]
-      return nil if site.nil? || site.static_files.nil?
-
-      exists = site.static_files.any? { |file| file.url == candidate }
-      exists ? candidate : nil
-    end
-
     private
 
     def child_of?(child, parent)

@@ -62,13 +62,15 @@ missing.
   `article` is sized to hug the cover art (`padding: 0`, `width: auto`); everything else
   is Pico's `components/modal` + `components/card` output. Reposition or scope it as
   `#cover-art`, not by overriding Pico's `dialog`.
-- Cover thumbnails live at `assets/images/covers/<name>.jpg` (1080×1080; LFS-tracked).
-  To keep the modal cover sharp on HiDPI displays, ship a high-res twin as
-  `assets/images/covers/<name>@2x.jpg` (2160×2160). When present, `cover.html` emits a
-  `srcset` on the modal `<img>` via the `high_res` Liquid filter
-  (`_plugins/liquid_filters.rb`, checks `site.static_files`); without the `@2x` file the
-  modal falls back to the single 1080px image. Do not add `srcset` unconditionally — it
-  must stay conditional on the file existing.
+- Cover thumbnails live at `assets/images/covers/<name>.jpg` (1080×1080; LFS-tracked)
+  with a high-res twin at `assets/images/covers/<name>@2x.jpg` (2160×2160).
+  `_includes/cover.html` derives the twin purely by filename
+  (`| replace: '.jpg', '@2x.jpg'`) and always emits a `srcset` (`1080w`, `2160w`) on the
+  modal `<img>` — there is no runtime existence check. The invariant is instead enforced
+  in CI by `spec/cover_spec.rb`, which fails when a cover lacks its `@2x` twin or a
+  post's front matter references a cover file that does not exist. Generate the twins
+  from git-ignored 2160² masters with `bundle exec rake covers:2x` (see `Rakefile`);
+  masters live in the repo-root `covers-master/` directory.
 
 ## Git LFS
 

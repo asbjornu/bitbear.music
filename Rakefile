@@ -32,6 +32,30 @@ task :clean do
   Jekyll::Commands::Clean.process({})
 end
 
+namespace :covers do
+  desc 'Generates 2160×2160 @2x twins from the git-ignored covers-master/ sources'
+  task :'2x' do
+    covers_dir = File.join(__dir__, 'assets', 'images', 'covers')
+    masters_dir = File.join(__dir__, 'covers-master')
+    abort 'covers-master/ does not exist' unless Dir.exist?(masters_dir)
+
+    Dir.glob(File.join(covers_dir, '*.jpg'))
+       .reject { |f| f.include?('@2x.jpg') }
+       .each do |cover|
+      name = File.basename(cover, '.jpg')
+      master = Dir.glob(File.join(masters_dir, "#{name}.*")).first
+      next if master.nil?
+
+      twin = File.join(covers_dir, "#{name}@2x.jpg")
+      next if File.exist?(twin) && File.mtime(twin) >= File.mtime(master)
+
+      system('sips', '-s', 'format', 'jpeg', '-z', '2160', '2160', master, '--out', twin) ||
+        abort("Failed to generate #{twin} from #{master}")
+      puts "Generated #{twin}"
+    end
+  end
+end
+
 task :htmlproofer do
   require 'html-proofer'
 
