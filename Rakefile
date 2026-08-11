@@ -68,6 +68,7 @@ task :htmlproofer do
       /soundcloud.com/,
       /api.modarchive.org/,
       /moduloone.com/,
+      /flickr.com/,
     ],
     hydra: { max_concurrency: 1 },
     cache: { timeframe: { external: '1w' } },
