@@ -69,6 +69,7 @@ task :htmlproofer do
       /api.modarchive.org/,
       /moduloone.com/,
       /flickr.com/,
+      /help.thenounproject.com/,
     ],
     hydra: { max_concurrency: 1 },
     cache: { timeframe: { external: '1w' } },
