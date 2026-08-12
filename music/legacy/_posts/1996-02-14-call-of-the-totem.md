@@ -6,10 +6,10 @@ media:
   channels: 4
   format: MOD
   length: 0:44 (looped)
-  modarchive: 199584
 links:
   - https://demozoo.org/music/318145/
   - https://www.youtube.com/watch?v=J0H2jB3c3ck
+  - https://api.modarchive.org/downloads.php?moduleid=199584
 ---
 
 This wall of utter noise was produced {% date %}, and is just published for the

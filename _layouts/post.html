@@ -60,10 +60,12 @@ layout: default
         </tbody>
       </table>
 
-      {% if page.media.modarchive %}
-        <a role="button" href="https://api.modarchive.org/downloads.php?moduleid={{ page.media.modarchive }}">Download</a>
-      {% elsif page.media.amp %}
-        <a role="button" href="https://amp.dascene.net/downmod.php?index={{ page.media.amp }}">Download</a>
+      {% assign modarchive_link = page.links | link_by_brand: 'modarchive' %}
+      {% assign amp_link = page.links | link_by_brand: 'amp' %}
+      {% if modarchive_link %}
+        <a role="button" href="{{ modarchive_link }}">Download</a>
+      {% elsif amp_link %}
+        <a role="button" href="{{ amp_link }}">Download</a>
       {% endif %}
     </aside>
 

@@ -6,13 +6,13 @@ media:
   channels: 4
   format: S3M
   length: 1:25 (looped)
-  modarchive: 199554
-  amp: 146725
   cover: tiny-chips-revenge.jpg
 links:
   - https://demozoo.org/music/174672/
   - https://soundcloud.com/bitbear/tiny-chips-revenge
   - https://www.youtube.com/watch?v=Kpp9_uwaSp8
+  - https://api.modarchive.org/downloads.php?moduleid=199554
+  - https://amp.dascene.net/downmod.php?index=146725
 ---
 
 By late 1995 I was mostly tracking in Scream Tracker 3 and this was my first

@@ -1,12 +1,10 @@
 ---
 title: Short Hip Tune
 media:
-  youtube:
   filesize: 93296
   channels: 4
   format: MOD
   length: 01:28
-  amp:
 ---
 
 Besides the lead devolving into [Carmen, Act II: Votre toast][toreador] 30

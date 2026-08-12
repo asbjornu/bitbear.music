@@ -57,12 +57,35 @@ module Jekyll
       when %r{mirlo\.space}i    then 'mirlo'
       when %r{demozoo\.org}i  then 'demozoo'
       when %r{youtube\.com|youtu\.be}i then 'youtube'
+      when %r{modarchive\.org}i then 'modarchive'
+      when %r{amp\.dascene\.net}i then 'amp'
       else 'unknown'
       end
     end
 
     def link_by_brand(input, brand)
       Array(input).find { |item| link_brand(item) == brand }
+    end
+
+    # Some services (e.g. ModArchive, AMP) only store a direct-download URL in
+    # `links`, but linking to that URL from anywhere other than the dedicated
+    # Download button should instead point at the service's HTML page for the
+    # module. This maps a stored link to that page URL, falling back to the
+    # original URL for brands with no such distinction.
+    def link_page_url(input)
+      url = link_url(input)
+      case link_brand(input)
+      when 'modarchive'
+        moduleid = URI.parse(url).query.to_s[/(?:^|&)moduleid=(\d+)/, 1]
+        moduleid ? "https://modarchive.org/index.php?request=view_by_moduleid&query=#{moduleid}" : url
+      when 'amp'
+        index = URI.parse(url).query.to_s[/(?:^|&)index=(\d+)/, 1]
+        index ? "https://amp.dascene.net/analyzer2.php?idx=#{index}" : url
+      else
+        url
+      end
+    rescue URI::InvalidURIError, URI::InvalidComponentError
+      url
     end
 
     def youtube_id(input)

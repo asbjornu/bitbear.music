@@ -273,6 +273,20 @@ section.footer footer a:hover {
         height: 1em;
     }
 
+    &.icon-modarchive {
+        mask-image: url('/assets/images/services/modarchive.svg');
+        -webkit-mask-image: url('/assets/images/services/modarchive.svg');
+        width: 1.1em;
+        height: 1.1em;
+    }
+
+    &.icon-amp {
+        mask-image: url('/assets/images/services/amp.svg');
+        -webkit-mask-image: url('/assets/images/services/amp.svg');
+        width: 1.4em;
+        height: 1em;
+    }
+
     &.icon-apple-music {
         mask-image: url('/assets/images/services/apple-music.svg');
         -webkit-mask-image: url('/assets/images/services/apple-music.svg');

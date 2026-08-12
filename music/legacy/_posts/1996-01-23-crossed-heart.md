@@ -6,11 +6,11 @@ media:
   filesize: 9112
   format: MOD
   length: 0:32 (looped)
-  modarchive: 199556
-  amp: 159584
 links:
   - https://demozoo.org/music/316669/
   - https://www.youtube.com/watch?v=hQ1v_RDo0vU
+  - https://api.modarchive.org/downloads.php?moduleid=199556
+  - https://amp.dascene.net/downmod.php?index=159584
 ---
 
 After [Tiny Chip's Revenge][chip01], I was on a [chip] production spree and made
