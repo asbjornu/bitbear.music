@@ -8,6 +8,8 @@ media:
   length: '0:55'
   modarchive: 199559
   amp: 159588
+links:
+  - https://demozoo.org/music/315976/
 ---
 
 "Psyko Infarnation" was the fourth tracker module I produced with Amiga

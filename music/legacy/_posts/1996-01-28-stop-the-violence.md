@@ -8,6 +8,8 @@ media:
   format: S3M
   length: 0:54 (looped)
   modarchive: 199553
+links:
+  - https://demozoo.org/music/317113/
 ---
 
 In this happy S3M produced in late January 1996, I used more chip-sounding

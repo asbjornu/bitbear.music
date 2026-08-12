@@ -55,6 +55,7 @@ module Jekyll
       when %r{music\.apple\.com}i then 'apple-music'
       when %r{open\.spotify\.com}i then 'spotify'
       when %r{mirlo\.space}i    then 'mirlo'
+      when %r{demozoo\.org}i  then 'demozoo'
       else 'unknown'
       end
     end

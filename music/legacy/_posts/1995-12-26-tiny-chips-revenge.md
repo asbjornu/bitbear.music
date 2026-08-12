@@ -11,6 +11,8 @@ media:
   modarchive: 199554
   amp: 146725
   cover: tiny-chips-revenge.jpg
+links:
+  - https://demozoo.org/music/174672/
 ---
 
 By late 1995 I was mostly tracking in Scream Tracker 3 and this was my first

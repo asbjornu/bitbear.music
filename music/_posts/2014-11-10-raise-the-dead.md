@@ -8,6 +8,7 @@ links:
   - https://music.apple.com/us/album/raise-the-dead/1223831424?i=1223831433
   - https://open.spotify.com/track/5uSFRvX0BOrlaYCk5J0DnG
   - https://mirlo.space/bitbear/release/scene-so-far
+  - https://demozoo.org/music/125633/
 album:
   slug: scene-so-far
   position: 3

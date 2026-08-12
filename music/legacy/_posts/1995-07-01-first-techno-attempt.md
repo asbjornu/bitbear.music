@@ -8,6 +8,8 @@ media:
   length: 2:04 (looped)
   modarchive: 199725
   amp:
+links:
+  - https://demozoo.org/music/318399/
 ---
 
 I have no idea when I actually produced "First Techno Attempt" as the date on

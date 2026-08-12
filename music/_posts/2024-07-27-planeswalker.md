@@ -8,6 +8,8 @@ media:
   filesize: 23904064
   channels: 59
   format: XRNS
+links:
+  - https://demozoo.org/music/353120/
 ---
 
 Inspiring horn and vocal samples forced the Planeswalker into

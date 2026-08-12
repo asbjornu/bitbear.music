@@ -12,6 +12,7 @@ links:
   - https://music.apple.com/us/album/sunset-through-the-rain-single/6786456889?i=6786456890
   - https://open.spotify.com/track/21sI6zaQwpah4F6ivtcfED
   - https://mirlo.space/bitbear/release/sunset-through-the-rain
+  - https://demozoo.org/music/280486/
 album:
   slug: sunset-through-the-rain
   position: 1

@@ -8,6 +8,8 @@ media:
   length: '1:25'
   modarchive: 199560
   amp: 159583
+links:
+  - https://demozoo.org/music/266810/
 ---
 
 "Cool Interpreter" was probably the second tracker modules I produced, as a coop

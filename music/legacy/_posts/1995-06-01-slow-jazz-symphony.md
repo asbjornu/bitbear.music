@@ -7,6 +7,8 @@ media:
   format: S3M
   length: '3:18'
   modarchive: 199723
+links:
+  - https://demozoo.org/music/318367/
 ---
 
 While being neither jazz, nor a symphony, I'm quite content with some parts of

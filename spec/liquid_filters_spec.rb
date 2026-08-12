@@ -257,7 +257,8 @@ describe '#sort_by' do
       'https://soundcloud.com/bitbear/sets/scene-so-far' => 'soundcloud',
       'https://music.apple.com/us/album/scene-so-far-ep/1223831424' => 'apple-music',
       'https://open.spotify.com/album/1U1mATmmalOlHPnX98UNFl' => 'spotify',
-      'https://mirlo.space/bitbear/release/scene-so-far' => 'mirlo'
+      'https://mirlo.space/bitbear/release/scene-so-far' => 'mirlo',
+      'https://demozoo.org/music/141390/' => 'demozoo'
     }.each do |url, brand|
       it "classifies #{url} as #{brand}" do
         expect(instance.link_brand(url)).to eq(brand)

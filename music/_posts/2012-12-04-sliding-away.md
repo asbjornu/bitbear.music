@@ -7,6 +7,8 @@ media:
   filesize: 4478987
   format: XRNS
   channels: 24
+links:
+  - https://demozoo.org/music/51159/
 ---
 
 "Sliding Away" is Bitbear's entry in the [Kindergarden 2012 "Dance

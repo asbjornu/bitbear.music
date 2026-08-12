@@ -8,6 +8,8 @@ media:
   format: MOD
   length: 0:44 (looped)
   modarchive: 199584
+links:
+  - https://demozoo.org/music/318145/
 ---
 
 This wall of utter noise was produced {% date %}, and is just published for the

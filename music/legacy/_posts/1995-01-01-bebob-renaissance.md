@@ -8,6 +8,8 @@ media:
   length: '1:35'
   modarchive: 199558
   amp: 159579
+links:
+  - https://demozoo.org/music/266811/
 ---
 
 "Bebob Renaissance" was the very first tracker module I produced with Amiga

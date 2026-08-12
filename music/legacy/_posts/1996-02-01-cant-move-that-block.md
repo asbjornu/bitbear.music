@@ -9,6 +9,8 @@ media:
   length: 0:37 (looped)
   modarchive: 199581
   amp: 159581
+links:
+  - https://demozoo.org/music/317401/
 ---
 
 This unconventional 3-channel [chiptune] was created with Scream Tracker 3 on

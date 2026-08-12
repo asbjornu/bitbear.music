@@ -9,6 +9,8 @@ media:
   length: 0:22 (looped)
   modarchive: 199557
   amp: 159577
+links:
+  - https://demozoo.org/music/318103/
 ---
 
 Sound-wise, "Chip Fabric" isn't very chippy, but with a file size of less than

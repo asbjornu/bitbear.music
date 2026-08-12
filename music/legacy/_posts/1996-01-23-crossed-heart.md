@@ -9,6 +9,8 @@ media:
   length: 0:32 (looped)
   modarchive: 199556
   amp: 159584
+links:
+  - https://demozoo.org/music/316669/
 ---
 
 After [Tiny Chip's Revenge][chip01], I was on a [chip] production spree and made

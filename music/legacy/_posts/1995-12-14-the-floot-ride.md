@@ -8,6 +8,8 @@ media:
   length: '1:21'
   modarchive: 199555
   amp: 159591
+links:
+  - https://demozoo.org/music/315974/
 ---
 
 "The Floote Ride" was one of the the first tracker modules I feel somewhat

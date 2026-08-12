@@ -4,6 +4,8 @@ media:
   soundcloud: tracks/soundcloud:tracks:2193214971
   length: '3:38'
   cover: i-feel-you-impulse-tracker-mix.jpg
+links:
+  - https://demozoo.org/music/378972/
 ---
 
 "I Feel You" is Bitbear's contribution to [TRSAC 2025's Oldschool Music

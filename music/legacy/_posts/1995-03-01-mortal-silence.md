@@ -7,6 +7,8 @@ media:
   format: S3M
   length: '01:36'
   modarchive: 199726
+links:
+  - https://demozoo.org/music/318331/
 ---
 
 This horrible song is shamefully published for completeness and nothing else.

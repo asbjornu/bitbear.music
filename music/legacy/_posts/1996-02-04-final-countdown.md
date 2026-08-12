@@ -9,6 +9,8 @@ media:
   length: 0:58 (looped)
   modarchive: 199582
   amp: 159586
+links:
+  - https://demozoo.org/music/317421/
 ---
 
 My first attempt at a cover song was of [Europe][europe]'s epic song [The Final

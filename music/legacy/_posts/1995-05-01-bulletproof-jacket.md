@@ -8,6 +8,8 @@ media:
   length: '2:24'
   modarchive: 199724
   amp: 159523
+links:
+  - https://demozoo.org/music/266813/
 ---
 
 I'm not ashamed of this one as I am of a few other of my songs, but I also

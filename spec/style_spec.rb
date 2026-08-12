@@ -59,6 +59,11 @@ describe 'Pico CSS integration' do
       expect(css).to include('.icon.icon-unknown')
       expect(css).to include('url("/assets/images/services/unknown.svg")')
     end
+
+    it 'masks the demozoo link icon with the black D in a white square asset' do
+      expect(css).to include('.icon.icon-demozoo')
+      expect(css).to include('url("/assets/images/services/demozoo.svg")')
+    end
   end
 
   describe 'generated markup' do
@@ -97,6 +102,18 @@ describe 'Pico CSS integration' do
       page = read_utf8(File.join(site_root, '_site', 'music', 'albums', 'scene-so-far.html'))
       expect(page).to have_tag('a', with: { href: 'https://bitbearmusic.bandcamp.com/album/scene-so-far' })
       expect(page).to have_tag('a', with: { href: 'https://open.spotify.com/album/1U1mATmmalOlHPnX98UNFl' })
+    end
+
+    it 'renders demozoo links with the demozoo icon' do
+      page = read_utf8(File.join(site_root, '_site', 'music', 'sliding-away.html'))
+      expect(page).to have_tag('li', with: { class: 'demozoo' }) do
+        with_tag('a', with: {
+                   href: 'https://demozoo.org/music/51159/',
+                   target: '_blank',
+                   'aria-description' => 'View “Sliding Away” on Demozoo'
+                 })
+        with_tag('span', with: { class: 'icon icon-demozoo' })
+      end
     end
   end
 end

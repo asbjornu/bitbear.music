@@ -11,6 +11,7 @@ links:
   - https://music.apple.com/us/album/that-flateby-feeling/1762288686?i=1762288687
   - https://open.spotify.com/track/6wVfzAgHmaOdFi6eIPG11p
   - https://mirlo.space/bitbear/release/that-flateby-feeling
+  - https://demozoo.org/music/206119/
 ---
 
 "That Flateby Feeling" was Bitbear's entry to the [Newschool Music

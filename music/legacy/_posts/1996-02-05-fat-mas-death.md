@@ -9,6 +9,8 @@ media:
   length: 1:45 (looped)
   modarchive: 199583
   amp: 159545
+links:
+  - https://demozoo.org/music/317751/
 ---
 
 This horribly named [chiptune] produced in early February 1996 was my first
