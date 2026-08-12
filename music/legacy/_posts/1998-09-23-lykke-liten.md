@@ -9,16 +9,22 @@ links:
   - https://power-of-creation.bandcamp.com/track/lykke-liten
   - https://soundcloud.com/bitbear/poc-lykke-liten
   - https://amp.dascene.net/downmod.php?index=168751
+album:
+  slug: beyond-fantasy
+  position: 19
 ---
 
-Produced as [PoC][poc], short for "Power of Creation", while a member of the [Dupe][dupe] cracking group.
+A remix of a song written by [Claus Frimann Dahl
+Clasen][claus-frimann-dahl-clasen] in 1927. Just a silly little tune I
+wanted to end my first album with.
 
 <!--more-->
 
-"Lykke Liten!" was released {% date %} and is available on [Bandcamp][bandcamp] and [SoundCloud][soundcloud], as well as on [Amiga Music Preservation][amp].
+As with all the other tunes on [Beyond Fantasy][beyond-fantasy], “{{
+page.title }}” was created in [Impulse Tracker][impulse-tracker] on
+[MS-DOS][ms-dos].
 
-[dupe]: https://demozoo.org/groups/23250/
-[poc]: https://demozoo.org/sceners/30400/
-[bandcamp]: https://power-of-creation.bandcamp.com/track/lykke-liten
-[soundcloud]: https://soundcloud.com/bitbear/poc-lykke-liten
-[amp]: https://amp.dascene.net/downmod.php?index=168751
+[beyond-fantasy]: /music/legacy/beyond-fantasy
+[claus-frimann-dahl-clasen]: https://no.wikipedia.org/wiki/Claus_Frimann_Clasen
+[impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
+[ms-dos]: https://en.wikipedia.org/wiki/MS-DOS

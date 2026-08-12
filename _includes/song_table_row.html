@@ -2,10 +2,13 @@
   <td class="r date">
     <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{% date post.date, format: '%B {day}' %}</time>
   </td>
-  {% if include.album %}
-    <td class="kind">{{ post.album.kind | default: 'Track' }}</td>
-  {% else %}
-    <td class="format">{{ post.media.format }}</td>
-  {% endif %}
+  {% assign kind = post.album.kind | default: 'Track' %}
+  <td class="kind">
+    {{- kind -}}
+    {%- if kind == 'Track' and post.media.format -%}
+      {% assign format_title = post.media.format | format_description %}
+      &nbsp;(<abbr title="{{ format_title }}">{{ post.media.format }}</abbr>)
+    {%- endif -%}
+  </td>
   <td><a href="{{ post.url }}">{{ post.title }}</a></td>
 </tr>

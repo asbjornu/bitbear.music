@@ -9,16 +9,22 @@ links:
   - https://power-of-creation.bandcamp.com/track/walking-part-3
   - https://soundcloud.com/bitbear/poc-walking-part-3
   - https://amp.dascene.net/downmod.php?index=168736
+album:
+  slug: beyond-fantasy
+  position: 13
 ---
 
-The third part of a three-part song called "Walking", produced as [PoC][poc] while a member of [Dupe][dupe].
+"Walking" is one song split into 3 parts, since that's a cool effect when
+playing a CD. As separate files in reverse order on SoundCloud, it doesn't
+make much sense, though. This is part 3, created from my dad playing the
+guitar and me throwing beats, bass, leads, and chords on top of it.
 
 <!--more-->
 
-Released in three parts back in 1998, all three make up the complete "Walking" suite.
+Created in [Impulse Tracker][impulse-tracker] 2.14 on [MS-DOS][ms-dos].
+Go back to [Part 1][walking-1] or [Part 2][walking-2].
 
-[dupe]: https://demozoo.org/groups/23250/
-[poc]: https://demozoo.org/sceners/30400/
-[bandcamp]: https://power-of-creation.bandcamp.com/track/walking-part-3
-[soundcloud]: https://soundcloud.com/bitbear/poc-walking-part-3
-[amp]: https://amp.dascene.net/downmod.php?index=168736
+[impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
+[ms-dos]: https://en.wikipedia.org/wiki/MS-DOS
+[walking-1]: /music/legacy/walking-part-1
+[walking-2]: /music/legacy/walking-part-2

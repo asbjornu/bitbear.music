@@ -9,16 +9,19 @@ links:
   - https://power-of-creation.bandcamp.com/track/below-the-surface
   - https://soundcloud.com/bitbear/poc-below-the-surface
   - https://amp.dascene.net/downmod.php?index=168759
+album:
+  slug: 3rd-floor
+  position: 3
 ---
 
-Produced as [PoC][poc], short for "Power of Creation", while a member of the [Dupe][dupe] cracking group.
+Has a liquid feel to it, thanks to the xylophone lead running throughout
+the tune, which explains the name.
 
 <!--more-->
 
-"Below the Surface" was released {% date %} and is available on [Bandcamp][bandcamp] and [SoundCloud][soundcloud], as well as on [Amiga Music Preservation][amp].
+As with all the other tunes on [3rd Floor][3rd-floor], “{{ page.title }}”
+was created in [Impulse Tracker][impulse-tracker] on [MS-DOS][ms-dos].
 
-[dupe]: https://demozoo.org/groups/23250/
-[poc]: https://demozoo.org/sceners/30400/
-[bandcamp]: https://power-of-creation.bandcamp.com/track/below-the-surface
-[soundcloud]: https://soundcloud.com/bitbear/poc-below-the-surface
-[amp]: https://amp.dascene.net/downmod.php?index=168759
+[3rd-floor]: /music/legacy/3rd-floor
+[impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
+[ms-dos]: https://en.wikipedia.org/wiki/MS-DOS

@@ -14,7 +14,7 @@ Tracker][impulse-tracker].
 
 {% assign posts=site.categories['legacy'] %}
 {% include song_year_nav.html posts=posts %}
-{% include song_table.html posts=posts %}
+{% include song_table.html posts=posts album=true %}
 
 [fast-tracker]: https://en.wikipedia.org/wiki/FastTracker_2
 [impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker

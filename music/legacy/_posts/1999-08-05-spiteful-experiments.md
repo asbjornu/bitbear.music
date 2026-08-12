@@ -9,16 +9,20 @@ links:
   - https://power-of-creation.bandcamp.com/track/spiteful-experiments
   - https://soundcloud.com/bitbear/poc-spiteful-experiments
   - https://amp.dascene.net/downmod.php?index=168742
+album:
+  slug: 3rd-floor
+  position: 1
 ---
 
-Produced as [PoC][poc], short for "Power of Creation", while a member of the [Dupe][dupe] cracking group.
+Inspired by a vocal "aaahh" sound running throughout the song. I found a
+couple more voice samples from an old movie that I thought sounded cool
+and whipped together this tune around them.
 
 <!--more-->
 
-"Spiteful Experiments" was released {% date %} and is available on [Bandcamp][bandcamp] and [SoundCloud][soundcloud], as well as on [Amiga Music Preservation][amp].
+As with all the other tunes on [3rd Floor][3rd-floor], “{{ page.title }}”
+was created in [Impulse Tracker][impulse-tracker] on [MS-DOS][ms-dos].
 
-[dupe]: https://demozoo.org/groups/23250/
-[poc]: https://demozoo.org/sceners/30400/
-[bandcamp]: https://power-of-creation.bandcamp.com/track/spiteful-experiments
-[soundcloud]: https://soundcloud.com/bitbear/poc-spiteful-experiments
-[amp]: https://amp.dascene.net/downmod.php?index=168742
+[3rd-floor]: /music/legacy/3rd-floor
+[impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
+[ms-dos]: https://en.wikipedia.org/wiki/MS-DOS

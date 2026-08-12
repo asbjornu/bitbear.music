@@ -9,16 +9,21 @@ links:
   - https://power-of-creation.bandcamp.com/track/life-without-love
   - https://soundcloud.com/bitbear/poc-life-without-love
   - https://amp.dascene.net/downmod.php?index=168752
+album:
+  slug: beyond-fantasy
+  position: 3
 ---
 
-Produced as [PoC][poc], short for "Power of Creation", while a member of the [Dupe][dupe] cracking group.
+A hysterically cheesy house tune built over a lead melody I'm sure I lifted
+from someone, somewhere, though I've never managed to place the source, so
+here it stays, an "original" tune nevertheless.
 
 <!--more-->
 
-"Life Without Love" was released {% date %} and is available on [Bandcamp][bandcamp] and [SoundCloud][soundcloud], as well as on [Amiga Music Preservation][amp].
+As with all the other tunes on [Beyond Fantasy][beyond-fantasy], “{{
+page.title }}” was created in [Impulse Tracker][impulse-tracker] on
+[MS-DOS][ms-dos].
 
-[dupe]: https://demozoo.org/groups/23250/
-[poc]: https://demozoo.org/sceners/30400/
-[bandcamp]: https://power-of-creation.bandcamp.com/track/life-without-love
-[soundcloud]: https://soundcloud.com/bitbear/poc-life-without-love
-[amp]: https://amp.dascene.net/downmod.php?index=168752
+[beyond-fantasy]: /music/legacy/beyond-fantasy
+[impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
+[ms-dos]: https://en.wikipedia.org/wiki/MS-DOS

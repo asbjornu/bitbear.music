@@ -9,16 +9,22 @@ links:
   - https://power-of-creation.bandcamp.com/track/medieval-orphanage
   - https://soundcloud.com/bitbear/poc-medieval-orphanage
   - https://amp.dascene.net/downmod.php?index=168749
+album:
+  slug: beyond-fantasy
+  position: 16
 ---
 
-Produced as [PoC][poc], short for "Power of Creation", while a member of the [Dupe][dupe] cracking group.
+My first attempt at creating something orchestral and cinematic. Since most
+of the instruments are 8-bit and the mastering techniques available in
+Impulse Tracker were "limited", it doesn't sound very good, but I'm still
+pretty happy with the overall theme and keys.
 
 <!--more-->
 
-"Medieval Orphanage" was released {% date %} and is available on [Bandcamp][bandcamp] and [SoundCloud][soundcloud], as well as on [Amiga Music Preservation][amp].
+As with all the other tunes on [Beyond Fantasy][beyond-fantasy], “{{
+page.title }}” was created in [Impulse Tracker][impulse-tracker] on
+[MS-DOS][ms-dos].
 
-[dupe]: https://demozoo.org/groups/23250/
-[poc]: https://demozoo.org/sceners/30400/
-[bandcamp]: https://power-of-creation.bandcamp.com/track/medieval-orphanage
-[soundcloud]: https://soundcloud.com/bitbear/poc-medieval-orphanage
-[amp]: https://amp.dascene.net/downmod.php?index=168749
+[beyond-fantasy]: /music/legacy/beyond-fantasy
+[impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
+[ms-dos]: https://en.wikipedia.org/wiki/MS-DOS

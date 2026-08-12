@@ -9,16 +9,20 @@ links:
   - https://power-of-creation.bandcamp.com/track/out-of-range
   - https://soundcloud.com/bitbear/poc-out-of-range
   - https://amp.dascene.net/downmod.php?index=168747
+album:
+  slug: 3rd-floor
+  position: 7
 ---
 
-Produced as [PoC][poc], short for "Power of Creation", while a member of the [Dupe][dupe] cracking group.
+An orchestral trance tune made after falling in love with a violin pluck
+sample and building what I thought was a pretty rad bassline. Piling
+violin and guitar leads and beats on top of that got me here.
 
 <!--more-->
 
-"Out of Range" was released {% date %} and is available on [Bandcamp][bandcamp] and [SoundCloud][soundcloud], as well as on [Amiga Music Preservation][amp].
+As with all the other tunes on [3rd Floor][3rd-floor], “{{ page.title }}”
+was created in [Impulse Tracker][impulse-tracker] on [MS-DOS][ms-dos].
 
-[dupe]: https://demozoo.org/groups/23250/
-[poc]: https://demozoo.org/sceners/30400/
-[bandcamp]: https://power-of-creation.bandcamp.com/track/out-of-range
-[soundcloud]: https://soundcloud.com/bitbear/poc-out-of-range
-[amp]: https://amp.dascene.net/downmod.php?index=168747
+[3rd-floor]: /music/legacy/3rd-floor
+[impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
+[ms-dos]: https://en.wikipedia.org/wiki/MS-DOS

@@ -9,18 +9,14 @@
     <thead>
       <tr>
         <th aria-description="Release date" data-tooltip="Release date" width="17%" class="r">Released</th>
-        {% if include.album %}
-          <th class="kind">Kind</th>
-        {% else %}
-          <th class="format">Format</th>
-        {% endif %}
+        <th class="kind">Kind</th>
         <th>Title</th>
       </tr>
     </thead>
     <tbody>
-      {% include song_table_row.html album=include.album %}
+      {% include song_table_row.html %}
     {% else %}
-      {% include song_table_row.html album=include.album %}
+      {% include song_table_row.html %}
     {% endif %}
     {% assign prev_year = post.date | date: '%Y' %}
   {% endfor %}

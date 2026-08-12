@@ -9,16 +9,21 @@ links:
   - https://power-of-creation.bandcamp.com/track/soluble-temper
   - https://soundcloud.com/bitbear/poc-soluble-temper
   - https://amp.dascene.net/downmod.php?index=168743
+album:
+  slug: 3rd-floor
+  position: 10
 ---
 
-Produced as [PoC][poc], short for "Power of Creation", while a member of the [Dupe][dupe] cracking group.
+A rather randomly named song — naming is the hardest thing in both
+composing and programming — built over a blippy background lead,
+accompanied by a sliding guitar akin to [ATB][atb]'s signature sound.
 
 <!--more-->
 
-"Soluble Temper" was released {% date %} and is available on [Bandcamp][bandcamp] and [SoundCloud][soundcloud], as well as on [Amiga Music Preservation][amp].
+As with all the other tunes on [3rd Floor][3rd-floor], “{{ page.title }}”
+was created in [Impulse Tracker][impulse-tracker] on [MS-DOS][ms-dos].
 
-[dupe]: https://demozoo.org/groups/23250/
-[poc]: https://demozoo.org/sceners/30400/
-[bandcamp]: https://power-of-creation.bandcamp.com/track/soluble-temper
-[soundcloud]: https://soundcloud.com/bitbear/poc-soluble-temper
-[amp]: https://amp.dascene.net/downmod.php?index=168743
+[3rd-floor]: /music/legacy/3rd-floor
+[atb]: https://en.wikipedia.org/wiki/ATB_(DJ)
+[impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
+[ms-dos]: https://en.wikipedia.org/wiki/MS-DOS

@@ -9,16 +9,21 @@ links:
   - https://power-of-creation.bandcamp.com/track/uncherrished-bitch
   - https://soundcloud.com/bitbear/poc-uncherrished-bitch
   - https://amp.dascene.net/downmod.php?index=168740
+album:
+  slug: beyond-fantasy
+  position: 9
 ---
 
-Produced as [PoC][poc], short for "Power of Creation", while a member of the [Dupe][dupe] cracking group.
+An acidic tune thrown together over a couple of evenings. There isn't much
+more to say about it other than that I'm not too proud of the name, though
+I felt it matched the feeling of the song.
 
 <!--more-->
 
-"Uncherrished Bitch" was released {% date %} and is available on [Bandcamp][bandcamp] and [SoundCloud][soundcloud], as well as on [Amiga Music Preservation][amp].
+As with all the other tunes on [Beyond Fantasy][beyond-fantasy], “{{
+page.title }}” was created in [Impulse Tracker][impulse-tracker] on
+[MS-DOS][ms-dos].
 
-[dupe]: https://demozoo.org/groups/23250/
-[poc]: https://demozoo.org/sceners/30400/
-[bandcamp]: https://power-of-creation.bandcamp.com/track/uncherrished-bitch
-[soundcloud]: https://soundcloud.com/bitbear/poc-uncherrished-bitch
-[amp]: https://amp.dascene.net/downmod.php?index=168740
+[beyond-fantasy]: /music/legacy/beyond-fantasy
+[impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
+[ms-dos]: https://en.wikipedia.org/wiki/MS-DOS

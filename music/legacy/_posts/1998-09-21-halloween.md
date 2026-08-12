@@ -9,16 +9,20 @@ links:
   - https://power-of-creation.bandcamp.com/track/halloween
   - https://soundcloud.com/bitbear/poc-halloween
   - https://amp.dascene.net/downmod.php?index=168757
+album:
+  slug: beyond-fantasy
+  position: 6
 ---
 
-Produced as [PoC][poc], short for "Power of Creation", while a member of the [Dupe][dupe] cracking group.
+My second orchestral tune. Because of its harmonies, "Halloween" felt like
+a fitting name.
 
 <!--more-->
 
-"Halloween" was released {% date %} and is available on [Bandcamp][bandcamp] and [SoundCloud][soundcloud], as well as on [Amiga Music Preservation][amp].
+As with all the other tunes on [Beyond Fantasy][beyond-fantasy], “{{
+page.title }}” was created in [Impulse Tracker][impulse-tracker] on
+[MS-DOS][ms-dos].
 
-[dupe]: https://demozoo.org/groups/23250/
-[poc]: https://demozoo.org/sceners/30400/
-[bandcamp]: https://power-of-creation.bandcamp.com/track/halloween
-[soundcloud]: https://soundcloud.com/bitbear/poc-halloween
-[amp]: https://amp.dascene.net/downmod.php?index=168757
+[beyond-fantasy]: /music/legacy/beyond-fantasy
+[impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
+[ms-dos]: https://en.wikipedia.org/wiki/MS-DOS

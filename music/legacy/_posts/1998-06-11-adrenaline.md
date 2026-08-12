@@ -9,16 +9,23 @@ links:
   - https://power-of-creation.bandcamp.com/track/adrenaline
   - https://soundcloud.com/bitbear/poc-adrenaline
   - https://amp.dascene.net/downmod.php?index=159535
+album:
+  slug: beyond-fantasy
+  position: 2
 ---
 
-Produced as [PoC][poc], short for "Power of Creation", while a member of the [Dupe][dupe] cracking group.
+After a late night at work punching export invoices at UPS, a friend and
+colleague drove me home at what can only be described as "criminally high
+speed". Overtired and with adrenaline pumping from the ride, the outline
+for this tune was done before I knew it. It was completed a couple of
+weeks later.
 
 <!--more-->
 
-"Adrenaline" was released {% date %} and is available on [Bandcamp][bandcamp] and [SoundCloud][soundcloud], as well as on [Amiga Music Preservation][amp].
+As with all the other tunes on [Beyond Fantasy][beyond-fantasy], “{{
+page.title }}” was created in [Impulse Tracker][impulse-tracker] on
+[MS-DOS][ms-dos].
 
-[dupe]: https://demozoo.org/groups/23250/
-[poc]: https://demozoo.org/sceners/30400/
-[bandcamp]: https://power-of-creation.bandcamp.com/track/adrenaline
-[soundcloud]: https://soundcloud.com/bitbear/poc-adrenaline
-[amp]: https://amp.dascene.net/downmod.php?index=159535
+[beyond-fantasy]: /music/legacy/beyond-fantasy
+[impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
+[ms-dos]: https://en.wikipedia.org/wiki/MS-DOS

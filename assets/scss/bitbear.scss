@@ -514,15 +514,12 @@ main {
             text-align: right;
         }
 
-        .format {
-            width: 2em;
-        }
-
-        &.songs:has(th.kind) {
+        &.songs {
             table-layout: fixed;
 
             .kind {
-                width: 3em;
+                width: 7em;
+                white-space: nowrap;
             }
         }
     }
@@ -686,13 +683,11 @@ main {
         }
     }
 
-    &.albums {
-        .tracks {
-            margin-bottom: 2rem;
+    .tracks {
+        margin-bottom: 2rem;
 
-            ol {
-                margin-left: 2rem;
-            }
+        ol {
+            margin-left: 2rem;
         }
     }
 }
