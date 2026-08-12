@@ -79,6 +79,11 @@ describe 'Pico CSS integration' do
       expect(css).to include('.icon.icon-amp')
       expect(css).to include('url("/assets/images/services/amp.svg")')
     end
+
+    it 'masks the nectarine link icon with the nectarine asset' do
+      expect(css).to include('.icon.icon-nectarine')
+      expect(css).to include('url("/assets/images/services/nectarine.svg")')
+    end
   end
 
   describe 'generated markup' do

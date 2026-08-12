@@ -6,6 +6,7 @@ media:
 links:
   - https://demozoo.org/music/378972/
   - https://soundcloud.com/bitbear/i-feel-you-impulse-tracker-mix
+  - https://scenestream.net/demovibes/song/51366/
 ---
 
 "I Feel You" is Bitbear's contribution to [TRSAC 2025's Oldschool Music

@@ -13,6 +13,7 @@ links:
   - https://demozoo.org/music/280486/
   - https://soundcloud.com/bitbear/sunset-through-the-rain
   - https://www.youtube.com/watch?v=y2SR58hnMAU
+  - https://scenestream.net/demovibes/song/50420/
 album:
   slug: sunset-through-the-rain
   position: 1

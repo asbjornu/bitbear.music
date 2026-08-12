@@ -12,6 +12,7 @@ links:
   - https://mirlo.space/bitbear/release/that-flateby-feeling
   - https://demozoo.org/music/206119/
   - https://soundcloud.com/bitbear/that-flateby-feeling
+  - https://scenestream.net/demovibes/song/50421/
 ---
 
 "That Flateby Feeling" was Bitbear's entry to the [Newschool Music

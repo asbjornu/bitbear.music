@@ -59,6 +59,7 @@ module Jekyll
       when %r{youtube\.com|youtu\.be}i then 'youtube'
       when %r{modarchive\.org}i then 'modarchive'
       when %r{amp\.dascene\.net}i then 'amp'
+      when %r{scenestream\.net}i then 'nectarine'
       else 'unknown'
       end
     end

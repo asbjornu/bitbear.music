@@ -9,6 +9,7 @@ links:
   - https://mirlo.space/bitbear/release/scene-so-far
   - https://demozoo.org/music/125633/
   - https://soundcloud.com/bitbear/raise-the-dead
+  - https://scenestream.net/demovibes/song/42233/
 album:
   slug: scene-so-far
   position: 3

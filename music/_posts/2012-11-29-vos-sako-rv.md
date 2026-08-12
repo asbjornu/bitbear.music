@@ -9,6 +9,7 @@ media:
 links:
   - https://soundcloud.com/bitbear/vos-sako-rv
   - https://www.youtube.com/watch?v=gNIREIDmrWo
+  - https://scenestream.net/demovibes/song/38761/
 ---
 
 Bitbear's remix of [Lindstrøm][lindstrom]'s excellent
