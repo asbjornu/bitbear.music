@@ -7,6 +7,7 @@ links:
   - https://demozoo.org/music/266785/
   - https://power-of-creation.bandcamp.com/track/puma-open-your-heart
   - https://soundcloud.com/bitbear/puma-open-your-heart
+  - https://amp.dascene.net/downmod.php?index=168251
 album:
   slug: beyond-fantasy
   position: 18

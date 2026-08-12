@@ -9,6 +9,7 @@ links:
   - https://demozoo.org/music/318367/
   - https://www.youtube.com/watch?v=YaDVNchhDRE
   - https://api.modarchive.org/downloads.php?moduleid=199723
+  - https://amp.dascene.net/downmod.php?index=168715
 ---
 
 While being neither jazz, nor a symphony, I'm quite content with some parts of

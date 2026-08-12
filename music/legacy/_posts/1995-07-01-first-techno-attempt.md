@@ -9,6 +9,7 @@ links:
   - https://demozoo.org/music/318399/
   - https://www.youtube.com/watch?v=TmzT199VCl4
   - https://api.modarchive.org/downloads.php?moduleid=199725
+  - https://amp.dascene.net/downmod.php?index=168724
 ---
 
 I have no idea when I actually produced "First Techno Attempt" as the date on

@@ -10,6 +10,8 @@ links:
   - https://demozoo.org/music/51159/
   - https://soundcloud.com/bitbear/sliding-away
   - https://scenestream.net/demovibes/song/38623/
+  - https://amp.dascene.net/downmod.php?index=159567
+  - https://amp.dascene.net/downmod.php?index=159568
 ---
 
 "Sliding Away" is Bitbear's entry in the [Kindergarden 2012 "Dance
