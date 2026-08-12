@@ -2,7 +2,6 @@
 title: Sunset Through The Rain
 media:
   cover: sunset-through-the-rain.jpg
-  soundcloud: playlists/soundcloud:playlists:2251613897
 links:
   - https://bitbearmusic.bandcamp.com/album/sunset-through-the-rain
   - https://soundcloud.com/bitbear/sets/sunset-through-the-rain

@@ -1,7 +1,6 @@
 ---
 title: Psyko Infarnation
 media:
-  youtube: YDvSWJMCyhM
   filesize: 53950
   channels: 4
   format: MOD
@@ -10,6 +9,7 @@ media:
   amp: 159588
 links:
   - https://demozoo.org/music/315976/
+  - https://www.youtube.com/watch?v=YDvSWJMCyhM
 ---
 
 "Psyko Infarnation" was the fourth tracker module I produced with Amiga

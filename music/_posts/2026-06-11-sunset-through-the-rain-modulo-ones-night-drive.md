@@ -1,14 +1,14 @@
 ---
 title: Sunset Through The Rain (Modulo One's Night Drive)
 media:
-  youtube: vlVT_WM-qvc
-  soundcloud: tracks/soundcloud:tracks:2257905686
   length: '3:38'
 links:
   - https://bitbearmusic.bandcamp.com/album/sunset-through-the-rain
   - https://music.apple.com/us/album/sunset-through-the-rain-modulo-ones-night-drive/6786456889?i=6786456892
   - https://open.spotify.com/track/1EXAwpFqBhzHmVlAw7Abzg
   - https://mirlo.space/bitbear/release/sunset-through-the-rain
+  - https://soundcloud.com/bitbear/sunset-through-the-rain-modulo-ones-night-drive
+  - https://www.youtube.com/watch?v=vlVT_WM-qvc
 album:
   slug: sunset-through-the-rain
   position: 2

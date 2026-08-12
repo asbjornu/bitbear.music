@@ -266,6 +266,13 @@ section.footer footer a:hover {
         height: .65em;
     }
 
+    &.icon-youtube {
+        mask-image: url('/assets/images/services/youtube.svg');
+        -webkit-mask-image: url('/assets/images/services/youtube.svg');
+        width: 1.45em;
+        height: 1em;
+    }
+
     &.icon-apple-music {
         mask-image: url('/assets/images/services/apple-music.svg');
         -webkit-mask-image: url('/assets/images/services/apple-music.svg');

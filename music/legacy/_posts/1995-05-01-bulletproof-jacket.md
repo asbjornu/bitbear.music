@@ -1,7 +1,6 @@
 ---
 title: Bulletproof Jacket
 media:
-  youtube: 7AL5nFhvvWk
   filesize: 79466
   channels: 8
   format: S3M
@@ -10,6 +9,7 @@ media:
   amp: 159523
 links:
   - https://demozoo.org/music/266813/
+  - https://www.youtube.com/watch?v=7AL5nFhvvWk
 ---
 
 I'm not ashamed of this one as I am of a few other of my songs, but I also

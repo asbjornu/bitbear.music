@@ -2,7 +2,6 @@
 title: Stop The Violence!
 tag: chip
 media:
-  youtube: FVsP3Ii7aaw
   filesize: 8444
   channels: 3
   format: S3M
@@ -10,6 +9,7 @@ media:
   modarchive: 199553
 links:
   - https://demozoo.org/music/317113/
+  - https://www.youtube.com/watch?v=FVsP3Ii7aaw
 ---
 
 In this happy S3M produced in late January 1996, I used more chip-sounding

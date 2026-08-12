@@ -1,8 +1,6 @@
 ---
 title: Planeswalker
 media:
-  soundcloud: tracks/soundcloud:tracks:1882557222
-  youtube: 54cHqE3k22Y
   length: '4:52'
   cover: planeswalker.jpg
   filesize: 23904064
@@ -10,6 +8,8 @@ media:
   format: XRNS
 links:
   - https://demozoo.org/music/353120/
+  - https://soundcloud.com/bitbear/planeswalker
+  - https://www.youtube.com/watch?v=54cHqE3k22Y
 ---
 
 Inspiring horn and vocal samples forced the Planeswalker into

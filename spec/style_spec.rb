@@ -64,6 +64,11 @@ describe 'Pico CSS integration' do
       expect(css).to include('.icon.icon-demozoo')
       expect(css).to include('url("/assets/images/services/demozoo.svg")')
     end
+
+    it 'masks the youtube link icon with the play button asset' do
+      expect(css).to include('.icon.icon-youtube')
+      expect(css).to include('url("/assets/images/services/youtube.svg")')
+    end
   end
 
   describe 'generated markup' do
@@ -113,6 +118,18 @@ describe 'Pico CSS integration' do
                    'aria-description' => 'View “Sliding Away” on Demozoo'
                  })
         with_tag('span', with: { class: 'icon icon-demozoo' })
+      end
+    end
+
+    it 'renders youtube links with the youtube icon' do
+      page = read_utf8(File.join(site_root, '_site', 'music', 'legacy', 'final-countdown.html'))
+      expect(page).to have_tag('li', with: { class: 'youtube' }) do
+        with_tag('a', with: {
+                   href: 'https://www.youtube.com/watch?v=R7mHV_dyYeA',
+                   target: '_blank',
+                   'aria-description' => 'Watch “Final Countdown” on Youtube'
+                 })
+        with_tag('span', with: { class: 'icon icon-youtube' })
       end
     end
   end

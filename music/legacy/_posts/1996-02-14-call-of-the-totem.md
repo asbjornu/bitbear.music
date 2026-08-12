@@ -2,7 +2,6 @@
 title: Call of the Totem
 tag: chip
 media:
-  youtube: J0H2jB3c3ck
   filesize: 7746
   channels: 4
   format: MOD
@@ -10,6 +9,7 @@ media:
   modarchive: 199584
 links:
   - https://demozoo.org/music/318145/
+  - https://www.youtube.com/watch?v=J0H2jB3c3ck
 ---
 
 This wall of utter noise was produced {% date %}, and is just published for the

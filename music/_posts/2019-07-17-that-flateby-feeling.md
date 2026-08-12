@@ -1,7 +1,6 @@
 ---
 title: That Flateby Feeling
 media:
-  soundcloud: tracks/soundcloud:tracks:652666730
   length: '3:07'
   cover: that-flateby-feeling.jpg
   channels: 55
@@ -12,6 +11,7 @@ links:
   - https://open.spotify.com/track/6wVfzAgHmaOdFi6eIPG11p
   - https://mirlo.space/bitbear/release/that-flateby-feeling
   - https://demozoo.org/music/206119/
+  - https://soundcloud.com/bitbear/that-flateby-feeling
 ---
 
 "That Flateby Feeling" was Bitbear's entry to the [Newschool Music

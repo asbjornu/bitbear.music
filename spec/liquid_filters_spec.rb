@@ -258,7 +258,8 @@ describe '#sort_by' do
       'https://music.apple.com/us/album/scene-so-far-ep/1223831424' => 'apple-music',
       'https://open.spotify.com/album/1U1mATmmalOlHPnX98UNFl' => 'spotify',
       'https://mirlo.space/bitbear/release/scene-so-far' => 'mirlo',
-      'https://demozoo.org/music/141390/' => 'demozoo'
+      'https://demozoo.org/music/141390/' => 'demozoo',
+      'https://www.youtube.com/watch?v=y2SR58hnMAU' => 'youtube'
     }.each do |url, brand|
       it "classifies #{url} as #{brand}" do
         expect(instance.link_brand(url)).to eq(brand)
@@ -273,6 +274,46 @@ describe '#sort_by' do
     it 'derives the brand from the URL value of a single-entry hash' do
       expect(instance.link_brand({ 'bandcamp' => 'https://bitbearmusic.bandcamp.com/album/scene-so-far' }))
         .to eq('bandcamp')
+    end
+  end
+
+  describe '#link_by_brand' do
+    let(:links) do
+      [
+        'https://bitbearmusic.bandcamp.com/album/scene-so-far',
+        'https://soundcloud.com/bitbear/move',
+        'https://demozoo.org/music/141390/'
+      ]
+    end
+
+    it 'returns the first URL matching the brand' do
+      expect(instance.link_by_brand(links, 'soundcloud')).to eq('https://soundcloud.com/bitbear/move')
+    end
+
+    it 'returns nil when no URL matches the brand' do
+      expect(instance.link_by_brand(links, 'youtube')).to be_nil
+    end
+
+    it 'handles a plain URL input as a single-link list' do
+      expect(instance.link_by_brand('https://soundcloud.com/bitbear/move', 'soundcloud'))
+        .to eq('https://soundcloud.com/bitbear/move')
+    end
+  end
+
+  describe '#youtube_id' do
+    {
+      'https://www.youtube.com/watch?v=y2SR58hnMAU' => 'y2SR58hnMAU',
+      'https://youtu.be/gNIREIDmrWo' => 'gNIREIDmrWo',
+      'https://www.youtube.com/embed/Kpp9_uwaSp8' => 'Kpp9_uwaSp8',
+      'https://www.youtube.com/shorts/R7mHV_dyYeA' => 'R7mHV_dyYeA'
+    }.each do |url, id|
+      it "extracts #{id} from #{url}" do
+        expect(instance.youtube_id(url)).to eq(id)
+      end
+    end
+
+    it 'passes a bare ID through' do
+      expect(instance.youtube_id('y2SR58hnMAU')).to eq('y2SR58hnMAU')
     end
   end
 

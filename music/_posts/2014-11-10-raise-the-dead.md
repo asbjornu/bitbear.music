@@ -1,7 +1,6 @@
 ---
 title: Raise The Dead
 media:
-  soundcloud: tracks/soundcloud:tracks:176199298
   length: '3:29'
 links:
   - https://bitbearmusic.bandcamp.com/album/scene-so-far
@@ -9,6 +8,7 @@ links:
   - https://open.spotify.com/track/5uSFRvX0BOrlaYCk5J0DnG
   - https://mirlo.space/bitbear/release/scene-so-far
   - https://demozoo.org/music/125633/
+  - https://soundcloud.com/bitbear/raise-the-dead
 album:
   slug: scene-so-far
   position: 3

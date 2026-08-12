@@ -2,7 +2,6 @@
 title: Scene So Far
 media:
   cover: scene-so-far.jpg
-  soundcloud: playlists/soundcloud:playlists:313213317
 links:
   - https://bitbearmusic.bandcamp.com/album/scene-so-far
   - https://soundcloud.com/bitbear/sets/scene-so-far

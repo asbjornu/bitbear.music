@@ -1,7 +1,6 @@
 ---
 title: Sliding Away
 media:
-  soundcloud: tracks/soundcloud:tracks:69997493
   length: '3:33'
   cover: sliding-away.jpg
   filesize: 4478987
@@ -9,6 +8,7 @@ media:
   channels: 24
 links:
   - https://demozoo.org/music/51159/
+  - https://soundcloud.com/bitbear/sliding-away
 ---
 
 "Sliding Away" is Bitbear's entry in the [Kindergarden 2012 "Dance

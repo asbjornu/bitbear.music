@@ -5,6 +5,9 @@ layout: default
 <h2>{{ page.title }}</h2>
 
 {% if page.media %}
+  {% assign soundcloud_link = page.links | link_by_brand: 'soundcloud' %}
+  {% assign youtube_link = page.links | link_by_brand: 'youtube' %}
+  {% assign youtube_id = youtube_link | youtube_id %}
   <div class="media">
     <aside>
       <table>
@@ -41,7 +44,7 @@ layout: default
           {% if page.links %}
             {% include links.html %}
           {% endif %}
-          {% if page.media.soundcloud %}
+          {% if soundcloud_link %}
             <tr>
               <th scope="row">Listen</th>
               <td>
@@ -50,7 +53,7 @@ layout: default
                         scrolling="no"
                         frameborder="no"
                         allow="autoplay; encrypted-media"
-                        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/{{ page.media.soundcloud | url_encode | url_encode }}&color=%2341228e&inverse=true&auto_play=false&show_user=true"></iframe>
+                        src="https://w.soundcloud.com/player/?url={{ soundcloud_link | url_encode }}&color=%2341228e&inverse=true&auto_play=false&show_user=true"></iframe>
               </td>
             </tr>
           {% endif %}
@@ -76,14 +79,14 @@ layout: default
       {% endif %}
     {% endif %}
     {% if cover %}
-      {% include cover.html title=cover_title cover=cover youtube=page.media.youtube %}
-    {% elsif page.media.youtube %}
+      {% include cover.html title=cover_title cover=cover youtube=youtube_id %}
+    {% elsif youtube_link %}
       <div id="cover">
         <iframe
           type="text/html"
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/{{ page.media.youtube }}"
+          src="https://www.youtube.com/embed/{{ youtube_id }}"
           frameborder="0"
           allowfullscreen></iframe>
       </div>

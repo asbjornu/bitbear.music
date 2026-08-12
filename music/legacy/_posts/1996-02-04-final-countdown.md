@@ -2,7 +2,6 @@
 title: Final Countdown
 tag: chip
 media:
-  youtube: R7mHV_dyYeA
   filesize: 9832
   channels: 4
   format: MOD
@@ -11,6 +10,7 @@ media:
   amp: 159586
 links:
   - https://demozoo.org/music/317421/
+  - https://www.youtube.com/watch?v=R7mHV_dyYeA
 ---
 
 My first attempt at a cover song was of [Europe][europe]'s epic song [The Final

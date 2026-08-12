@@ -1,7 +1,6 @@
 ---
 title: Slow Jazz Symphony
 media:
-  youtube: YaDVNchhDRE
   filesize: 148686
   channels: 10
   format: S3M
@@ -9,6 +8,7 @@ media:
   modarchive: 199723
 links:
   - https://demozoo.org/music/318367/
+  - https://www.youtube.com/watch?v=YaDVNchhDRE
 ---
 
 While being neither jazz, nor a symphony, I'm quite content with some parts of

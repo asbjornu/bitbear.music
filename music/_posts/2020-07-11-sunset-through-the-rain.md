@@ -1,8 +1,6 @@
 ---
 title: Sunset Through The Rain
 media:
-  youtube: y2SR58hnMAU
-  soundcloud: tracks/soundcloud:tracks:856873432
   filesize: 32414684
   format: XRNS
   channels: 57
@@ -13,6 +11,8 @@ links:
   - https://open.spotify.com/track/21sI6zaQwpah4F6ivtcfED
   - https://mirlo.space/bitbear/release/sunset-through-the-rain
   - https://demozoo.org/music/280486/
+  - https://soundcloud.com/bitbear/sunset-through-the-rain
+  - https://www.youtube.com/watch?v=y2SR58hnMAU
 album:
   slug: sunset-through-the-rain
   position: 1

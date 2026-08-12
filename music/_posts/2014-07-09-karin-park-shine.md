@@ -1,12 +1,13 @@
 ---
 title: Karin Park - Shine (Bitbear Remix)
 media:
-  soundcloud: tracks/soundcloud:tracks:158028111
   length: '4:06'
   filesize: 47914668
   channels: 35
   format: XRNS
   cover: karin-park-shine.jpg
+links:
+  - https://soundcloud.com/bitbear/karin-park-shine
 ---
 
 Bitbear's entry to Karin Park's "Shine" Remix Contest on Beatport,

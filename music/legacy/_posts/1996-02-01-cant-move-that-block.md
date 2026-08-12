@@ -2,7 +2,6 @@
 title: Can't Move That Block
 tag: chip
 media:
-  youtube: DLzDOGB5iqk
   filesize: 8088
   channels: 3
   format: MOD
@@ -11,6 +10,7 @@ media:
   amp: 159581
 links:
   - https://demozoo.org/music/317401/
+  - https://www.youtube.com/watch?v=DLzDOGB5iqk
 ---
 
 This unconventional 3-channel [chiptune] was created with Scream Tracker 3 on

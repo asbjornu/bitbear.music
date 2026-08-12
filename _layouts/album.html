@@ -7,6 +7,9 @@ layout: default
 {% assign tracks = site.posts | where: 'album.slug', page.slug | sort_by: 'album.position' %}
 
 {% if page.media or page.album or page.links %}
+  {% assign soundcloud_link = page.links | link_by_brand: 'soundcloud' %}
+  {% assign youtube_link = page.links | link_by_brand: 'youtube' %}
+  {% assign youtube_id = youtube_link | youtube_id %}
   <div class="media">
     <aside>
       <table>
@@ -31,7 +34,7 @@ layout: default
           {% if page.links %}
             {% include links.html %}
           {% endif %}
-          {% if page.media.soundcloud %}
+          {% if soundcloud_link %}
             <tr>
               <th scope="row">Listen</th>
               <td>
@@ -40,7 +43,7 @@ layout: default
                         scrolling="no"
                         frameborder="no"
                         allow="autoplay; encrypted-media"
-                        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/{{ page.media.soundcloud | url_encode | url_encode }}&color=%2341228e&inverse=true&auto_play=false&show_user=true"></iframe>
+                        src="https://w.soundcloud.com/player/?url={{ soundcloud_link | url_encode }}&color=%2341228e&inverse=true&auto_play=false&show_user=true"></iframe>
               </td>
             </tr>
           {% endif %}
@@ -63,7 +66,7 @@ layout: default
     </aside>
 
     {% if page.media.cover %}
-      {% include cover.html title=page.title cover=page.media.cover youtube=page.media.youtube %}
+      {% include cover.html title=page.title cover=page.media.cover youtube=youtube_id %}
     {% endif %}
   </div>
 {% endif %}

@@ -1,13 +1,14 @@
 ---
 title: Lindstrøm - Vōs-sākō-rv (Bitbear Remix)
 media:
-  soundcloud: tracks/soundcloud:tracks:69346767
   length: '3:43'
   cover: vos-sako-rv.jpg
   format: XRNS
   filesize: 14910133
   channels: 33
-  youtube: gNIREIDmrWo
+links:
+  - https://soundcloud.com/bitbear/vos-sako-rv
+  - https://www.youtube.com/watch?v=gNIREIDmrWo
 ---
 
 Bitbear's remix of [Lindstrøm][lindstrom]'s excellent

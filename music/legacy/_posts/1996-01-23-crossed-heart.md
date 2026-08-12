@@ -2,7 +2,6 @@
 title: Crossed Heart
 tag: chip
 media:
-  youtube: hQ1v_RDo0vU
   channels: 2
   filesize: 9112
   format: MOD
@@ -11,6 +10,7 @@ media:
   amp: 159584
 links:
   - https://demozoo.org/music/316669/
+  - https://www.youtube.com/watch?v=hQ1v_RDo0vU
 ---
 
 After [Tiny Chip's Revenge][chip01], I was on a [chip] production spree and made

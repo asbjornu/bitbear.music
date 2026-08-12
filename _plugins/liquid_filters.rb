@@ -56,8 +56,26 @@ module Jekyll
       when %r{open\.spotify\.com}i then 'spotify'
       when %r{mirlo\.space}i    then 'mirlo'
       when %r{demozoo\.org}i  then 'demozoo'
+      when %r{youtube\.com|youtu\.be}i then 'youtube'
       else 'unknown'
       end
+    end
+
+    def link_by_brand(input, brand)
+      Array(input).find { |item| link_brand(item) == brand }
+    end
+
+    def youtube_id(input)
+      uri = URI.parse(link_url(input))
+      return Regexp.last_match(1) if uri.query.to_s =~ /(?:^|[?&])v=([\w-]{11})/
+
+      path = uri.path.to_s
+      return Regexp.last_match(1) if path =~ %r{\A/(?:embed|shorts|live)/([\w-]{11})}
+      return Regexp.last_match(1) if uri.host.to_s.include?('youtu.be') && path =~ %r{\A/([\w-]{11})}
+
+      uri.to_s[/\A[\w-]{11}\z/]
+    rescue URI::InvalidURIError, URI::InvalidComponentError
+      link_url(input)[/\A[\w-]{11}\z/]
     end
 
     def link_host(input)
