@@ -5,18 +5,21 @@ layout: default
 <h2>{{ page.title }}</h2>
 
 {% if page.media %}
+  {% assign soundcloud_link = page.links | link_by_brand: 'soundcloud' %}
+  {% assign youtube_link = page.links | link_by_brand: 'youtube' %}
+  {% assign youtube_id = youtube_link | youtube_id %}
   <div class="media">
     <aside>
       <table>
         <tbody>
           <tr>
-            <th scope="row">Created</th>
-            <td class="date" title="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date_to_long_string: 'ordinal', 'US' }}</td>
+            <th scope="row">Released</th>
+            <td class="date" aria-description="{{ page.date | date: '%Y-%m-%d' }}" data-tooltip="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date_to_long_string: 'ordinal', 'US' }}</td>
           </tr>
           {% if page.media.filesize %}
             <tr>
               <th scope="row">Filesize</th>
-              <td class="filesize" title="{{ page.media.filesize | thousands_separated }} bytes">{{ page.media.filesize | file_size }}</td>
+              <td class="filesize" aria-description="{{ page.media.filesize | thousands_separated }} bytes" data-tooltip="{{ page.media.filesize | thousands_separated }} bytes">{{ page.media.filesize | file_size }}</td>
             </tr>
           {% endif %}
           {% if page.media.format %}
@@ -37,6 +40,23 @@ layout: default
               <td>{{ page.media.length }}</td>
             </tr>
           {% endif %}
+          {% include remix_kit_row.html %}
+          {% if page.links %}
+            {% include links.html %}
+          {% endif %}
+          {% if soundcloud_link %}
+            <tr>
+              <th scope="row">Listen</th>
+              <td>
+                <iframe width="100%"
+                        height="20"
+                        scrolling="no"
+                        frameborder="no"
+                        allow="autoplay; encrypted-media"
+                        src="https://w.soundcloud.com/player/?url={{ soundcloud_link | url_encode }}&color=%2341228e&inverse=true&auto_play=false&show_user=true"></iframe>
+              </td>
+            </tr>
+          {% endif %}
         </tbody>
       </table>
 
@@ -47,19 +67,34 @@ layout: default
       {% endif %}
     </aside>
 
-    {% if page.media.youtube %}
+    {% assign cover = nil %}
+    {% assign cover_title = page.title %}
+    {% if page.media.cover %}
+      {% assign cover = page.media.cover %}
+    {% elsif page.album.slug %}
+      {% assign album_post = site.posts | where: 'slug', page.album.slug | first %}
+      {% if album_post.media.cover %}
+        {% assign cover = album_post.media.cover %}
+        {% assign cover_title = album_post.title %}
+      {% endif %}
+    {% endif %}
+    {% if cover %}
+      {% include cover.html title=cover_title cover=cover youtube=youtube_id %}
+    {% elsif youtube_link %}
       <div id="cover">
         <iframe
           type="text/html"
           width="560"
           height="315"
-          src="https://www.youtube.com/embed/{{ page.media.youtube }}"
+          src="https://www.youtube.com/embed/{{ youtube_id }}"
           frameborder="0"
           allowfullscreen></iframe>
       </div>
     {% endif %}
   </div>
 {% endif %}
+
+<h3>Description</h3>
 
 {{ content }}
 

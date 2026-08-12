@@ -2,13 +2,15 @@
 title: Fat Ma's Death
 tag: chip
 media:
-  youtube: u3N50SZ6Bdg
   filesize: 8444
   channels: 4
   format: MOD
   length: 1:45 (looped)
   modarchive: 199583
   amp: 159545
+links:
+  - https://demozoo.org/music/317751/
+  - https://www.youtube.com/watch?v=u3N50SZ6Bdg
 ---
 
 This horribly named [chiptune] produced in early February 1996 was my first

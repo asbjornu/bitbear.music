@@ -37,7 +37,7 @@ describe 'Pico CSS integration' do
     end
 
     it 'keeps the header padding-top so main does not overlap the nav' do
-      expect(css).to match(/header\{[^}]*padding-top:6rem/)
+      expect(css).to match(/body\s*>\s*header\{[^}]*padding-top:6rem/)
     end
 
     it 'restores content-box sizing for layout while Pico buttons stay border-box' do
@@ -53,6 +53,21 @@ describe 'Pico CSS integration' do
 
     it 'keeps the iterator buttons equally spaced with no outer margins' do
       expect(css).to include('nav.iterator ol{margin:0;padding:0;display:flex;gap:1em')
+    end
+
+    it 'masks the unknown link icon with the noun project asset' do
+      expect(css).to include('.icon.icon-unknown')
+      expect(css).to include('url("/assets/images/services/unknown.svg")')
+    end
+
+    it 'masks the demozoo link icon with the black D in a white square asset' do
+      expect(css).to include('.icon.icon-demozoo')
+      expect(css).to include('url("/assets/images/services/demozoo.svg")')
+    end
+
+    it 'masks the youtube link icon with the play button asset' do
+      expect(css).to include('.icon.icon-youtube')
+      expect(css).to include('url("/assets/images/services/youtube.svg")')
     end
   end
 
@@ -74,6 +89,48 @@ describe 'Pico CSS integration' do
       expect(legacy).to have_tag('div', with: { id: 'cover' })
       iframe = Nokogiri::HTML(legacy).at_css('div#cover iframe')
       expect(iframe['src']).to match(%r{youtube\.com/embed/})
+    end
+
+    it 'renders unknown links with the unknown icon' do
+      page = read_utf8(File.join(site_root, '_site', 'music', 'the-king-and-the-priest.html'))
+      expect(page).to have_tag('li', with: { class: 'unknown' }) do
+        with_tag('a', with: {
+                   href: 'https://moduloone.com/news/the-king-and-the-priest-out-1-september-with-bitbear-remix/',
+                   target: '_blank',
+                   'aria-description' => 'moduloone.com'
+                 })
+        with_tag('span', with: { class: 'icon icon-unknown' })
+      end
+    end
+
+    it 'derives known link hrefs from the full URL in the link value' do
+      page = read_utf8(File.join(site_root, '_site', 'music', 'albums', 'scene-so-far.html'))
+      expect(page).to have_tag('a', with: { href: 'https://bitbearmusic.bandcamp.com/album/scene-so-far' })
+      expect(page).to have_tag('a', with: { href: 'https://open.spotify.com/album/1U1mATmmalOlHPnX98UNFl' })
+    end
+
+    it 'renders demozoo links with the demozoo icon' do
+      page = read_utf8(File.join(site_root, '_site', 'music', 'sliding-away.html'))
+      expect(page).to have_tag('li', with: { class: 'demozoo' }) do
+        with_tag('a', with: {
+                   href: 'https://demozoo.org/music/51159/',
+                   target: '_blank',
+                   'aria-description' => 'View “Sliding Away” on Demozoo'
+                 })
+        with_tag('span', with: { class: 'icon icon-demozoo' })
+      end
+    end
+
+    it 'renders youtube links with the youtube icon' do
+      page = read_utf8(File.join(site_root, '_site', 'music', 'legacy', 'final-countdown.html'))
+      expect(page).to have_tag('li', with: { class: 'youtube' }) do
+        with_tag('a', with: {
+                   href: 'https://www.youtube.com/watch?v=R7mHV_dyYeA',
+                   target: '_blank',
+                   'aria-description' => 'Watch “Final Countdown” on Youtube'
+                 })
+        with_tag('span', with: { class: 'icon icon-youtube' })
+      end
     end
   end
 end

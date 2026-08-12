@@ -4,6 +4,16 @@
   {% assign link = "/" %}
   {% assign rel = "back index" %}
   {% assign text = "Home" %}
+{% elsif page.album.slug %}
+  {% assign album_post = site.posts | where: 'slug', page.album.slug | first %}
+  {% assign link = album_post.url %}
+  {% assign rel = "back" %}
+  {% assign text = "Back to " | append: album_post.album.kind %}
+{% elsif page.album.kind %}
+  {% assign music_page = site.pages | where: 'title', 'Music' | first %}
+  {% assign link = music_page.url %}
+  {% assign rel = "back" %}
+  {% assign text = "Back to Music" %}
 {% else %}
   {% capture link %}
     {%- for dir in path offset: 1 -%}
@@ -14,28 +24,44 @@
   {% assign text = path | last | prepend: 'Back to ' %}
 {% endif %}
 
+{% assign current_categories = page.categories %}
+{% assign previous_categories = page.previous.categories %}
+{% assign next_categories = page.next.categories %}
+
 <nav class="iterator">
   <ol>
-    {% if page.previous %}
+    {% if page.previous and previous_categories == current_categories %}
       <li>
-        <a
-          role="button"
-          rel="prev"
-          href="{{ page.previous.url }}">{{ page.previous.title }}</a>
+        <a aria-description="Go to “{{ page.previous.title | escape }}”"
+           data-tooltip="Go to “{{ page.previous.title | escape }}”"
+           href="{{ page.previous.url }}"
+           role="button"
+           rel="prev">
+          <span class="iterator-glyph" aria-hidden="true">‹</span>
+          {{ page.previous.title | truncate: 20 }}
+        </a>
       </li>
     {% endif %}
     <li>
-<a
-          role="button"
-          rel="{{ rel  }}"
-          href="{{ link }}">{{ text }}</a>
+      <a aria-description="{{ text }}"
+         data-tooltip="{{ text }}"
+         href="{{ link }}"
+         role="button"
+         rel="{{ rel }}">
+        <span class="iterator-glyph" aria-hidden="true">↩</span>
+        {{ text }}
+      </a>
     </li>
-    {% if page.next %}
+    {% if page.next and next_categories == current_categories %}
       <li>
-        <a
-          role="button"
-          rel="next"
-          href="{{ page.next.url }}">{{ page.next.title }}</a>
+        <a aria-description="Go to “{{ page.next.title | escape }}”"
+           data-tooltip="Go to “{{ page.next.title | escape }}”"
+           href="{{ page.next.url }}"
+           role="button"
+           rel="next">
+          {{ page.next.title | truncate: 20 }}
+          <span class="iterator-glyph" aria-hidden="true">›</span>
+        </a>
       </li>
     {% endif %}
   </ol>

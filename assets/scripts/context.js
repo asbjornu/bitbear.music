@@ -2,14 +2,14 @@
     var context = {
         "@context": "http://schema.org",
         "@type": "MusicGroup",
-        "@id": "https://bitbear.org",
+        "@id": "https://bitbear.music",
         "name": "Bitbear",
         "description": "Bitbear is Asbjørn Ulsberg's tone-hammering, beat-juggling and demoscene-participating alter ego.",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://bitbear.org/assets/images/logo.svg"
+            "url": "https://bitbear.music/assets/images/logo.svg"
         },
-        "url": "https://bitbear.org",
+        "url": "https://bitbear.music",
         "genre": [
             "Electronic",
             "Synthwave"

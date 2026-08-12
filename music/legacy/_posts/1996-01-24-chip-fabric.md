@@ -2,13 +2,15 @@
 title: Chip Fabric
 tag: chip
 media:
-  youtube: hSs0DJxn6Us
   filesize: 9990
   channels: 4
   format: MOD
   length: 0:22 (looped)
   modarchive: 199557
   amp: 159577
+links:
+  - https://demozoo.org/music/318103/
+  - https://www.youtube.com/watch?v=hSs0DJxn6Us
 ---
 
 Sound-wise, "Chip Fabric" isn't very chippy, but with a file size of less than

@@ -1,13 +1,15 @@
 ---
 title: The Floot Ride
 media:
-  youtube: WfWNZNDsp_w
   filesize: 50288
   channels: 4
   format: MOD
   length: '1:21'
   modarchive: 199555
   amp: 159591
+links:
+  - https://demozoo.org/music/315974/
+  - https://www.youtube.com/watch?v=WfWNZNDsp_w
 ---
 
 "The Floote Ride" was one of the the first tracker modules I feel somewhat

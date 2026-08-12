@@ -1,0 +1,125 @@
+---
+layout: default
+---
+
+<h2>{{ page.title }}</h2>
+
+{% assign candidates = site.posts | where: 'slug', page.slug %}
+
+{% assign release = candidates.first %}
+{% assign track = nil %}
+{% for candidate in candidates %}
+  {% if candidate.media.format %}
+    {% assign track = candidate %}
+  {% endif %}
+{% endfor %}
+{% unless track %}
+  {% assign track = release %}
+{% endunless %}
+
+{% if track and release %}
+  {% assign zip_file = 'Bitbear-' | append: track.title | replace: ' ', '_' | append: '-Remix_Kit.zip' %}
+  <div class="media">
+    <aside>
+      <table>
+        <tbody>
+          <tr>
+            <th scope="row">Track</th>
+            <td><a href="{{ track.url }}">{{ track.title }}</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Added</th>
+            <td class="date" aria-description="{{ zip_file | zip_date | date: '%Y-%m-%d' }}" data-tooltip="{{ zip_file | zip_date | date: '%Y-%m-%d' }}">{{ zip_file | zip_date | date_to_long_string: 'ordinal', 'US' }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Filesize</th>
+            <td class="filesize" aria-description="{{ zip_file | zip_size | thousands_separated }} bytes" data-tooltip="{{ zip_file | zip_size | thousands_separated }} bytes">{{ zip_file | zip_size | file_size }}</td>
+          </tr>
+          {% if track.media.format %}
+            <tr>
+              <th scope="row">Format</th>
+              <td>{{ track.media.format }}</td>
+            </tr>
+          {% endif %}
+          {% if track.media.channels %}
+            <tr>
+              <th scope="row">Channels</th>
+              <td>{{ track.media.channels }}</td>
+            </tr>
+          {% endif %}
+          {% if track.media.length %}
+            <tr>
+              <th scope="row">Length</th>
+              <td>{{ track.media.length }}</td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+
+      <a role="button" href="/assets/remix-kits/{{ zip_file }}">Download</a>
+    </aside>
+
+    {% assign cover = nil %}
+    {% assign cover_title = track.title %}
+    {% if track.media.cover %}
+      {% assign cover = track.media.cover %}
+    {% elsif track.album.slug %}
+      {% assign album_post = site.posts | where: 'slug', track.album.slug | first %}
+      {% if album_post.media.cover %}
+        {% assign cover = album_post.media.cover %}
+        {% assign cover_title = album_post.title %}
+      {% endif %}
+    {% endif %}
+    {% if cover %}
+      {% include cover.html title=cover_title cover=cover %}
+    {% endif %}
+  </div>
+
+  {% assign entries = zip_file | zip_contents %}
+  {% if entries.size > 0 %}
+    <div class="contents">
+      <h3>Contents</h3>
+
+      <ul>
+        {% for item in entries %}
+          <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endif %}
+
+{% if content.size > 0 %}
+<h3>Description</h3>
+
+{{ content }}
+{% endif %}
+
+<h3>License</h3>
+
+<p>This remix kit is released under the
+<a rel="license"
+href="https://creativecommons.org/licenses/by-nc/4.0/">Creative
+Commons Attribution-NonCommercial 4.0 International license</a>. You
+are free to share and adapt the material for any
+<strong>non-commercial</strong> purpose, as long as you provide
+appropriate credit. Please see the
+<a href="/license/" rel="license">license</a> page for more
+information.</p>
+
+{% if track %}
+<nav class="iterator">
+  <ol>
+    <li>
+      <a aria-description="Back to {{ track.title | escape }}"
+         data-tooltip="Back to {{ track.title | escape }}"
+         href="{{ track.url }}"
+         role="button"
+         rel="back">
+        <span class="iterator-glyph" aria-hidden="true">↩</span>
+        {{ track.title }}
+      </a>
+    </li>
+  </ol>
+</nav>
+{% endif %}

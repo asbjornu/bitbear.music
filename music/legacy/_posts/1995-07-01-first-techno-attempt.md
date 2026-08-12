@@ -1,13 +1,15 @@
 ---
 title: First Techno Attempt
 media:
-  youtube: TmzT199VCl4
   filesize: 167904
   channels: 6
   format: S3M
   length: 2:04 (looped)
   modarchive: 199725
   amp:
+links:
+  - https://demozoo.org/music/318399/
+  - https://www.youtube.com/watch?v=TmzT199VCl4
 ---
 
 I have no idea when I actually produced "First Techno Attempt" as the date on

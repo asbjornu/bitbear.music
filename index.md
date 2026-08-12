@@ -25,19 +25,26 @@ throughout the 90s. In the early 2000s, I put my musical career on the shelf
 until it was rebooted in 2012 by entering the [Kindergarden 2012 Dance Music
 Competition][kg2012] under the new-found alias *Bitbear*.
 
-## Contact
+## Harass
 
-You can find and harass me on the following places:
+You can find, harass, and follow me on the following online places:
 
-- [Mastodon]{:rel="me"}
+- [Bandcamp]{:rel="me"}
+- [Beatport]{:rel="me"}
 - [Facebook]{:rel="me"}
-- [Twitter]{:rel="me"}
-- [Instagram]{:rel="me"}
 - [Homepage]{:rel="me"}
+- [Instagram]{:rel="me"}
+- [Mastodon]{:rel="me"}
+- [Mixcloud]{:rel="me"}
+- [SoundCloud]{:rel="me"}
+- [Twitter]{:rel="me"}
+- [YouTube]{:rel="me"}
 
 [3rd-floor]: https://soundcloud.com/bitbear/sets/3rd-floor
 [amiga]: https://en.wikipedia.org/wiki/Amiga_500
 [asbjornu]: https://asbjor.nu/
+[bandcamp]: https://bitbearmusic.bandcamp.com
+[beatport]: https://dj.beatport.com/bitbear
 [beyond-fantasy]: https://soundcloud.com/bitbear/sets/beyond-fantasy
 [demoscene]: https://en.wikipedia.org/wiki/Demoscene
 [facebook]: https://www.facebook.com/bitbearmusic
@@ -47,9 +54,12 @@ You can find and harass me on the following places:
 [instagram]: https://www.instagram.com/bitbearmusic
 [kg2012]: https://demozoo.org/parties/1458/#competition_5258
 [mastodon]: https://icosahedron.website/@bitbear
+[mixcloud]: https://www.mixcloud.com/bitbearmusic/
 [music]: /music/
 [noisetracker]: https://en.wikipedia.org/wiki/NoiseTracker
 [pc]: https://en.wikipedia.org/wiki/IBM_PC_compatible
 [protracker]: https://en.wikipedia.org/wiki/ProTracker
 [scream-tracker]: https://en.wikipedia.org/wiki/Scream_Tracker
+[soundcloud]: https://soundcloud.com/bitbear
 [twitter]: https://twitter.com/bitbearmusic
+[youtube]: https://www.youtube.com/channel/UC9wb6OrUrugGg6-q9805RDQ

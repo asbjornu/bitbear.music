@@ -11,11 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="{{ site.author.name }}">
     <meta property="og:type" value="website">
-    <meta property="og:url" value="https://bitbear.org/">
+    <meta property="og:url" value="https://bitbear.music/">
     <meta property="og:title" value="{{ title }}">
     <meta name="title" content="{{ title }}">
     <meta property="og:description" value="{{ description }}">
     <meta name="description" content="{{ description }}">
+    <meta name="robots" content="noai, noimageai">
+    <meta name="noairobots" content="noai, noimageai">
     <meta property="og:image" value="https://repository-images.githubusercontent.com/89099209/95bd4180-8b68-11eb-9dbf-b449b2505aaf">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
     <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/feed.xml">
@@ -43,33 +45,17 @@
       </nav>
     </header>
 
-    <main>
+    <main class="{{ page.categories | join: ' ' }}">
       {{ content }}
     </main>
 
     <section class="footer">
       <footer>
-        <a href="https://creativecommons.org/licenses/by/4.0/" title="Creative Commons Attribution 4.0 International (CC BY 4.0)">
-          Web site and content licensed in
-          <abbr title="Creative Commons">CC</abbr>
-          <abbr title="Attribution">BY</abbr>
-          4.0
-          <span class="icons">
-            <img
-              src="{{ '/assets/images/cc.svg' | relative_url }}"
-              alt="CC"
-              title="Creative Commons"
-              width="30">
-            <img
-              src="{{ '/assets/images/by.svg' | relative_url }}"
-              alt="BY"
-              title="Attribution"
-              width="30">
-          </span>
-        </a>
+        <a href="/license/">License &amp; Credits</a>
       </footer>
     </section>
 
+    <script src="{{ '/assets/scripts/cover.js' | relative_url }}"></script>
     <script src="{{ '/assets/scripts/ga.js' | relative_url }}"></script>
   </body>
 </html>

@@ -1,0 +1,39 @@
+<tr>
+  <th scope="row">Links</th>
+  <td class="links">
+    <ul>
+      {% for item in page.links %}
+        {% assign url = item | link_url %}
+        {% assign key = url | link_brand %}
+        {% capture links_verb %}
+          {%- case key -%}
+            {%- when 'bandcamp' -%}Buy
+            {%- when 'soundcloud' -%}Listen to
+            {%- when 'apple-music' -%}Listen to
+            {%- when 'spotify' -%}Listen to
+            {%- when 'mirlo' -%}Listen to
+            {%- when 'demozoo' -%}View
+            {%- when 'youtube' -%}Watch
+          {%- endcase -%}
+        {% endcapture %}
+        {% capture title %}
+          {%- if key == 'unknown' -%}
+            {{- url | link_host -}}
+          {%- else -%}
+            {{- links_verb }} “{{ page.title }}” {% comment %}{% endcomment %}
+            {%- if key == 'apple-music' -%}
+              on Apple Music
+            {%- else -%}
+              on {{ key | capitalize }}
+            {%- endif -%}
+          {%- endif -%}
+        {% endcapture %}
+        <li class="{{ key }}">
+          <a href="{{ url }}" target="_blank" aria-description="{{ title }}" data-tooltip="{{ title }}">
+            <span class="icon icon-{{ key }}" role="img" aria-label="{{ title }}"></span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </td>
+</tr>

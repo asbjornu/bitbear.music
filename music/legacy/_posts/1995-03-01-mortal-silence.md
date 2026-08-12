@@ -1,12 +1,14 @@
 ---
 title: Mortal Silence
 media:
-  youtube: EhEYH32g_pw
   filesize: 48544
   channels: 8
   format: S3M
   length: '01:36'
   modarchive: 199726
+links:
+  - https://demozoo.org/music/318331/
+  - https://www.youtube.com/watch?v=EhEYH32g_pw
 ---
 
 This horrible song is shamefully published for completeness and nothing else.

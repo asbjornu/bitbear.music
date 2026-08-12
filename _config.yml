@@ -1,10 +1,15 @@
 markdown: kramdown
 permalink: /:categories/:title
 excerpt_separator: <!--more-->
-url: https://bitbear.org
+url: https://bitbear.music
 plugins:
   - jekyll-sitemap
   - jekyll-feed
+
+collections:
+  remix_kits:
+    output: true
+    permalink: /music/:title/remix-kit/
 
 compress_html:
   clippings: all
@@ -13,15 +18,19 @@ compress_html:
 
 author:
   name: Asbjørn Ulsberg
-  email: mail@bitbear.org
+  email: mail@bitbear.music
 
 defaults:
   - values:
       layout: default
       description: |
-        Bitbear.org is the website of electronic music producer Asbjørn Ulsberg
+        bitbear.music is the website of electronic music producer Asbjørn Ulsberg
   - scope:
-      path: music/legacy
+      path: music/albums
+    values:
+      layout: album
+  - scope:
+      path: music
     values:
       layout: post
 
@@ -46,5 +55,6 @@ exclude:
   - spec
   - Rakefile
   - coverage
+  - covers-master
   - package.json
   - package-lock.json

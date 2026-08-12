@@ -1,0 +1,42 @@
+{%- if include.cover -%}
+  {%- assign cover_url = '/assets/images/covers/' | append: include.cover -%}
+  {%- assign cover_2x = cover_url | replace: '.jpg', '@2x.jpg' -%}
+  {%- if include.youtube -%}
+    {%- assign youtube_url = 'https://www.youtube.com/watch?v=' | append: include.youtube -%}
+    {%- assign has_youtube = true -%}
+  {%- else -%}
+    {%- assign has_youtube = false -%}
+  {%- endif -%}
+
+  <div id="cover">
+    <a class="cover-link" href="#cover-art"
+      aria-description="Open the cover art {% if has_youtube -%}and play the “{{ include.title | escape }}” music video{% endif -%}"
+      data-tooltip="Open the cover art {% if has_youtube -%}and play the “{{ include.title | escape }}” music video{% endif -%}">
+      <img src="{{ cover_url }}" alt="{{ include.title }} cover">
+      {%- if has_youtube -%}
+        <span class="cover-play" aria-hidden="true"></span>
+      {%- endif -%}
+    </a>
+  </div>
+
+  <dialog id="cover-art">
+    <article>
+      <header>
+        <h3>{{ include.title }}</h3>
+        <a href="#" class="close" aria-label="Close"></a>
+      </header>
+      <div id="cover-media">
+        <img src="{{ cover_url }}" srcset="{{ cover_url }} 1080w, {{ cover_2x }} 2160w" sizes="100vw" alt="{{ include.title | escape }} cover">
+        {%- if has_youtube -%}
+          <a id="cover-play"
+             href="{{ youtube_url }}"
+             target="_blank"
+             rel="noopener"
+             aria-description="Play the “{{ include.title | escape }}” music video"
+             data-tooltip="Play the “{{ include.title | escape }}” music video"
+             aria-label="Play on YouTube"></a>
+        {%- endif -%}
+      </div>
+    </article>
+  </dialog>
+{%- endif -%}
