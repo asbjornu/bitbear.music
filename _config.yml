@@ -47,6 +47,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - LICENSE
+  - LICENSE-CONTENT
   - LICENSE.txt
   - CODE_OF_CONDUCT.md
   - readme.md

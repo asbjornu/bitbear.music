@@ -21,7 +21,8 @@ Ulsberg) and link back to [https://bitbear.music/][bitbear] and the [license][cc
 under which it is released.
 
 The full text of the license is available in the [repository on
-GitHub][license].
+GitHub][license]. The code that runs this web site is separately licensed
+under the [Apache License, Version 2.0][apache-2.0].
 
 If you want to use Bitbear's music or artwork for commercial purposes,
 or have questions about licensing options, remixing opportunities,
@@ -39,8 +40,9 @@ requirements][noun-attribution]:
 [bitbear]: https://bitbear.music/
 [cc-by]: https://creativecommons.org/licenses/by-nc/4.0/
 [cc]: https://creativecommons.org/
+[apache-2.0]: https://www.apache.org/licenses/LICENSE-2.0
 [idwar]: https://thenounproject.com/creator/idwar.frin/
-[license]: https://github.com/asbjornu/bitbear.music/blob/main/LICENSE
+[license]: https://github.com/asbjornu/bitbear.music/blob/main/LICENSE-CONTENT
 [link-browse]: https://thenounproject.com/browse/icons/term/link-chain/
 [link-icon]: https://thenounproject.com/icon/link-chain-8147342/
 [mail]: mailto:mail@bitbear.music
