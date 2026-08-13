@@ -1,5 +1,6 @@
 ---
 title: Scene So Far
+date: 2017-04-01 01:00:00 +0000
 media:
   cover: scene-so-far.jpg
 links:

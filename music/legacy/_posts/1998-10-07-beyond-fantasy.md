@@ -1,6 +1,7 @@
 ---
 title: Beyond Fantasy
 layout: album
+date: 1998-10-07 01:00:00 +0000
 media:
   cover: beyond-fantasy.jpg
 links:
