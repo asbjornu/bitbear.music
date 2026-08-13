@@ -1,7 +1,35 @@
 # frozen_string_literal: true
 
+require 'fileutils'
 require 'jekyll'
 require 'rspec-html-matchers'
+require 'tmpdir'
+
+# The real remix kit archives in assets/remix-kits are enormous and stored in
+# Git LFS. Rather than requiring them to be checked out (or LFS-pulled) for
+# CI/local specs, swap each one out for a tiny synthetic ZIP containing only
+# empty placeholder files, built with the same folder-structure shape the
+# specs assert on (see liquid_filters_spec.rb and remix_kit_spec.rb). The
+# real files (if present on disk) are moved aside and restored once the suite
+# finishes.
+REMIX_KIT_FIXTURES = {
+  'Bitbear-Move-Remix_Kit.zip' => ['Move/Stems/kick.wav'],
+  'Bitbear-Planeswalker-Remix_Kit.zip' => ['Planeswalker/Stems/bass.wav'],
+  'Bitbear-Sunset_Through_The_Rain-Remix_Kit.zip' => ['Bitbear-Sunset-Through-The-Rain-Remix-Kit/Presets/arp.fxp']
+}.freeze
+
+def build_fixture_zip(entries, dest_path)
+  Dir.mktmpdir do |dir|
+    entries.each do |relative_path|
+      full_path = File.join(dir, relative_path)
+      FileUtils.mkdir_p(File.dirname(full_path))
+      FileUtils.touch(full_path)
+    end
+
+    FileUtils.rm_f(dest_path)
+    system('zip', '-q', '-r', dest_path, '.', chdir: dir, exception: true)
+  end
+end
 
 # Variables that should be shared across all specs in the suite.
 shared_context 'shared' do
@@ -111,6 +139,36 @@ RSpec.configure do |config|
   #   # test failures related to randomization by passing the same `--seed` value
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
+
+  remix_kit_backups = {}
+
+  # Swap the real (LFS-tracked) remix kit archives for tiny synthetic ones
+  # before the Jekyll build runs, so specs never need the real files
+  # checked out.
+  config.before(:suite) do
+    remix_dir = File.join(__dir__, '..', 'assets', 'remix-kits')
+    backup_dir = Dir.mktmpdir('remix-kit-backups')
+
+    REMIX_KIT_FIXTURES.each do |name, entries|
+      path = File.join(remix_dir, name)
+
+      if File.exist?(path)
+        backup_path = File.join(backup_dir, name)
+        File.rename(path, backup_path)
+        remix_kit_backups[path] = backup_path
+      end
+
+      build_fixture_zip(entries, path)
+    end
+  end
+
+  # Restore the original archives (if any) once the suite is done.
+  config.after(:suite) do
+    remix_kit_backups.each do |path, backup_path|
+      FileUtils.rm_f(path)
+      File.rename(backup_path, path)
+    end
+  end
 
   # Run 'jekyll build' before all specs in the suite
   config.before(:suite) do
