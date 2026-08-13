@@ -56,7 +56,7 @@ layout: default
         </tbody>
       </table>
 
-      <a role="button" href="/assets/remix-kits/{{ zip_file }}">Download</a>
+      <a role="button" href="{{ 'assets/remix-kits/' | append: zip_file | lfs_media_url }}">Download</a>
     </aside>
 
     {% assign cover = nil %}

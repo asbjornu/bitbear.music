@@ -19,6 +19,8 @@ concurrency:
 jobs:
   build:
     uses: ./.github/workflows/_build.yml
+    with:
+      production: true
 
   publish:
     runs-on: ubuntu-latest
@@ -33,8 +35,12 @@ jobs:
           name: site
           path: _site
 
-      - name: move git lfs files to _site
-        run: mv $(git lfs ls-files -n) _site/
+      - name: copy git lfs cover images into _site
+        run: |
+          git lfs ls-files -n | grep '^assets/images/covers/' | while IFS= read -r file; do
+            mkdir -p "_site/$(dirname "$file")"
+            cp "$file" "_site/$file"
+          done
 
       - uses: actions/configure-pages@v6
 
