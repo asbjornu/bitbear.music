@@ -2,6 +2,14 @@ markdown: kramdown
 permalink: /:categories/:title
 excerpt_separator: <!--more-->
 url: https://bitbear.music
+
+# Used by the lfs_media_url filter (_plugins/liquid_filters.rb) to build
+# media.githubusercontent.com URLs for Git LFS-tracked files, so that large
+# binaries (e.g. remix-kit archives) don't have to be included in the
+# GitHub Pages deployment artifact, which is capped at 1 GB.
+repository: asbjornu/bitbear.music
+repository_branch: main
+
 plugins:
   - jekyll-sitemap
   - jekyll-feed

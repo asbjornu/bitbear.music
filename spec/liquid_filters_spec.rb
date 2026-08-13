@@ -240,6 +240,67 @@ describe '#sort_by' do
     end
   end
 
+  describe '#lfs_media_url' do
+    def with_site(config)
+      site = instance_double('Jekyll::Site', config: config)
+      context = instance_double('Liquid::Context', registers: { site: site })
+      instance.instance_variable_set(:@context, context)
+    end
+
+    around do |example|
+      original = ENV.fetch('JEKYLL_ENV', nil)
+      example.run
+    ensure
+      ENV['JEKYLL_ENV'] = original
+    end
+
+    context 'outside production' do
+      it 'returns the local site-relative path when JEKYLL_ENV is unset' do
+        ENV.delete('JEKYLL_ENV')
+        with_site({ 'repository' => 'asbjornu/bitbear.music' })
+        expect(instance.lfs_media_url('assets/remix-kits/Bitbear-Move-Remix_Kit.zip'))
+          .to eq('/assets/remix-kits/Bitbear-Move-Remix_Kit.zip')
+      end
+
+      it 'returns the local site-relative path in development' do
+        ENV['JEKYLL_ENV'] = 'development'
+        with_site({ 'repository' => 'asbjornu/bitbear.music' })
+        expect(instance.lfs_media_url('assets/remix-kits/Bitbear-Move-Remix_Kit.zip'))
+          .to eq('/assets/remix-kits/Bitbear-Move-Remix_Kit.zip')
+      end
+    end
+
+    context 'in production' do
+      before { ENV['JEKYLL_ENV'] = 'production' }
+
+      it 'builds a media.githubusercontent.com URL from the configured repository and branch' do
+        with_site({ 'repository' => 'asbjornu/bitbear.music', 'repository_branch' => 'main' })
+        expect(instance.lfs_media_url('assets/remix-kits/Bitbear-Move-Remix_Kit.zip'))
+          .to eq('https://media.githubusercontent.com/media/asbjornu/bitbear.music/main/' \
+                 'assets/remix-kits/Bitbear-Move-Remix_Kit.zip')
+      end
+
+      it 'defaults the branch to main when repository_branch is not configured' do
+        with_site({ 'repository' => 'asbjornu/bitbear.music' })
+        expect(instance.lfs_media_url('assets/remix-kits/Bitbear-Move-Remix_Kit.zip'))
+          .to start_with('https://media.githubusercontent.com/media/asbjornu/bitbear.music/main/')
+      end
+
+      it 'falls back to the local path when no repository is configured' do
+        with_site({})
+        expect(instance.lfs_media_url('assets/remix-kits/Bitbear-Move-Remix_Kit.zip'))
+          .to eq('/assets/remix-kits/Bitbear-Move-Remix_Kit.zip')
+      end
+    end
+
+    it 'falls back to the local path when there is no site in the Liquid context' do
+      ENV['JEKYLL_ENV'] = 'production'
+      instance.instance_variable_set(:@context, nil)
+      expect(instance.lfs_media_url('assets/remix-kits/Bitbear-Move-Remix_Kit.zip'))
+        .to eq('/assets/remix-kits/Bitbear-Move-Remix_Kit.zip')
+    end
+  end
+
   describe '#link_url' do
     it 'passes a plain URL string through unchanged' do
       expect(instance.link_url('https://moduloone.com/news/')).to eq('https://moduloone.com/news/')

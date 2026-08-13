@@ -1,6 +1,15 @@
 name: build
 
-on: [workflow_call]
+on:
+  workflow_call:
+    inputs:
+      production:
+        description: >-
+          Build with JEKYLL_ENV=production, so Git LFS-tracked binaries (e.g.
+          remix-kit archives) are linked via media.githubusercontent.com
+          instead of being included in the deployment artifact.
+        type: boolean
+        default: false
 
 env:
   RUBY_VERSION: 4.0.5
@@ -15,6 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          lfs: ${{ inputs.production }}
 
       - uses: ruby/setup-ruby@v1
         with:
@@ -29,7 +40,13 @@ jobs:
       - run: npm ci
 
       - name: jekyll build
+        env:
+          JEKYLL_ENV: ${{ inputs.production && 'production' || 'development' }}
         run: bundle exec rake build
+
+      - name: remove remix-kit archives from production site
+        if: ${{ inputs.production }}
+        run: rm -rf _site/assets/remix-kits
 
       - name: upload site
         uses: actions/upload-artifact@v7
