@@ -72,6 +72,53 @@ missing.
   from git-ignored 2160² masters with `bundle exec rake covers:2x` (see `Rakefile`);
   masters live in the repo-root `covers-master/` directory.
 
+## Content authoring (music posts)
+
+- **Never fabricate biographical or background prose** for a track, release, or person.
+  Every descriptive claim in a post must come from an actual source (a SoundCloud track
+  description, a Demozoo production/credit, a FILE_ID.DIZ info file, etc.) — paraphrase
+  and link the source rather than inventing narrative filler. If no real source exists,
+  keep the post factual and minimal (front matter + release links) instead of guessing.
+- **Known scener aliases** — always reuse the same Demozoo scener link for the same
+  person rather than creating inconsistent ones per post:
+  - Miu = MAGNUS = MONOMAGNUS = Mono Magnus → `https://demozoo.org/sceners/4221/`
+  - PAcMan = Waldemar Doppelzimmer = Modulo One = Anders Knatten →
+    `https://demozoo.org/sceners/4306/`
+  - Puma = Fulgore → `https://demozoo.org/sceners/106369/`
+- **Greeting-list linking convention**: only link a greeted handle to a Demozoo scener
+  page when there's a confident match; leave ambiguous/generic handles (e.g. "Trigger",
+  single common English words) as plain text rather than risk linking to the wrong
+  person. Reuse resolved link mappings across posts once established.
+- **Fetching gotchas**:
+  - `demozoo.org` blocks plain `curl` (Cloudflare challenge) but works fine through the
+    `webfetch` tool. Its `/api/v1/productions/<id>/` JSON endpoint is a reliable
+    structured source for a production's authors, credits, dates, and external links.
+  - `soundcloud.com` HTML pages are inconsistently bot-walled; `curl`ing
+    `https://soundcloud.com/oembed?url=<track-url>&format=json` is a reliable way to
+    check whether a track exists and to grab its title/thumbnail without hitting the
+    bot wall. For full (untruncated) track descriptions, fetch the track page via
+    `webfetch` and read the `<meta itemprop="description">` inside the `<noscript>`
+    block, not the truncated `og:description`.
+  - Demozoo's "Info file" (FILE_ID.DIZ) viewer requires login, but the same file is
+    almost always bundled in the linked scene.org release `.zip` — download it and
+    `unzip -p` the `.zip` instead of trying to view it on Demozoo directly.
+- **Layout vs. directory-derived categories**: a post's `main` CSS class and Jekyll
+  `categories` are auto-derived from its directory nesting under `_posts` (e.g.
+  `music/albums/_posts` → `music albums`). If a post needs a different layout than its
+  directory implies (e.g. an "album" page filed under `music/legacy/`), set `layout:`
+  explicitly in front matter — don't assume CSS scoped to `main.<category>` will apply,
+  and don't assume `site.categories['<x>']` listings will include/exclude it as expected.
+- **Same-day post ordering**: Jekyll breaks ties between same-date posts by filename,
+  not insertion order. When an album and one of its tracks share a release date, give
+  the album an explicit `date: YYYY-MM-DD 01:00:00 +0000` (an hour past midnight) so it
+  reliably sorts above the track in `song_table.html` — don't rely on filename
+  alphabetical tie-break.
+- **Spec YAML safe-loading**: some specs (`remix_kit_spec.rb`, `cover_spec.rb`) parse
+  front matter directly with `YAML.safe_load`. Adding a non-string front matter value
+  (e.g. an explicit `date:`) can break specs that don't permit that class. When adding
+  new front matter types, grep `spec/*.rb` for `YAML.safe_load` and make sure every call
+  site includes `permitted_classes: [Date, Time, Symbol], aliases: true`.
+
 ## Git LFS
 
 - Git LFS **is installed** (`/opt/homebrew/bin/git-lfs`, v3.x). Any "not installed"
