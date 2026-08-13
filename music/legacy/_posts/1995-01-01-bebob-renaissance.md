@@ -13,10 +13,12 @@ links:
 ---
 
 "Bebob Renaissance" was the very first tracker module I produced with Amiga
-ProTracker when I was 14 or 15 years old, probably early in 1995 or late in
-1994.
+[ProTracker][protracker] when I was 14 or 15 years old, probably early in
+1995 or late in 1994.
 
 <!--more-->
 
 Not something I'm proud of, but it got me into music production and for that I'm
 grateful.
+
+[protracker]: https://en.wikipedia.org/wiki/ProTracker

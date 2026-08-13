@@ -15,7 +15,7 @@ links:
 ---
 
 "Sliding Away" is Bitbear's entry in the [Kindergarden 2012 "Dance
-Music" competition][kindergarden], made entirely with Renoise 2.8.1.
+Music" competition][kindergarden], made entirely with [Renoise][renoise] 2.8.1.
 
 <!--more-->
 
@@ -27,4 +27,5 @@ Music" competition][kindergarden], made entirely with Renoise 2.8.1.
 [flickr]: https://www.flickr.com/
 [francesca]: https://www.flickr.com/photos/26557098@N03/
 [kindergarden]: https://demozoo.org/parties/1458/#competition_5258
+[renoise]: https://www.renoise.com/
 [slide]: https://www.flickr.com/photos/26557098@N03/5451261690

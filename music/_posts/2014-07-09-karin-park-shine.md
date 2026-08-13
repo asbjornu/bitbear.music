@@ -15,5 +15,7 @@ where the song ended on 24th place out of 503 entries.
 
 <!--more-->
 
-The remix was composed in Renoise 3.0 with Sylenth1, Razor, KICK,
+The remix was composed in [Renoise][renoise] 3.0 with Sylenth1, Razor, KICK,
 Pro-Q, Pro-MB, Pro-L and various other plugins and samples.
+
+[renoise]: https://www.renoise.com/

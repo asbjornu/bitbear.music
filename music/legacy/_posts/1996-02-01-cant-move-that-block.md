@@ -13,9 +13,11 @@ links:
   - https://amp.dascene.net/downmod.php?index=159581
 ---
 
-This unconventional 3-channel [chiptune] was created with Scream Tracker 3 on
-{% date %}. Shared and published, not for pride, but for completeness.
+This unconventional 3-channel [chiptune] was created with [Scream Tracker
+3][scream-tracker] on {% date %}. Shared and published, not for pride, but
+for completeness.
 
 <!--more-->
 
 [chiptune]: /music/chiptunes
+[scream-tracker]: https://en.wikipedia.org/wiki/Scream_Tracker

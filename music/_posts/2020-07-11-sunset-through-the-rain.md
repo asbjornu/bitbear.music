@@ -74,13 +74,62 @@ song and especially lifting the take-off to new heights. I'm also grateful
 for her being so understanding of my hobby and not only allowing, but
 encouraging me to spend time on making music. I love you!
 
-A huge thanks to Modulo One for giving invaluable ideas helping the lead
-melody in particular and to MAGNUS for endless amounts of mix feedback.
-This song would definitely sound worse without your help!
+A huge thanks to [Modulo One][modulo-one] for giving invaluable ideas helping
+the lead melody in particular and to [MAGNUS][magnus] for endless amounts of
+mix feedback. This song would definitely sound worse without your help!
 
 And last, but not least, I'm grateful for my two daughters enthusiasm
 towards my music, and for wanting to spend time with me recording and
 producing their own ideas. It's so wonderful spending time with them both!
 
+### Greetings
+
+Greetings to Anwarz, [Arcane][arcane], [Dozer][dozer], [Duckers][duckers],
+[Eplebit][eplebit], [Ferris][ferris], [Fjern][fjern], [Flipside][flipside],
+[Gloom][gloom], [Hansee][hansee], [Investor][investor], [JoMs][joms],
+[karo133ne][karo133ne], [Knofle][knofle], [kusma][kusma], [Leia][leia],
+[litn][], [MAGNUS][magnus], [Menace][menace], [Modulo One][modulo-one],
+[pingo][], [Quarryman][quarryman], [Rage][rage], [Response][response],
+[Run][run], [Sandsmark][sandsmark], [Sinatra][sinatra], [Slummy][slummy],
+[Steel][steel], [T-101][t-101], [tr0n][], Trigger, [Xeche][xeche],
+[Xerxes][xerxes], and of course: You!
+
+As usual, I've most certainly forgotten someone. Sorry! My memory is one of
+my worst assets.
+
+PS: Yes, the bears are crying.
+
+[arcane]: https://demozoo.org/sceners/581/
+[dozer]: https://demozoo.org/sceners/4389/
+[duckers]: https://demozoo.org/sceners/72/
+[eplebit]: https://demozoo.org/sceners/20819/
+[ferris]: https://demozoo.org/sceners/18/
+[fjern]: https://demozoo.org/sceners/51445/
+[flipside]: https://demozoo.org/sceners/4280/
+[gloom]: https://demozoo.org/sceners/227/
+[hansee]: https://demozoo.org/sceners/809/
+[investor]: https://demozoo.org/sceners/34684/
+[joms]: https://demozoo.org/sceners/5245/
+[karo133ne]: https://demozoo.org/sceners/118721/
+[knofle]: https://demozoo.org/sceners/44582/
+[kusma]: https://demozoo.org/sceners/1998/
+[leia]: https://demozoo.org/sceners/5258/
+[litn]: https://demozoo.org/sceners/66548/
+[magnus]: https://demozoo.org/sceners/4221/
+[menace]: https://demozoo.org/sceners/93/
+[modulo-one]: https://moduloone.com/
+[pingo]: https://demozoo.org/sceners/136870/
+[quarryman]: https://demozoo.org/sceners/179/
+[rage]: https://demozoo.org/sceners/151098/
+[response]: https://demozoo.org/sceners/112/
+[run]: https://demozoo.org/sceners/59918/
+[sandsmark]: https://demozoo.org/sceners/41263/
+[sinatra]: https://demozoo.org/sceners/238/
+[slummy]: https://demozoo.org/sceners/463/
 [solskogen]: https://solskogen.scene.org/
 [solskogen-music-compo]: https://demozoo.org/parties/3964/#competition_16008
+[steel]: https://demozoo.org/sceners/5091/
+[t-101]: https://demozoo.org/sceners/939/
+[tr0n]: https://demozoo.org/sceners/90827/
+[xeche]: https://demozoo.org/sceners/21196/
+[xerxes]: https://demozoo.org/sceners/552/
