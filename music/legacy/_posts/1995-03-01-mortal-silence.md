@@ -5,10 +5,11 @@ media:
   channels: 8
   format: S3M
   length: '01:36'
-  modarchive: 199726
 links:
   - https://demozoo.org/music/318331/
   - https://www.youtube.com/watch?v=EhEYH32g_pw
+  - https://api.modarchive.org/downloads.php?moduleid=199726
+  - https://amp.dascene.net/downmod.php?index=168718
 ---
 
 This horrible song is shamefully published for completeness and nothing else.

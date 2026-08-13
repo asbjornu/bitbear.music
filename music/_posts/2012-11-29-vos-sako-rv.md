@@ -9,11 +9,13 @@ media:
 links:
   - https://soundcloud.com/bitbear/vos-sako-rv
   - https://www.youtube.com/watch?v=gNIREIDmrWo
+  - https://scenestream.net/demovibes/song/38761/
 ---
 
 Bitbear's remix of [Lindstrøm][lindstrom]'s excellent
 [Vōs-sākō-rv][vos-sako-rv], submitted to the [remix contest on
-Beatport][beatport-remix-contest], made in its entirety with Renoise 2.8.1.
+Beatport][beatport-remix-contest], made in its entirety with
+[Renoise][renoise] 2.8.1.
 
 <!--more-->
 
@@ -34,6 +36,7 @@ Norwegian sheep sausage ("korv") from the town of Voss. On
 
 [lindstrom]: https://soundcloud.com/feedelity
 [photo]: https://www.flickr.com/photos/mathrong/4220397918/
+[renoise]: https://www.renoise.com/
 [vos-sako-rv]: https://soundcloud.com/feedelity/lindstr-m-v-s-s-k-rv-vocal
 [vossakorv]: https://norwegianshop24.com/en/products/vossakorv-350g-vossakjot
 [beatport-remix-contest]: https://web.archive.org/web/20121115233725/http://play.beatport.com/contests/lindstrom-vos-sako-rv/

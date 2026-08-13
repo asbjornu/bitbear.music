@@ -5,6 +5,7 @@
       {% for item in page.links %}
         {% assign url = item | link_url %}
         {% assign key = url | link_brand %}
+        {% assign page_url = item | link_page_url %}
         {% capture links_verb %}
           {%- case key -%}
             {%- when 'bandcamp' -%}Buy
@@ -12,8 +13,11 @@
             {%- when 'apple-music' -%}Listen to
             {%- when 'spotify' -%}Listen to
             {%- when 'mirlo' -%}Listen to
+            {%- when 'nectarine' -%}Listen to
             {%- when 'demozoo' -%}View
             {%- when 'youtube' -%}Watch
+            {%- when 'modarchive' -%}View
+            {%- when 'amp' -%}View
           {%- endcase -%}
         {% endcapture %}
         {% capture title %}
@@ -29,7 +33,7 @@
           {%- endif -%}
         {% endcapture %}
         <li class="{{ key }}">
-          <a href="{{ url }}" target="_blank" aria-description="{{ title }}" data-tooltip="{{ title }}">
+          <a href="{{ page_url }}" target="_blank" aria-description="{{ title }}" data-tooltip="{{ title }}">
             <span class="icon icon-{{ key }}" role="img" aria-label="{{ title }}"></span>
           </a>
         </li>

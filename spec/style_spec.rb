@@ -69,6 +69,21 @@ describe 'Pico CSS integration' do
       expect(css).to include('.icon.icon-youtube')
       expect(css).to include('url("/assets/images/services/youtube.svg")')
     end
+
+    it 'masks the modarchive link icon with the M asset' do
+      expect(css).to include('.icon.icon-modarchive')
+      expect(css).to include('url("/assets/images/services/modarchive.svg")')
+    end
+
+    it 'masks the amp link icon with the AMP asset' do
+      expect(css).to include('.icon.icon-amp')
+      expect(css).to include('url("/assets/images/services/amp.svg")')
+    end
+
+    it 'masks the nectarine link icon with the nectarine asset' do
+      expect(css).to include('.icon.icon-nectarine')
+      expect(css).to include('url("/assets/images/services/nectarine.svg")')
+    end
   end
 
   describe 'generated markup' do
@@ -130,6 +145,32 @@ describe 'Pico CSS integration' do
                    'aria-description' => 'Watch “Final Countdown” on Youtube'
                  })
         with_tag('span', with: { class: 'icon icon-youtube' })
+      end
+    end
+
+    it 'derives the modarchive download button from a link' do
+      page = read_utf8(File.join(site_root, '_site', 'music', 'legacy', 'final-countdown.html'))
+      expect(page).to have_tag('a', with: {
+                                 role: 'button',
+                                 href: 'https://api.modarchive.org/downloads.php?moduleid=199582'
+                               })
+    end
+
+    it 'renders modarchive and amp links as icons pointing at their web pages, not the download files' do
+      page = read_utf8(File.join(site_root, '_site', 'music', 'legacy', 'final-countdown.html'))
+      expect(page).to have_tag('li', with: { class: 'modarchive' }) do
+        with_tag('a', with: {
+                   href: 'https://modarchive.org/index.php?request=view_by_moduleid&query=199582',
+                   target: '_blank'
+                 })
+        with_tag('span', with: { class: 'icon icon-modarchive' })
+      end
+      expect(page).to have_tag('li', with: { class: 'amp' }) do
+        with_tag('a', with: {
+                   href: 'https://amp.dascene.net/analyzer2.php?idx=159586',
+                   target: '_blank'
+                 })
+        with_tag('span', with: { class: 'icon icon-amp' })
       end
     end
   end

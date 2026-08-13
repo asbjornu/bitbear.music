@@ -11,5 +11,5 @@ links:
 [MONO MAGNUS][mono-magnus] and Bitbear's entry for the [TRSAC 2022
 streaming music competition][trsac]. Placed 2nd.
 
-[mono-magnus]: https://soundcloud.com/monomagnus
+[mono-magnus]: https://demozoo.org/sceners/4221/
 [trsac]: https://demozoo.org/parties/4489/#competition_17437

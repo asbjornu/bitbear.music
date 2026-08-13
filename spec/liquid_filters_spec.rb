@@ -259,7 +259,10 @@ describe '#sort_by' do
       'https://open.spotify.com/album/1U1mATmmalOlHPnX98UNFl' => 'spotify',
       'https://mirlo.space/bitbear/release/scene-so-far' => 'mirlo',
       'https://demozoo.org/music/141390/' => 'demozoo',
-      'https://www.youtube.com/watch?v=y2SR58hnMAU' => 'youtube'
+      'https://www.youtube.com/watch?v=y2SR58hnMAU' => 'youtube',
+      'https://api.modarchive.org/downloads.php?moduleid=199555' => 'modarchive',
+      'https://amp.dascene.net/downmod.php?index=159591' => 'amp',
+      'https://scenestream.net/demovibes/song/43928/' => 'nectarine'
     }.each do |url, brand|
       it "classifies #{url} as #{brand}" do
         expect(instance.link_brand(url)).to eq(brand)

@@ -14,7 +14,7 @@ describe 'remix kit pages' do
   end
 
   def front_matter(path)
-    YAML.safe_load(File.read(path).split(/^---\s*$/)[1])
+    YAML.safe_load(File.read(path).split(/^---\s*$/)[1], permitted_classes: [Date, Time, Symbol], aliases: true)
   end
 
   def body_text(path)

@@ -273,6 +273,20 @@ section.footer footer a:hover {
         height: 1em;
     }
 
+    &.icon-modarchive {
+        mask-image: url('/assets/images/services/modarchive.svg');
+        -webkit-mask-image: url('/assets/images/services/modarchive.svg');
+        width: 1.1em;
+        height: 1.1em;
+    }
+
+    &.icon-amp {
+        mask-image: url('/assets/images/services/amp.svg');
+        -webkit-mask-image: url('/assets/images/services/amp.svg');
+        width: 1.4em;
+        height: 1em;
+    }
+
     &.icon-apple-music {
         mask-image: url('/assets/images/services/apple-music.svg');
         -webkit-mask-image: url('/assets/images/services/apple-music.svg');
@@ -305,6 +319,13 @@ section.footer footer a:hover {
         mask-image: url('/assets/images/services/unknown.svg');
         -webkit-mask-image: url('/assets/images/services/unknown.svg');
         width: 1.1em;
+        height: 1.1em;
+    }
+
+    &.icon-nectarine {
+        mask-image: url('/assets/images/services/nectarine.svg');
+        -webkit-mask-image: url('/assets/images/services/nectarine.svg');
+        width: 1em;
         height: 1.1em;
     }
 
@@ -493,15 +514,12 @@ main {
             text-align: right;
         }
 
-        .format {
-            width: 2em;
-        }
-
-        &.songs:has(th.kind) {
+        &.songs {
             table-layout: fixed;
 
             .kind {
-                width: 3em;
+                width: 7em;
+                white-space: nowrap;
             }
         }
     }
@@ -665,13 +683,11 @@ main {
         }
     }
 
-    &.albums {
-        .tracks {
-            margin-bottom: 2rem;
+    .tracks {
+        margin-bottom: 2rem;
 
-            ol {
-                margin-left: 2rem;
-            }
+        ol {
+            margin-left: 2rem;
         }
     }
 }

@@ -6,16 +6,18 @@ media:
   channels: 3
   format: MOD
   length: 0:37 (looped)
-  modarchive: 199581
-  amp: 159581
 links:
   - https://demozoo.org/music/317401/
   - https://www.youtube.com/watch?v=DLzDOGB5iqk
+  - https://api.modarchive.org/downloads.php?moduleid=199581
+  - https://amp.dascene.net/downmod.php?index=159581
 ---
 
-This unconventional 3-channel [chiptune] was created with Scream Tracker 3 on
-{% date %}. Shared and published, not for pride, but for completeness.
+This unconventional 3-channel [chiptune] was created with [Scream Tracker
+3][scream-tracker] on {% date %}. Shared and published, not for pride, but
+for completeness.
 
 <!--more-->
 
 [chiptune]: /music/chiptunes
+[scream-tracker]: https://en.wikipedia.org/wiki/Scream_Tracker

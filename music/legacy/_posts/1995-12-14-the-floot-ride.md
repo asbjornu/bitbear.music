@@ -5,11 +5,11 @@ media:
   channels: 4
   format: MOD
   length: '1:21'
-  modarchive: 199555
-  amp: 159591
 links:
   - https://demozoo.org/music/315974/
   - https://www.youtube.com/watch?v=WfWNZNDsp_w
+  - https://api.modarchive.org/downloads.php?moduleid=199555
+  - https://amp.dascene.net/downmod.php?index=159591
 ---
 
 "The Floote Ride" was one of the the first tracker modules I feel somewhat
