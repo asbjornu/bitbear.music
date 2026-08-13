@@ -108,6 +108,12 @@ missing.
   directory implies (e.g. an "album" page filed under `music/legacy/`), set `layout:`
   explicitly in front matter — don't assume CSS scoped to `main.<category>` will apply,
   and don't assume `site.categories['<x>']` listings will include/exclude it as expected.
+- **No trailing slash on page URLs**: the site-wide `permalink: /:categories/:title`
+  pattern (in `_config.yml`) produces a bare file per page (e.g. `license.md` →
+  `/license.html`, served at `/license`), not a directory with an `index.html`. Linking
+  to `/license/` (with a trailing slash) 404s — always link to `/license` without one.
+  This applies to any root-level or top-level page using the default permalink, not just
+  `/license`.
 - **Same-day post ordering**: Jekyll breaks ties between same-date posts by filename,
   not insertion order. When an album and one of its tracks share a release date, give
   the album an explicit `date: YYYY-MM-DD 01:00:00 +0000` (an hour past midnight) so it

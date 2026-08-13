@@ -126,7 +126,7 @@ describe 'remix kit pages' do
 
       it 'explains the license and links to the license page' do
         expect(kit).to have_tag('h3', text: /License/)
-        expect(kit).to have_tag('a', with: { href: '/license/', rel: 'license' })
+        expect(kit).to have_tag('a', with: { href: '/license', rel: 'license' })
         expect(kit).to have_tag('a', text: /Creative\s+Commons/, with: { href: 'https://creativecommons.org/licenses/by-nc/4.0/', rel: 'license' })
       end
     end

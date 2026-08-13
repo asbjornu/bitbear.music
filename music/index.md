@@ -24,4 +24,4 @@ to the [legacy section][legacy].
 
 [cc-by-nc]: https://creativecommons.org/licenses/by-nc/4.0/
 [legacy]: /music/legacy/
-[license]: /license/
+[license]: /license
