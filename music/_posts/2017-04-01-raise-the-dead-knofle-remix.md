@@ -1,5 +1,6 @@
 ---
 title: Raise The Dead (Knofle Remix)
+tags: [drum-and-bass, dance, newschool, dark, cinematic, lyrics, breakcore]
 media:
   length: '5:40'
 links:

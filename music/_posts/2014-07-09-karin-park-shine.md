@@ -1,5 +1,6 @@
 ---
 title: Karin Park - Shine (Bitbear Remix)
+tags: [house, newschool, remix, melodic, vocal, lyrics]
 media:
   length: '4:06'
   filesize: 47914668

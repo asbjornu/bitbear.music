@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+<h2>{{ page.title }}</h2>
+
+{% assign trimmed_content = content | strip %}
+{% if trimmed_content != empty %}
+  {{ content }}
+{% else %}
+  <p class="jumbotron">Here you can find all of Bitbear's {{ page.tag }} tracks.</p>
+{% endif %}
+
+{% assign posts = site.tags[page.tag] %}
+{% include song_year_nav.html posts=posts %}
+{% include song_table.html posts=posts %}

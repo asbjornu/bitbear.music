@@ -1,5 +1,6 @@
 ---
 title: Kalle K's Dillemma
+tags: [oldskool]
 media:
   filesize: 324608
   format: IT

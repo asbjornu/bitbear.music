@@ -1,5 +1,6 @@
 ---
 title: Pixel Perfect
+tags: [dance, newschool, lyrics, vocal]
 published: false
 media:
   format: XRNS

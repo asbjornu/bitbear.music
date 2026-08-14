@@ -1,5 +1,6 @@
 ---
 title: Lindstrøm - Vōs-sākō-rv (Bitbear Remix)
+tags: [house, newschool, remix]
 media:
   length: '3:43'
   cover: vos-sako-rv.jpg

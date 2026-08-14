@@ -1,5 +1,6 @@
 ---
 title: Raise The Dead
+tags: [drum-and-bass, dance, newschool, dark, cinematic, lyrics]
 media:
   length: '3:29'
 links:

@@ -25,7 +25,11 @@ layout: default
           {% if page.media.format %}
             <tr>
               <th scope="row">Format</th>
-              <td><abbr title="{{ page.media.format | format_description }}">{{ page.media.format }}</abbr></td>
+              <td>
+                <a href="/music/formats/{{ page.media.format | downcase }}/"
+                   aria-description="{{ page.media.format | format_description }}"
+                   data-tooltip="{{ page.media.format | format_description }}">{{ page.media.format }}</a>
+              </td>
             </tr>
           {% endif %}
           {% if page.media.channels %}
@@ -40,6 +44,7 @@ layout: default
               <td>{{ page.media.length }}</td>
             </tr>
           {% endif %}
+          {% include genres_table_row.html %}
           {% include remix_kit_row.html %}
           {% if page.links %}
             {% include links.html %}

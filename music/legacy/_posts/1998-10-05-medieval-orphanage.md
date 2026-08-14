@@ -1,5 +1,6 @@
 ---
 title: Medieval Orphanage
+tags: [orchestral, oldskool]
 media:
   cover: beyond-fantasy.jpg
   filesize: 172032

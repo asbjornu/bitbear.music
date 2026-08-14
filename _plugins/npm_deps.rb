@@ -38,7 +38,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
 
   unless File.exist?(font_source)
     Jekyll.logger.warn 'fonts:', 'roboto-latin-wght-normal.woff2 not found; ' \
-                                'local Roboto font was not copied to _site'
+                                 'local Roboto font was not copied to _site'
     next
   end
 

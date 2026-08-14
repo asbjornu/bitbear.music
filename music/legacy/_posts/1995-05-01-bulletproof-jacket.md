@@ -1,5 +1,6 @@
 ---
 title: Bulletproof Jacket
+tags: [oldskool]
 media:
   filesize: 79466
   channels: 8

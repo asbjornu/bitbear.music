@@ -1,5 +1,6 @@
 ---
 title: Acidic Sweat
+tags: [acid, techno, newschool]
 media:
   format: XRNS
   cover: acidic-sweat.jpg

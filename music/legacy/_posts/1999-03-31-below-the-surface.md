@@ -1,5 +1,6 @@
 ---
 title: Below the Surface
+tags: [trance, oldskool]
 media:
   cover: 3rd-floor.jpg
   filesize: 259072

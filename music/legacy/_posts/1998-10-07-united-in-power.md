@@ -1,5 +1,6 @@
 ---
 title: United in Power
+tags: [house, oldskool]
 media:
   cover: beyond-fantasy.jpg
   filesize: 122880

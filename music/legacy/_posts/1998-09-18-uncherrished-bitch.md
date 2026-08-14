@@ -1,5 +1,6 @@
 ---
 title: Uncherrished Bitch
+tags: [acid, oldskool]
 media:
   cover: beyond-fantasy.jpg
   filesize: 140288

@@ -1,5 +1,6 @@
 ---
 title: Life Without Love
+tags: [house, oldskool]
 media:
   cover: beyond-fantasy.jpg
   filesize: 208896

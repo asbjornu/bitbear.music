@@ -1,5 +1,6 @@
 ---
 title: Psyko Infarnation
+tags: [techno, oldskool]
 media:
   filesize: 53950
   channels: 4

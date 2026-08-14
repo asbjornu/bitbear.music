@@ -1,5 +1,6 @@
 ---
 title: Hospitality Madness
+tags: [oldskool]
 media:
   filesize: 140288
   format: S3M

@@ -1,5 +1,6 @@
 ---
 title: I Feel You (Impulse Tracker Mix)
+tags: [oldskool, synth-pop, synthwave]
 media:
   length: '3:38'
   cover: i-feel-you-impulse-tracker-mix.jpg

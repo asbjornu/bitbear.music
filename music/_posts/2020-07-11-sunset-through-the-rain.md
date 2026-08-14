@@ -1,5 +1,6 @@
 ---
 title: Sunset Through The Rain
+tags: [trance, newschool, melodic, tech-trance]
 media:
   filesize: 32414684
   format: XRNS

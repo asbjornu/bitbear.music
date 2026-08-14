@@ -1,5 +1,6 @@
 ---
 title: Project Milennium
+tags: [house, oldskool]
 media:
   cover: beyond-fantasy.jpg
   filesize: 186368

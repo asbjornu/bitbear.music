@@ -1,5 +1,6 @@
 ---
 title: Raise The Dead (Modulo One's Flying Dead Remix)
+tags: [trance, newschool, dark, cinematic, lyrics, hands-up, tech-trance]
 media:
   length: '4:53'
 links:

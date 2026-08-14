@@ -38,7 +38,7 @@ layout: default
           {% if track.media.format %}
             <tr>
               <th scope="row">Format</th>
-              <td>{{ track.media.format }}</td>
+              <td><a href="/music/formats/{{ track.media.format | downcase }}/">{{ track.media.format }}</a></td>
             </tr>
           {% endif %}
           {% if track.media.channels %}

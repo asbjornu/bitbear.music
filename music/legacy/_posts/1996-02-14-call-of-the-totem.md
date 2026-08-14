@@ -1,6 +1,6 @@
 ---
 title: Call of the Totem
-tag: chip
+tags: [chip, oldskool]
 media:
   filesize: 7746
   channels: 4

@@ -1,5 +1,6 @@
 ---
 title: Walking (Part 2)
+tags: [rock, oldskool]
 media:
   cover: beyond-fantasy.jpg
   filesize: 384000

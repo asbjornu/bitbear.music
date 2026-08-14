@@ -1,5 +1,6 @@
 ---
 title: Open Your Heart
+tags: [pop, oldskool]
 media:
   cover: beyond-fantasy.jpg
   format: IT

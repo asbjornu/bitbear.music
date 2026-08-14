@@ -1,6 +1,6 @@
 ---
 title: Stop The Violence!
-tag: chip
+tags: [chip, oldskool]
 media:
   filesize: 8444
   channels: 3

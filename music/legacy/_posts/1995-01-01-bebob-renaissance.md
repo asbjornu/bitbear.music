@@ -1,5 +1,6 @@
 ---
 title: Bebob Renaissance
+tags: [oldskool]
 media:
   filesize: 61400
   format: MOD

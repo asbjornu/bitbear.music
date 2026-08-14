@@ -29,6 +29,65 @@ missing.
   Other valid tasks: `bundle exec rake spec`, `bundle exec rake htmlproofer`,
   `bundle exec rake clean`.
 - Self-check: `ruby --version` must report `4.x`.
+- **Stale build artifacts can make a correct change look broken**: if a rebuilt
+  `_site` page doesn't reflect a source/layout/`_config.yml` change you just made
+  (e.g. an old layout, old wording, or a link that shouldn't exist), don't assume
+  your change is wrong before ruling out two culprits:
+  1. A leftover background `jekyll serve`/`--watch` process from earlier in the
+     session, silently regenerating `_site` from its own in-memory state whenever
+     it notices a filesystem change, racing with and clobbering your foreground
+     `rake build`/`rake spec`/`rake htmlproofer` runs. Check with
+     `ps aux | grep jekyll` and `kill` any stray `jekyll serve` process before
+     trusting a build.
+  2. A stale `.jekyll-cache/` (or `.jekyll-metadata`) directory. When debugging
+     generator/layout/defaults behavior, wipe both before rebuilding:
+     `rm -rf .jekyll-cache _site`.
+  Note `spec/spec_helper.rb`'s `before(:suite)` hook rebuilds `_site` itself
+  (via `Jekyll::Commands::Build.process`), so `bundle exec rake spec` and
+  `bundle exec rake htmlproofer` each implicitly trigger a rebuild — a stray
+  `jekyll serve` process can still race with those, too.
+
+## Rubocop
+
+- Run `bundle exec rubocop` (add `-A` to auto-correct safe/correctable
+  offenses) before considering `_plugins/**/*.rb` work done; it's not part of
+  the `rake` tasks above and won't be caught by `rake spec`/`rake build`.
+- **Generated in-memory `Jekyll::Page` subclasses trigger
+  `Lint/MissingSuper`** (e.g. `TagPage`/`FormatPage` in
+  `_plugins/tag_page_generator.rb`/`_plugins/format_pages.rb`).
+  `Jekyll::Page#initialize` calls `read_yaml` to read front matter off disk,
+  but these pages are synthesized purely in memory and have no backing
+  file — calling `super` would need a nonexistent file path (Jekyll would
+  log a benign-but-noisy warning per generated page rather than fail, since
+  `strict_front_matter` defaults to off, but it's still wrong). The
+  established fix here is a targeted
+  `# rubocop:disable Lint/MissingSuper` / `# rubocop:enable` pair around
+  `initialize`, with a one-line comment explaining why — not calling `super`
+  with a dummy path. This mirrors how `jekyll-archives`' own
+  `Archive < Jekyll::Page` class handles the identical situation upstream.
+- **Prefer refactoring over raising `Metrics` limits.** When a `Metrics/*`
+  cop (AbcSize, CyclomaticComplexity, MethodLength, PerceivedComplexity) trips
+  on a filter in `_plugins/liquid_filters/*.rb`, extract private helper
+  methods (or a data-driven lookup table, as `LinkFilters::LINK_BRAND_PATTERNS`
+  replaced a long `case`/`when` in `link_brand`) rather than bumping the
+  limit in `.rubocop.yml`. `Metrics/MethodLength` already has one deliberate,
+  repo-wide override (`Max: 20`) — that's the exception, not the pattern to
+  follow per-offense.
+- **`Metrics/ModuleLength` was deliberately rejected as a config override**:
+  a from-scratch fix bumped `Max` in `.rubocop.yml` when
+  `_plugins/liquid_filters.rb` grew past 100 lines, but the actual fix
+  (reverted) was to split the single module into focused files under
+  `_plugins/liquid_filters/` (`collection_filters.rb`, `link_filters.rb`,
+  `youtube_filters.rb`, `format_filters.rb`, `remix_kit_filters.rb`), each
+  its own `Jekyll::*Filters` module independently registered via
+  `Liquid::Template.register_filter`. Jekyll's plugin loader globs
+  `_plugins/**/*.rb` recursively, so nested files need no manual `require`
+  wiring. Liquid mixes every registered filter module into the same
+  `Strainer` instance, so a public method in one file (e.g.
+  `YoutubeFilters#youtube_id` calling `LinkFilters#link_url`) resolves fine
+  across module boundaries at runtime — split by cohesive concern freely,
+  cross-file calls aren't a concern. `spec/liquid_filters_spec.rb` mixes all
+  five modules into one anonymous test class for the same reason.
 
 ## Node.js & Pico CSS
 
@@ -124,6 +183,78 @@ missing.
   (e.g. an explicit `date:`) can break specs that don't permit that class. When adding
   new front matter types, grep `spec/*.rb` for `YAML.safe_load` and make sure every call
   site includes `permitted_classes: [Date, Time, Symbol], aliases: true`.
+
+## Genre/tag pages
+
+- Every track post is tagged via a `tags:` front matter array (e.g.
+  `tags: [house, dance]`) with lowercase, hyphenated genre/style slugs (e.g.
+  `drum-and-bass`, `oldskool`). This is Jekyll's built-in tags mechanism
+  (`site.tags`), not a custom concept — a single-tag post may alternatively use
+  the singular `tag: <name>` key (Jekyll pluralizes it automatically), but
+  prefer the plural array form once a post has more than one tag.
+- `_plugins/tag_page_generator.rb` (`TagPageGenerator`) synthesizes a page at
+  `/music/genres/<tag>/` for every tag in `site.tags`, rendered with the `tag`
+  layout (`_layouts/tag.html`), which lists all posts carrying that tag via the
+  same `song_year_nav.html`/`song_table.html` includes used elsewhere.
+- **Physical pages take precedence over synthesized ones**: before generating
+  a page for a tag, the generator checks whether a real page already resolves
+  to that same `/music/genres/<tag>/` URL (via `site.pages.map(&:url)`) and
+  skips generation if so. This is how `music/genres/chip/index.md` (Bitbear's
+  hand-written chiptunes page, with its own prose) overrides the otherwise
+  auto-generated `chip` genre page — there is no special front-matter marker
+  for this, it's purely a URL collision check, so **any physical page placed
+  at `music/genres/<tag>/index.md` automatically takes over that tag's page**.
+- The `tag` layout itself is applied via a `_config.yml` front-matter default
+  scope (`path: music/genres` → `layout: tag`), **not** hard-coded in
+  `music/genres/chip/index.md`'s own front matter — keep it that way so every
+  page under `music/genres/` (physical or synthesized) gets the layout
+  uniformly. `_layouts/tag.html` renders `{{ content }}` when a physical page
+  has a body, falling back to a generic "Bitbear's `<tag>` tracks" blurb when
+  it doesn't (synthesized pages have no body) — don't reintroduce a hard-coded
+  heading like `Bitbear's {{ page.title }} tracks` in the layout, since a
+  physical page's `title` is already a complete phrase (e.g. "Bitbear's
+  Chiptunes") and would get wrapped/duplicated; instead, generator-produced
+  titles (`TagPage#initialize` in `_plugins/tag_page_generator.rb`) are
+  already complete strings, and the layout just renders `page.title` as-is.
+- `_includes/genres_table_row.html` renders each post's `page.tags` as links
+  to `/music/genres/<tag>/` in a "Genres" row in the track page's media table
+  (wired into `_layouts/post.html`).
+- `spec/genre_pages_spec.rb` covers this: every tag has a generated page, the
+  `chip` override isn't duplicated, and the "Genres" row links correctly.
+  When adding new tags, no new spec examples need writing — the spec derives
+  its list of tags straight from post front matter. Tags used only by an
+  unpublished post (`published: false`) are excluded from that derivation,
+  matching Jekyll's own exclusion of unpublished posts from `site.tags` (no
+  genre page is generated for a tag with no published posts).
+
+## Format pages
+
+- The same physical-page-overrides-synthesized-page pattern used for genres
+  is mirrored for track formats (`page.media.format`, e.g. `MOD`, `S3M`,
+  `IT`, `FST`, `XRNS`) via `_plugins/format_pages.rb`
+  (`FormatPageGenerator`/`FormatPage`) and `_layouts/format.html`, at
+  `/music/formats/<format>/` (lowercased in the URL; the `format:` front
+  matter/data value itself stays uppercase to match `media.format` values
+  verbatim). Unlike tags, Jekyll has no built-in `site.tags`-equivalent
+  grouping for arbitrary front matter fields, so the generator computes and
+  exposes the format → posts mapping itself as `site.data['formats']`
+  (`_layouts/format.html` reads it as `site.data.formats[page.format]`).
+- Every format currently in use (`MOD`, `S3M`, `IT`, `FST`, `XRNS`) has a
+  **hand-written physical page** at `music/formats/<format>/index.md`
+  explaining the format's history and sourcing, per this feature's
+  requirement that every format page explains the format — there is
+  currently no format left to the generic auto-generated fallback. If a new
+  format value is introduced without a matching physical page, the generator
+  will still synthesize a minimal page for it automatically.
+- Every place a format abbreviation is displayed is a link to its format
+  page: the "Format" row in the track media table (`_layouts/post.html`),
+  the `(MOD)`/`(IT)`/etc. suffix in the "Kind" column of every song table row
+  (`_includes/song_table_row.html`), and the remix kit page's "Format" row
+  (`_layouts/remix_kit.html`). If a new spot renders `media.format` in the
+  future, link it the same way (`/music/formats/{{ format | downcase }}/`)
+  rather than rendering it as plain/abbr-only text.
+- `spec/format_pages_spec.rb` covers this the same way
+  `spec/genre_pages_spec.rb` covers genres.
 
 ## Git LFS
 

@@ -1,5 +1,6 @@
 ---
 title: Call of the Druidz
+tags: [oldskool]
 media:
   filesize: 280576
   format: S3M
