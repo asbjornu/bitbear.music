@@ -1,10 +1,22 @@
 # frozen_string_literal: true
 
 require 'liquid'
-require_relative '../_plugins/liquid_filters'
+require_relative '../_plugins/liquid_filters/collection_filters'
+require_relative '../_plugins/liquid_filters/link_filters'
+require_relative '../_plugins/liquid_filters/youtube_filters'
+require_relative '../_plugins/liquid_filters/format_filters'
+require_relative '../_plugins/liquid_filters/remix_kit_filters'
 
-describe Jekyll::LiquidFilters do
-  subject(:instance) { Class.new { include Jekyll::LiquidFilters }.new }
+describe 'Liquid filters' do
+  subject(:instance) do
+    Class.new do
+      include Jekyll::CollectionFilters
+      include Jekyll::LinkFilters
+      include Jekyll::YoutubeFilters
+      include Jekyll::FormatFilters
+      include Jekyll::RemixKitFilters
+    end.new
+  end
 
   describe '#reject with key and value' do
     context 'with scalar values' do

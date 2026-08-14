@@ -47,6 +47,48 @@ missing.
   `bundle exec rake htmlproofer` each implicitly trigger a rebuild — a stray
   `jekyll serve` process can still race with those, too.
 
+## Rubocop
+
+- Run `bundle exec rubocop` (add `-A` to auto-correct safe/correctable
+  offenses) before considering `_plugins/**/*.rb` work done; it's not part of
+  the `rake` tasks above and won't be caught by `rake spec`/`rake build`.
+- **Generated in-memory `Jekyll::Page` subclasses trigger
+  `Lint/MissingSuper`** (e.g. `TagPage`/`FormatPage` in
+  `_plugins/tag_page_generator.rb`/`_plugins/format_pages.rb`).
+  `Jekyll::Page#initialize` calls `read_yaml` to read front matter off disk,
+  but these pages are synthesized purely in memory and have no backing
+  file — calling `super` would need a nonexistent file path (Jekyll would
+  log a benign-but-noisy warning per generated page rather than fail, since
+  `strict_front_matter` defaults to off, but it's still wrong). The
+  established fix here is a targeted
+  `# rubocop:disable Lint/MissingSuper` / `# rubocop:enable` pair around
+  `initialize`, with a one-line comment explaining why — not calling `super`
+  with a dummy path. This mirrors how `jekyll-archives`' own
+  `Archive < Jekyll::Page` class handles the identical situation upstream.
+- **Prefer refactoring over raising `Metrics` limits.** When a `Metrics/*`
+  cop (AbcSize, CyclomaticComplexity, MethodLength, PerceivedComplexity) trips
+  on a filter in `_plugins/liquid_filters/*.rb`, extract private helper
+  methods (or a data-driven lookup table, as `LinkFilters::LINK_BRAND_PATTERNS`
+  replaced a long `case`/`when` in `link_brand`) rather than bumping the
+  limit in `.rubocop.yml`. `Metrics/MethodLength` already has one deliberate,
+  repo-wide override (`Max: 20`) — that's the exception, not the pattern to
+  follow per-offense.
+- **`Metrics/ModuleLength` was deliberately rejected as a config override**:
+  a from-scratch fix bumped `Max` in `.rubocop.yml` when
+  `_plugins/liquid_filters.rb` grew past 100 lines, but the actual fix
+  (reverted) was to split the single module into focused files under
+  `_plugins/liquid_filters/` (`collection_filters.rb`, `link_filters.rb`,
+  `youtube_filters.rb`, `format_filters.rb`, `remix_kit_filters.rb`), each
+  its own `Jekyll::*Filters` module independently registered via
+  `Liquid::Template.register_filter`. Jekyll's plugin loader globs
+  `_plugins/**/*.rb` recursively, so nested files need no manual `require`
+  wiring. Liquid mixes every registered filter module into the same
+  `Strainer` instance, so a public method in one file (e.g.
+  `YoutubeFilters#youtube_id` calling `LinkFilters#link_url`) resolves fine
+  across module boundaries at runtime — split by cohesive concern freely,
+  cross-file calls aren't a concern. `spec/liquid_filters_spec.rb` mixes all
+  five modules into one anonymous test class for the same reason.
+
 ## Node.js & Pico CSS
 
 - Pico CSS (`@picocss/pico` 2.x) IS the styling framework, used in **classless mode** —
@@ -150,7 +192,7 @@ missing.
   (`site.tags`), not a custom concept — a single-tag post may alternatively use
   the singular `tag: <name>` key (Jekyll pluralizes it automatically), but
   prefer the plural array form once a post has more than one tag.
-- `_plugins/tag_pages.rb` (`TagPageGenerator`) synthesizes a page at
+- `_plugins/tag_page_generator.rb` (`TagPageGenerator`) synthesizes a page at
   `/music/genres/<tag>/` for every tag in `site.tags`, rendered with the `tag`
   layout (`_layouts/tag.html`), which lists all posts carrying that tag via the
   same `song_year_nav.html`/`song_table.html` includes used elsewhere.
@@ -172,8 +214,8 @@ missing.
   heading like `Bitbear's {{ page.title }} tracks` in the layout, since a
   physical page's `title` is already a complete phrase (e.g. "Bitbear's
   Chiptunes") and would get wrapped/duplicated; instead, generator-produced
-  titles (`TagPage#initialize` in `_plugins/tag_pages.rb`) are already
-  complete strings, and the layout just renders `page.title` as-is.
+  titles (`TagPage#initialize` in `_plugins/tag_page_generator.rb`) are
+  already complete strings, and the layout just renders `page.title` as-is.
 - `_includes/genres_table_row.html` renders each post's `page.tags` as links
   to `/music/genres/<tag>/` in a "Genres" row in the track page's media table
   (wired into `_layouts/post.html`).
