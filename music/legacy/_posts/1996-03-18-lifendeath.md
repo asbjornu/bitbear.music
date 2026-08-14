@@ -4,7 +4,7 @@ tags: [oldskool]
 media:
   filesize: 89088
   channels: 8
-  format: FST
+  format: MOD
 links:
   - https://demozoo.org/music/266815/
   - https://amp.dascene.net/downmod.php?index=159521

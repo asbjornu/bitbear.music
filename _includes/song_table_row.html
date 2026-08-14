@@ -10,7 +10,7 @@
       {{- kind -}}
       {%- if post.media.format -%}
         {% assign format_title = post.media.format | format_description %}
-        &nbsp;(<abbr title="{{ format_title }}">{{ post.media.format }}</abbr>)
+        &nbsp;(<a href="/music/formats/{{ post.media.format | downcase }}/" aria-description="{{ format_title }}" data-tooltip="{{ format_title }}">{{ post.media.format }}</a>)
       {%- endif -%}
     {%- endif -%}
   </td>

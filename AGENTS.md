@@ -185,6 +185,35 @@ missing.
   matching Jekyll's own exclusion of unpublished posts from `site.tags` (no
   genre page is generated for a tag with no published posts).
 
+## Format pages
+
+- The same physical-page-overrides-synthesized-page pattern used for genres
+  is mirrored for track formats (`page.media.format`, e.g. `MOD`, `S3M`,
+  `IT`, `FST`, `XRNS`) via `_plugins/format_pages.rb`
+  (`FormatPageGenerator`/`FormatPage`) and `_layouts/format.html`, at
+  `/music/formats/<format>/` (lowercased in the URL; the `format:` front
+  matter/data value itself stays uppercase to match `media.format` values
+  verbatim). Unlike tags, Jekyll has no built-in `site.tags`-equivalent
+  grouping for arbitrary front matter fields, so the generator computes and
+  exposes the format → posts mapping itself as `site.data['formats']`
+  (`_layouts/format.html` reads it as `site.data.formats[page.format]`).
+- Every format currently in use (`MOD`, `S3M`, `IT`, `FST`, `XRNS`) has a
+  **hand-written physical page** at `music/formats/<format>/index.md`
+  explaining the format's history and sourcing, per this feature's
+  requirement that every format page explains the format — there is
+  currently no format left to the generic auto-generated fallback. If a new
+  format value is introduced without a matching physical page, the generator
+  will still synthesize a minimal page for it automatically.
+- Every place a format abbreviation is displayed is a link to its format
+  page: the "Format" row in the track media table (`_layouts/post.html`),
+  the `(MOD)`/`(IT)`/etc. suffix in the "Kind" column of every song table row
+  (`_includes/song_table_row.html`), and the remix kit page's "Format" row
+  (`_layouts/remix_kit.html`). If a new spot renders `media.format` in the
+  future, link it the same way (`/music/formats/{{ format | downcase }}/`)
+  rather than rendering it as plain/abbr-only text.
+- `spec/format_pages_spec.rb` covers this the same way
+  `spec/genre_pages_spec.rb` covers genres.
+
 ## Git LFS
 
 - Git LFS **is installed** (`/opt/homebrew/bin/git-lfs`, v3.x). Any "not installed"

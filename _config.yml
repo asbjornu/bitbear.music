@@ -42,6 +42,10 @@ defaults:
     values:
       layout: tag
   - scope:
+      path: music/formats
+    values:
+      layout: format
+  - scope:
       path: music
     values:
       layout: post
