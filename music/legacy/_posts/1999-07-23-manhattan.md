@@ -1,5 +1,6 @@
 ---
 title: Manhattan
+tags: [rock, oldskool]
 media:
   cover: 3rd-floor.jpg
   filesize: 190464

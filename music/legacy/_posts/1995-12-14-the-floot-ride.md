@@ -1,5 +1,6 @@
 ---
 title: The Floot Ride
+tags: [oldskool]
 media:
   filesize: 50288
   channels: 4

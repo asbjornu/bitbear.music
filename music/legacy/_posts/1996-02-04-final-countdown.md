@@ -1,6 +1,6 @@
 ---
 title: Final Countdown
-tag: chip
+tags: [chip, oldskool]
 media:
   filesize: 9832
   channels: 4
@@ -24,6 +24,6 @@ and timing. It didn't end up as a perfect chip rendition of the original, but
 being a musically untrained 15-year old when I made it, I think it came out
 okay.
 
-[chiptune]: /music/chiptunes
+[chiptune]: /music/genres/chip/
 [europe]: https://en.wikipedia.org/wiki/Europe_(band)
 [final-countdown]: https://en.wikipedia.org/wiki/The_Final_Countdown_(song)

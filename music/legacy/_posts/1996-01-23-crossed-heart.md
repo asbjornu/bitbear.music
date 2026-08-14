@@ -1,6 +1,6 @@
 ---
 title: Crossed Heart
-tag: chip
+tags: [chip, oldskool]
 media:
   channels: 2
   filesize: 9112

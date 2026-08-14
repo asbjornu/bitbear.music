@@ -1,5 +1,6 @@
 ---
 title: Behind the Curtains
+tags: [trance, oldskool]
 media:
   cover: beyond-fantasy.jpg
   filesize: 505856

@@ -1,5 +1,6 @@
 ---
 title: Beveled Edges
+tags: [trance, oldskool]
 media:
   cover: 3rd-floor.jpg
   filesize: 411648

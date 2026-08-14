@@ -1,5 +1,6 @@
 ---
 title: Short Hip Tune
+tags: [oldskool]
 media:
   filesize: 93296
   channels: 4

@@ -1,5 +1,6 @@
 ---
 title: Lykke Liten!
+tags: [house, oldskool]
 media:
   cover: beyond-fantasy.jpg
   filesize: 427008

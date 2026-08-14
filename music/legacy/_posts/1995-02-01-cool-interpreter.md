@@ -1,5 +1,6 @@
 ---
 title: Cool Interpreter
+tags: [oldskool]
 media:
   channels: 4
   filesize: 55748

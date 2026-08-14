@@ -1,5 +1,6 @@
 ---
 title: Back in the Shire
+tags: [trance, oldskool]
 media:
   cover: beyond-fantasy.jpg
   filesize: 240640

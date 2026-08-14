@@ -1,5 +1,6 @@
 ---
 title: Modulo One - The King And The Priest (Bitbear Remix)
+tags: [ebm, pop, dance, newschool, remix, progressive-breaks]
 media:
   length: '5:12'
   cover: the-king-and-the-priest.jpg

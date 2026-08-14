@@ -1,6 +1,6 @@
 ---
 title: Fat Ma's Death
-tag: chip
+tags: [chip, oldskool]
 media:
   filesize: 8444
   channels: 4
@@ -27,4 +27,4 @@ looping.
 
 *[PoC]: Power of Creation
 
-[chiptune]: /music/chiptunes
+[chiptune]: /music/genres/chip/

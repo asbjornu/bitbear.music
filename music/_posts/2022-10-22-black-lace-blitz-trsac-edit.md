@@ -1,5 +1,6 @@
 ---
 title: MONO MAGNUS x Bitbear – Black Lace Blitz (TRSAC edit)
+tags: [techno, newschool, tech-trance]
 media:
   length: '3:56'
   cover: black-lace-blitz-trsac-edit.jpg

@@ -1,5 +1,6 @@
 ---
 title: First Techno Attempt
+tags: [techno, oldskool]
 media:
   filesize: 167904
   channels: 6

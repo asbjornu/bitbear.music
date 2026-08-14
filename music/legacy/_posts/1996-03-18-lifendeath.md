@@ -1,5 +1,6 @@
 ---
 title: Life'n'Death
+tags: [oldskool]
 media:
   filesize: 89088
   channels: 8

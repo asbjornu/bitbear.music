@@ -1,5 +1,6 @@
 ---
 title: Bear Hugs Forever
+tags: [newschool, dance, melodic, lyrics, vocal]
 published: false
 media:
   format: XRNS

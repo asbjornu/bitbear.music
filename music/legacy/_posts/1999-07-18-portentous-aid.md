@@ -1,5 +1,6 @@
 ---
 title: Portentous Aid
+tags: [trance, oldskool]
 media:
   cover: 3rd-floor.jpg
   filesize: 392192

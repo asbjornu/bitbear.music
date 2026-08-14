@@ -29,6 +29,23 @@ missing.
   Other valid tasks: `bundle exec rake spec`, `bundle exec rake htmlproofer`,
   `bundle exec rake clean`.
 - Self-check: `ruby --version` must report `4.x`.
+- **Stale build artifacts can make a correct change look broken**: if a rebuilt
+  `_site` page doesn't reflect a source/layout/`_config.yml` change you just made
+  (e.g. an old layout, old wording, or a link that shouldn't exist), don't assume
+  your change is wrong before ruling out two culprits:
+  1. A leftover background `jekyll serve`/`--watch` process from earlier in the
+     session, silently regenerating `_site` from its own in-memory state whenever
+     it notices a filesystem change, racing with and clobbering your foreground
+     `rake build`/`rake spec`/`rake htmlproofer` runs. Check with
+     `ps aux | grep jekyll` and `kill` any stray `jekyll serve` process before
+     trusting a build.
+  2. A stale `.jekyll-cache/` (or `.jekyll-metadata`) directory. When debugging
+     generator/layout/defaults behavior, wipe both before rebuilding:
+     `rm -rf .jekyll-cache _site`.
+  Note `spec/spec_helper.rb`'s `before(:suite)` hook rebuilds `_site` itself
+  (via `Jekyll::Commands::Build.process`), so `bundle exec rake spec` and
+  `bundle exec rake htmlproofer` each implicitly trigger a rebuild — a stray
+  `jekyll serve` process can still race with those, too.
 
 ## Node.js & Pico CSS
 
@@ -124,6 +141,49 @@ missing.
   (e.g. an explicit `date:`) can break specs that don't permit that class. When adding
   new front matter types, grep `spec/*.rb` for `YAML.safe_load` and make sure every call
   site includes `permitted_classes: [Date, Time, Symbol], aliases: true`.
+
+## Genre/tag pages
+
+- Every track post is tagged via a `tags:` front matter array (e.g.
+  `tags: [house, dance]`) with lowercase, hyphenated genre/style slugs (e.g.
+  `drum-and-bass`, `oldskool`). This is Jekyll's built-in tags mechanism
+  (`site.tags`), not a custom concept — a single-tag post may alternatively use
+  the singular `tag: <name>` key (Jekyll pluralizes it automatically), but
+  prefer the plural array form once a post has more than one tag.
+- `_plugins/tag_pages.rb` (`TagPageGenerator`) synthesizes a page at
+  `/music/genres/<tag>/` for every tag in `site.tags`, rendered with the `tag`
+  layout (`_layouts/tag.html`), which lists all posts carrying that tag via the
+  same `song_year_nav.html`/`song_table.html` includes used elsewhere.
+- **Physical pages take precedence over synthesized ones**: before generating
+  a page for a tag, the generator checks whether a real page already resolves
+  to that same `/music/genres/<tag>/` URL (via `site.pages.map(&:url)`) and
+  skips generation if so. This is how `music/genres/chip/index.md` (Bitbear's
+  hand-written chiptunes page, with its own prose) overrides the otherwise
+  auto-generated `chip` genre page — there is no special front-matter marker
+  for this, it's purely a URL collision check, so **any physical page placed
+  at `music/genres/<tag>/index.md` automatically takes over that tag's page**.
+- The `tag` layout itself is applied via a `_config.yml` front-matter default
+  scope (`path: music/genres` → `layout: tag`), **not** hard-coded in
+  `music/genres/chip/index.md`'s own front matter — keep it that way so every
+  page under `music/genres/` (physical or synthesized) gets the layout
+  uniformly. `_layouts/tag.html` renders `{{ content }}` when a physical page
+  has a body, falling back to a generic "Bitbear's `<tag>` tracks" blurb when
+  it doesn't (synthesized pages have no body) — don't reintroduce a hard-coded
+  heading like `Bitbear's {{ page.title }} tracks` in the layout, since a
+  physical page's `title` is already a complete phrase (e.g. "Bitbear's
+  Chiptunes") and would get wrapped/duplicated; instead, generator-produced
+  titles (`TagPage#initialize` in `_plugins/tag_pages.rb`) are already
+  complete strings, and the layout just renders `page.title` as-is.
+- `_includes/genres_table_row.html` renders each post's `page.tags` as links
+  to `/music/genres/<tag>/` in a "Genres" row in the track page's media table
+  (wired into `_layouts/post.html`).
+- `spec/genre_pages_spec.rb` covers this: every tag has a generated page, the
+  `chip` override isn't duplicated, and the "Genres" row links correctly.
+  When adding new tags, no new spec examples need writing — the spec derives
+  its list of tags straight from post front matter. Tags used only by an
+  unpublished post (`published: false`) are excluded from that derivation,
+  matching Jekyll's own exclusion of unpublished posts from `site.tags` (no
+  genre page is generated for a tag with no published posts).
 
 ## Git LFS
 

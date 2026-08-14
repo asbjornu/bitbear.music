@@ -1,6 +1,6 @@
 ---
 title: Tiny Chip's Revenge
-tag: chip
+tags: [chip, oldskool]
 media:
   filesize: 9827
   channels: 4
@@ -59,7 +59,7 @@ Sorry to everyone I've forgotten. My memory isn't my strongest asset.
 *[10k]: File size of 10 kilobytes
 
 [arcane]: https://demozoo.org/sceners/581/
-[chiptune]: /music/chiptunes
+[chiptune]: /music/genres/chip/
 [compo]: https://demozoo.org/parties/3172/#competition_13406
 [dozer]: https://demozoo.org/sceners/4389/
 [duckers]: https://demozoo.org/sceners/72/

@@ -1,5 +1,6 @@
 ---
 title: That Flateby Feeling
+tags: [dance, newschool, melodic, breakbeat]
 media:
   length: '3:07'
   cover: that-flateby-feeling.jpg

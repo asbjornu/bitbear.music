@@ -1,5 +1,6 @@
 ---
 title: Soul'n Funk
+tags: [funk, oldskool]
 media:
   filesize: 121654
   channels: 4

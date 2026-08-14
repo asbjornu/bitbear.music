@@ -1,5 +1,6 @@
 ---
 title: Planeswalker
+tags: [breakbeat, newschool, melodic, vocal]
 media:
   length: '4:52'
   cover: planeswalker.jpg

@@ -1,5 +1,6 @@
 ---
 title: Sunset Through The Rain (Modulo One's Night Drive)
+tags: [trance, newschool, electro, nu-disco]
 media:
   length: '3:38'
 links:

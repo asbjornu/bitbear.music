@@ -1,6 +1,6 @@
 ---
 title: Can't Move That Block
-tag: chip
+tags: [chip, oldskool]
 media:
   filesize: 8088
   channels: 3
@@ -19,5 +19,5 @@ for completeness.
 
 <!--more-->
 
-[chiptune]: /music/chiptunes
+[chiptune]: /music/genres/chip/
 [scream-tracker]: https://en.wikipedia.org/wiki/Scream_Tracker

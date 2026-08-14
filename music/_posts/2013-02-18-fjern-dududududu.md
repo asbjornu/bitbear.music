@@ -1,5 +1,6 @@
 ---
 title: Fjern - Dududududu (Bitbear's Jazzolini Remix)
+tags: [jazz, funk, remix, house, freestyle]
 media:
   length: '2:39'
   cover: fjern-dududududu.jpg

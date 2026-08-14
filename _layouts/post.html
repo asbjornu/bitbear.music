@@ -40,6 +40,7 @@ layout: default
               <td>{{ page.media.length }}</td>
             </tr>
           {% endif %}
+          {% include genres_table_row.html %}
           {% include remix_kit_row.html %}
           {% if page.links %}
             {% include links.html %}

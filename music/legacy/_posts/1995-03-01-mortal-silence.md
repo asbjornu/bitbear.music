@@ -1,5 +1,6 @@
 ---
 title: Mortal Silence
+tags: [oldskool]
 media:
   filesize: 48544
   channels: 8

@@ -1,6 +1,6 @@
 ---
 title: Chip Fabric
-tag: chip
+tags: [chip, oldskool]
 media:
   filesize: 9990
   channels: 4

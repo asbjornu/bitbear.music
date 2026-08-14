@@ -1,5 +1,6 @@
 ---
 title: Move (Atroxity's Disco Donkey Remix)
+tags: [house, newschool, deep-house]
 media:
   length: '5:57'
 links:

@@ -1,5 +1,6 @@
 ---
 title: Spiteful Experiments
+tags: [trance, oldskool]
 media:
   cover: 3rd-floor.jpg
   filesize: 522240

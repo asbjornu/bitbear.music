@@ -38,6 +38,10 @@ defaults:
     values:
       layout: album
   - scope:
+      path: music/genres
+    values:
+      layout: tag
+  - scope:
       path: music
     values:
       layout: post

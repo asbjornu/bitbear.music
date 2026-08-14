@@ -1,6 +1,6 @@
 ---
 title: Bitbear's Chiptunes
-layout: page
+tag: chip
 description: |
     Chiptunes are songs which mimic the sound of physical hardware chips such as
     Commodore 64's SID or ZX Spectrum's AY-3-8910. Here you can find Bitbear's
@@ -22,10 +22,6 @@ and had to be adhered to if you wanted to participate in a chip tune
 competition.
 
 You can find all of Bitbear's chiptunes below.
-
-{% assign posts=site.tags['chip'] %}
-{% include song_year_nav.html posts=posts %}
-{% include song_table.html posts=posts %}
 
 [ay-3-8910]: https://en.wikipedia.org/wiki/General_Instrument_AY-3-8910
 [c64]: https://en.wikipedia.org/wiki/Commodore_64

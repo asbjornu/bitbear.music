@@ -1,5 +1,6 @@
 ---
 title: Soaked in Orange
+tags: [jazz, oldskool]
 media:
   cover: soaked-in-orange.jpg
   filesize: 136192

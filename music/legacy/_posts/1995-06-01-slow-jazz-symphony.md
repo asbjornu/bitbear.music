@@ -1,5 +1,6 @@
 ---
 title: Slow Jazz Symphony
+tags: [jazz, oldskool]
 media:
   filesize: 148686
   channels: 10

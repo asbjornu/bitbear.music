@@ -1,5 +1,6 @@
 ---
 title: Sliding Away
+tags: [house, dance, newschool]
 media:
   length: '3:33'
   cover: sliding-away.jpg

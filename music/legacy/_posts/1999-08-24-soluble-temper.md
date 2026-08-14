@@ -1,5 +1,6 @@
 ---
 title: Soluble Temper
+tags: [trance, oldskool]
 media:
   cover: 3rd-floor.jpg
   filesize: 1392640
