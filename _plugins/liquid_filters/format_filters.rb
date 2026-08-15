@@ -14,6 +14,20 @@ module Jekyll
       input.to_s.gsub(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1#{separator}")
     end
 
+    # Converts a `media.length` value such as "4:03" or "1:04:03" into an
+    # ISO 8601 duration ("PT4M3S"/"PT1H4M3S") as required by schema.org's
+    # MusicRecording#duration property.
+    def iso8601_duration(input)
+      hours, minutes, seconds = hours_minutes_seconds(input)
+      return nil if hours.nil?
+
+      duration = 'PT'
+      duration += "#{hours}H" if hours.positive?
+      duration += "#{minutes}M" if minutes.positive?
+      duration += "#{seconds}S" if seconds.positive? || (hours.zero? && minutes.zero?)
+      duration
+    end
+
     # Builds a URL for a Git LFS-tracked file. In production, this points at
     # media.githubusercontent.com, which serves LFS objects directly without
     # requiring them to be included in the (1 GB-capped) GitHub Pages
@@ -29,6 +43,22 @@ module Jekyll
       return "/#{path}" unless repository
 
       "https://media.githubusercontent.com/media/#{repository}/#{branch}/#{path}"
+    end
+
+    private
+
+    # Parses a "M:SS" or "H:MM:SS" string into an [hours, minutes, seconds]
+    # triple of integers, or [nil, nil, nil] if the input has an unsupported
+    # number of segments.
+    def hours_minutes_seconds(input)
+      segments = input.to_s.split(':').map(&:to_i)
+
+      case segments.length
+      when 1 then [0, 0, segments[0]]
+      when 2 then [0, segments[0], segments[1]]
+      when 3 then segments
+      else [nil, nil, nil]
+      end
     end
   end
 end

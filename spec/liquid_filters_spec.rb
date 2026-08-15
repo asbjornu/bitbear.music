@@ -252,6 +252,25 @@ describe '#sort_by' do
     end
   end
 
+  describe '#iso8601_duration' do
+    {
+      '4:03' => 'PT4M3S',
+      '0:45' => 'PT45S',
+      '1:04:03' => 'PT1H4M3S',
+      '2:00' => 'PT2M',
+      '0:00' => 'PT0S',
+      '45' => 'PT45S'
+    }.each do |input, expected|
+      it "converts #{input} to #{expected}" do
+        expect(instance.iso8601_duration(input)).to eq(expected)
+      end
+    end
+
+    it 'returns nil for an unsupported number of segments' do
+      expect(instance.iso8601_duration('1:2:3:4')).to be_nil
+    end
+  end
+
   describe '#lfs_media_url' do
     def with_site(config)
       site = instance_double('Jekyll::Site', config: config)
