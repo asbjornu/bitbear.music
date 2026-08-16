@@ -5,6 +5,11 @@ layout: default
 <h2>{{ page.title }}</h2>
 
 {% assign tracks = site.posts | where: 'album.slug', page.slug | sort_by: 'album.position' %}
+{% assign album_tags = "" | split: "" %}
+{% for track in tracks %}
+  {% assign album_tags = album_tags | concat: track.tags %}
+{% endfor %}
+{% assign album_tags = album_tags | uniq %}
 
 {% if page.media or page.album or page.links %}
   {% assign soundcloud_link = page.links | link_by_brand: 'soundcloud' %}
@@ -30,6 +35,7 @@ layout: default
               <td class="tracks">{{ tracks.size }}</td>
             </tr>
           {% endif %}
+          {% include genres_table_row.html tags=album_tags %}
           {% include remix_kit_row.html %}
           {% if page.links %}
             {% include links.html %}
