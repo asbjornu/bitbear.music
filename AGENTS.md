@@ -46,6 +46,25 @@ missing.
   (via `Jekyll::Commands::Build.process`), so `bundle exec rake spec` and
   `bundle exec rake htmlproofer` each implicitly trigger a rebuild — a stray
   `jekyll serve` process can still race with those, too.
+- **Rendered HTML is reformatted with consistent indentation by `HTML Tidy`**,
+  wired in as a `prettify` Rake task invoked automatically at the end of the
+  `build` task (`Rakefile`). This requires the `tidy` binary on `PATH`
+  (`brew install tidy-html5` locally; installed explicitly in
+  `.github/workflows/_build.yml` since GitHub's `ubuntu-latest` runner image
+  doesn't guarantee it). `--drop-empty-elements no` is required in its options
+  because Tidy's default behavior silently deletes elements with no text
+  content, which would strip this site's empty `<span class="icon-*">`
+  elements used for CSS-driven icons. Two other formatters were tried and
+  rejected for this: the `jekyll-compress-html` pure-Liquid layout (produces
+  markup lacking `<head>`/`<body>` closing tags when `endings: all` is
+  configured, which Nokogiri-based tools like html-proofer can't parse
+  correctly) and the `htmlbeautifier` gem (miscounts nesting depth around
+  multi-line tags like the multi-attribute `<img>` in `_layouts/default.html`,
+  causing indentation drift that cascades through the rest of the page).
+  Because `spec/spec_helper.rb`'s `before(:suite)` hook calls
+  `Jekyll::Commands::Build.process` directly rather than going through the
+  `build` Rake task, `_site` as seen by `bundle exec rake spec`/`htmlproofer`
+  is **not** run through `prettify` — only `bundle exec rake build`'s output is.
 
 ## Rubocop
 
