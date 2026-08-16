@@ -1,0 +1,57 @@
+{%- comment -%}
+Renders all OpenGraph, music-specific OpenGraph, and Twitter Card meta
+tags for the current page. Expects `include.title` and
+`include.description` (already resolved by the caller).
+{%- endcomment -%}
+
+{%- comment -%} Resolve the cover art (own or, for a track, its parent
+album's) so link previews show real cover art instead of a generic
+image. {%- endcomment -%}
+{%- assign og_cover = nil -%}
+{%- if page.media.cover -%}
+  {%- assign og_cover = page.media.cover -%}
+{%- elsif page.album.slug -%}
+  {%- assign og_album_post = site.posts | where: 'slug', page.album.slug | first -%}
+  {%- if og_album_post.media.cover -%}
+    {%- assign og_cover = og_album_post.media.cover -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if og_cover -%}
+  {%- assign og_image = '/assets/images/covers/' | append: og_cover | absolute_url -%}
+{%- else -%}
+  {%- assign og_image = 'https://repository-images.githubusercontent.com/89099209/95bd4180-8b68-11eb-9dbf-b449b2505aaf' -%}
+{%- endif -%}
+
+{%- comment -%} A track post with media is a song; an album post is a
+music album; everything else is a plain website. {%- endcomment -%}
+{%- assign og_type = 'website' -%}
+{%- if page.layout == 'post' and page.media -%}
+  {%- assign og_type = 'music.song' -%}
+{%- elsif page.layout == 'album' -%}
+  {%- assign og_type = 'music.album' -%}
+{%- endif -%}
+
+{%- if og_type == 'music.song' and page.media.length -%}
+  {%- assign og_length_parts = page.media.length | split: ':' -%}
+  {%- assign og_duration_seconds = og_length_parts[0] | times: 60 | plus: og_length_parts[1] -%}
+{%- endif -%}
+
+<meta property="og:type" content="{{ og_type }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:title" content="{{ include.title }}">
+<meta property="og:description" content="{{ include.description }}">
+<meta property="og:image" content="{{ og_image }}">
+{%- if og_type == 'music.song' -%}
+  <meta property="music:musician" content="{{ '/' | absolute_url }}">
+  <meta property="music:release_date" content="{{ page.date | date: '%Y-%m-%d' }}">
+  {%- if og_duration_seconds -%}
+    <meta property="music:duration" content="{{ og_duration_seconds }}">
+  {%- endif -%}
+{%- elsif og_type == 'music.album' -%}
+  <meta property="music:musician" content="{{ '/' | absolute_url }}">
+  <meta property="music:release_date" content="{{ page.date | date: '%Y-%m-%d' }}">
+{%- endif -%}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ include.title }}">
+<meta name="twitter:description" content="{{ include.description }}">
+<meta name="twitter:image" content="{{ og_image }}">
