@@ -19,11 +19,6 @@ collections:
     output: true
     permalink: /music/:title/remix-kit/
 
-compress_html:
-  clippings: all
-  comments: all
-  startings: [html, head, body]
-
 author:
   name: Asbjørn Ulsberg
   email: mail@bitbear.music

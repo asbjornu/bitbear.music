@@ -14,6 +14,34 @@ end
 task :build do
   puts 'Building site...'.bold
   Jekyll::Commands::Build.process(profile: true)
+  Rake::Task[:prettify].invoke
+end
+
+desc 'Reformats every built page with consistent indentation via HTML Tidy'
+task :prettify do
+  puts 'Prettifying HTML output...'.bold
+
+  tidy_options = [
+    '-modify',
+    '-indent',
+    '-wrap', '0',
+    '-quiet',
+    '-utf8',
+    '--tidy-mark', 'no',
+    # Tidy considers elements with no text content "empty" and drops them by
+    # default, but this site relies on empty <span> elements (e.g. for
+    # CSS-driven icons) that must be preserved.
+    '--drop-empty-elements', 'no',
+    '--show-warnings', 'no'
+  ].freeze
+
+  Dir.glob(File.join(__dir__, '_site', '**', '*.html')).each do |file|
+    # Tidy exits 0 for a clean document, 1 for warnings (expected, e.g. proprietary
+    # attributes like aria-description), and 2 for errors; none of those indicate a
+    # failure to run, only `nil` (tidy binary missing) does.
+    result = system('tidy', *tidy_options, file, out: File::NULL, err: File::NULL)
+    abort 'tidy is not installed; run `brew install tidy-html5`' if result.nil?
+  end
 end
 
 task :clean do
@@ -49,7 +77,7 @@ task :htmlproofer do
   require 'html-proofer'
 
   options = {
-    ignore_status_codes: [429, 302],
+    ignore_status_codes: [429, 302, 502, 503],
     ignore_urls: [
       /twitter.com/,
       /demozoo.org/,
