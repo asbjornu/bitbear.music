@@ -388,6 +388,21 @@ Notes specific to this repo:
   commands, flags, etc.) in backticks in the body — but never in the header,
   which must be plain text.
 
+## Finishing work: commit, then rebase on `main`
+
+- Before considering a task done, always commit your changes, then rebase
+  the branch on `main` (`git fetch origin main && git rebase origin/main`).
+- Amend vs. new commit is decided by what the request is *about*, not by
+  which file it touches:
+  - If asked to change or correct something already introduced by a commit
+    made earlier in the current branch/worktree, amend that commit
+    (`git commit --amend`, or `git rebase -i` to reach an older one) instead
+    of adding a new commit on top.
+  - If asked to add new, separate content or rules — even to the same
+    file a prior commit in this branch touched — make a new commit with its
+    own descriptive message. Don't fold unrelated additions into an
+    unrelated earlier commit just because they land in the same file.
+
 ## GPG-signed commits
 
 - Always sign commits with `git commit -S`. `commit.gpgsign=true` is set globally;
