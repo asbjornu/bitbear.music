@@ -17,7 +17,8 @@ section.
 
 You can listen to my music online. My latest tracks are conveniently provided
 below. If you would like to browse through my oldschool legacy, please head over
-to the [legacy section][legacy].
+to the [legacy section][legacy]. Some tracks also have a [remix kit][remix-kits]
+available, bundling up the stems and project files behind them.
 
 {% assign posts=site.categories['music'] | reject: 'category', 'legacy' %}
 {% include song_table.html posts=posts album=true %}
@@ -25,3 +26,4 @@ to the [legacy section][legacy].
 [cc-by-nc]: https://creativecommons.org/licenses/by-nc/4.0/
 [legacy]: /music/legacy/
 [license]: /license
+[remix-kits]: /music/remix-kits/
