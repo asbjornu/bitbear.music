@@ -88,7 +88,7 @@ task :htmlproofer do
     ignore_urls: [
       /twitter.com/,
       /demozoo.org/,
-      /bitbearmusic.bandcamp.com/,
+      /bandcamp.com/,
       /soundcloud.com/,
       /api.modarchive.org/,
       /moduloone.com/,

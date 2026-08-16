@@ -18,7 +18,7 @@ This horribly named [chiptune] produced in early February 1996 was my first
 attempt at creating something more mellow and harmonic. <!--more--> As noted in
 the song's sample text:
 
-> PoC created this sorrow-filled song. I'm not good in making names for my
+> [PoC][poc] created this sorrow-filled song. I'm not good in making names for my
 > songs, so "Fat Ma's Death" was only thing I could come up with!
 > The name has nothing to do with a experience I've had!
 
@@ -26,6 +26,5 @@ With its many different parts and harmonies, it was the longest and most varied
 song I had created so far, tracking in at 1 minute and 45 seconds before
 looping.
 
-*[PoC]: Power of Creation
-
 [chiptune]: /music/genres/chip/
+[poc]: /music/legacy/power-of-creation

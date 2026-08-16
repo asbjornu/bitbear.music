@@ -17,7 +17,7 @@ I started fiddling with music in [NoiseTracker] and [ProTracker] on the [Amiga
 500][amiga] in the early 90s. But first when I got my hands on [Scream
 Tracker][scream-tracker], [Fast Tracker II][fast-tracker], and ultimately
 [Impulse Tracker][impulse-tracker] on an [IBM-compatible PC][pc], I started
-producing "real" music under the alias *Power of Creation*.
+producing "real" music under the alias *[Power of Creation][poc]*.
 
 I created the two albums [Beyond Fantasy][beyond-fantasy] and [3rd
 Floor][3rd-floor], and submitted songs to various [demoscene] competitions
@@ -63,3 +63,4 @@ You can find, harass, and follow me on the following online places:
 [soundcloud]: https://soundcloud.com/bitbear
 [twitter]: https://twitter.com/bitbearmusic
 [youtube]: https://www.youtube.com/channel/UC9wb6OrUrugGg6-q9805RDQ
+[poc]: /music/legacy/power-of-creation

@@ -24,7 +24,7 @@ only 22 seconds, looped.
 I remember being quite proud of this one, and the blurb I wrote in the sample
 text is proof of my over-the-top confidence:
 
-> Another chip by PoC. I'm like an industrial Chip Fabric! 5 chips has been
+> Another chip by [PoC][poc]. I'm like an industrial Chip Fabric! 5 chips has been
 > produced on my P60 in the last week! I must be special...?(NOT!)
 
 Never mind that while translating the Norwegian word "fabrikk" to English, I was
@@ -32,5 +32,6 @@ clueless to the fact that "fabric" means "cloth" and not "factory". I still
 think the name "Chip Fabric" has a cool sound to it.
 
 *[10 kB]: 10 kilobytes
-*[PoC]: Power of Creation, Bitbear's alias
 *[P60]: An Intel Pentium 60 MHz processor-powered IBM-Compatible Personal Computer.
+
+[poc]: /music/legacy/power-of-creation

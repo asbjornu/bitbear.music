@@ -21,7 +21,7 @@ content with, at least now.
 
 I made it on {% date %} when I was still calling myself "PCi", but made a little
 change to the loop offset of the flute on {% date '1996-02-04' %} and then
-published the song under PoC as that was the name I took in late December 1995.
+published the song under [PoC][poc] as that was the name I took in late December 1995.
 
 The instrument text describes this as well as a few other stupid things I found
 it meaningful to write as a 15 year old boy with too much time on his hands:
@@ -36,4 +36,4 @@ it meaningful to write as a 15 year old boy with too much time on his hands:
 >
 > Byebyebyebyebyebyebye for now, Signed: Poc
 
-*[PoC]: Power of Creation
+[poc]: /music/legacy/power-of-creation
