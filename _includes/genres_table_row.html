@@ -1,13 +1,11 @@
-{% if page.tags.size > 0 %}
+{% if include.tags.size > 0 %}
   <tr>
     <th scope="row">Genres</th>
     <td class="genres">
       <ul>
-        {% assign sorted_tags = page.tags | sort %}
-        {% for tag in sorted_tags %}
-          <li>
-            <a href="/music/genres/{{ tag }}/">{{ tag | replace: '-', ' ' | capitalize }}</a>
-          </li>
+        {% assign sorted_tags = include.tags | sort %}
+        {% for tag in sorted_tags -%}
+          <li><a href="/music/genres/{{ tag }}/">{{ tag | replace: '-', ' ' | capitalize }}</a></li>
         {% endfor %}
       </ul>
     </td>
