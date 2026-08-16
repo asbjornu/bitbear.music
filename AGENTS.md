@@ -377,6 +377,17 @@ Notes specific to this repo:
   normally after exporting PATH.
 - Verify with: `git lfs version`.
 
+## Commit message format
+
+- Keep the commit message header (first line) to a maximum of 50 characters.
+  If the header would need cropping to fit, don't crop it — instead write the
+  full sentence as the first line of the commit message body, below a blank
+  line after the (still ≤50-character) header.
+- Wrap the commit message body at 72 characters per line.
+- Wrap words that refer to code (file names, functions, classes, variables,
+  commands, flags, etc.) in backticks in the body — but never in the header,
+  which must be plain text.
+
 ## GPG-signed commits
 
 - Always sign commits with `git commit -S`. `commit.gpgsign=true` is set globally;
