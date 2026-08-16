@@ -256,6 +256,26 @@ missing.
 - `spec/format_pages_spec.rb` covers this the same way
   `spec/genre_pages_spec.rb` covers genres.
 
+## JSON-LD structured data
+
+- The site's JSON-LD (`_plugins/json_ld_tag.rb`, `_plugins/json_ld/`) is built
+  as a Ruby `Hash` and serialized with `to_json`, not assembled as a Liquid
+  string — keep doing that for any future structured data.
+- **A post is an "album" if it has an `album` key with no nested `slug`**
+  (`AlbumEntry.for?` in `album_entry.rb`) — not if `layout == 'album'`. A
+  track post also has an `album` key, but pointing *at* its parent via
+  `slug`, so `slug`'s presence/absence is the real distinguisher.
+  Album and track posts can share the same filename slug (e.g. an album and
+  its title track), so any `site.posts.docs.find` by slug must also check
+  `AlbumEntry.for?`, or it may match the track instead of its album.
+- Use `doc.data['slug']`, not `doc.slug` — the latter is deprecated and logs
+  a noisy warning on every build.
+- Liquid Drops (`page` in a tag/template) don't support `Hash#dig`, only
+  `[]` — `page.dig('media', 'length')` raises `NoMethodError`.
+- Jekyll's and this repo's Liquid filter modules are plain Ruby modules —
+  `include` them directly into a plugin class (set `@context = context`
+  first) to reuse filters like `absolute_url` outside of Liquid.
+
 ## Git LFS
 
 - Git LFS **is installed** (`/opt/homebrew/bin/git-lfs`, v3.x). Any "not installed"
