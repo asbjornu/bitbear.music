@@ -3,6 +3,20 @@ name: publish
 on:
   push:
     branches: [main]
+    # Files listed here are neither built by Jekyll (see the `exclude` list
+    # in _config.yml) nor exercised by the test suite, so changes limited to
+    # them don't need a full build/publish run.
+    paths-ignore:
+      - AGENTS.md
+      - readme.md
+      - README.md
+      - CODE_OF_CONDUCT.md
+      - LICENSE
+      - LICENSE-CONTENT
+      - LICENSE.txt
+      - .editorconfig
+      - .gitattributes
+      - .gitignore
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:

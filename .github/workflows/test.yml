@@ -1,6 +1,23 @@
 name: test
 
-on: [push, pull_request]
+# Files listed under paths-ignore are neither built by Jekyll (see the
+# `exclude` list in _config.yml) nor exercised by the test suite, so changes
+# limited to them don't need a full test/build run.
+on:
+  push:
+    paths-ignore: &non_build_paths
+      - AGENTS.md
+      - readme.md
+      - README.md
+      - CODE_OF_CONDUCT.md
+      - LICENSE
+      - LICENSE-CONTENT
+      - LICENSE.txt
+      - .editorconfig
+      - .gitattributes
+      - .gitignore
+  pull_request:
+    paths-ignore: *non_build_paths
 
 permissions:
   contents: read
