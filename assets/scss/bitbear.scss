@@ -354,6 +354,40 @@ main {
         text-align: center;
     }
 
+    .logo {
+        text-align: center;
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    .albums {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        margin: 2rem 0;
+
+        a {
+            display: block;
+            flex: 0 1 20rem;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: opacity .2s ease;
+        }
+
+        a:hover img {
+            opacity: .8;
+        }
+    }
+
     h1,
     h2,
     h3,

@@ -14,7 +14,7 @@ album:
   position: 18
 ---
 
-"Open Your Heart" isn't really a Power of Creation production. [Puma][puma]
+"Open Your Heart" isn't really a [Power of Creation][poc] production. [Puma][puma]
 started the song and never finished it, so I finished it off myself,
 liking it enough to include it on [Beyond Fantasy][beyond-fantasy].
 
@@ -30,3 +30,4 @@ on [Beyond Fantasy][beyond-fantasy], “{{ page.title }}” was created in
 [impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
 [ms-dos]: https://en.wikipedia.org/wiki/MS-DOS
 [puma]: https://demozoo.org/sceners/106369/
+[poc]: /music/legacy/power-of-creation

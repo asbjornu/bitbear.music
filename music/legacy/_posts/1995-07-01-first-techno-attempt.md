@@ -22,7 +22,7 @@ produced a lot of songs that I would have considered to be "techno".
 
 I believe I started and mostly completed this late in 1995 and finally finished
 it some time in 1996, where all I did was add the choir intro. That explains
-signing the song as PoC in the song's instrument list, because while I created
+signing the song as [PoC][poc] in the song's instrument list, because while I created
 this song originally, I still went by the handle "PCi".
 
 To best fit with the chronology and development of my music abilities, I
@@ -36,4 +36,4 @@ back in the mid 1990's, "techno" was just a synonym for "electronic music".
 I remember being quite happy about this song back when I produced it, and I
 quite like it to this day as well.
 
-*[PoC]: Power of Creation
+[poc]: /music/legacy/power-of-creation

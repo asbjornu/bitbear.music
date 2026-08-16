@@ -16,5 +16,5 @@ links:
 
 <!--more-->
 
-[poc]: https://demozoo.org/sceners/30400/
+[poc]: /music/legacy/power-of-creation
 [amp]: https://amp.dascene.net/downmod.php?index=159521

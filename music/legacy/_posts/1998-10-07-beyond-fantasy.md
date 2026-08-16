@@ -26,4 +26,4 @@ at the time.
 [demoscene]: https://en.wikipedia.org/wiki/Demoscene
 [dupe]: https://demozoo.org/groups/23250/
 [impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
-[poc]: https://demozoo.org/sceners/30400/
+[poc]: /music/legacy/power-of-creation

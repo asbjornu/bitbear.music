@@ -5,7 +5,7 @@ title: License & Credits
 ## License
 
 All of the content published on this web site and under the "Bitbear"
-or "Power of Creation" aliases, including music and cover art, is
+or "[Power of Creation][poc]" aliases, including music and cover art, is
 licensed under the [Creative Commons Attribution-NonCommercial 4.0
 International (CC BY-NC 4.0) license][cc-by], unless otherwise noted.
 This means you are free to share and adapt the material for any
@@ -51,3 +51,4 @@ requirements][noun-attribution]:
 [noun-project]: https://thenounproject.com/
 [remix-browse]: https://thenounproject.com/browse/icons/term/remix/
 [remix-icon]: https://thenounproject.com/icon/remix-5641961/
+[poc]: /music/legacy/power-of-creation
