@@ -2,6 +2,7 @@
 title: Slow Jazz Symphony
 tags: [jazz, oldskool]
 media:
+  cover: slow-jazz-symphony.jpg
   filesize: 148686
   channels: 10
   format: S3M

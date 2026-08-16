@@ -3,6 +3,7 @@ title: Bear Hugs Forever
 tags: [newschool, dance, melodic, lyrics, vocal]
 published: false
 media:
+  cover: bear-hugs-forever.jpg
   format: XRNS
 links:
   - https://demozoo.org/music/189839/

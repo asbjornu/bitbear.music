@@ -149,6 +149,45 @@ missing.
   post's front matter references a cover file that does not exist. Generate the twins
   from git-ignored 2160² masters with `bundle exec rake covers:2x` (see `Rakefile`);
   masters live in the repo-root `covers-master/` directory.
+- **A track that belongs to an album gets its cover art from the album, not its own
+  file.** `_layouts/post.html` only falls back to looking up the album post's
+  `media.cover` (via `page.album.slug`) when the track's own `media.cover` is absent —
+  so a track post with an `album:` key should *not* also set `media.cover` itself
+  (only the album post needs one). This is also why `CoverArtGenerator` (see below)
+  skips generating art for any post with `album.slug` set: there's nothing to draw
+  for it, art gets drawn once for the album instead.
+- **Missing cover art is generated automatically**, by `lib/cover_art_generator.rb`
+  (split into focused files under `lib/cover_art_generator/`: `svg_asset.rb` reads
+  SVG/PNG headers for sizing, `gradient_background.rb`, `logo.rb`, and `title_pill.rb`
+  each build one piece of the SVG, and `svg_document.rb` composes them), wired into the
+  Jekyll build via the `:site, :after_init` hook in `_plugins/cover_art_generator.rb`
+  (the same lifecycle point `npm_deps.rb` installs npm packages at — so it also runs on
+  every `jekyll serve`). It finds every track post under `music/**/_posts` with no
+  `media.cover` of its own and no album to inherit one from (see above), and for each
+  one still missing its `.jpg`/`@2x.jpg` files on disk: renders a cover with a randomly
+  generated linear-gradient background (seeded from the post's slug, so re-running the
+  generator against the same content is deterministic) behind the site's logo and the
+  track title in a pill (white background, black text, a black border 10% as thick as
+  the pill is tall), then adds `cover: <slug>.jpg` to the post's `media:` front matter.
+  The logo always fills 90% of the canvas width (`LOGO_WIDTH_RATIO`), with the same
+  whitespace on its left, top and right sides, and the pill is right-aligned directly
+  under it. Legacy tracks (`music/legacy/`) get the "Power of Creation" wordmark
+  (`assets/images/power-of-creation.svg`); everything else gets the Bitbear bear-icon +
+  text lockup PNG (`assets/images/bitbear-outlined.png`, trimmed of the transparent
+  whitespace around it from the GitHub repository's own OpenGraph image at
+  <https://repository-images.githubusercontent.com/89099209/95bd4180-8b68-11eb-9dbf-b449b2505aaf>
+  — used as-is, not the separate `logo.svg`/`bitbear-text-*.svg` combo, since assembling
+  those two ourselves under-sized the bear-icon relative to the lockup's own
+  proportions, and the lockup's own white outline around its black shapes already
+  contrasts against any background, so there's no need for separate black/white
+  variants). Raster PNGs are inlined into the generated SVG as a `data:` URI `<image>`
+  (rsvg-convert doesn't resolve plain file paths there, only data URIs) — see
+  `Logo.png_element`. It's idempotent — a post is only touched if its cover files don't
+  already exist — and requires `rsvg-convert` and `magick`/ImageMagick on `PATH` (both
+  provided by Homebrew, see the environment setup preamble at the top of this file); if
+  they're missing, it logs a warning and skips rather than failing the build, since CI
+  never needs to generate anything (every real post's cover art is already committed
+  and LFS-tracked). Run it standalone with `bundle exec rake covers:generate`.
 
 ## Content authoring (music posts)
 

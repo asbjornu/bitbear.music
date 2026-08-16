@@ -2,6 +2,7 @@
 title: Chip Fabric
 tags: [chip, oldskool]
 media:
+  cover: chip-fabric.jpg
   filesize: 9990
   channels: 4
   format: MOD

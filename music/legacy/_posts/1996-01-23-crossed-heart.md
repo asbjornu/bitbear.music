@@ -2,6 +2,7 @@
 title: Crossed Heart
 tags: [chip, oldskool]
 media:
+  cover: crossed-heart.jpg
   channels: 2
   filesize: 9112
   format: MOD

@@ -2,6 +2,7 @@
 title: Mortal Silence
 tags: [oldskool]
 media:
+  cover: mortal-silence.jpg
   filesize: 48544
   channels: 8
   format: S3M

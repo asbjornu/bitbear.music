@@ -170,6 +170,29 @@ RSpec.configure do |config|
     end
   end
 
+  # Every track post now ships its own (or its album's) cover art, but
+  # style_spec.rb still needs to exercise post.html's fallback path for a
+  # track with a YouTube link and no cover art at all (a plain YouTube
+  # <iframe> embedded directly in #cover). Temporarily strip the `cover:`
+  # line from one legacy post's front matter for the duration of the build,
+  # the same way the remix kit archives above are swapped for fixtures, and
+  # restore the real front matter afterwards. _plugins/cover_art_generator.rb
+  # would otherwise "fix" the stripped post right back before it's read, so
+  # opt it out for the duration of this suite too.
+  ENV['SKIP_COVER_ART_GENERATION'] = 'true'
+  no_cover_fixture_post = File.join(__dir__, '..', 'music', 'legacy', '_posts', '1996-02-14-call-of-the-totem.md')
+  no_cover_fixture_original = nil
+
+  config.before(:suite) do
+    no_cover_fixture_original = File.read(no_cover_fixture_post)
+    stripped = no_cover_fixture_original.sub(/^  cover: .+\n/, '')
+    File.write(no_cover_fixture_post, stripped)
+  end
+
+  config.after(:suite) do
+    File.write(no_cover_fixture_post, no_cover_fixture_original) if no_cover_fixture_original
+  end
+
   # Run 'jekyll build' before all specs in the suite
   config.before(:suite) do
     # TODO: Figure out how shared context can be used both in before:suite

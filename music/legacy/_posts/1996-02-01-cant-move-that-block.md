@@ -2,6 +2,7 @@
 title: Can't Move That Block
 tags: [chip, oldskool]
 media:
+  cover: cant-move-that-block.jpg
   filesize: 8088
   channels: 3
   format: MOD

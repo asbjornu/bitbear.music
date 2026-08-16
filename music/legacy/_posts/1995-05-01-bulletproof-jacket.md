@@ -2,6 +2,7 @@
 title: Bulletproof Jacket
 tags: [oldskool]
 media:
+  cover: bulletproof-jacket.jpg
   filesize: 79466
   channels: 8
   format: S3M

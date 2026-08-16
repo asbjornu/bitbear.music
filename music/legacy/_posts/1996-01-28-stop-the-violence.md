@@ -2,6 +2,7 @@
 title: Stop The Violence!
 tags: [chip, oldskool]
 media:
+  cover: stop-the-violence.jpg
   filesize: 8444
   channels: 3
   format: S3M

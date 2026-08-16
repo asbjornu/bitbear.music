@@ -19,6 +19,10 @@ image. {%- endcomment -%}
 {%- if og_cover -%}
   {%- assign og_image = '/assets/images/covers/' | append: og_cover | absolute_url -%}
 {%- else -%}
+  {%- comment -%}
+    The fallback is the Bitbear logo uploaded in the repository settings
+    for use as the repository's OpenGraph image.
+  {%- endcomment -%}
   {%- assign og_image = 'https://repository-images.githubusercontent.com/89099209/95bd4180-8b68-11eb-9dbf-b449b2505aaf' -%}
 {%- endif -%}
 

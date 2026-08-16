@@ -2,6 +2,7 @@
 title: Life'n'Death
 tags: [oldskool]
 media:
+  cover: lifendeath.jpg
   filesize: 89088
   channels: 8
   format: MOD

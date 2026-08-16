@@ -2,6 +2,7 @@
 title: Psyko Infarnation
 tags: [techno, oldskool]
 media:
+  cover: psyko-infarnation.jpg
   filesize: 53950
   channels: 4
   format: MOD

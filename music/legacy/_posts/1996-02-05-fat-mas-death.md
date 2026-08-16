@@ -2,6 +2,7 @@
 title: Fat Ma's Death
 tags: [chip, oldskool]
 media:
+  cover: fat-mas-death.jpg
   filesize: 8444
   channels: 4
   format: MOD
