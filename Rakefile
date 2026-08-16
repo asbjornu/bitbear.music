@@ -77,7 +77,7 @@ task :htmlproofer do
   require 'html-proofer'
 
   options = {
-    ignore_status_codes: [429, 302],
+    ignore_status_codes: [429, 302, 502, 503],
     ignore_urls: [
       /twitter.com/,
       /demozoo.org/,
