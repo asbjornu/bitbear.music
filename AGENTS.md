@@ -17,6 +17,40 @@ Never probe for tools with bare names (e.g. `git lfs version`, `gpg --version`,
 `ruby --version`) until this PATH is in effect, or you will falsely conclude they are
 missing.
 
+## Parallel agent sessions: always use a Git worktree
+
+Never work directly in the repository's primary checkout
+(`/Users/bitbear/Dev/bitbear.music`) when running as one of several concurrent AI agent
+sessions — multiple agents editing the same working directory on the same branch will
+clobber each other's uncommitted changes, build artifacts, and checked-out files. Each
+agent session must instead create (or reuse) its own `git worktree` on its own branch:
+
+```sh
+git worktree add ../bitbear.music-<agent-name> -b <agent-name>/work
+```
+
+Do all of that session's file edits, builds, and commits inside that worktree directory,
+not the primary checkout. When the session's work is merged/landed and the worktree is
+no longer needed, remove it with `git worktree remove ../bitbear.music-<agent-name>`
+(add `--force` only if it still has uncommitted changes you've confirmed are disposable).
+
+Notes specific to this repo:
+
+- `.git` (including the Git LFS object cache) is shared across all worktrees
+  automatically — LFS-tracked audio/cover files are not re-downloaded per worktree.
+- `node_modules` is **not** shared: `_plugins/npm_deps.rb` auto-runs `npm ci` on first
+  build in any worktree missing it. Either let each worktree install its own copy, or
+  symlink one in from an existing worktree/checkout to avoid redundant installs:
+  `ln -s /Users/bitbear/Dev/bitbear.music/node_modules ../bitbear.music-<agent-name>/node_modules`.
+- `_site`, `.jekyll-cache`, and `.jekyll-metadata` are per-working-directory build
+  artifacts and are correctly *not* shared — that's the isolation you want.
+- If running `jekyll serve` in more than one worktree at once, give each a distinct
+  `--port` to avoid a bind conflict.
+- Bundler's gem install path is shared (global/user gem path), so `bundle install` in a
+  new worktree is normally fast and doesn't re-download gems already installed elsewhere.
+- GPG signing config (`commit.gpgsign`, `user.signingkey`) is read from global/repo
+  config and applies uniformly across all worktrees with no extra setup.
+
 ## Ruby & Jekyll
 
 - The Gemfile requires Ruby `>= 3.2`. The system Ruby at `/usr/bin/ruby` is 2.6.10 and
