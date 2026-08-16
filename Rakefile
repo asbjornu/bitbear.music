@@ -4,6 +4,7 @@ require 'rake'
 require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
 require 'jekyll'
+require_relative 'lib/cover_art_generator'
 
 RSpec::Core::RakeTask.new(:spec) do |t|
   t.pattern = Dir.glob('spec/*_spec.rb')
@@ -70,6 +71,12 @@ namespace :covers do
         abort("Failed to generate #{twin} from #{master}")
       puts "Generated #{twin}"
     end
+  end
+
+  desc 'Generates cover art for any track post that does not have any yet'
+  task :generate do
+    generated = CoverArtGenerator.generate!(source_dir: __dir__)
+    puts generated.empty? ? 'Every track already has cover art.' : "Generated cover art for: #{generated.join(', ')}"
   end
 end
 

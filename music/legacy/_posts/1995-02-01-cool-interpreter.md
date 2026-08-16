@@ -2,6 +2,7 @@
 title: Cool Interpreter
 tags: [oldskool]
 media:
+  cover: cool-interpreter.jpg
   channels: 4
   filesize: 55748
   format: MOD

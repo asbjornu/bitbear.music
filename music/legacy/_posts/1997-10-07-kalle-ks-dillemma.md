@@ -2,6 +2,7 @@
 title: Kalle K's Dillemma
 tags: [oldskool]
 media:
+  cover: kalle-ks-dillemma.jpg
   filesize: 324608
   format: IT
 links:

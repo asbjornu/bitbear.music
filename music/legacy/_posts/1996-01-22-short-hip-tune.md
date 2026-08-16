@@ -2,6 +2,7 @@
 title: Short Hip Tune
 tags: [oldskool]
 media:
+  cover: short-hip-tune.jpg
   filesize: 93296
   channels: 4
   format: MOD

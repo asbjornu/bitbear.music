@@ -2,6 +2,7 @@
 title: Call of the Druidz
 tags: [oldskool]
 media:
+  cover: call-of-the-druidz.jpg
   filesize: 280576
   format: S3M
 links:

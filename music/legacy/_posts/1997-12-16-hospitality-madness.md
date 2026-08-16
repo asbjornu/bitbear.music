@@ -2,6 +2,7 @@
 title: Hospitality Madness
 tags: [oldskool]
 media:
+  cover: hospitality-madness.jpg
   filesize: 140288
   format: S3M
 links:

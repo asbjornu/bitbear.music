@@ -2,6 +2,7 @@
 title: Final Countdown
 tags: [chip, oldskool]
 media:
+  cover: final-countdown.jpg
   filesize: 9832
   channels: 4
   format: MOD

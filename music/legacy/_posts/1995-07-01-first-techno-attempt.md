@@ -2,6 +2,7 @@
 title: First Techno Attempt
 tags: [techno, oldskool]
 media:
+  cover: first-techno-attempt.jpg
   filesize: 167904
   channels: 6
   format: S3M

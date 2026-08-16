@@ -2,6 +2,7 @@
 title: The Floot Ride
 tags: [oldskool]
 media:
+  cover: the-floot-ride.jpg
   filesize: 50288
   channels: 4
   format: MOD

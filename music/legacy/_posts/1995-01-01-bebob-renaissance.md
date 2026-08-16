@@ -2,6 +2,7 @@
 title: Bebob Renaissance
 tags: [oldskool]
 media:
+  cover: bebob-renaissance.jpg
   filesize: 61400
   format: MOD
   channels: 4

@@ -2,6 +2,7 @@
 title: Call of the Totem
 tags: [chip, oldskool]
 media:
+  cover: call-of-the-totem.jpg
   filesize: 7746
   channels: 4
   format: MOD
