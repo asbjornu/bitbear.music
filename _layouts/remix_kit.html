@@ -89,7 +89,8 @@ layout: default
   {% endif %}
 {% endif %}
 
-{% if content.size > 0 %}
+{% assign trimmed_content = content | strip %}
+{% if trimmed_content.size > 0 %}
 <h3>Description</h3>
 
 {{ content }}
