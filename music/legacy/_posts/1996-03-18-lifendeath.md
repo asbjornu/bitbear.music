@@ -8,6 +8,7 @@ media:
 links:
   - https://demozoo.org/music/266815/
   - https://amp.dascene.net/downmod.php?index=159521
+  - https://api.modarchive.org/downloads.php?moduleid=214782
 ---
 
 "Life'n'Death" was produced as [PoC][poc], short for "Power of Creation", back in {% date %}.
