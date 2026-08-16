@@ -108,19 +108,29 @@ appropriate credit. Please see the
 <a href="/license" rel="license">license</a> page for more
 information.</p>
 
-{% if track %}
 <nav class="iterator">
   <ol>
+    {% if track %}
+      <li>
+        <a aria-description="Back to {{ track.title | escape }}"
+           data-tooltip="Back to {{ track.title | escape }}"
+           href="{{ track.url }}"
+           role="button"
+           rel="back">
+          <span class="iterator-glyph" aria-hidden="true">‹</span>
+          Back to {{ track.title }}
+        </a>
+      </li>
+    {% endif %}
     <li>
-      <a aria-description="Back to {{ track.title | escape }}"
-         data-tooltip="Back to {{ track.title | escape }}"
-         href="{{ track.url }}"
+      <a aria-description="All remix kits"
+         data-tooltip="All remix kits"
+         href="/music/remix-kits/"
          role="button"
-         rel="back">
+         rel="index">
         <span class="iterator-glyph" aria-hidden="true">↩</span>
-        {{ track.title }}
+        All remix kits
       </a>
     </li>
   </ol>
 </nav>
-{% endif %}
