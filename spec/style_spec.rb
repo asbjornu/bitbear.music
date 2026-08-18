@@ -52,7 +52,9 @@ describe 'Pico CSS integration' do
     end
 
     it 'keeps the iterator buttons equally spaced with no outer margins' do
-      expect(css).to include('nav.iterator ol{margin:0;padding:0;display:flex;flex-wrap:wrap;gap:1em')
+      expect(css).to include(
+        'nav.iterator ol{margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:flex-end;gap:1em'
+      )
     end
 
     it 'masks the unknown link icon with the noun project asset' do

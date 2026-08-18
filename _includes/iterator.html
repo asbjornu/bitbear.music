@@ -31,37 +31,36 @@
 <nav class="iterator">
   <ol>
     {% if page.previous and previous_categories == current_categories %}
-      <li>
-        <a aria-description="Go to “{{ page.previous.title | escape }}”"
-           data-tooltip="Go to “{{ page.previous.title | escape }}”"
-           href="{{ page.previous.url }}"
-           role="button"
-           rel="prev">
-          <span class="iterator-glyph" aria-hidden="true">‹</span>
-          {{ page.previous.title | truncate: 20 }}
-        </a>
+      <li aria-description="Go to “{{ page.previous.title | escape }}”"
+          data-tooltip="Go to “{{ page.previous.title | escape }}”">
+        <span class="button-frame">
+          <a href="{{ page.previous.url }}"
+             role="button"
+             rel="prev">
+            {{ page.previous.title | truncate: 20 }}
+          </a>
+        </span>
       </li>
     {% endif %}
-    <li>
-      <a aria-description="{{ text }}"
-         data-tooltip="{{ text }}"
-         href="{{ link }}"
-         role="button"
-         rel="{{ rel }}">
-        <span class="iterator-glyph" aria-hidden="true">↩</span>
-        {{ text }}
-      </a>
+    <li aria-description="{{ text }}" data-tooltip="{{ text }}">
+      <span class="button-frame">
+        <a href="{{ link }}"
+           role="button"
+           rel="{{ rel }}">
+          {{ text }}
+        </a>
+      </span>
     </li>
     {% if page.next and next_categories == current_categories %}
-      <li>
-        <a aria-description="Go to “{{ page.next.title | escape }}”"
-           data-tooltip="Go to “{{ page.next.title | escape }}”"
-           href="{{ page.next.url }}"
-           role="button"
-           rel="next">
-          {{ page.next.title | truncate: 20 }}
-          <span class="iterator-glyph" aria-hidden="true">›</span>
-        </a>
+      <li aria-description="Go to “{{ page.next.title | escape }}”"
+          data-tooltip="Go to “{{ page.next.title | escape }}”">
+        <span class="button-frame">
+          <a href="{{ page.next.url }}"
+             role="button"
+             rel="next">
+            {{ page.next.title | truncate: 20 }}
+          </a>
+        </span>
       </li>
     {% endif %}
   </ol>

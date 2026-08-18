@@ -475,11 +475,272 @@ main {
         clear: both;
         margin-top: 1em;
 
+        // How far the point/notch/peak reaches, as a full-height (or, for
+        // the peak, full-width) chevron spanning corner to corner on the
+        // shaped edge — matching the two straight-edge corners it replaces
+        // rather than a small mid-height triangle. The two *other* corners
+        // keep Pico's own rounded corners, approximated here (since
+        // clip-path overrides border-radius entirely) as a 4-segment arc —
+        // smooth enough at Pico's 10px radius that the facets don't show.
+        // $r is the corner radius; $ka/$kb/$kc are that arc's three
+        // intermediate points' offsets along each axis, i.e.
+        // r·(1 − cos(22.5°)), r·(1 − cos(45°)) and r·(1 − cos(67.5°)).
+        $shape-depth: 1.5rem;
+
+        // notch-in (back) keeps its own, shallower depth — matching the
+        // exact value it originally shipped with — decoupled from
+        // $shape-depth above (which prev/next were separately deepened
+        // to) so changing one doesn't move the other.
+        $notch-depth: 1rem;
+
+        // The house-peak on the site-root Home link (rel="back index")
+        // rises a full $shape-depth so it reads clearly against its
+        // short "Home" label. The plain index link (rel="index", e.g.
+        // "All remix kits") reuses the same shape but far shallower —
+        // a peak this obtuse barely rises at all, so it doesn't eat into
+        // the button's own height on what's typically a much wider,
+        // multi-word label.
+        $shallow-depth: .5rem;
+        $r: var(--pico-border-radius);
+        $ka: .0761;
+        $kb: .2929;
+        $kc: .6173;
+
+        // The four possible corners' arcs, each as a fragment of polygon()
+        // points (tangent-to-tangent, excluding the straight-edge points
+        // on either side of them, which the shapes below supply). Named
+        // for the corner they round off, in the tangent-to-tangent
+        // direction each is actually traversed in below — reversing which
+        // two straight edges meet it also reverses the order its points
+        // must be listed in, so bottom-left has two variants: one for
+        // point-out(right)'s left-then-bottom traversal (arc-left-bottom)
+        // and one for house-peak's bottom-then-left traversal
+        // (arc-bottom-left).
+        $arc-top-right: "calc(100% - #{$kc} * #{$r}) calc(#{$ka} * #{$r}), " +
+            "calc(100% - #{$kb} * #{$r}) calc(#{$kb} * #{$r}), " +
+            "calc(100% - #{$ka} * #{$r}) calc(#{$kc} * #{$r})";
+        $arc-bottom-right: "calc(100% - #{$ka} * #{$r}) calc(100% - #{$kc} * #{$r}), " +
+            "calc(100% - #{$kb} * #{$r}) calc(100% - #{$kb} * #{$r}), " +
+            "calc(100% - #{$kc} * #{$r}) calc(100% - #{$ka} * #{$r})";
+        $arc-top-left: "calc(#{$kc} * #{$r}) calc(#{$ka} * #{$r}), " +
+            "calc(#{$kb} * #{$r}) calc(#{$kb} * #{$r}), " +
+            "calc(#{$ka} * #{$r}) calc(#{$kc} * #{$r})";
+        $arc-bottom-left: "calc(#{$kc} * #{$r}) calc(100% - #{$ka} * #{$r}), " +
+            "calc(#{$kb} * #{$r}) calc(100% - #{$kb} * #{$r}), " +
+            "calc(#{$ka} * #{$r}) calc(100% - #{$kc} * #{$r})";
+        $arc-left-bottom: "calc(#{$ka} * #{$r}) calc(100% - #{$kc} * #{$r}), " +
+            "calc(#{$kb} * #{$r}) calc(100% - #{$kb} * #{$r}), " +
+            "calc(#{$kc} * #{$r}) calc(100% - #{$ka} * #{$r})";
+
+        // The rounded-right, chevron-left outline used by notch-in
+        // (back), parameterized by how deep the tip cuts in.
+        @function notch-shape($depth) {
+            @return polygon(
+                0 0,
+                calc(100% - #{$r}) 0,
+                #{$arc-top-right},
+                100% #{$r},
+                100% calc(100% - #{$r}),
+                #{$arc-bottom-right},
+                calc(100% - #{$r}) 100%,
+                0 100%,
+                #{$depth} 50%
+            );
+        }
+
+        // Every shape is applied identically, via the same clip-path
+        // formula, to three stacked layers of the same rel-scoped button:
+        // a larger ::before behind (filled with the button's own border
+        // color), an ::after the same size as the button in front of that
+        // (filled with the *page's* background color), and the button
+        // itself on top (its own translucent fill, border removed). Since
+        // clip-path coordinates are relative to each box's own size, and
+        // ::before's box is exactly one border-width bigger than the
+        // button's in every direction, the same formula naturally traces
+        // a uniform thin ring around the whole shape — including along
+        // the shaped edge — without the button's translucent fill ever
+        // compositing over anything but black, exactly like every other
+        // (unshaped) button on the site.
+        //
+        // The one place this doesn't hold up on its own is a concave tip
+        // (notch-in, below): growing ::before outward on every side moves
+        // its edges *closer* to an inward-pointing tip, not further away,
+        // so unlike the convex shapes' tips, it needs a deeper tip of its
+        // own — by exactly one border-width — to still fully enclose the
+        // inner layers' tip instead of falling short and leaving a gap.
+        @mixin shaped-layers($outer-shape, $inner-shape: $outer-shape) {
+            display: block;
+            position: relative;
+
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                z-index: 0;
+            }
+
+            &::before {
+                inset: calc(-1 * var(--pico-border-width));
+                background: var(--pico-primary-border);
+                clip-path: $outer-shape;
+            }
+
+            &::after {
+                inset: 0;
+                background: var(--pico-background-color);
+                clip-path: $inner-shape;
+            }
+
+            > a[role="button"] {
+                position: relative;
+                z-index: 1;
+                display: block;
+                width: 100%;
+                border: none;
+                clip-path: $inner-shape;
+            }
+        }
+
+        // A triangular point pulled out of the given edge (prev/next),
+        // with the two corners on the *other* side kept rounded. Since
+        // backgrounds never paint beyond an element's own border-box (no
+        // matter what clip-path allows), the button is genuinely grown by
+        // $shape-depth on this side. Padding alone doesn't do this for a
+        // width:auto block box — auto width is solved to exactly fill the
+        // containing block regardless of padding, so any padding added
+        // just eats into the box from the *same* outer edge instead of
+        // pushing it outward. Setting width explicitly (bypassing that
+        // auto-fill solving) and, for the left edge, counteracting the
+        // resulting shift with an equal negative margin so the *other*
+        // edge stays put, does grow the real box.
+        @mixin point-out($side) {
+            width: calc(100% + #{$shape-depth});
+
+            @if $side == left {
+                margin-left: calc(-1 * #{$shape-depth});
+
+                @include shaped-layers(
+                    polygon(
+                        #{$shape-depth} 0,
+                        calc(100% - #{$r}) 0,
+                        #{$arc-top-right},
+                        100% #{$r},
+                        100% calc(100% - #{$r}),
+                        #{$arc-bottom-right},
+                        calc(100% - #{$r}) 100%,
+                        #{$shape-depth} 100%,
+                        0 50%
+                    )
+                );
+
+                > a[role="button"] {
+                    padding-left: calc(var(--pico-form-element-spacing-horizontal) + #{$shape-depth});
+                }
+            } @else {
+                @include shaped-layers(
+                    polygon(
+                        calc(100% - #{$shape-depth}) 0,
+                        #{$r} 0,
+                        #{$arc-top-left},
+                        0 #{$r},
+                        0 calc(100% - #{$r}),
+                        #{$arc-left-bottom},
+                        #{$r} 100%,
+                        calc(100% - #{$shape-depth}) 100%,
+                        100% 50%
+                    )
+                );
+
+                > a[role="button"] {
+                    padding-right: calc(var(--pico-form-element-spacing-horizontal) + #{$shape-depth});
+                }
+            }
+        }
+
+        // A triangular notch cut into the left edge (concave, back) —
+        // the same rounded-right, chevron-left outline as point-out(left),
+        // but the tip points inward instead of outward, so it doesn't
+        // read as "forward" like prev. No extra room is needed since the
+        // notch is carved out of the button's existing box.
+        @mixin notch-in {
+            @include shaped-layers(
+                notch-shape(calc(#{$notch-depth} + var(--pico-border-width))),
+                notch-shape($notch-depth)
+            );
+
+            // Pico's own border-radius on the button's left corners has
+            // no visible effect once clip-path replaces that whole edge
+            // with the notch — clip-path always wins over border-radius
+            // for the button's own shape — but it can still interfere
+            // with the *ring*: ::before's inset shifts its box out by one
+            // border-width on every side to leave a visible sliver of it
+            // showing around the button, which the button's own rounded
+            // corners would otherwise still paint over on this edge.
+            > a[role="button"] {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+
+            // The notch's sharp corners and tip sit at literal, un-scaled
+            // coordinates (0 and $depth), unlike the rounded corners on
+            // the right, which are computed from this box's own 100% —
+            // so the usual uniform inset above, which relies on that
+            // scaling to widen the ring on every other edge, leaves this
+            // one perfectly aligned with the button instead: invisible.
+            // Insetting the left edge a second border-width compensates,
+            // giving this edge the same visible ring as the rest.
+            &::before {
+                left: calc(-2 * var(--pico-border-width));
+            }
+        }
+
+        // A house-shaped peak on top (back index / home), replacing the
+        // top-left/top-right rounded corners with two diagonals meeting
+        // at a tip above the button; the bottom corners stay rounded.
+        // Growing the button by $depth via a real padding-top (not a
+        // padding-top/negative-margin-top pair relying on margin
+        // collapsing to visually cancel out) matters here: a flex item
+        // (the <li>) establishes its own formatting context, which blocks
+        // margin collapsing from escaping it, so a margin-based "grow
+        // upward but keep the text in place" trick only ever moved the
+        // button itself — never the frame's own box, which ::before/
+        // ::after size themselves against — leaving the three layers
+        // visibly out of step with each other. A real padding-top grows
+        // the button's (and so the frame's) actual box, which every
+        // layer agrees on; nav.iterator ol's align-items: flex-end (see
+        // above) is what then keeps the *bottom* of every button aligned
+        // despite their differing heights, letting the peak grow upward
+        // from that shared line instead of pushing the button's own text
+        // down to make room for it.
+        @mixin house-peak($depth: $shape-depth) {
+            > a[role="button"] {
+                padding-top: calc(var(--pico-form-element-spacing-vertical) + #{$depth});
+            }
+
+            @include shaped-layers(
+                polygon(
+                    50% 0,
+                    100% #{$depth},
+                    100% calc(100% - #{$r}),
+                    #{$arc-bottom-right},
+                    calc(100% - #{$r}) 100%,
+                    #{$r} 100%,
+                    #{$arc-bottom-left},
+                    0 calc(100% - #{$r}),
+                    0 #{$depth}
+                )
+            );
+        }
+
         ol {
             margin: 0;
             padding: 0;
             display: flex;
             flex-wrap: wrap;
+            // A taller item (house-peak's roof) should grow upward from a
+            // shared bottom edge, not stretch every other button to match
+            // its height (the default) or grow from the top down.
+            align-items: flex-end;
             gap: 1em;
 
             li {
@@ -489,34 +750,50 @@ main {
                 display: inline-block;
                 list-style-type: none;
 
-                a {
+                // Pico's tooltip styles add a dotted border-bottom to any
+                // [data-tooltip] element that isn't itself a link/button
+                // (assuming it's inline text needing a hint of interactivity)
+                // — not the case here, since data-tooltip lives on the <li>
+                // purely to keep it (and its tooltip popup) clear of the
+                // button's own clip-path. Pico's own selector for this
+                // ([data-tooltip]:not(a, button, input, [role="button"]))
+                // outweighs a plain `li` here (its :not() argument list's
+                // most specific member, [role="button"], counts as a
+                // second class-level selector alongside [data-tooltip]
+                // itself), so match on `[data-tooltip]` too to tie it and
+                // win on source order.
+                &[data-tooltip] {
+                    border-bottom: none;
+                }
+
+                .button-frame {
+                    display: block;
                     position: relative;
+                }
 
-                    &[role="button"] {
-                        display: block;
-                        width: 100%;
-                    }
+                a[role="button"] {
+                    display: block;
+                    width: 100%;
+                }
 
-                    &[rel*="prev"] {
-                        .iterator-glyph {
-                            display: inline-block;
-                            margin: 0 .5rem 0 0;
-                        }
-                    }
+                .button-frame:has(> a[rel="prev"]) {
+                    @include point-out(left);
+                }
 
-                    &[rel*="back"] {
-                        .iterator-glyph {
-                            display: inline-block;
-                            position: relative;
-                            margin-right: .5rem;
-                            bottom: -.25rem;
-                        }
-                    }
+                .button-frame:has(> a[rel="next"]) {
+                    @include point-out(right);
+                }
 
-                    &[rel*="next"] .iterator-glyph {
-                        display: inline-block;
-                        margin: 0 0 0 .5rem;
-                    }
+                .button-frame:has(> a[rel="back"]) {
+                    @include notch-in;
+                }
+
+                .button-frame:has(> a[rel="back index"]) {
+                    @include house-peak;
+                }
+
+                .button-frame:has(> a[rel="index"]) {
+                    @include house-peak($shallow-depth);
                 }
             }
         }

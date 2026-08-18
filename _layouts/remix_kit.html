@@ -111,26 +111,25 @@ information.</p>
 <nav class="iterator">
   <ol>
     {% if track %}
-      <li>
-        <a aria-description="Back to {{ track.title | escape }}"
-           data-tooltip="Back to {{ track.title | escape }}"
-           href="{{ track.url }}"
-           role="button"
-           rel="back">
-          <span class="iterator-glyph" aria-hidden="true">‹</span>
-          Back to {{ track.title }}
-        </a>
+      <li aria-description="Back to {{ track.title | escape }}"
+          data-tooltip="Back to {{ track.title | escape }}">
+        <span class="button-frame">
+          <a href="{{ track.url }}"
+             role="button"
+             rel="back">
+            Back to {{ track.title }}
+          </a>
+        </span>
       </li>
     {% endif %}
-    <li>
-      <a aria-description="All remix kits"
-         data-tooltip="All remix kits"
-         href="/music/remix-kits/"
-         role="button"
-         rel="index">
-        <span class="iterator-glyph" aria-hidden="true">↩</span>
-        All remix kits
-      </a>
+    <li aria-description="All remix kits" data-tooltip="All remix kits">
+      <span class="button-frame">
+        <a href="/music/remix-kits/"
+           role="button"
+           rel="index">
+          All remix kits
+        </a>
+      </span>
     </li>
   </ol>
 </nav>
