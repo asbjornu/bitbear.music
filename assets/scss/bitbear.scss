@@ -288,7 +288,7 @@ section.footer footer a:hover {
     &.icon-amp {
         mask-image: url('/assets/images/services/amp.svg');
         -webkit-mask-image: url('/assets/images/services/amp.svg');
-        width: 1.4em;
+        width: 1em;
         height: 1em;
     }
 
@@ -314,10 +314,31 @@ section.footer footer a:hover {
     }
 
     &.icon-demozoo {
-        mask-image: url('/assets/images/services/demozoo.svg');
-        -webkit-mask-image: url('/assets/images/services/demozoo.svg');
+        mask-image: none;
+        -webkit-mask-image: none;
+        background-color: #fff;
         width: 1.1em;
         height: 1.1em;
+        border-radius: 2px;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 12%;
+            right: 12%;
+            bottom: 12%;
+            left: 12%;
+            background-color: #000;
+            mask-image: url('/assets/images/services/demozoo.svg');
+            -webkit-mask-image: url('/assets/images/services/demozoo.svg');
+            mask-size: contain;
+            -webkit-mask-size: contain;
+            mask-repeat: no-repeat;
+            -webkit-mask-repeat: no-repeat;
+            mask-position: center;
+            -webkit-mask-position: center;
+        }
     }
 
     &.icon-unknown {
@@ -344,6 +365,14 @@ section.footer footer a:hover {
 
 a:hover .icon {
     background-color: variables.$bg-color-light;
+}
+
+a:hover .icon.icon-demozoo {
+    background-color: variables.$bg-color-light;
+
+    &::after {
+        background-color: #fff;
+    }
 }
 
 main {

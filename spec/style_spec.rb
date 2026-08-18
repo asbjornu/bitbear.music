@@ -60,9 +60,16 @@ describe 'Pico CSS integration' do
       expect(css).to include('url("/assets/images/services/unknown.svg")')
     end
 
-    it 'masks the demozoo link icon with the black D in a white square asset' do
+    it 'renders the demozoo link icon as a white square with a masked DZ' do
       expect(css).to include('.icon.icon-demozoo')
-      expect(css).to include('url("/assets/images/services/demozoo.svg")')
+      expect(css).to include('background-color:#fff')
+      expect(css).to include('.icon.icon-demozoo::after')
+      expect(css).to include('mask-image:url("/assets/images/services/demozoo.svg")')
+    end
+
+    it 'recolors the demozoo link icon to purple on hover, like every other icon' do
+      expect(css).to include('a:hover .icon.icon-demozoo')
+      expect(css).to include('a:hover .icon.icon-demozoo::after')
     end
 
     it 'masks the youtube link icon with the play button asset' do
@@ -75,7 +82,7 @@ describe 'Pico CSS integration' do
       expect(css).to include('url("/assets/images/services/modarchive.svg")')
     end
 
-    it 'masks the amp link icon with the AMP asset' do
+    it 'masks the amp link icon with the checkered ball asset' do
       expect(css).to include('.icon.icon-amp')
       expect(css).to include('url("/assets/images/services/amp.svg")')
     end
