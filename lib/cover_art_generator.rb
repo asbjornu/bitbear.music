@@ -111,7 +111,8 @@ module CoverArtGenerator
   end
 
   def tools_available?
-    system('which rsvg-convert > /dev/null 2>&1') && system('which magick > /dev/null 2>&1')
+    system('which', 'rsvg-convert', out: File::NULL, err: File::NULL) &&
+      system('which', 'magick', out: File::NULL, err: File::NULL)
   end
 
   # Inserts `cover: <slug>.jpg` as the first key of the `media:` block, if
