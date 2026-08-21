@@ -2,422 +2,138 @@
 
 Guidance for AI agents working in this repository.
 
-## Environment setup (REQUIRED first step)
+## 1. Environment setup (do this first, every session)
 
-The agent shell runs with a minimal PATH (`/usr/bin:/bin:/usr/sbin:/sbin`) that does
-**not** include Homebrew. Every tool described below lives in Homebrew and is invisible
-until the PATH is exported. Run this preamble at the start of every session and before
-any command that touches git, gpg, or Ruby:
+The shell's default PATH excludes Homebrew. Its prefix depends on the Mac's
+CPU — `/opt/homebrew` on Apple Silicon, `/usr/local` on Intel. Export it
+before any git, gpg, or Ruby command:
 
 ```sh
-export PATH="/opt/homebrew/bin:/opt/homebrew/opt/ruby/bin:$PATH"
+BREW_PREFIX="/usr/local"; [ "$(uname -m)" = "arm64" ] && BREW_PREFIX="/opt/homebrew"
+export PATH="$BREW_PREFIX/bin:$BREW_PREFIX/opt/ruby/bin:$PATH"
 ```
 
-Never probe for tools with bare names (e.g. `git lfs version`, `gpg --version`,
-`ruby --version`) until this PATH is in effect, or you will falsely conclude they are
-missing.
+Verify: `ruby --version` (must be `4.x`, not the system `/usr/bin/ruby`
+2.6.10), `git lfs version` (`3.x`), `gpg --list-secret-keys --keyid-format LONG`
+(must show key `C3D5E883`).
 
-## Parallel agent sessions: always use a Git worktree
+## 2. Always work in a Git worktree — never in the primary checkout
 
-Never work directly in the repository's primary checkout
-(`/Users/bitbear/Dev/bitbear.music`) when running as one of several concurrent AI agent
-sessions — multiple agents editing the same working directory on the same branch will
-clobber each other's uncommitted changes, build artifacts, and checked-out files. Each
-agent session must instead create (or reuse) its own `git worktree` on its own branch:
+`/Users/bitbear/Dev/bitbear.music` may be in use by other concurrent agent
+sessions. Before making any change, create your own worktree and branch:
 
 ```sh
 git worktree add ../bitbear.music-<agent-name> -b <agent-name>/work
 ```
 
-Do all of that session's file edits, builds, and commits inside that worktree directory,
-not the primary checkout. When the session's work is merged/landed and the worktree is
-no longer needed, remove it with `git worktree remove ../bitbear.music-<agent-name>`
-(add `--force` only if it still has uncommitted changes you've confirmed are disposable).
+Do all edits, builds, and commits inside that worktree. Remove it when done:
+`git worktree remove ../bitbear.music-<agent-name>`.
 
-Notes specific to this repo:
+Notes:
+- `.git` (incl. the LFS object cache) is shared across worktrees; `node_modules`
+  is not — either let `npm ci` run per worktree or symlink one in from
+  `/Users/bitbear/Dev/bitbear.music/node_modules`.
+- Use a distinct `--port` if running `jekyll serve` in more than one worktree.
 
-- `.git` (including the Git LFS object cache) is shared across all worktrees
-  automatically — LFS-tracked audio/cover files are not re-downloaded per worktree.
-- `node_modules` is **not** shared: `_plugins/npm_deps.rb` auto-runs `npm ci` on first
-  build in any worktree missing it. Either let each worktree install its own copy, or
-  symlink one in from an existing worktree/checkout to avoid redundant installs:
-  `ln -s /Users/bitbear/Dev/bitbear.music/node_modules ../bitbear.music-<agent-name>/node_modules`.
-- `_site`, `.jekyll-cache`, and `.jekyll-metadata` are per-working-directory build
-  artifacts and are correctly *not* shared — that's the isolation you want.
-- If running `jekyll serve` in more than one worktree at once, give each a distinct
-  `--port` to avoid a bind conflict.
-- Bundler's gem install path is shared (global/user gem path), so `bundle install` in a
-  new worktree is normally fast and doesn't re-download gems already installed elsewhere.
-- GPG signing config (`commit.gpgsign`, `user.signingkey`) is read from global/repo
-  config and applies uniformly across all worktrees with no extra setup.
+## 3. Ruby & Jekyll
 
-## Ruby & Jekyll
+- Build like CI: `bundle exec rake build`. Also: `rake spec`, `rake htmlproofer`,
+  `rake clean`.
+- If a rebuilt `_site` page doesn't reflect your change, rule out (1) a stray
+  background `jekyll serve` process racing your build (`ps aux | grep jekyll`),
+  and (2) a stale cache: `rm -rf .jekyll-cache _site`.
+- `rake build`'s final step runs HTML Tidy (`prettify`) to reformat output;
+  requires `tidy` on PATH. `rake spec`/`htmlproofer` rebuild `_site` via
+  `Jekyll::Commands::Build.process` directly and skip `prettify`.
 
-- The Gemfile requires Ruby `>= 3.2`. The system Ruby at `/usr/bin/ruby` is 2.6.10 and
-  **must never be used**.
-- Use the Homebrew Ruby at `/opt/homebrew/opt/ruby/bin/ruby` (currently 4.0.6).
-- Build the site exactly as CI does (see `.github/workflows/_build.yml`):
-  ```sh
-  bundle exec rake build
-  ```
-  Other valid tasks: `bundle exec rake spec`, `bundle exec rake htmlproofer`,
-  `bundle exec rake clean`.
-- Self-check: `ruby --version` must report `4.x`.
-- **Stale build artifacts can make a correct change look broken**: if a rebuilt
-  `_site` page doesn't reflect a source/layout/`_config.yml` change you just made
-  (e.g. an old layout, old wording, or a link that shouldn't exist), don't assume
-  your change is wrong before ruling out two culprits:
-  1. A leftover background `jekyll serve`/`--watch` process from earlier in the
-     session, silently regenerating `_site` from its own in-memory state whenever
-     it notices a filesystem change, racing with and clobbering your foreground
-     `rake build`/`rake spec`/`rake htmlproofer` runs. Check with
-     `ps aux | grep jekyll` and `kill` any stray `jekyll serve` process before
-     trusting a build.
-  2. A stale `.jekyll-cache/` (or `.jekyll-metadata`) directory. When debugging
-     generator/layout/defaults behavior, wipe both before rebuilding:
-     `rm -rf .jekyll-cache _site`.
-  Note `spec/spec_helper.rb`'s `before(:suite)` hook rebuilds `_site` itself
-  (via `Jekyll::Commands::Build.process`), so `bundle exec rake spec` and
-  `bundle exec rake htmlproofer` each implicitly trigger a rebuild — a stray
-  `jekyll serve` process can still race with those, too.
-- **Rendered HTML is reformatted with consistent indentation by `HTML Tidy`**,
-  wired in as a `prettify` Rake task invoked automatically at the end of the
-  `build` task (`Rakefile`). This requires the `tidy` binary on `PATH`
-  (`brew install tidy-html5` locally; installed explicitly in
-  `.github/workflows/_build.yml` since GitHub's `ubuntu-latest` runner image
-  doesn't guarantee it). `--drop-empty-elements no` is required in its options
-  because Tidy's default behavior silently deletes elements with no text
-  content, which would strip this site's empty `<span class="icon-*">`
-  elements used for CSS-driven icons. Two other formatters were tried and
-  rejected for this: the `jekyll-compress-html` pure-Liquid layout (produces
-  markup lacking `<head>`/`<body>` closing tags when `endings: all` is
-  configured, which Nokogiri-based tools like html-proofer can't parse
-  correctly) and the `htmlbeautifier` gem (miscounts nesting depth around
-  multi-line tags like the multi-attribute `<img>` in `_layouts/default.html`,
-  causing indentation drift that cascades through the rest of the page).
-  Because `spec/spec_helper.rb`'s `before(:suite)` hook calls
-  `Jekyll::Commands::Build.process` directly rather than going through the
-  `build` Rake task, `_site` as seen by `bundle exec rake spec`/`htmlproofer`
-  is **not** run through `prettify` — only `bundle exec rake build`'s output is.
+## 4. Rubocop
 
-## Rubocop
+- Run `bundle exec rubocop -A` before considering `_plugins/**/*.rb` work
+  done — it isn't covered by `rake spec`/`rake build`.
+- In-memory `Jekyll::Page` subclasses with no backing file (`TagPage`,
+  `FormatPage`) legitimately skip `super` in `initialize`; disable
+  `Lint/MissingSuper` locally with a comment rather than faking a file path.
+- Fix `Metrics/*` cop violations by refactoring (extract helpers, data-driven
+  lookup tables) instead of raising limits in `.rubocop.yml`, and prefer
+  splitting an oversized module into focused files under its own directory
+  over bumping `Metrics/ModuleLength`.
 
-- Run `bundle exec rubocop` (add `-A` to auto-correct safe/correctable
-  offenses) before considering `_plugins/**/*.rb` work done; it's not part of
-  the `rake` tasks above and won't be caught by `rake spec`/`rake build`.
-- **Generated in-memory `Jekyll::Page` subclasses trigger
-  `Lint/MissingSuper`** (e.g. `TagPage`/`FormatPage` in
-  `_plugins/tag_page_generator.rb`/`_plugins/format_pages.rb`).
-  `Jekyll::Page#initialize` calls `read_yaml` to read front matter off disk,
-  but these pages are synthesized purely in memory and have no backing
-  file — calling `super` would need a nonexistent file path (Jekyll would
-  log a benign-but-noisy warning per generated page rather than fail, since
-  `strict_front_matter` defaults to off, but it's still wrong). The
-  established fix here is a targeted
-  `# rubocop:disable Lint/MissingSuper` / `# rubocop:enable` pair around
-  `initialize`, with a one-line comment explaining why — not calling `super`
-  with a dummy path. This mirrors how `jekyll-archives`' own
-  `Archive < Jekyll::Page` class handles the identical situation upstream.
-- **Prefer refactoring over raising `Metrics` limits.** When a `Metrics/*`
-  cop (AbcSize, CyclomaticComplexity, MethodLength, PerceivedComplexity) trips
-  on a filter in `_plugins/liquid_filters/*.rb`, extract private helper
-  methods (or a data-driven lookup table, as `LinkFilters::LINK_BRAND_PATTERNS`
-  replaced a long `case`/`when` in `link_brand`) rather than bumping the
-  limit in `.rubocop.yml`. `Metrics/MethodLength` already has one deliberate,
-  repo-wide override (`Max: 20`) — that's the exception, not the pattern to
-  follow per-offense.
-- **`Metrics/ModuleLength` was deliberately rejected as a config override**:
-  a from-scratch fix bumped `Max` in `.rubocop.yml` when
-  `_plugins/liquid_filters.rb` grew past 100 lines, but the actual fix
-  (reverted) was to split the single module into focused files under
-  `_plugins/liquid_filters/` (`collection_filters.rb`, `link_filters.rb`,
-  `youtube_filters.rb`, `format_filters.rb`, `remix_kit_filters.rb`), each
-  its own `Jekyll::*Filters` module independently registered via
-  `Liquid::Template.register_filter`. Jekyll's plugin loader globs
-  `_plugins/**/*.rb` recursively, so nested files need no manual `require`
-  wiring. Liquid mixes every registered filter module into the same
-  `Strainer` instance, so a public method in one file (e.g.
-  `YoutubeFilters#youtube_id` calling `LinkFilters#link_url`) resolves fine
-  across module boundaries at runtime — split by cohesive concern freely,
-  cross-file calls aren't a concern. `spec/liquid_filters_spec.rb` mixes all
-  five modules into one anonymous test class for the same reason.
+## 5. Node.js & Pico CSS
 
-## Node.js & Pico CSS
+- Pico CSS runs in classless mode — style semantic HTML, not utility classes.
+  Sass config lives in `_config.yml` / `assets/scss/bitbear.scss`
+  (keep `spec/style_spec.rb` in sync with token/module changes).
+- Never override Pico's own component styles (e.g. modal `dialog`/`article`).
+  If Pico's output looks distorted, the cause is almost always this site's own
+  greedy selectors (bare `header`, `footer`, `main h1-h6`/`p`) — rescope them
+  to be more specific instead of layering overrides on Pico.
+- Covers: `assets/images/covers/<slug>.jpg` (1080²) + `@2x` twin (2160²),
+  generated from `covers-master/` via `rake covers:2x`; `spec/cover_spec.rb`
+  enforces the pairing. A track belonging to an album has **no cover of its
+  own** — it inherits the album's `media.cover` (`_layouts/post.html`).
+- Missing cover art for standalone tracks is auto-generated at build time by
+  `lib/cover_art_generator.rb` (`rake covers:generate` to run standalone);
+  it's idempotent and requires `rsvg-convert` + `magick` on PATH, skipping
+  quietly (not failing the build) if they're absent.
 
-- Pico CSS (`@picocss/pico` 2.x) IS the styling framework, used in **classless mode** —
-  its compiled rules style bare semantic HTML elements (`button`, `a[role=button]`,
-  `table`, `body`, etc.) directly, so layouts should rely on semantic markup rather than
-  Pico utility classes. Only your own site-specific classes/ids (e.g. `.iterator`,
-  `#cover`) are added on top; site overrides customize Pico's tokens, they don't replace
-  its role.
-- It is pulled from `node_modules` via npm and compiled into the stylesheet, not served
-  externally:
-  - The Sass load path is set in `_config.yml`; the theme overrides (`--pico-*`) and the
-    enabled-module list live in `assets/scss/bitbear.scss`.
-  - `_plugins/npm_deps.rb` auto-runs `npm ci` at `:after_init` when `node_modules` is
-    missing, so a fresh build failure usually means Node v20+ / `npm` were not available.
-- When changing design tokens or enabled modules, update `assets/scss/bitbear.scss` and
-  keep `spec/style_spec.rb` expectations in sync.
-- **Never restyle or override Pico's own component styles** (e.g. the modal's `dialog`,
-  `> article`, `> header`, close-button rules). If aggregation looks right but Pico's
-  built-in output is being distorted, the cause is almost always the site's own greedy
-  element selectors (bare `header`, `footer`, `main h1-h6`/`p`) bleeding into Pico
-  components and other markup. Fix that by **re-scoping the greedy styles to be more
-  precise** with direct parent/child selectors (e.g. `header` → `body > header`,
-  `footer` → `section.footer footer`) rather than by adding chrome classes or layering
-  custom overrides on top of Pico. Prefer enabling a Pico module
-  (e.g. `components/card` for modal `article` styling) over hand-rolling the same rules.
-- The cover-art enlargement is a pure-CSS `:target` modal (no JS to open/close): its
-  static HTML lives in the `_includes/cover.html` template as a Pico `<dialog>` with the
-  `#cover-art` id, opened by `#cover-art:target { display: flex }` (Pico's own
-  `dialog:not([open]) { display: none }` keeps it closed by default). Only the inner
-  `article` is sized to hug the cover art (`padding: 0`, `width: auto`); everything else
-  is Pico's `components/modal` + `components/card` output. Reposition or scope it as
-  `#cover-art`, not by overriding Pico's `dialog`.
-- Cover thumbnails live at `assets/images/covers/<name>.jpg` (1080×1080; LFS-tracked)
-  with a high-res twin at `assets/images/covers/<name>@2x.jpg` (2160×2160).
-  `_includes/cover.html` derives the twin purely by filename
-  (`| replace: '.jpg', '@2x.jpg'`) and always emits a `srcset` (`1080w`, `2160w`) on the
-  modal `<img>` — there is no runtime existence check. The invariant is instead enforced
-  in CI by `spec/cover_spec.rb`, which fails when a cover lacks its `@2x` twin or a
-  post's front matter references a cover file that does not exist. Generate the twins
-  from git-ignored 2160² masters with `bundle exec rake covers:2x` (see `Rakefile`);
-  masters live in the repo-root `covers-master/` directory.
-- **A track that belongs to an album gets its cover art from the album, not its own
-  file.** `_layouts/post.html` only falls back to looking up the album post's
-  `media.cover` (via `page.album.slug`) when the track's own `media.cover` is absent —
-  so a track post with an `album:` key should *not* also set `media.cover` itself
-  (only the album post needs one). This is also why `CoverArtGenerator` (see below)
-  skips generating art for any post with `album.slug` set: there's nothing to draw
-  for it, art gets drawn once for the album instead.
-- **Missing cover art is generated automatically**, by `lib/cover_art_generator.rb`
-  (split into focused files under `lib/cover_art_generator/`: `svg_asset.rb` reads
-  SVG/PNG headers for sizing, `gradient_background.rb`, `logo.rb`, and `title_pill.rb`
-  each build one piece of the SVG, and `svg_document.rb` composes them), wired into the
-  Jekyll build via the `:site, :after_init` hook in `_plugins/cover_art_generator.rb`
-  (the same lifecycle point `npm_deps.rb` installs npm packages at — so it also runs on
-  every `jekyll serve`). It finds every track post under `music/**/_posts` with no
-  `media.cover` of its own and no album to inherit one from (see above), and for each
-  one still missing its `.jpg`/`@2x.jpg` files on disk: renders a cover with a randomly
-  generated linear-gradient background (seeded from the post's slug, so re-running the
-  generator against the same content is deterministic) behind the site's logo and the
-  track title in a pill (white background, black text, a black border 10% as thick as
-  the pill is tall), then adds `cover: <slug>.jpg` to the post's `media:` front matter.
-  The logo always fills 90% of the canvas width (`LOGO_WIDTH_RATIO`), with the same
-  whitespace on its left, top and right sides, and the pill is right-aligned directly
-  under it. Legacy tracks (`music/legacy/`) get the "Power of Creation" wordmark
-  (`assets/images/power-of-creation.svg`); everything else gets the Bitbear bear-icon +
-  text lockup PNG (`assets/images/bitbear-outlined.png`, trimmed of the transparent
-  whitespace around it from the GitHub repository's own OpenGraph image at
-  <https://repository-images.githubusercontent.com/89099209/95bd4180-8b68-11eb-9dbf-b449b2505aaf>
-  — used as-is, not the separate `logo.svg`/`bitbear-text-*.svg` combo, since assembling
-  those two ourselves under-sized the bear-icon relative to the lockup's own
-  proportions, and the lockup's own white outline around its black shapes already
-  contrasts against any background, so there's no need for separate black/white
-  variants). Raster PNGs are inlined into the generated SVG as a `data:` URI `<image>`
-  (rsvg-convert doesn't resolve plain file paths there, only data URIs) — see
-  `Logo.png_element`. It's idempotent — a post is only touched if its cover files don't
-  already exist — and requires `rsvg-convert` and `magick`/ImageMagick on `PATH` (both
-  provided by Homebrew, see the environment setup preamble at the top of this file); if
-  they're missing, it logs a warning and skips rather than failing the build, since CI
-  never needs to generate anything (every real post's cover art is already committed
-  and LFS-tracked). Run it standalone with `bundle exec rake covers:generate`.
+## 6. Content authoring (music posts)
 
-## Content authoring (music posts)
-
-- **Never fabricate biographical or background prose** for a track, release, or person.
-  Every descriptive claim in a post must come from an actual source (a SoundCloud track
-  description, a Demozoo production/credit, a FILE_ID.DIZ info file, etc.) — paraphrase
-  and link the source rather than inventing narrative filler. If no real source exists,
-  keep the post factual and minimal (front matter + release links) instead of guessing.
-- **Known scener aliases** — always reuse the same Demozoo scener link for the same
-  person rather than creating inconsistent ones per post:
+- Never fabricate biographical/background prose. Every claim must trace to a
+  real source (SoundCloud description, Demozoo credit, `FILE_ID.DIZ`, etc.) —
+  paraphrase and link it. No source → keep the post minimal and factual.
+- Known scener aliases — reuse the same Demozoo link, don't create new ones:
   - Miu = MAGNUS = MONOMAGNUS = Mono Magnus → `https://demozoo.org/sceners/4221/`
   - PAcMan = Waldemar Doppelzimmer = Modulo One = Anders Knatten →
     `https://demozoo.org/sceners/4306/`
   - Puma = Fulgore → `https://demozoo.org/sceners/106369/`
-- **Greeting-list linking convention**: only link a greeted handle to a Demozoo scener
-  page when there's a confident match; leave ambiguous/generic handles (e.g. "Trigger",
-  single common English words) as plain text rather than risk linking to the wrong
-  person. Reuse resolved link mappings across posts once established.
-- **Fetching gotchas**:
-  - `demozoo.org` blocks plain `curl` (Cloudflare challenge) but works fine through the
-    `webfetch` tool. Its `/api/v1/productions/<id>/` JSON endpoint is a reliable
-    structured source for a production's authors, credits, dates, and external links.
-  - `soundcloud.com` HTML pages are inconsistently bot-walled; `curl`ing
-    `https://soundcloud.com/oembed?url=<track-url>&format=json` is a reliable way to
-    check whether a track exists and to grab its title/thumbnail without hitting the
-    bot wall. For full (untruncated) track descriptions, fetch the track page via
-    `webfetch` and read the `<meta itemprop="description">` inside the `<noscript>`
-    block, not the truncated `og:description`.
-  - Demozoo's "Info file" (FILE_ID.DIZ) viewer requires login, but the same file is
-    almost always bundled in the linked scene.org release `.zip` — download it and
-    `unzip -p` the `.zip` instead of trying to view it on Demozoo directly.
-- **Layout vs. directory-derived categories**: a post's `main` CSS class and Jekyll
-  `categories` are auto-derived from its directory nesting under `_posts` (e.g.
-  `music/albums/_posts` → `music albums`). If a post needs a different layout than its
-  directory implies (e.g. an "album" page filed under `music/legacy/`), set `layout:`
-  explicitly in front matter — don't assume CSS scoped to `main.<category>` will apply,
-  and don't assume `site.categories['<x>']` listings will include/exclude it as expected.
-- **No trailing slash on page URLs**: the site-wide `permalink: /:categories/:title`
-  pattern (in `_config.yml`) produces a bare file per page (e.g. `license.md` →
-  `/license.html`, served at `/license`), not a directory with an `index.html`. Linking
-  to `/license/` (with a trailing slash) 404s — always link to `/license` without one.
-  This applies to any root-level or top-level page using the default permalink, not just
-  `/license`.
-- **Same-day post ordering**: Jekyll breaks ties between same-date posts by filename,
-  not insertion order. When an album and one of its tracks share a release date, give
-  the album an explicit `date: YYYY-MM-DD 01:00:00 +0000` (an hour past midnight) so it
-  reliably sorts above the track in `song_table.html` — don't rely on filename
-  alphabetical tie-break.
-- **Spec YAML safe-loading**: some specs (`remix_kit_spec.rb`, `cover_spec.rb`) parse
-  front matter directly with `YAML.safe_load`. Adding a non-string front matter value
-  (e.g. an explicit `date:`) can break specs that don't permit that class. When adding
-  new front matter types, grep `spec/*.rb` for `YAML.safe_load` and make sure every call
-  site includes `permitted_classes: [Date, Time, Symbol], aliases: true`.
+- Only link a greeted handle to a Demozoo scener page when the match is
+  confident; leave ambiguous/generic handles as plain text.
+- Fetching: `demozoo.org` blocks plain `curl` (use `webfetch`; its
+  `/api/v1/productions/<id>/` JSON is a reliable structured source).
+  `soundcloud.com/oembed?url=<track-url>&format=json` checks a track exists
+  without hitting SoundCloud's bot wall; for full descriptions, `webfetch`
+  the track page and read `<meta itemprop="description">` inside `<noscript>`.
+  A production's `FILE_ID.DIZ` is usually in its scene.org release `.zip`
+  rather than viewable on Demozoo directly.
+- A post's layout/`categories` default from its directory under `_posts`; set
+  `layout:` explicitly in front matter when a post needs a different one.
+- Page URLs never have a trailing slash (`permalink: /:categories/:title` in
+  `_config.yml` produces bare files) — link to `/license`, not `/license/`.
+- Jekyll breaks same-date post ties by filename. Give an album an explicit
+  `date: YYYY-MM-DD 01:00:00 +0000` so it sorts above its title track.
+- Front matter parsed directly with `YAML.safe_load` in specs
+  (`remix_kit_spec.rb`, `cover_spec.rb`) needs `permitted_classes: [Date,
+  Time, Symbol], aliases: true` — check both call sites when adding new
+  non-string front matter types.
 
-## Genre/tag pages
+## 7. Genre/format pages
 
-- Every track post is tagged via a `tags:` front matter array (e.g.
-  `tags: [house, dance]`) with lowercase, hyphenated genre/style slugs (e.g.
-  `drum-and-bass`, `oldskool`). This is Jekyll's built-in tags mechanism
-  (`site.tags`), not a custom concept — a single-tag post may alternatively use
-  the singular `tag: <name>` key (Jekyll pluralizes it automatically), but
-  prefer the plural array form once a post has more than one tag.
-- `_plugins/tag_page_generator.rb` (`TagPageGenerator`) synthesizes a page at
-  `/music/genres/<tag>/` for every tag in `site.tags`, rendered with the `tag`
-  layout (`_layouts/tag.html`), which lists all posts carrying that tag via the
-  same `song_year_nav.html`/`song_table.html` includes used elsewhere.
-- **Physical pages take precedence over synthesized ones**: before generating
-  a page for a tag, the generator checks whether a real page already resolves
-  to that same `/music/genres/<tag>/` URL (via `site.pages.map(&:url)`) and
-  skips generation if so. This is how `music/genres/chip/index.md` (Bitbear's
-  hand-written chiptunes page, with its own prose) overrides the otherwise
-  auto-generated `chip` genre page — there is no special front-matter marker
-  for this, it's purely a URL collision check, so **any physical page placed
-  at `music/genres/<tag>/index.md` automatically takes over that tag's page**.
-- The `tag` layout itself is applied via a `_config.yml` front-matter default
-  scope (`path: music/genres` → `layout: tag`), **not** hard-coded in
-  `music/genres/chip/index.md`'s own front matter — keep it that way so every
-  page under `music/genres/` (physical or synthesized) gets the layout
-  uniformly. `_layouts/tag.html` renders `{{ content }}` when a physical page
-  has a body, falling back to a generic "Bitbear's `<tag>` tracks" blurb when
-  it doesn't (synthesized pages have no body) — don't reintroduce a hard-coded
-  heading like `Bitbear's {{ page.title }} tracks` in the layout, since a
-  physical page's `title` is already a complete phrase (e.g. "Bitbear's
-  Chiptunes") and would get wrapped/duplicated; instead, generator-produced
-  titles (`TagPage#initialize` in `_plugins/tag_page_generator.rb`) are
-  already complete strings, and the layout just renders `page.title` as-is.
-- `_includes/genres_table_row.html` renders each post's `page.tags` as links
-  to `/music/genres/<tag>/` in a "Genres" row in the track page's media table
-  (wired into `_layouts/post.html`).
-- `spec/genre_pages_spec.rb` covers this: every tag has a generated page, the
-  `chip` override isn't duplicated, and the "Genres" row links correctly.
-  When adding new tags, no new spec examples need writing — the spec derives
-  its list of tags straight from post front matter. Tags used only by an
-  unpublished post (`published: false`) are excluded from that derivation,
-  matching Jekyll's own exclusion of unpublished posts from `site.tags` (no
-  genre page is generated for a tag with no published posts).
+- Tags (`tags: [house, dance]`, lowercase-hyphenated) synthesize pages at
+  `/music/genres/<tag>/`; formats (`media.format`) at `/music/formats/<format>/`.
+  A physical page at that URL (e.g. `music/genres/chip/index.md`) always wins
+  over the generator's synthesized one — no front-matter marker needed.
+  Covered by `spec/genre_pages_spec.rb` / `spec/format_pages_spec.rb`.
+- Every place `media.format` is displayed must link to its format page
+  (`/music/formats/{{ format | downcase }}/`).
 
-## Format pages
+## 8. JSON-LD & data gotchas
 
-- The same physical-page-overrides-synthesized-page pattern used for genres
-  is mirrored for track formats (`page.media.format`, e.g. `MOD`, `S3M`,
-  `IT`, `FST`, `XRNS`) via `_plugins/format_pages.rb`
-  (`FormatPageGenerator`/`FormatPage`) and `_layouts/format.html`, at
-  `/music/formats/<format>/` (lowercased in the URL; the `format:` front
-  matter/data value itself stays uppercase to match `media.format` values
-  verbatim). Unlike tags, Jekyll has no built-in `site.tags`-equivalent
-  grouping for arbitrary front matter fields, so the generator computes and
-  exposes the format → posts mapping itself as `site.data['formats']`
-  (`_layouts/format.html` reads it as `site.data.formats[page.format]`).
-- Every format currently in use (`MOD`, `S3M`, `IT`, `FST`, `XRNS`) has a
-  **hand-written physical page** at `music/formats/<format>/index.md`
-  explaining the format's history and sourcing, per this feature's
-  requirement that every format page explains the format — there is
-  currently no format left to the generic auto-generated fallback. If a new
-  format value is introduced without a matching physical page, the generator
-  will still synthesize a minimal page for it automatically.
-- Every place a format abbreviation is displayed is a link to its format
-  page: the "Format" row in the track media table (`_layouts/post.html`),
-  the `(MOD)`/`(IT)`/etc. suffix in the "Kind" column of every song table row
-  (`_includes/song_table_row.html`), and the remix kit page's "Format" row
-  (`_layouts/remix_kit.html`). If a new spot renders `media.format` in the
-  future, link it the same way (`/music/formats/{{ format | downcase }}/`)
-  rather than rendering it as plain/abbr-only text.
-- `spec/format_pages_spec.rb` covers this the same way
-  `spec/genre_pages_spec.rb` covers genres.
+- Build JSON-LD as a Ruby `Hash` + `to_json`, not a Liquid string.
+- A post is an "album" iff it has an `album` key with no nested `slug`
+  (`AlbumEntry.for?`) — a track's `album` key points at its parent via `slug`.
+- Use `doc.data['slug']`, not the deprecated `doc.slug`.
+- Liquid Drops don't support `Hash#dig`, only `[]`.
 
-## JSON-LD structured data
+## 9. Commit conventions
 
-- The site's JSON-LD (`_plugins/json_ld_tag.rb`, `_plugins/json_ld/`) is built
-  as a Ruby `Hash` and serialized with `to_json`, not assembled as a Liquid
-  string — keep doing that for any future structured data.
-- **A post is an "album" if it has an `album` key with no nested `slug`**
-  (`AlbumEntry.for?` in `album_entry.rb`) — not if `layout == 'album'`. A
-  track post also has an `album` key, but pointing *at* its parent via
-  `slug`, so `slug`'s presence/absence is the real distinguisher.
-  Album and track posts can share the same filename slug (e.g. an album and
-  its title track), so any `site.posts.docs.find` by slug must also check
-  `AlbumEntry.for?`, or it may match the track instead of its album.
-- Use `doc.data['slug']`, not `doc.slug` — the latter is deprecated and logs
-  a noisy warning on every build.
-- Liquid Drops (`page` in a tag/template) don't support `Hash#dig`, only
-  `[]` — `page.dig('media', 'length')` raises `NoMethodError`.
-- Jekyll's and this repo's Liquid filter modules are plain Ruby modules —
-  `include` them directly into a plugin class (set `@context = context`
-  first) to reuse filters like `absolute_url` outside of Liquid.
+- Header ≤50 chars, plain text, no cropping — if it wouldn't fit, put the
+  full sentence as the first line of the body instead. Body wrapped at 72
+  chars; backtick code references in the body only.
+- Amend a commit already made earlier in this branch when correcting it;
+  make a new commit for new/separate content, even in the same file.
+- Always `git commit -S` (signing key `C3D5E883`).
 
-## Git LFS
+## 10. Before finishing
 
-- Git LFS **is installed** (`/opt/homebrew/bin/git-lfs`, v3.x). Any "not installed"
-  detection is a PATH artifact.
-- Large files (`.flac`, `.mp3`, `.wav`, `.zip`, cover images) are LFS-tracked per
-  `.gitattributes`. Use `git lfs track`, `git lfs ls-files`, and `git lfs migrate`
-  normally after exporting PATH.
-- Verify with: `git lfs version`.
-
-## Commit message format
-
-- Keep the commit message header (first line) to a maximum of 50 characters.
-  If the header would need cropping to fit, don't crop it — instead write the
-  full sentence as the first line of the commit message body, below a blank
-  line after the (still ≤50-character) header.
-- Wrap the commit message body at 72 characters per line.
-- Wrap words that refer to code (file names, functions, classes, variables,
-  commands, flags, etc.) in backticks in the body — but never in the header,
-  which must be plain text.
-
-## Finishing work: commit, then rebase on `main`
-
-- Before considering a task done, always commit your changes, then rebase
-  the branch on `main` (`git fetch origin main && git rebase origin/main`).
-- Amend vs. new commit is decided by what the request is *about*, not by
-  which file it touches:
-  - If asked to change or correct something already introduced by a commit
-    made earlier in the current branch/worktree, amend that commit
-    (`git commit --amend`, or `git rebase -i` to reach an older one) instead
-    of adding a new commit on top.
-  - If asked to add new, separate content or rules — even to the same
-    file a prior commit in this branch touched — make a new commit with its
-    own descriptive message. Don't fold unrelated additions into an
-    unrelated earlier commit just because they land in the same file.
-
-## GPG-signed commits
-
-- Always sign commits with `git commit -S`. `commit.gpgsign=true` is set globally;
-  pass `-S` explicitly regardless.
-- Signing key: `C3D5E883` (Asbjørn Ulsberg <asbjorn@ulsberg.no>).
-- `gpg.program=gpg` resolves to `/opt/homebrew/bin/gpg` once Homebrew is on PATH.
-- Verify the key is available with: `gpg --list-secret-keys --keyid-format LONG`.
-
-## Quick self-check
-
-Run before any commit or build:
-
-```sh
-export PATH="/opt/homebrew/bin:/opt/homebrew/opt/ruby/bin:$PATH"
-ruby --version              # must be 4.x, not 2.6
-git lfs version             # must print git-lfs/3.x
-gpg --list-secret-keys --keyid-format LONG   # must show C3D5E883
-```
+Commit, then `git fetch origin main && git rebase origin/main`.
+</content>
