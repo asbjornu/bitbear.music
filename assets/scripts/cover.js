@@ -7,25 +7,25 @@
         }
     }
 
-    ready(function () {
-        var modal = document.querySelector('#cover-art');
+    ready(() => {
+        const modal = document.querySelector('#cover-art');
 
         if (modal) {
-            document.addEventListener('keydown', function (event) {
+            document.addEventListener('keydown', (event) => {
                 if (event.key === 'Escape' && window.location.hash === '#cover-art') {
                     window.location.hash = '';
                 }
             });
         }
 
-        var media = document.querySelector('#cover-media');
-        var play = document.querySelector('#cover-media #cover-play');
-        var img = media && media.querySelector('img');
+        const media = document.querySelector('#cover-media');
+        const play = document.querySelector('#cover-media #cover-play');
+        const img = media && media.querySelector('img');
         if (!media || !img || !play) {
             return;
         }
 
-        var iframe = null;
+        let iframe = null;
 
         function restore() {
             media.classList.remove('is-playing');
@@ -35,9 +35,9 @@
             }
         }
 
-        play.addEventListener('click', function (event) {
-            var match = /[?&]v=([^&#]+)/.exec(play.getAttribute('href'));
-            var youtube = match ? match[1] : null;
+        play.addEventListener('click', (event) => {
+            const match = /[?&]v=([^&#]+)/.exec(play.getAttribute('href'));
+            const youtube = match ? match[1] : null;
             if (!youtube || iframe) {
                 return;
             }

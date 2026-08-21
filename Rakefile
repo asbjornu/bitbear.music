@@ -12,6 +12,7 @@ RSpec::Core::RakeTask.new(:spec) do |t|
 end
 
 # Rake Jekyll tasks
+desc 'Builds the site into _site/ and reformats the output with Tidy'
 task :build do
   puts 'Building site...'.bold
   Jekyll::Commands::Build.process(profile: true)
@@ -45,6 +46,7 @@ task :prettify do
   end
 end
 
+desc 'Removes the built _site/ directory'
 task :clean do
   puts 'Cleaning up _site...'.bold
   Jekyll::Commands::Clean.process({})
@@ -80,6 +82,7 @@ namespace :covers do
   end
 end
 
+desc 'Checks the built site for broken links, images, and scripts'
 task :htmlproofer do
   require 'html-proofer'
 
@@ -95,12 +98,12 @@ task :htmlproofer do
       /flickr.com/,
       /help.thenounproject.com/,
       /trsac.dk/,
-      /web.archive.org/,
+      /web.archive.org/
     ],
     hydra: { max_concurrency: 1 },
-    cache: { timeframe: { external: '1w' } },
+    cache: { timeframe: { external: '1w' } }
   }
-  HTMLProofer.check_directory("./_site", options).run
+  HTMLProofer.check_directory('./_site', options).run
 end
 
 task default: ['spec']

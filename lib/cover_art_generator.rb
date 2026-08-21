@@ -52,7 +52,7 @@ module CoverArtGenerator
   POWER_OF_CREATION_LOGO = File.join(IMAGES_DIR, 'power-of-creation.svg')
   BITBEAR_LOGO = File.join(IMAGES_DIR, 'bitbear-outlined.png')
 
-  Post = Struct.new(:path, :slug, :title, :kind, :front_matter, keyword_init: true)
+  Post = Data.define(:path, :slug, :title, :kind, :front_matter)
 
   module_function
 
@@ -111,7 +111,8 @@ module CoverArtGenerator
   end
 
   def tools_available?
-    system('which rsvg-convert > /dev/null 2>&1') && system('which magick > /dev/null 2>&1')
+    system('which', 'rsvg-convert', out: File::NULL, err: File::NULL) &&
+      system('which', 'magick', out: File::NULL, err: File::NULL)
   end
 
   # Inserts `cover: <slug>.jpg` as the first key of the `media:` block, if

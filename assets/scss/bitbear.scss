@@ -159,7 +159,6 @@ body > header {
         display: flex;
         align-items: center;
         flex-flow: row nowrap;
-        -ms-flex-pack: start;
         justify-content: flex-start;
         text-transform: uppercase;
 
@@ -243,79 +242,73 @@ section.footer footer a:hover {
     transition: background-color .2s ease;
     padding: 0;
 
+    @mixin mask-image($value) {
+        mask-image: $value;
+        -webkit-mask-image: $value;
+    }
+
     &.icon-cc {
-        mask-image: url('/assets/images/cc.svg');
-        -webkit-mask-image: url('/assets/images/cc.svg');
+        @include mask-image(url('/assets/images/cc.svg'));
         width: 30px;
         height: 30px;
     }
 
     &.icon-by {
-        mask-image: url('/assets/images/by.svg');
-        -webkit-mask-image: url('/assets/images/by.svg');
+        @include mask-image(url('/assets/images/by.svg'));
         width: 30px;
         height: 30px;
     }
 
     &.icon-bandcamp {
-        mask-image: url('/assets/images/services/bandcamp.svg');
-        -webkit-mask-image: url('/assets/images/services/bandcamp.svg');
+        @include mask-image(url('/assets/images/services/bandcamp.svg'));
         width: 1.25em;
         height: .74em;
     }
 
     &.icon-soundcloud {
-        mask-image: url('/assets/images/services/soundcloud.svg');
-        -webkit-mask-image: url('/assets/images/services/soundcloud.svg');
+        @include mask-image(url('/assets/images/services/soundcloud.svg'));
         width: 1.5em;
         height: .65em;
     }
 
     &.icon-youtube {
-        mask-image: url('/assets/images/services/youtube.svg');
-        -webkit-mask-image: url('/assets/images/services/youtube.svg');
+        @include mask-image(url('/assets/images/services/youtube.svg'));
         width: 1.45em;
         height: 1em;
     }
 
     &.icon-modarchive {
-        mask-image: url('/assets/images/services/modarchive.svg');
-        -webkit-mask-image: url('/assets/images/services/modarchive.svg');
+        @include mask-image(url('/assets/images/services/modarchive.svg'));
         width: 1.1em;
         height: 1.1em;
     }
 
     &.icon-amp {
-        mask-image: url('/assets/images/services/amp.svg');
-        -webkit-mask-image: url('/assets/images/services/amp.svg');
+        @include mask-image(url('/assets/images/services/amp.svg'));
         width: 1em;
         height: 1em;
     }
 
     &.icon-apple-music {
-        mask-image: url('/assets/images/services/apple-music.svg');
-        -webkit-mask-image: url('/assets/images/services/apple-music.svg');
+        @include mask-image(url('/assets/images/services/apple-music.svg'));
         width: .85em;
         height: 1.13em;
     }
 
     &.icon-spotify {
-        mask-image: url('/assets/images/services/spotify.svg');
-        -webkit-mask-image: url('/assets/images/services/spotify.svg');
+        @include mask-image(url('/assets/images/services/spotify.svg'));
         width: 1em;
         height: 1.04em;
     }
 
     &.icon-mirlo {
-        mask-image: url('/assets/images/services/mirlo.svg');
-        -webkit-mask-image: url('/assets/images/services/mirlo.svg');
+        @include mask-image(url('/assets/images/services/mirlo.svg'));
         width: .9em;
         height: 1.03em;
     }
 
     &.icon-demozoo {
-        mask-image: none;
-        -webkit-mask-image: none;
+        @include mask-image(none);
         background-color: #fff;
         width: 1.1em;
         height: 1.1em;
@@ -330,8 +323,7 @@ section.footer footer a:hover {
             bottom: 12%;
             left: 12%;
             background-color: #000;
-            mask-image: url('/assets/images/services/demozoo.svg');
-            -webkit-mask-image: url('/assets/images/services/demozoo.svg');
+            @include mask-image(url('/assets/images/services/demozoo.svg'));
             mask-size: contain;
             -webkit-mask-size: contain;
             mask-repeat: no-repeat;
@@ -342,22 +334,19 @@ section.footer footer a:hover {
     }
 
     &.icon-unknown {
-        mask-image: url('/assets/images/services/unknown.svg');
-        -webkit-mask-image: url('/assets/images/services/unknown.svg');
+        @include mask-image(url('/assets/images/services/unknown.svg'));
         width: 1.1em;
         height: 1.1em;
     }
 
     &.icon-nectarine {
-        mask-image: url('/assets/images/services/nectarine.svg');
-        -webkit-mask-image: url('/assets/images/services/nectarine.svg');
+        @include mask-image(url('/assets/images/services/nectarine.svg'));
         width: 1em;
         height: 1.1em;
     }
 
     &.icon-remix-kit {
-        mask-image: url('/assets/images/remix.svg');
-        -webkit-mask-image: url('/assets/images/remix.svg');
+        @include mask-image(url('/assets/images/remix.svg'));
         width: 1.15em;
         height: .71em;
     }
