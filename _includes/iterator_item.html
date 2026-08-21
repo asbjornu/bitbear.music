@@ -1,0 +1,18 @@
+{% comment %}
+  Renders one <li> entry for a nav.iterator/ol list.
+
+  Params (accessed here via Jekyll's `include.*` namespace):
+    item_href     - link target
+    item_rel      - rel attribute (e.g. prev, next, back, index)
+    item_describe - text for aria-description/data-tooltip (escaped automatically)
+    item_label    - visible link text (rendered as-is, not escaped)
+{% endcomment %}
+<li aria-description="{{ include.item_describe | escape }}" data-tooltip="{{ include.item_describe | escape }}">
+  <span class="button-frame">
+    <a href="{{ include.item_href }}"
+       role="button"
+       rel="{{ include.item_rel }}">
+      {{ include.item_label }}
+    </a>
+  </span>
+</li>

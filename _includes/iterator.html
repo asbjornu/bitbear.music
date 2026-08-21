@@ -31,37 +31,23 @@
 <nav class="iterator">
   <ol>
     {% if page.previous and previous_categories == current_categories %}
-      <li aria-description="Go to “{{ page.previous.title | escape }}”"
-          data-tooltip="Go to “{{ page.previous.title | escape }}”">
-        <span class="button-frame">
-          <a href="{{ page.previous.url }}"
-             role="button"
-             rel="prev">
-            {{ page.previous.title | truncate: 20 }}
-          </a>
-        </span>
-      </li>
+      {% capture describe %}Go to “{{ page.previous.title }}”{% endcapture %}
+      {% assign label = page.previous.title | truncate: 20 %}
+      {% include iterator_item.html
+         item_href=page.previous.url
+         item_rel='prev'
+         item_describe=describe
+         item_label=label %}
     {% endif %}
-    <li aria-description="{{ text }}" data-tooltip="{{ text }}">
-      <span class="button-frame">
-        <a href="{{ link }}"
-           role="button"
-           rel="{{ rel }}">
-          {{ text }}
-        </a>
-      </span>
-    </li>
+    {% include iterator_item.html item_href=link item_rel=rel item_describe=text item_label=text %}
     {% if page.next and next_categories == current_categories %}
-      <li aria-description="Go to “{{ page.next.title | escape }}”"
-          data-tooltip="Go to “{{ page.next.title | escape }}”">
-        <span class="button-frame">
-          <a href="{{ page.next.url }}"
-             role="button"
-             rel="next">
-            {{ page.next.title | truncate: 20 }}
-          </a>
-        </span>
-      </li>
+      {% capture describe %}Go to “{{ page.next.title }}”{% endcapture %}
+      {% assign label = page.next.title | truncate: 20 %}
+      {% include iterator_item.html
+         item_href=page.next.url
+         item_rel='next'
+         item_describe=describe
+         item_label=label %}
     {% endif %}
   </ol>
 </nav>

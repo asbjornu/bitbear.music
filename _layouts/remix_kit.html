@@ -111,25 +111,17 @@ information.</p>
 <nav class="iterator">
   <ol>
     {% if track %}
-      <li aria-description="Back to {{ track.title | escape }}"
-          data-tooltip="Back to {{ track.title | escape }}">
-        <span class="button-frame">
-          <a href="{{ track.url }}"
-             role="button"
-             rel="back">
-            Back to {{ track.title }}
-          </a>
-        </span>
-      </li>
+      {% capture back_label %}Back to {{ track.title }}{% endcapture %}
+      {% include iterator_item.html
+         item_href=track.url
+         item_rel='back'
+         item_describe=back_label
+         item_label=back_label %}
     {% endif %}
-    <li aria-description="All remix kits" data-tooltip="All remix kits">
-      <span class="button-frame">
-        <a href="/music/remix-kits/"
-           role="button"
-           rel="index">
-          All remix kits
-        </a>
-      </span>
-    </li>
+    {% include iterator_item.html
+       item_href='/music/remix-kits/'
+       item_rel='index'
+       item_describe='All remix kits'
+       item_label='All remix kits' %}
   </ol>
 </nav>
