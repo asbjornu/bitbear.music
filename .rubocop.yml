@@ -4,7 +4,6 @@ plugins:
 AllCops:
   NewCops: enable
   Exclude:
-    - "Rakefile"
     - "_site/**/*"
     - "spec/**/*"
     - "vendor/**/*"
