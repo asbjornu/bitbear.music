@@ -1,36 +1,25 @@
 # frozen_string_literal: true
 
 require_relative 'spec_helper'
-
-require 'yaml'
+require_relative 'support/site_fixtures'
 
 module GenrePagesHelpers
   module_function
 
-  def source_root
-    File.expand_path('..', __dir__)
-  end
-
-  def read_utf8(path)
-    File.binread(path).force_encoding(Encoding::UTF_8)
-  end
-
-  def front_matter(path)
-    YAML.safe_load(File.read(path).split(/^---\s*$/)[1], permitted_classes: [Date, Time, Symbol], aliases: true)
-  end
-
   def genre_page_path(tag)
-    File.join(source_root, '_site', 'music', 'genres', tag, 'index.html')
+    File.join(SiteFixtures.source_root, '_site', 'music', 'genres', tag, 'index.html')
   end
 end
 
+include SiteFixtures
 include GenrePagesHelpers
 
-post_paths = Dir.glob(File.join(GenrePagesHelpers.source_root, 'music', '**', '_posts', '*.md'))
-published_post_paths = post_paths.reject { |path| GenrePagesHelpers.front_matter(path)['published'] == false }
-all_tags = published_post_paths.flat_map { |path| GenrePagesHelpers.front_matter(path)['tags'].to_a }.uniq
+post_paths = Dir.glob(File.join(SiteFixtures.source_root, 'music', '**', '_posts', '*.md'))
+published_post_paths = post_paths.reject { |path| SiteFixtures.front_matter(path)['published'] == false }
+all_tags = published_post_paths.flat_map { |path| SiteFixtures.front_matter(path)['tags'].to_a }.uniq
 
 describe 'genre (tag) pages' do
+  include SiteFixtures
   include GenrePagesHelpers
 
   it 'has at least one tagged track' do
