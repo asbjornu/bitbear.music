@@ -52,7 +52,7 @@ module CoverArtGenerator
   POWER_OF_CREATION_LOGO = File.join(IMAGES_DIR, 'power-of-creation.svg')
   BITBEAR_LOGO = File.join(IMAGES_DIR, 'bitbear-outlined.png')
 
-  Post = Struct.new(:path, :slug, :title, :kind, :front_matter, keyword_init: true)
+  Post = Data.define(:path, :slug, :title, :kind, :front_matter)
 
   module_function
 
