@@ -10,6 +10,7 @@ links:
   - https://power-of-creation.bandcamp.com/track/adrenaline
   - https://soundcloud.com/bitbear/poc-adrenaline
   - https://amp.dascene.net/downmod.php?index=159535
+  - https://www.youtube.com/watch?v=nir_02352bM
 album:
   slug: beyond-fantasy
   position: 2
