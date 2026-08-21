@@ -95,6 +95,7 @@ task :htmlproofer do
       /flickr.com/,
       /help.thenounproject.com/,
       /trsac.dk/,
+      /web.archive.org/,
     ],
     hydra: { max_concurrency: 1 },
     cache: { timeframe: { external: '1w' } },
