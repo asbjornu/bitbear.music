@@ -1,37 +1,26 @@
 # frozen_string_literal: true
 
 require_relative 'spec_helper'
-
-require 'yaml'
+require_relative 'support/site_fixtures'
 
 module FormatPagesHelpers
   module_function
 
-  def source_root
-    File.expand_path('..', __dir__)
-  end
-
-  def read_utf8(path)
-    File.binread(path).force_encoding(Encoding::UTF_8)
-  end
-
-  def front_matter(path)
-    YAML.safe_load(File.read(path).split(/^---\s*$/)[1], permitted_classes: [Date, Time, Symbol], aliases: true)
-  end
-
   def format_page_path(format)
-    File.join(source_root, '_site', 'music', 'formats', format.downcase, 'index.html')
+    File.join(SiteFixtures.source_root, '_site', 'music', 'formats', format.downcase, 'index.html')
   end
 end
 
+include SiteFixtures
 include FormatPagesHelpers
 
-post_paths = Dir.glob(File.join(FormatPagesHelpers.source_root, 'music', '**', '_posts', '*.md'))
-published_post_paths = post_paths.reject { |path| FormatPagesHelpers.front_matter(path)['published'] == false }
-all_formats = published_post_paths.filter_map { |path| FormatPagesHelpers.front_matter(path).dig('media', 'format') }
+post_paths = Dir.glob(File.join(SiteFixtures.source_root, 'music', '**', '_posts', '*.md'))
+published_post_paths = post_paths.reject { |path| SiteFixtures.front_matter(path)['published'] == false }
+all_formats = published_post_paths.filter_map { |path| SiteFixtures.front_matter(path).dig('media', 'format') }
                                    .uniq
 
 describe 'format pages' do
+  include SiteFixtures
   include FormatPagesHelpers
 
   it 'has at least one track with a format' do

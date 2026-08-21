@@ -1,21 +1,10 @@
 # frozen_string_literal: true
 
 require_relative 'spec_helper'
-
-require 'yaml'
+require_relative 'support/site_fixtures'
 
 describe 'remix kit pages' do
-  def read_utf8(path)
-    File.binread(path).force_encoding(Encoding::UTF_8)
-  end
-
-  def source_root
-    File.expand_path('..', __dir__)
-  end
-
-  def front_matter(path)
-    YAML.safe_load(File.read(path).split(/^---\s*$/)[1], permitted_classes: [Date, Time, Symbol], aliases: true)
-  end
+  include SiteFixtures
 
   def body_text(path)
     File.read(path).split(/^---\s*$/)[2].strip.gsub(/\s+/, ' ')
