@@ -27,18 +27,19 @@ Competition][kg2012] under the new-found alias *Bitbear*.
 
 ## Harass
 
-You can find, harass, and follow me on the following online places:
+You can find, harass, and follow me on the online platforms listed below.
 
-- [Bandcamp]{:rel="me"}
-- [Beatport]{:rel="me"}
-- [Facebook]{:rel="me"}
-- [Homepage]{:rel="me"}
-- [Instagram]{:rel="me"}
-- [Mastodon]{:rel="me"}
-- [Mixcloud]{:rel="me"}
-- [SoundCloud]{:rel="me"}
-- [Twitter]{:rel="me"}
-- [YouTube]{:rel="me"}
+- {: data-tooltip="Bandcamp"} [Bandcamp]{:.icon.icon-bandcamp rel="me" target="_blank"}
+- {: data-tooltip="Beatport"} [Beatport]{:.icon.icon-beatport rel="me" target="_blank"}
+- {: data-tooltip="Facebook"} [Facebook]{:.icon.icon-facebook rel="me" target="_blank"}
+- {: data-tooltip="Homepage"} [Homepage]{:.icon.icon-homepage rel="me" target="_blank"}
+- {: data-tooltip="Instagram"} [Instagram]{:.icon.icon-instagram rel="me" target="_blank"}
+- {: data-tooltip="Mastodon"} [Mastodon]{:.icon.icon-mastodon rel="me" target="_blank"}
+- {: data-tooltip="Mixcloud"} [Mixcloud]{:.icon.icon-mixcloud rel="me" target="_blank"}
+- {: data-tooltip="SoundCloud"} [SoundCloud]{:.icon.icon-soundcloud rel="me" target="_blank"}
+- {: data-tooltip="Twitter"} [Twitter]{:.icon.icon-twitter rel="me" target="_blank"}
+- {: data-tooltip="YouTube"} [YouTube]{:.icon.icon-youtube rel="me" target="_blank"}
+{: .harass}
 
 [3rd-floor]: https://soundcloud.com/bitbear/sets/3rd-floor
 [amiga]: https://en.wikipedia.org/wiki/Amiga_500

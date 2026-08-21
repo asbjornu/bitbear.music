@@ -350,13 +350,57 @@ section.footer footer a:hover {
         width: 1.15em;
         height: .71em;
     }
+
+    &.icon-beatport {
+        @include mask-image(url('/assets/images/services/beatport.svg'));
+        width: 1.1em;
+        height: 1.1em;
+    }
+
+    &.icon-facebook {
+        @include mask-image(url('/assets/images/services/facebook.svg'));
+        width: 1.1em;
+        height: 1.1em;
+    }
+
+    &.icon-homepage {
+        @include mask-image(url('/assets/images/services/homepage.svg'));
+        width: 1.1em;
+        height: 1.1em;
+    }
+
+    &.icon-instagram {
+        @include mask-image(url('/assets/images/services/instagram.svg'));
+        width: 1.1em;
+        height: 1.1em;
+    }
+
+    &.icon-mastodon {
+        @include mask-image(url('/assets/images/services/mastodon.svg'));
+        width: 1.15em;
+        height: 1.1em;
+    }
+
+    &.icon-mixcloud {
+        @include mask-image(url('/assets/images/services/mixcloud.svg'));
+        width: 1.4em;
+        height: 1em;
+    }
+
+    &.icon-twitter {
+        @include mask-image(url('/assets/images/services/twitter.svg'));
+        width: 1.1em;
+        height: 1em;
+    }
 }
 
-a:hover .icon {
+a:hover .icon,
+a.icon:hover {
     background-color: variables.$bg-color-light;
 }
 
-a:hover .icon.icon-demozoo {
+a:hover .icon.icon-demozoo,
+a.icon.icon-demozoo:hover {
     background-color: variables.$bg-color-light;
 
     &::after {
@@ -375,6 +419,35 @@ main {
 
     .license {
         text-align: center;
+    }
+
+    ul.harass {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        column-gap: 3rem;
+        row-gap: 1.5rem;
+        margin: 2rem 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            &[data-tooltip] {
+                border-bottom: none;
+                cursor: default;
+            }
+        }
+
+        .icon {
+            font-size: 2rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-indent: 150%;
+        }
     }
 
     .logo {
