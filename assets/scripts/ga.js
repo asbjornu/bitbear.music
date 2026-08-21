@@ -1,9 +1,28 @@
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-1567019-13']);
-_gaq.push(['_trackPageview']);
+---
+layout: null
+---
+// Loads Google Analytics 4 (gtag.js) using the measurement ID configured as
+// `google_analytics` in _config.yml. No-op if that value is unset, so
+// analytics can be disabled entirely (e.g. locally) by removing the config
+// key rather than editing this file.
+(function () {
+  var measurementId = '{{ site.google_analytics }}';
 
-(function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  if (!measurementId) {
+    return;
+  }
+
+  var script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+
+  window.gtag = function () {
+    window.dataLayer.push(arguments);
+  };
+
+  window.gtag('js', new Date());
+  window.gtag('config', measurementId);
 })();

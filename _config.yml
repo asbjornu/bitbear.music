@@ -10,6 +10,11 @@ url: https://bitbear.music
 repository: asbjornu/bitbear.music
 repository_branch: main
 
+# GA4 Measurement ID (Admin > Data Streams in Google Analytics). Loaded by
+# assets/scripts/ga.js via the gtag.js snippet; leave unset to disable
+# analytics entirely (e.g. in local/dev environments).
+google_analytics: G-94T8QZHHFM
+
 plugins:
   - jekyll-sitemap
   - jekyll-feed
