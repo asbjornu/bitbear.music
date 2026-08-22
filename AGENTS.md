@@ -26,8 +26,16 @@ sessions. Before making any change, create your own worktree and branch:
 git worktree add ../bitbear.music-<agent-name> -b <agent-name>/work
 ```
 
-Do all edits, builds, and commits inside that worktree. Remove it when done:
-`git worktree remove ../bitbear.music-<agent-name>`.
+Do all edits, builds, and commits inside that worktree. **Never write to,
+`git checkout --`, `git apply`, or otherwise modify files in
+`/Users/bitbear/Dev/bitbear.music` itself, and never commit there** — not
+even temporarily "to verify," and not even if you plan to move the change
+to a worktree afterwards. If you find you've done this by mistake, undo it
+immediately (e.g. `git checkout -- <file>` in the primary checkout) and
+redo the work in a worktree from scratch. Only remove the worktree
+(`git worktree remove ../bitbear.music-<agent-name>`) after the commit
+described in §8 is done, and only leave `main` in the primary checkout
+untouched unless the user has explicitly approved merging/pushing there.
 
 Notes:
 - `.git` (incl. the LFS object cache) is shared across worktrees; `node_modules`
@@ -78,5 +86,9 @@ use the `music-post-authoring` skill.
 
 ## 8. Before finishing
 
-Commit, then `git fetch origin main && git rebase origin/main`.
+Verify (`rake build`/`rake spec`/`rake htmlproofer` etc., as relevant) inside
+the worktree, then commit there once verification passes — do not leave
+verified work uncommitted. After committing, `git fetch origin main && git
+rebase origin/main` in the worktree. Never merge, push, or apply the change
+to `main` in the primary checkout unless the user explicitly approves it.
 </content>
