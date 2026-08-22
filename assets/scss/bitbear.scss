@@ -424,6 +424,7 @@ main {
     ul.harass {
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
         justify-content: space-between;
         column-gap: 3rem;
         row-gap: 1.5rem;
