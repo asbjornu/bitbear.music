@@ -12,8 +12,31 @@ behind a track so you can remix, sample or study how it was made. Each kit
 is released under the same [CC BY-NC 4.0 license][cc-by-nc] as the rest of
 Bitbear's music.
 
+## Why remix?
+
+First of all, remixing is a great way to learn new production techniques,
+put your own spin on a track, and share your creativity with the world.
+
+Remixes made from these kits are always welcome, and any remix I like
+gets the following treatment:
+
+- **Mixing feedback.** I'll listen closely and share notes on the mix,
+  arrangement and mastering, whatever I think will help improve the track.
+- **Distribution to all streaming platforms, at my cost.** I'll release
+  the remix wherever Bitbear's own music is available, and I cover the
+  distribution costs myself.
+- **50/50 revenue sharing.** Any revenue the remix earns is split evenly
+  between me and the remixer.
+
+None of this is required to make or share a remix under [the
+license][license], it's simply what I offer for remixes I want to help
+bring to a wider audience.
+
 {% assign kits = site.remix_kits | sort: 'title' %}
 {% if kits.size > 0 %}
+
+## Remix kits
+
   <table class="songs">
     <thead>
       <tr>
@@ -60,3 +83,4 @@ Bitbear's music.
 {% endif %}
 
 [cc-by-nc]: https://creativecommons.org/licenses/by-nc/4.0/
+[license]: /license
