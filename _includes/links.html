@@ -14,6 +14,10 @@
             {%- when 'soundcloud' -%}Listen to
             {%- when 'apple-music' -%}Listen to
             {%- when 'spotify' -%}Listen to
+            {%- when 'tidal' -%}Listen to
+            {%- when 'amazon-music' -%}Listen to
+            {%- when 'deezer' -%}Listen to
+            {%- when 'pandora' -%}Listen to
             {%- when 'mirlo' -%}Buy
             {%- when 'nectarine' -%}Listen to
             {%- when 'demozoo' -%}View
@@ -29,6 +33,8 @@
             {{- links_verb }} “{{ page.title }}” {% comment %}{% endcomment %}
             {%- if key == 'apple-music' -%}
               on Apple Music
+            {%- elsif key == 'amazon-music' -%}
+              on Amazon Music
             {%- else -%}
               on {{ key | capitalize }}
             {%- endif -%}

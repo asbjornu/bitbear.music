@@ -93,6 +93,26 @@ describe 'Pico CSS integration' do
       expect(css).to include('.icon.icon-nectarine')
       expect(css).to include('url("/assets/images/services/nectarine.svg")')
     end
+
+    it 'masks the tidal link icon with the tidal asset' do
+      expect(css).to include('.icon.icon-tidal')
+      expect(css).to include('url("/assets/images/services/tidal.svg")')
+    end
+
+    it 'masks the amazon music link icon with the amazon music asset' do
+      expect(css).to include('.icon.icon-amazon-music')
+      expect(css).to include('url("/assets/images/services/amazon-music.svg")')
+    end
+
+    it 'masks the deezer link icon with the deezer asset' do
+      expect(css).to include('.icon.icon-deezer')
+      expect(css).to include('url("/assets/images/services/deezer.svg")')
+    end
+
+    it 'masks the pandora link icon with the pandora asset' do
+      expect(css).to include('.icon.icon-pandora')
+      expect(css).to include('url("/assets/images/services/pandora.svg")')
+    end
   end
 
   describe 'generated markup' do

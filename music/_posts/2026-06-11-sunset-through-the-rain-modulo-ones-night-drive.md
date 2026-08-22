@@ -6,7 +6,11 @@ media:
 links:
   - https://bitbearmusic.bandcamp.com/album/sunset-through-the-rain
   - https://music.apple.com/us/album/sunset-through-the-rain-modulo-ones-night-drive/6786456889?i=6786456892
+  - https://music.amazon.com/tracks/B0H4MMRPQ3
   - https://open.spotify.com/track/1EXAwpFqBhzHmVlAw7Abzg
+  - https://listen.tidal.com/track/532017652
+  - https://www.deezer.com/track/4074637751
+  - https://www.pandora.com/TR:207089814
   - https://mirlo.space/bitbear/release/sunset-through-the-rain
   - https://soundcloud.com/bitbear/sunset-through-the-rain-modulo-ones-night-drive
   - https://www.youtube.com/watch?v=vlVT_WM-qvc

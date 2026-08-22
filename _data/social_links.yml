@@ -3,12 +3,18 @@
 # entity's `sameAs` list in JSON-LD (see _plugins/json_ld/music_group.rb).
 #
 # `icon` must match an `.icon-<icon>` rule in assets/scss/bitbear.scss.
+- name: Amazon Music
+  icon: amazon-music
+  url: https://music.amazon.com/artists/B005NCJWQI/bitbear
 - name: Bandcamp
   icon: bandcamp
   url: https://bitbearmusic.bandcamp.com
 - name: Beatport
   icon: beatport
   url: https://dj.beatport.com/bitbear
+- name: Deezer
+  icon: deezer
+  url: https://www.deezer.com/artist/6427678
 - name: Facebook
   icon: facebook
   url: https://www.facebook.com/bitbearmusic
@@ -27,6 +33,9 @@
 - name: SoundCloud
   icon: soundcloud
   url: https://soundcloud.com/bitbear
+- name: Tidal
+  icon: tidal
+  url: https://tidal.com/artist/8658943
 - name: Twitter
   icon: twitter
   url: https://twitter.com/bitbearmusic

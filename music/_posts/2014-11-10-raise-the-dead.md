@@ -6,7 +6,11 @@ media:
 links:
   - https://bitbearmusic.bandcamp.com/album/scene-so-far
   - https://music.apple.com/us/album/raise-the-dead/1223831424?i=1223831433
+  - https://music.amazon.com/tracks/B0GH2Z811N
   - https://open.spotify.com/track/5uSFRvX0BOrlaYCk5J0DnG
+  - https://listen.tidal.com/track/490001378
+  - https://www.deezer.com/track/346053561
+  - https://www.pandora.com/TR:189093906
   - https://mirlo.space/bitbear/release/scene-so-far
   - https://demozoo.org/music/125633/
   - https://soundcloud.com/bitbear/raise-the-dead

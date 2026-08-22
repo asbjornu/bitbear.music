@@ -301,6 +301,30 @@ section.footer footer a:hover {
         height: 1.04em;
     }
 
+    &.icon-tidal {
+        @include mask-image(url('/assets/images/services/tidal.svg'));
+        width: 1.25em;
+        height: .6em;
+    }
+
+    &.icon-amazon-music {
+        @include mask-image(url('/assets/images/services/amazon-music.svg'));
+        width: 1.1em;
+        height: 1.1em;
+    }
+
+    &.icon-deezer {
+        @include mask-image(url('/assets/images/services/deezer.svg'));
+        width: 1.1em;
+        height: 1.1em;
+    }
+
+    &.icon-pandora {
+        @include mask-image(url('/assets/images/services/pandora.svg'));
+        width: 1.1em;
+        height: 1.1em;
+    }
+
     &.icon-mirlo {
         @include mask-image(url('/assets/images/services/mirlo.svg'));
         width: .9em;

@@ -7,7 +7,10 @@ links:
   - https://bitbearmusic.bandcamp.com/album/scene-so-far
   - https://soundcloud.com/bitbear/sets/scene-so-far
   - https://music.apple.com/us/album/scene-so-far-ep/1223831424
+  - https://music.amazon.com/albums/B0GH32NDRQ
   - https://open.spotify.com/album/1U1mATmmalOlHPnX98UNFl
+  - https://listen.tidal.com/album/72386508
+  - https://www.deezer.com/album/39383001
   - https://mirlo.space/bitbear/release/scene-so-far
 album:
   kind: EP
