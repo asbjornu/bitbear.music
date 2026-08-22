@@ -1,18 +1,20 @@
+{% assign sorted_links = page.links | sort %}
+
 <tr>
   <th scope="row">Links</th>
   <td class="links">
     <ul>
-      {% for item in page.links %}
-        {% assign url = item | link_url %}
+      {% for link in sorted_links %}
+        {% assign url = link | link_url %}
         {% assign key = url | link_brand %}
-        {% assign page_url = item | link_page_url %}
+        {% assign page_url = link | link_page_url %}
         {% capture links_verb %}
           {%- case key -%}
             {%- when 'bandcamp' -%}Buy
             {%- when 'soundcloud' -%}Listen to
             {%- when 'apple-music' -%}Listen to
             {%- when 'spotify' -%}Listen to
-            {%- when 'mirlo' -%}Listen to
+            {%- when 'mirlo' -%}Buy
             {%- when 'nectarine' -%}Listen to
             {%- when 'demozoo' -%}View
             {%- when 'youtube' -%}Watch
