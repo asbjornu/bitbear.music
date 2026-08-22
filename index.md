@@ -29,39 +29,21 @@ Competition][kg2012] under the new-found alias *Bitbear*.
 
 You can find, harass, and follow me on the online platforms listed below.
 
-- {: data-tooltip="Bandcamp"} [Bandcamp]{:.icon.icon-bandcamp rel="me" target="_blank"}
-- {: data-tooltip="Beatport"} [Beatport]{:.icon.icon-beatport rel="me" target="_blank"}
-- {: data-tooltip="Facebook"} [Facebook]{:.icon.icon-facebook rel="me" target="_blank"}
-- {: data-tooltip="Homepage"} [Homepage]{:.icon.icon-homepage rel="me" target="_blank"}
-- {: data-tooltip="Instagram"} [Instagram]{:.icon.icon-instagram rel="me" target="_blank"}
-- {: data-tooltip="Mastodon"} [Mastodon]{:.icon.icon-mastodon rel="me" target="_blank"}
-- {: data-tooltip="Mixcloud"} [Mixcloud]{:.icon.icon-mixcloud rel="me" target="_blank"}
-- {: data-tooltip="SoundCloud"} [SoundCloud]{:.icon.icon-soundcloud rel="me" target="_blank"}
-- {: data-tooltip="Twitter"} [Twitter]{:.icon.icon-twitter rel="me" target="_blank"}
-- {: data-tooltip="YouTube"} [YouTube]{:.icon.icon-youtube rel="me" target="_blank"}
+{% for link in site.data.social_links %}- {: data-tooltip="{{ link.name }}"} [{{ link.name }}]({{ link.url }}){:.icon.icon-{{ link.icon }} rel="me" target="_blank"}
+{% endfor -%}
 {: .harass}
 
 [3rd-floor]: https://soundcloud.com/bitbear/sets/3rd-floor
 [amiga]: https://en.wikipedia.org/wiki/Amiga_500
 [asbjornu]: https://asbjor.nu/
-[bandcamp]: https://bitbearmusic.bandcamp.com
-[beatport]: https://dj.beatport.com/bitbear
 [beyond-fantasy]: https://soundcloud.com/bitbear/sets/beyond-fantasy
 [demoscene]: https://en.wikipedia.org/wiki/Demoscene
-[facebook]: https://www.facebook.com/bitbearmusic
 [fast-tracker]: https://en.wikipedia.org/wiki/FastTracker_2
-[homepage]: https://asbjor.nu/
 [impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
-[instagram]: https://www.instagram.com/bitbearmusic
 [kg2012]: https://demozoo.org/parties/1458/#competition_5258
-[mastodon]: https://icosahedron.website/@bitbear
-[mixcloud]: https://www.mixcloud.com/bitbearmusic/
 [music]: /music/
 [noisetracker]: https://en.wikipedia.org/wiki/NoiseTracker
 [pc]: https://en.wikipedia.org/wiki/IBM_PC_compatible
 [protracker]: https://en.wikipedia.org/wiki/ProTracker
 [scream-tracker]: https://en.wikipedia.org/wiki/Scream_Tracker
-[soundcloud]: https://soundcloud.com/bitbear
-[twitter]: https://twitter.com/bitbearmusic
-[youtube]: https://www.youtube.com/channel/UC9wb6OrUrugGg6-q9805RDQ
 [poc]: /music/legacy/power-of-creation

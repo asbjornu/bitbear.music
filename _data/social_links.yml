@@ -1,0 +1,35 @@
+# Bitbear's rel="me" profile links, rendered in the "Harass" section of
+# index.md and used as the single source of truth for the MusicGroup
+# entity's `sameAs` list in JSON-LD (see _plugins/json_ld/music_group.rb).
+#
+# `icon` must match an `.icon-<icon>` rule in assets/scss/bitbear.scss.
+- name: Bandcamp
+  icon: bandcamp
+  url: https://bitbearmusic.bandcamp.com
+- name: Beatport
+  icon: beatport
+  url: https://dj.beatport.com/bitbear
+- name: Facebook
+  icon: facebook
+  url: https://www.facebook.com/bitbearmusic
+- name: Homepage
+  icon: homepage
+  url: https://asbjor.nu/
+- name: Instagram
+  icon: instagram
+  url: https://www.instagram.com/bitbearmusic
+- name: Mastodon
+  icon: mastodon
+  url: https://icosahedron.website/@bitbear
+- name: Mixcloud
+  icon: mixcloud
+  url: https://www.mixcloud.com/bitbearmusic/
+- name: SoundCloud
+  icon: soundcloud
+  url: https://soundcloud.com/bitbear
+- name: Twitter
+  icon: twitter
+  url: https://twitter.com/bitbearmusic
+- name: YouTube
+  icon: youtube
+  url: https://www.youtube.com/channel/UC9wb6OrUrugGg6-q9805RDQ
