@@ -3,17 +3,22 @@
 {% if path.size == 1 %}
   {% assign link = "/" %}
   {% assign rel = "back index" %}
+  {% assign target = site.pages | where: 'url', '/' | first %}
   {% assign text = "Home" %}
+  {% capture describe %}Go to home page “{{ target.title }}”{% endcapture %}
 {% elsif page.album.slug %}
   {% assign album_post = site.posts | where: 'slug', page.album.slug | first %}
   {% assign link = album_post.url %}
   {% assign rel = "back" %}
-  {% assign text = "Back to " | append: album_post.album.kind %}
+  {% assign kind = album_post.album.kind | downcase %}
+  {% assign text = "Back to " | append: kind %}
+  {% capture describe %}Go to {{ kind }} “{{ album_post.title }}”{% endcapture %}
 {% elsif page.album.kind %}
   {% assign music_page = site.pages | where: 'title', 'Music' | first %}
   {% assign link = music_page.url %}
   {% assign rel = "back" %}
   {% assign text = "Back to Music" %}
+  {% capture describe %}Go to page “{{ music_page.title }}”{% endcapture %}
 {% else %}
   {% capture link %}
     {%- for dir in path offset: 1 -%}
@@ -22,6 +27,12 @@
   {% endcapture %}
   {% assign rel = "back" %}
   {% assign text = path | last | prepend: 'Back to ' %}
+  {% assign target = site.pages | where: 'url', link | first %}
+  {% if target.title %}
+    {% capture describe %}Go to page “{{ target.title }}”{% endcapture %}
+  {% else %}
+    {% assign describe = text %}
+  {% endif %}
 {% endif %}
 
 {% assign current_categories = page.categories %}
@@ -31,23 +42,31 @@
 <nav class="iterator">
   <ol>
     {% if page.previous and previous_categories == current_categories %}
-      {% capture describe %}Go to “{{ page.previous.title }}”{% endcapture %}
-      {% assign label = page.previous.title | truncate: 20 %}
+      {% assign prev_kind = "track" %}
+      {% if page.previous.album.kind %}
+        {% assign prev_kind = page.previous.album.kind | downcase %}
+      {% endif %}
+      {% capture prev_describe %}Go to {{ prev_kind }} “{{ page.previous.title }}”{% endcapture %}
+      {% assign prev_label = page.previous.title | truncate: 20 %}
       {% include iterator_item.html
          item_href=page.previous.url
          item_rel='prev'
-         item_describe=describe
-         item_label=label %}
+         item_describe=prev_describe
+         item_label=prev_label %}
     {% endif %}
-    {% include iterator_item.html item_href=link item_rel=rel item_describe=text item_label=text %}
+    {% include iterator_item.html item_href=link item_rel=rel item_describe=describe item_label=text %}
     {% if page.next and next_categories == current_categories %}
-      {% capture describe %}Go to “{{ page.next.title }}”{% endcapture %}
-      {% assign label = page.next.title | truncate: 20 %}
+      {% assign next_kind = "track" %}
+      {% if page.next.album.kind %}
+        {% assign next_kind = page.next.album.kind | downcase %}
+      {% endif %}
+      {% capture next_describe %}Go to {{ next_kind }} “{{ page.next.title }}”{% endcapture %}
+      {% assign next_label = page.next.title | truncate: 20 %}
       {% include iterator_item.html
          item_href=page.next.url
          item_rel='next'
-         item_describe=describe
-         item_label=label %}
+         item_describe=next_describe
+         item_label=next_label %}
     {% endif %}
   </ol>
 </nav>
