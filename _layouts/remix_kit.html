@@ -120,7 +120,7 @@ information.</p>
   <ol>
     {% if track %}
       {% capture back_label %}Back to {{ track.title }}{% endcapture %}
-      {% capture back_describe %}Go to track “{{ track.title }}”{% endcapture %}
+      {% assign back_describe = track | describe_link %}
       {% include iterator_item.html
          item_href=track.url
          item_rel='back'
