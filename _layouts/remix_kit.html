@@ -120,16 +120,19 @@ information.</p>
   <ol>
     {% if track %}
       {% capture back_label %}Back to {{ track.title }}{% endcapture %}
+      {% assign back_describe = track | describe_link %}
       {% include iterator_item.html
          item_href=track.url
          item_rel='back'
-         item_describe=back_label
+         item_describe=back_describe
          item_label=back_label %}
     {% endif %}
+    {% assign remix_kits_page = site.pages | where: 'url', '/music/remix-kits/' | first %}
+    {% capture remix_kits_describe %}Go to page “{{ remix_kits_page.title }}”{% endcapture %}
     {% include iterator_item.html
        item_href='/music/remix-kits/'
        item_rel='index'
-       item_describe='All remix kits'
+       item_describe=remix_kits_describe
        item_label='All remix kits' %}
   </ol>
 </nav>
