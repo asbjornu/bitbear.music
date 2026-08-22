@@ -202,5 +202,42 @@ describe 'Pico CSS integration' do
         with_tag('span', with: { class: 'icon icon-amp' })
       end
     end
+
+    it 'truncates the links list behind a checkbox-driven expand/contract toggle when it has more links than fit by default' do
+      page = read_utf8(File.join(site_root, '_site', 'music', 'sunset-through-the-rain.html'))
+      expect(page).to have_tag('input', with: { type: 'checkbox', class: 'expand-toggle-input' })
+      expect(page).to have_tag('li', with: { class: 'expand-toggle' }) do
+        with_tag('label') do
+          with_tag('span', with: { class: 'show-more', 'data-tooltip' => 'Show all links' }, text: '>')
+          with_tag('span', with: { class: 'show-less', 'data-tooltip' => 'Show fewer links' }, text: '<')
+        end
+      end
+    end
+
+    it 'does not render the expand/contract toggle when there are 3 or fewer links' do
+      page = read_utf8(File.join(site_root, '_site', 'music', 'vos-sako-rv.html'))
+      expect(page).not_to have_tag('input', with: { class: 'expand-toggle-input' })
+      expect(page).not_to have_tag('li', with: { class: 'expand-toggle' })
+    end
+
+    it 'establishes a container query context for the links column' do
+      expect(css).to include('container-type:inline-size;container-name:links')
+    end
+
+    it 'shows only the guaranteed number of links by default, revealing the rest via container queries as width allows' do
+      expect(css).to include('li:not(.expand-toggle){display:none}')
+      expect(css).to include('li:not(.expand-toggle):nth-child(-n+1){display:inline}')
+      expect(css).to match(/@container links \(min-width:[^)]+\)\{[^}]*nth-child\(-n\+2\)\{display:inline\}\}/)
+    end
+
+    it 'reserves room for the toggle itself in each container query breakpoint' do
+      expect(css).to include('@container links (min-width: 5.2em){')
+      expect(css).to include('nth-child(-n+2){display:inline}')
+    end
+
+    it 'hides the "show fewer" label and reveals every link once the toggle checkbox is checked' do
+      expect(css).to include('.show-less{display:none}')
+      expect(css).to include('expand-toggle-input:checked~ul>li:not(.expand-toggle){display:inline}')
+    end
   end
 end

@@ -1,9 +1,22 @@
 {% assign sorted_links = page.links | sort %}
+{% comment %}
+  Below this many links, the expand/contract toggle would never have
+  anything worth hiding in practice, so skip rendering its markup
+  entirely. This is independent of $link-guaranteed-count in
+  assets/scss/bitbear.scss, which is the much lower, CSS-only floor of
+  links shown even when the "links" column has no room to spare.
+{% endcomment %}
+{% assign toggle_threshold = 3 %}
+{% assign toggle_id = page.url | slugify | append: '-links-expand' %}
 
 <tr>
   <th scope="row">Links</th>
   <td class="links">
-    <ul>
+    <div class="links-inner">
+      {% if sorted_links.size > toggle_threshold %}
+        <input type="checkbox" id="{{ toggle_id }}" class="expand-toggle-input">
+      {% endif %}
+      <ul>
       {% for link in sorted_links %}
         {% assign url = link | link_url %}
         {% assign key = url | link_brand %}
@@ -46,6 +59,15 @@
           </a>
         </li>
       {% endfor %}
+      {% if sorted_links.size > toggle_threshold %}
+        <li class="expand-toggle">
+          <label for="{{ toggle_id }}">
+            <span class="show-more" aria-label="Show all links" data-tooltip="Show all links">&gt;</span>
+            <span class="show-less" aria-label="Show fewer links" data-tooltip="Show fewer links">&lt;</span>
+          </label>
+        </li>
+      {% endif %}
     </ul>
+    </div>
   </td>
 </tr>
