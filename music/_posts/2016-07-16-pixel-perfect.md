@@ -8,6 +8,7 @@ media:
 links:
   - https://demozoo.org/music/160488/
   - https://scenestream.net/demovibes/song/43253/
+  - https://vitno.org/2018/01/23/amigavibes-podcast-68/
 ---
 
 Bitbear and [Modulo One][modulo-one]'s entry for the [Newschool Music

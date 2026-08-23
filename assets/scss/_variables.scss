@@ -10,3 +10,16 @@ $nav-link-hover-color: #ccc;
 
 // Font
 $primary-font: 'Roboto', sans-serif;
+
+// Track/album "links" list: how many icons are guaranteed to be shown
+// even without any room to spare (kept low so the list never wraps by
+// itself), the approximate rendered width of one icon and of the
+// expand/contract toggle (used to compute container query breakpoints
+// that reveal more icons as width allows, reserving room for the toggle
+// at every step so it never gets pushed onto its own line), and the
+// highest link count to generate breakpoints for.
+$link-guaranteed-count: 1;
+$link-item-width: 1.8em;
+$link-toggle-width: 1.6em;
+$link-max-count: 14;
+

@@ -9,7 +9,11 @@ media:
 links:
   - https://bitbearmusic.bandcamp.com/album/sunset-through-the-rain
   - https://music.apple.com/us/album/sunset-through-the-rain-single/6786456889?i=6786456890
+  - https://music.amazon.com/tracks/B0H4MLQF7S
   - https://open.spotify.com/track/21sI6zaQwpah4F6ivtcfED
+  - https://listen.tidal.com/track/532017651
+  - https://www.deezer.com/track/4074637741
+  - https://www.pandora.com/TR:207089813
   - https://mirlo.space/bitbear/release/sunset-through-the-rain
   - https://demozoo.org/music/280486/
   - https://soundcloud.com/bitbear/sunset-through-the-rain

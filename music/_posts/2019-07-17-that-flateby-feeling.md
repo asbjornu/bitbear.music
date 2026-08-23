@@ -9,7 +9,11 @@ media:
 links:
   - https://bitbearmusic.bandcamp.com/track/that-flateby-feeling
   - https://music.apple.com/us/album/that-flateby-feeling/1762288686?i=1762288687
+  - https://music.amazon.com/tracks/B0DCTSMV4P
   - https://open.spotify.com/track/6wVfzAgHmaOdFi6eIPG11p
+  - https://listen.tidal.com/track/380618039
+  - https://www.deezer.com/track/2943029021
+  - https://www.pandora.com/TR:132683693
   - https://mirlo.space/bitbear/release/that-flateby-feeling
   - https://demozoo.org/music/206119/
   - https://soundcloud.com/bitbear/that-flateby-feeling
