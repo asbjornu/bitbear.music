@@ -956,6 +956,13 @@ main {
                 width: 7em;
                 white-space: nowrap;
             }
+
+            // Pico gives any [data-tooltip] element a dotted bottom border;
+            // on the Released header that reads as a stray underline, so
+            // restore the normal solid header rule instead.
+            thead th[data-tooltip] {
+                border-bottom: var(--pico-border-width) solid var(--pico-table-border-color);
+            }
         }
     }
 
