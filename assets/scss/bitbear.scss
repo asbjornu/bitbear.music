@@ -956,6 +956,13 @@ main {
                 width: 7em;
                 white-space: nowrap;
             }
+
+            // Pico gives any [data-tooltip] element a dotted bottom border;
+            // on the Released header that reads as a stray underline, so
+            // restore the normal solid header rule instead.
+            thead th[data-tooltip] {
+                border-bottom: var(--pico-border-width) solid var(--pico-table-border-color);
+            }
         }
     }
 
@@ -1434,5 +1441,65 @@ section.footer {
 
     section.footer footer {
         padding: 0;
+    }
+}
+
+// Break the songs table apart below ~1000px: each row reflows into its own
+// stacked block so the date (Released) and Title no longer fight over a
+// cramped, fixed-width column and wrap mid-value. The header row is dropped
+// (its labels are self-evident here); the date and kind share the first line
+// and the title drops to its own full-width line, separated by a hairline.
+@media screen and (max-width: 1000px) {
+    main {
+        table.songs {
+            table-layout: auto;
+
+            thead {
+                display: none;
+            }
+
+            tbody,
+            tr {
+                display: block;
+            }
+
+            tr {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: baseline;
+                gap: .25rem .75rem;
+                margin-bottom: 1rem;
+            }
+
+            td {
+                display: block;
+                width: auto !important;
+                padding: 0 !important;
+                border: 0;
+
+                &.r {
+                    text-align: left;
+                }
+
+                &.date {
+                    order: 1;
+                }
+
+                &.kind {
+                    order: 2;
+                }
+
+                // The title cell (the only td without a class). A hairline
+                // divider with a little breathing room below it separates
+                // one song from the next.
+                &:not(.date):not(.kind) {
+                    order: 3;
+                    flex: 1 0 100%;
+                    padding-bottom: 1rem !important;
+                    border-bottom: var(--pico-border-width) solid var(--pico-table-border-color);
+                    font-weight: bold;
+                }
+            }
+        }
     }
 }
