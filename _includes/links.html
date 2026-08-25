@@ -41,7 +41,7 @@
         {% endcapture %}
         {% capture title %}
           {%- if key == 'unknown' -%}
-            {{- url | link_host -}}
+            {{- url | link_title -}}
           {%- else -%}
             {{- links_verb }} “{{ page.title }}” {% comment %}{% endcomment %}
             {%- if key == 'apple-music' -%}

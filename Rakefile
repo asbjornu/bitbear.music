@@ -5,6 +5,7 @@ require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
 require 'jekyll'
 require_relative 'lib/cover_art_generator'
+require_relative 'lib/link_title_fetcher'
 
 RSpec::Core::RakeTask.new(:spec) do |t|
   t.pattern = Dir.glob('spec/*_spec.rb')
@@ -50,6 +51,14 @@ desc 'Removes the built _site/ directory'
 task :clean do
   puts 'Cleaning up _site...'.bold
   Jekyll::Commands::Clean.process({})
+end
+
+desc 'Fetches <title> for unknown links into _data/link_titles.yml (use [force] to refresh, [force,host] to scope to a host)'
+task :'fetch-link-titles', [:force, :host] do |_t, args|
+  force = args[:force] == 'force' || args[:force] == '1' || ENV['FETCH_LINK_TITLES_FORCE'] == '1'
+  host_filter = args[:host]
+  updated = LinkTitleFetcher.run(site_root: __dir__, force: force, host_filter: host_filter)
+  puts updated.zero? ? 'Nothing to update.' : "Updated #{updated} link title(s) in _data/link_titles.yml"
 end
 
 namespace :covers do

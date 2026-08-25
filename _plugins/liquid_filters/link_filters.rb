@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'uri'
+require 'yaml'
 
 module Jekyll
   # Filters for working with `links` front matter entries: identifying which
@@ -66,6 +67,39 @@ module Jekyll
       host
     rescue URI::InvalidURIError, URI::InvalidComponentError
       link_url(input)
+    end
+
+    # Cached, on-disk map of unknown-link URL => the remote page's <title>,
+    # populated by `rake fetch-link-titles` (see lib/link_title_fetcher.rb) and
+    # committed to the repo. Loaded lazily and memoized so builds stay offline
+    # and deterministic; only the manual fetch task ever touches the network.
+    LINK_TITLES_PATH = File.expand_path('_data/link_titles.yml', Dir.pwd)
+    LEFT_DOUBLE_QUOTE = "\u201C"
+    RIGHT_DOUBLE_QUOTE = "\u201D"
+
+    def link_titles
+      return @link_titles if defined?(@link_titles_loaded) && @link_titles_loaded
+
+      @link_titles = if File.exist?(LINK_TITLES_PATH)
+                       YAML.safe_load_file(LINK_TITLES_PATH) || {}
+                     else
+                       {}
+                     end
+      @link_titles_loaded = true
+      @link_titles
+    end
+
+    # Description for an unknown-brand link: the remote page title wrapped in
+    # smart quotes, followed by the host ("<title>" at host), falling back to
+    # just the host when no cached title is available.
+    def link_title(input)
+      url = link_url(input)
+      cached = link_titles[url]
+      if cached.to_s.strip.empty?
+        link_host(input)
+      else
+        "#{LEFT_DOUBLE_QUOTE}#{cached.strip}#{RIGHT_DOUBLE_QUOTE} at #{link_host(input)}"
+      end
     end
 
     # Describes a tracker module format abbreviation, reusing the same

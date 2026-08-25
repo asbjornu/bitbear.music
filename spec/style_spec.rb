@@ -141,7 +141,7 @@ describe 'Pico CSS integration' do
         with_tag('a', with: {
                    href: 'https://moduloone.com/news/the-king-and-the-priest-out-1-september-with-bitbear-remix/',
                    target: '_blank',
-                   'aria-description' => 'moduloone.com'
+                    'aria-description' => '“Modulo One | The King and the Priest out 1 september, with Bitbear remix” at moduloone.com'
                  })
         with_tag('span', with: { class: 'icon icon-unknown' })
       end
