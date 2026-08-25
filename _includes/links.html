@@ -11,8 +11,8 @@
 
 <tr>
   <th scope="row">Links</th>
-  <td class="links">
-    <div class="links-inner">
+    <td class="links">
+      <div class="links-inner" style="--link-count: {{ sorted_links.size }}">
       {% if sorted_links.size > toggle_threshold %}
         <input type="checkbox" id="{{ toggle_id }}" class="expand-toggle-input">
       {% endif %}
@@ -62,8 +62,8 @@
       {% if sorted_links.size > toggle_threshold %}
         <li class="expand-toggle">
           <label for="{{ toggle_id }}">
-            <span class="show-more" aria-label="Show all links" data-tooltip="Show all links">&gt;</span>
-            <span class="show-less" aria-label="Show fewer links" data-tooltip="Show fewer links">&lt;</span>
+            <span class="show-more" aria-label="Show all links" data-tooltip="Show all links"><span class="icon icon-chevron-right"></span></span>
+            <span class="show-less" aria-label="Show fewer links" data-tooltip="Show fewer links"><span class="icon icon-chevron-left"></span></span>
           </label>
         </li>
       {% endif %}

@@ -259,6 +259,20 @@ section.footer footer a:hover {
         height: 30px;
     }
 
+    &.icon-chevron-right {
+        @include mask-image(url('/assets/images/chevron-right.svg'));
+        width: .65em;
+        height: .95em;
+        background-color: currentColor;
+    }
+
+    &.icon-chevron-left {
+        @include mask-image(url('/assets/images/chevron-left.svg'));
+        width: .65em;
+        height: .95em;
+        background-color: currentColor;
+    }
+
     &.icon-bandcamp {
         @include mask-image(url('/assets/images/services/bandcamp.svg'));
         width: 1.25em;
@@ -1085,6 +1099,16 @@ main {
                                     color: variables.$bg-color-light;
                                 }
 
+                                // Neutralize Pico's `[data-tooltip]` styling
+                                // on the (unmasked) wrapper spans: no dotted
+                                // underline, and a normal pointer cursor
+                                // instead of the question-mark `help` cursor.
+                                .show-more,
+                                .show-less {
+                                    border-bottom: none;
+                                    cursor: pointer;
+                                }
+
                                 .show-less {
                                     display: none;
                                 }
@@ -1106,6 +1130,20 @@ main {
                         }
                     }
 
+                    // Once the column is wide enough to show every link on
+                    // one line, nothing is hidden — so the toggle is
+                    // pointless and should disappear. The count comes from
+                    // the `--link-count` custom property set per page (the
+                    // number of actual links), not the global
+                    // `$link-max-count`, so the toggle vanishes as soon as
+                    // *this* page's links fit rather than waiting for the
+                    // theoretical maximum.
+                    @container links (min-width: calc(#{variables.$link-item-width} * var(--link-count, #{variables.$link-max-count}) + #{variables.$link-toggle-width})) {
+                        ul > li.expand-toggle {
+                            display: none;
+                        }
+                    }
+
                     .expand-toggle-input:checked ~ ul {
                         > li:not(.expand-toggle) {
                             display: inline;
@@ -1117,7 +1155,9 @@ main {
                             }
 
                             .show-less {
-                                display: inline;
+                                // Must stay `inline-block` (not `inline`) so
+                                // the chevron icon's width/height/mask apply.
+                                display: inline-block;
                             }
                         }
                     }
@@ -1131,14 +1171,26 @@ main {
             .genres ul {
                 margin: 0;
                 list-style-type: none;
+                // Collapse the whitespace Tidy inserts between/inside the
+                // <li>s (which would otherwise render as a space *before*
+                // the comma below). Both the list and its items drop to
+                // zero font size so all that stray whitespace vanishes;
+                // only the actual links and the comma reset their size.
+                font-size: 0;
 
                 > li {
                     margin: 0;
                     padding: 0;
                     display: inline;
+                    font-size: 0;
+
+                    > a {
+                        font-size: 1.5rem;
+                    }
 
                     &:not(:last-child):after {
                         content: ", ";
+                        font-size: 1.5rem;
                     }
                 }
             }
