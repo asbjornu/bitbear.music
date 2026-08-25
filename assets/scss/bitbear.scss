@@ -1079,6 +1079,11 @@ main {
                                 line-height: 1;
                                 padding: 0 .3em;
                                 color: #fff;
+                                // Neutralize Pico's `[data-tooltip]` dotted
+                                // bottom border (the label isn't an
+                                // a/button/input/[role=button], so it would
+                                // otherwise inherit it).
+                                border-bottom: none;
                                 transition: color .2s ease;
 
                                 &:hover {
@@ -1103,6 +1108,20 @@ main {
                             ul > li:not(.expand-toggle):nth-child(-n + #{$count}) {
                                 display: inline;
                             }
+                        }
+                    }
+
+                    // Once the column is wide enough to show every link on
+                    // one line, nothing is hidden — so the toggle is
+                    // pointless and should disappear. The count comes from
+                    // the `--link-count` custom property set per page (the
+                    // number of actual links), not the global
+                    // `$link-max-count`, so the toggle vanishes as soon as
+                    // *this* page's links fit rather than waiting for the
+                    // theoretical maximum.
+                    @container links (min-width: calc(#{variables.$link-item-width} * var(--link-count, #{variables.$link-max-count}) + #{variables.$link-toggle-width})) {
+                        ul > li.expand-toggle {
+                            display: none;
                         }
                     }
 
