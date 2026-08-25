@@ -53,9 +53,10 @@ task :clean do
   Jekyll::Commands::Clean.process({})
 end
 
-desc 'Fetches <title> for unknown links into _data/link_titles.yml (use [force] to refresh, [force,host] to scope to a host)'
+desc 'Fetches <title> for unknown links into _data/link_titles.yml ' \
+     '(use [force] to refresh, [force,host] to scope to a host)'
 task :'fetch-link-titles', [:force, :host] do |_t, args|
-  force = args[:force] == 'force' || args[:force] == '1' || ENV['FETCH_LINK_TITLES_FORCE'] == '1'
+  force = %w[force 1].include?(args[:force]) || ENV['FETCH_LINK_TITLES_FORCE'] == '1'
   host_filter = args[:host]
   updated = LinkTitleFetcher.run(site_root: __dir__, force: force, host_filter: host_filter)
   puts updated.zero? ? 'Nothing to update.' : "Updated #{updated} link title(s) in _data/link_titles.yml"
