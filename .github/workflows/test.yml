@@ -77,6 +77,9 @@ jobs:
 
       - run: npm ci
 
+      - name: markdown lint
+        run: npm run lint:markdown
+
       - name: rspec
         run: bundle exec rake spec
 
