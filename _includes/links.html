@@ -1,4 +1,4 @@
-{% assign sorted_links = page.links | sort %}
+{% assign sorted_links = page.links | sort_links %}
 {% comment %}
   Below this many links, the expand/contract toggle would never have
   anything worth hiding in practice, so skip rendering its markup

@@ -39,6 +39,26 @@ module Jekyll
       Array(input).find { |item| link_brand(item) == brand }
     end
 
+    # Order in which known brands should appear in a link list, lowest first.
+    # `unknown` is last so unrecognized links always sink to the end.
+    BRAND_PRIORITY = %w[
+      bandcamp mirlo soundcloud spotify apple-music tidal youtube
+      amazon-music deezer pandora nectarine modarchive amp demozoo unknown
+    ].freeze
+
+    # Sorts a `links` array so entries appear in the fixed brand priority order
+    # (see BRAND_PRIORITY), preserving original front-matter order within a
+    # brand. Any brand not in the list is treated as lowest priority (after
+    # `unknown`).
+    def sort_links(input)
+      Array(input).each_with_index.sort_by do |link, index|
+        brand = link_brand(link)
+        priority = BRAND_PRIORITY.index(brand)
+        priority ||= BRAND_PRIORITY.size
+        [priority, index]
+      end.map(&:first)
+    end
+
     # Some services (e.g. ModArchive, AMP) only store a direct-download URL in
     # `links`, but linking to that URL from anywhere other than the dedicated
     # Download button should instead point at the service's HTML page for the
