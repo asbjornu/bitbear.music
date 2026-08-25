@@ -208,8 +208,12 @@ describe 'Pico CSS integration' do
       expect(page).to have_tag('input', with: { type: 'checkbox', class: 'expand-toggle-input' })
       expect(page).to have_tag('li', with: { class: 'expand-toggle' }) do
         with_tag('label') do
-          with_tag('span', with: { class: 'show-more', 'data-tooltip' => 'Show all links' }, text: '»')
-          with_tag('span', with: { class: 'show-less', 'data-tooltip' => 'Show fewer links' }, text: '«')
+          with_tag('span', with: { class: 'show-more', 'data-tooltip' => 'Show all links' }) do
+            with_tag('span', with: { class: 'icon icon-chevron-right' })
+          end
+          with_tag('span', with: { class: 'show-less', 'data-tooltip' => 'Show fewer links' }) do
+            with_tag('span', with: { class: 'icon icon-chevron-left' })
+          end
         end
       end
     end
@@ -231,7 +235,7 @@ describe 'Pico CSS integration' do
     end
 
     it 'reserves room for the toggle itself in each container query breakpoint' do
-      expect(css).to include('@container links (min-width: 5.2em){')
+      expect(css).to include('@container links (min-width: 5.4em){')
       expect(css).to include('nth-child(-n+2){display:inline}')
     end
 

@@ -259,6 +259,20 @@ section.footer footer a:hover {
         height: 30px;
     }
 
+    &.icon-chevron-right {
+        @include mask-image(url('/assets/images/chevron-right.svg'));
+        width: .65em;
+        height: .95em;
+        background-color: currentColor;
+    }
+
+    &.icon-chevron-left {
+        @include mask-image(url('/assets/images/chevron-left.svg'));
+        width: .65em;
+        height: .95em;
+        background-color: currentColor;
+    }
+
     &.icon-bandcamp {
         @include mask-image(url('/assets/images/services/bandcamp.svg'));
         width: 1.25em;
@@ -1079,15 +1093,20 @@ main {
                                 line-height: 1;
                                 padding: 0 .3em;
                                 color: #fff;
-                                // Neutralize Pico's `[data-tooltip]` dotted
-                                // bottom border (the label isn't an
-                                // a/button/input/[role=button], so it would
-                                // otherwise inherit it).
-                                border-bottom: none;
                                 transition: color .2s ease;
 
                                 &:hover {
                                     color: variables.$bg-color-light;
+                                }
+
+                                // Neutralize Pico's `[data-tooltip]` styling
+                                // on the (unmasked) wrapper spans: no dotted
+                                // underline, and a normal pointer cursor
+                                // instead of the question-mark `help` cursor.
+                                .show-more,
+                                .show-less {
+                                    border-bottom: none;
+                                    cursor: pointer;
                                 }
 
                                 .show-less {
@@ -1136,7 +1155,9 @@ main {
                             }
 
                             .show-less {
-                                display: inline;
+                                // Must stay `inline-block` (not `inline`) so
+                                // the chevron icon's width/height/mask apply.
+                                display: inline-block;
                             }
                         }
                     }
