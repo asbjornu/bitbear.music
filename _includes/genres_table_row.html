@@ -6,7 +6,7 @@
         {% assign sorted_tags = include.tags | sort %}
         {% for tag in sorted_tags -%}
           <li><a href="/music/genres/{{ tag }}/">{{ tag | replace: '-', ' ' | capitalize }}</a></li>
-        {% endfor %}
+        {%- endfor %}
       </ul>
     </td>
   </tr>

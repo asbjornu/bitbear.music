@@ -1150,14 +1150,26 @@ main {
             .genres ul {
                 margin: 0;
                 list-style-type: none;
+                // Collapse the whitespace Tidy inserts between/inside the
+                // <li>s (which would otherwise render as a space *before*
+                // the comma below). Both the list and its items drop to
+                // zero font size so all that stray whitespace vanishes;
+                // only the actual links and the comma reset their size.
+                font-size: 0;
 
                 > li {
                     margin: 0;
                     padding: 0;
                     display: inline;
+                    font-size: 0;
+
+                    > a {
+                        font-size: 1.5rem;
+                    }
 
                     &:not(:last-child):after {
                         content: ", ";
+                        font-size: 1.5rem;
                     }
                 }
             }
