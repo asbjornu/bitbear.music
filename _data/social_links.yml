@@ -27,6 +27,9 @@
 - name: Mastodon
   icon: mastodon
   url: https://icosahedron.website/@bitbear
+- name: Mirlo
+  icon: mirlo
+  url: https://mirlo.space/bitbear
 - name: Mixcloud
   icon: mixcloud
   url: https://www.mixcloud.com/bitbearmusic/
