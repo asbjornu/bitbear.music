@@ -19,7 +19,7 @@ describe 'iterator back button' do
 
     expect(link['href']).to eq('/music/albums/sunset-through-the-rain')
     expect(link.text.strip).to eq('Back to single')
-    expect(link.parent.parent['data-tooltip']).to eq('Go to the “Sunset Through The Rain” single')
+    expect(link.parent.parent['data-tooltip']).to eq('Go back to the “Sunset Through The Rain” single')
   end
 
   it 'links a release page back to the Music index' do
@@ -27,14 +27,14 @@ describe 'iterator back button' do
 
     expect(link['href']).to eq('/music/')
     expect(link.text.strip).to eq('Back to Music')
-    expect(link.parent.parent['data-tooltip']).to eq('Go to the “Music” page')
+    expect(link.parent.parent['data-tooltip']).to eq('Go back to the “Music” page')
   end
 
   it 'links a category page back to its parent index, without a doubled slash' do
     link = back_link('music/legacy/cool-interpreter.html')
 
     expect(link['href']).to eq('/music/legacy/')
-    expect(link.parent.parent['data-tooltip']).to eq('Go to the “Bitbear\'s Legacy Music” page')
+    expect(link.parent.parent['data-tooltip']).to eq('Go back to the “Bitbear\'s Legacy Music” page')
   end
 
   it "tells prev/next tooltips apart from tracks and releases" do

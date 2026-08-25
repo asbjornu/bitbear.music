@@ -55,7 +55,7 @@ module Jekyll
         'link' => '/',
         'rel' => 'back index',
         'text' => 'Home',
-        'describe' => %(Go to the “#{target && target.data['title']}” home page)
+        'describe' => %(Go back to the “#{target && target.data['title']}” home page)
       }
     end
 
@@ -66,7 +66,7 @@ module Jekyll
         'link' => release.url,
         'rel' => 'back',
         'text' => "Back to #{kind}",
-        'describe' => %(Go to the “#{release.data['title']}” #{kind})
+        'describe' => %(Go back to the “#{release.data['title']}” #{kind})
       }
     end
 
@@ -86,7 +86,7 @@ module Jekyll
         'link' => music_page.url,
         'rel' => 'back',
         'text' => 'Back to Music',
-        'describe' => %(Go to the “#{music_page.data['title']}” page)
+        'describe' => %(Go back to the “#{music_page.data['title']}” page)
       }
     end
 
@@ -94,7 +94,7 @@ module Jekyll
       link = "/#{segments.drop(1).join('/')}/"
       text = "Back to #{segments.last}"
       target = site.pages.find { |candidate| candidate.url == link }
-      describe = target ? %(Go to the “#{target.data['title']}” page) : text
+      describe = target ? %(Go back to the “#{target.data['title']}” page) : text
 
       { 'link' => link, 'rel' => 'back', 'text' => text, 'describe' => describe }
     end
