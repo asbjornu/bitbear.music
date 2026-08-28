@@ -3,6 +3,7 @@ title: Raise The Dead (Knofle Remix)
 tags: [drum-and-bass, dance, newschool, dark, cinematic, lyrics, breakcore]
 media:
   length: '5:40'
+  isrc: QM4DW1796504
 links:
   - https://bitbearmusic.bandcamp.com/album/scene-so-far
   - https://music.apple.com/us/album/raise-the-dead-feat-knofle-knofle-remix/1223831424?i=1223831438

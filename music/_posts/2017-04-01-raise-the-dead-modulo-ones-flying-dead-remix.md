@@ -3,6 +3,7 @@ title: Raise The Dead (Modulo One's Flying Dead Remix)
 tags: [trance, newschool, dark, cinematic, lyrics, hands-up, tech-trance]
 media:
   length: '4:53'
+  isrc: QM4DW1796503
 links:
   - https://bitbearmusic.bandcamp.com/album/scene-so-far
   - https://music.apple.com/us/album/raise-the-dead-feat-modulo-one-modulo-ones-flying-dead-remix/1223831424?i=1223831434

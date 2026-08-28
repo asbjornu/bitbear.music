@@ -3,6 +3,7 @@ title: Move (Atroxity's Disco Donkey Remix)
 tags: [house, newschool, deep-house]
 media:
   length: '5:57'
+  isrc: QM4DW1796501
 links:
   - https://bitbearmusic.bandcamp.com/album/scene-so-far
   - https://music.apple.com/us/album/move-feat-atroxity-atroxitys-disco-donkey-remix/1223831424?i=1223831429
