@@ -1,6 +1,7 @@
 # ![Bitbear][banner]
 
 [![build][build-badge]][build-link]
+[![test][test-badge]][test-link]
 [![codecov][codecov-badge]][codecov]
 [![License][license-badge]][license]
 [![Contributor Covenant][coc-badge]][coc]
@@ -24,6 +25,8 @@ This repository contains two different kinds of material, licensed differently:
 [bitbear.music]: https://bitbear.music/
 [build-badge]: https://github.com/asbjornu/bitbear.music/actions/workflows/publish.yml/badge.svg
 [build-link]: https://github.com/asbjornu/bitbear.music/actions/workflows/publish.yml
+[test-badge]: https://github.com/asbjornu/bitbear.music/actions/workflows/test.yml/badge.svg
+[test-link]: https://github.com/asbjornu/bitbear.music/actions/workflows/test.yml
 [coc-badge]: https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg
 [coc]: ./CODE_OF_CONDUCT.md
 [codecov-badge]: https://codecov.io/gh/asbjornu/bitbear.music/branch/main/graph/badge.svg
