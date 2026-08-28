@@ -2,6 +2,7 @@
 
 [![build][build-badge]][build-link]
 [![test][test-badge]][test-link]
+[![publish][publish-badge]][publish-link]
 [![codecov][codecov-badge]][codecov]
 [![License][license-badge]][license]
 [![Contributor Covenant][coc-badge]][coc]
@@ -23,16 +24,18 @@ This repository contains two different kinds of material, licensed differently:
 
 [banner]: https://repository-images.githubusercontent.com/89099209/95bd4180-8b68-11eb-9dbf-b449b2505aaf
 [bitbear.music]: https://bitbear.music/
-[build-badge]: https://github.com/asbjornu/bitbear.music/actions/workflows/publish.yml/badge.svg
-[build-link]: https://github.com/asbjornu/bitbear.music/actions/workflows/publish.yml
-[test-badge]: https://github.com/asbjornu/bitbear.music/actions/workflows/test.yml/badge.svg
-[test-link]: https://github.com/asbjornu/bitbear.music/actions/workflows/test.yml
+[build-badge]: https://github.com/asbjornu/bitbear.music/actions/workflows/build.yml/badge.svg
+[build-link]: https://github.com/asbjornu/bitbear.music/actions/workflows/build.yml
+[cc-by-nc]: https://creativecommons.org/licenses/by-nc/4.0/
 [coc-badge]: https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg
 [coc]: ./CODE_OF_CONDUCT.md
 [codecov-badge]: https://codecov.io/gh/asbjornu/bitbear.music/branch/main/graph/badge.svg
 [codecov]: https://codecov.io/gh/asbjornu/bitbear.music
 [license-badge]: https://img.shields.io/github/license/asbjornu/bitbear.music
-[license]: ./LICENSE
 [license-content]: ./LICENSE-CONTENT
-[cc-by-nc]: https://creativecommons.org/licenses/by-nc/4.0/
 [license-page]: https://bitbear.music/license/
+[license]: ./LICENSE
+[publish-badge]: https://github.com/asbjornu/bitbear.music/actions/workflows/publish.yml/badge.svg
+[publish-link]: https://github.com/asbjornu/bitbear.music/actions/workflows/publish.yml
+[test-badge]: https://github.com/asbjornu/bitbear.music/actions/workflows/test.yml/badge.svg
+[test-link]: https://github.com/asbjornu/bitbear.music/actions/workflows/test.yml
