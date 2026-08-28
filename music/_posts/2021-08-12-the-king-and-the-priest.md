@@ -4,6 +4,7 @@ tags: [ebm, pop, dance, newschool, remix, progressive-breaks]
 media:
   length: '5:12'
   cover: the-king-and-the-priest.jpg
+  isrc: QZK6H2181109
 links:
   - https://moduloone.com/news/the-king-and-the-priest-out-1-september-with-bitbear-remix/
   - https://moduloone.bandcamp.com/track/the-king-and-the-priest-bitbear-remix

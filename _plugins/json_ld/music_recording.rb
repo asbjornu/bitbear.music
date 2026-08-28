@@ -22,6 +22,7 @@ module Jekyll
         apply_media!(recording)
         apply_genre!(recording)
         apply_album!(recording)
+        apply_isrc!(recording)
         apply_links!(recording)
         recording
       end
@@ -62,6 +63,11 @@ module Jekyll
           'name' => album_post.data['title'],
           'url' => absolute_url(album_post.url)
         }
+      end
+
+      def apply_isrc!(recording)
+        isrc = @page['media'] && @page['media']['isrc']
+        recording['isrcCode'] = isrc if isrc && !isrc.to_s.strip.empty?
       end
 
       def apply_links!(recording)

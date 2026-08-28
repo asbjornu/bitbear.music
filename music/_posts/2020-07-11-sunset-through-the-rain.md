@@ -6,6 +6,7 @@ media:
   format: XRNS
   channels: 57
   length: '4:03'
+  isrc: QZMHL2450245
 links:
   - https://bitbearmusic.bandcamp.com/album/sunset-through-the-rain
   - https://music.apple.com/us/album/sunset-through-the-rain-single/6786456889?i=6786456890

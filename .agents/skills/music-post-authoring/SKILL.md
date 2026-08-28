@@ -63,6 +63,11 @@ rather than guessing at a scener page.
 - A track belonging to an album has **no cover of its own** in front matter —
   it inherits the album's `media.cover` at render time
   (`_layouts/post.html`). Don't add a redundant `media.cover` to a track post.
+- `media.isrc` (string) on a track post emits schema.org `isrcCode` in the
+  MusicRecording JSON-LD. Only set it when the ISRC is sourced from a real
+  release (Deezer's `api.deezer.com/track/<id>` exposes `isrc`; the iTunes
+  lookup API no longer does). Omit it for tracker modules / Bandcamp-only
+  tracks that were never assigned an ISRC — never fabricate one.
 - If you add a new non-string front-matter type (beyond what's already
   handled), check `YAML.safe_load` call sites in specs
   (`remix_kit_spec.rb`, `cover_spec.rb`) — they need

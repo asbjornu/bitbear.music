@@ -3,6 +3,7 @@ title: Raise The Dead
 tags: [drum-and-bass, dance, newschool, dark, cinematic, lyrics]
 media:
   length: '3:29'
+  isrc: QM4DW1796502
 links:
   - https://bitbearmusic.bandcamp.com/album/scene-so-far
   - https://music.apple.com/us/album/raise-the-dead/1223831424?i=1223831433

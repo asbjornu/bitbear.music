@@ -3,6 +3,7 @@ title: Sunset Through The Rain (Modulo One's Night Drive)
 tags: [trance, newschool, electro, nu-disco]
 media:
   length: '3:38'
+  isrc: QZHPJ2689090
 links:
   - https://bitbearmusic.bandcamp.com/album/sunset-through-the-rain
   - https://music.apple.com/us/album/sunset-through-the-rain-modulo-ones-night-drive/6786456889?i=6786456892

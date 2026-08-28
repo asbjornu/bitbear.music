@@ -6,6 +6,7 @@ media:
   cover: that-flateby-feeling.jpg
   channels: 55
   filesize: 8213546
+  isrc: QZMHN2462053
 links:
   - https://bitbearmusic.bandcamp.com/track/that-flateby-feeling
   - https://music.apple.com/us/album/that-flateby-feeling/1762288686?i=1762288687
