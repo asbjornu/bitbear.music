@@ -10,6 +10,7 @@ links:
   - https://power-of-creation.bandcamp.com/track/walking-part-3
   - https://soundcloud.com/bitbear/poc-walking-part-3
   - https://amp.dascene.net/downmod.php?index=168736
+  - https://open.spotify.com/track/58DprBkzp2dyXkM7lBy43f
 album:
   slug: beyond-fantasy
   position: 13

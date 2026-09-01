@@ -7,6 +7,7 @@ media:
 links:
   - https://power-of-creation.bandcamp.com/album/beyond-fantasy
   - https://soundcloud.com/bitbear/sets/beyond-fantasy
+  - https://open.spotify.com/album/5hsOU9nRllXkpPIiJxB6b0?si=jUVHM06cQbi-QZHQhkyEqQ
 album:
   kind: Album
 ---

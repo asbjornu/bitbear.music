@@ -10,6 +10,7 @@ links:
   - https://power-of-creation.bandcamp.com/track/medieval-orphanage
   - https://soundcloud.com/bitbear/poc-medieval-orphanage
   - https://amp.dascene.net/downmod.php?index=168749
+  - https://open.spotify.com/track/0yTTY4sVepHvYkxhkRhYV5
 album:
   slug: beyond-fantasy
   position: 16

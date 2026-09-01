@@ -10,6 +10,7 @@ links:
   - https://power-of-creation.bandcamp.com/track/back-in-the-shire
   - https://soundcloud.com/bitbear/poc-back-in-the-shire
   - https://amp.dascene.net/downmod.php?index=159538
+  - https://open.spotify.com/track/0yTTY4sVepHvYkxhkRhYV5
 album:
   slug: beyond-fantasy
   position: 15

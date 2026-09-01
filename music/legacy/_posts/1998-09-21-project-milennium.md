@@ -10,6 +10,7 @@ links:
   - https://power-of-creation.bandcamp.com/track/project-millennium
   - https://soundcloud.com/bitbear/poc-project-millennium
   - https://amp.dascene.net/downmod.php?index=168745
+  - https://open.spotify.com/track/6w3ldP0FHH6ow27h4qbJoq
 album:
   slug: beyond-fantasy
   position: 4

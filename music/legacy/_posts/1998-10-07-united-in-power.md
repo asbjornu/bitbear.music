@@ -10,6 +10,7 @@ links:
   - https://power-of-creation.bandcamp.com/track/united-in-power
   - https://soundcloud.com/bitbear/poc-united-in-power
   - https://amp.dascene.net/downmod.php?index=168739
+  - https://open.spotify.com/track/1DisGIvK3q1DLsXWrChDlw
 album:
   slug: beyond-fantasy
   position: 14

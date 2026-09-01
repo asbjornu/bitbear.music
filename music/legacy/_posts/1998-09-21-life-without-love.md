@@ -10,6 +10,7 @@ links:
   - https://power-of-creation.bandcamp.com/track/life-without-love
   - https://soundcloud.com/bitbear/poc-life-without-love
   - https://amp.dascene.net/downmod.php?index=168752
+  - https://open.spotify.com/track/1OvSeoCcYwXLItLliAQ0p9
 album:
   slug: beyond-fantasy
   position: 3

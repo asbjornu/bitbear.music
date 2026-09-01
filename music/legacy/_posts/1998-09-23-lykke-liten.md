@@ -10,6 +10,7 @@ links:
   - https://power-of-creation.bandcamp.com/track/lykke-liten
   - https://soundcloud.com/bitbear/poc-lykke-liten
   - https://amp.dascene.net/downmod.php?index=168751
+  - https://open.spotify.com/track/7vi2SgcIZgH0dSzv8IXdM4
 album:
   slug: beyond-fantasy
   position: 19

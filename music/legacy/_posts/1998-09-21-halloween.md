@@ -10,6 +10,7 @@ links:
   - https://power-of-creation.bandcamp.com/track/halloween
   - https://soundcloud.com/bitbear/poc-halloween
   - https://amp.dascene.net/downmod.php?index=168757
+  - https://open.spotify.com/track/1OliiD5KcIGhqDp8oN2PJS
 album:
   slug: beyond-fantasy
   position: 6
