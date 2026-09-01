@@ -14,7 +14,7 @@ album:
 
 "Beyond Fantasy" is the first of two albums Bitbear produced under his
 [demoscene][] alter ego [PoC][poc], short for "Power of Creation", while a
-member of the [Dupe][dupe] cracking group.
+member of the [Dupe][dupe] demo group.
 
 <!--more-->
 
