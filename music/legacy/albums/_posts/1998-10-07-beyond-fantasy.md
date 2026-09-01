@@ -14,7 +14,7 @@ album:
 
 "Beyond Fantasy" is the first of two albums Bitbear produced under his
 [demoscene][] alter ego [PoC][poc], short for "Power of Creation", while a
-member of the [Dupe][dupe] demo group.
+member of the [Dupe][dupe] [demogroup][].
 
 <!--more-->
 
@@ -24,6 +24,7 @@ were tracked in [Impulse Tracker][impulse-tracker], with most samples
 sourced from sample compilations or lifted from songs by artists he loved
 at the time.
 
+[demogroup]: https://en.wikipedia.org/wiki/Demogroup
 [demoscene]: https://en.wikipedia.org/wiki/Demoscene
 [dupe]: https://demozoo.org/groups/23250/
 [impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
