@@ -26,7 +26,7 @@ As with all the other tunes on [Beyond Fantasy][beyond-fantasy], “{{
 page.title }}” was created in [Impulse Tracker][impulse-tracker] on
 [MS-DOS][ms-dos].
 
-[beyond-fantasy]: /music/legacy/beyond-fantasy
+[beyond-fantasy]: /music/legacy/albums/beyond-fantasy
 [claus-frimann-dahl-clasen]: https://no.wikipedia.org/wiki/Claus_Frimann_Clasen
 [impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
 [ms-dos]: https://en.wikipedia.org/wiki/MS-DOS

@@ -26,8 +26,8 @@ several of the tunes on [3rd Floor][3rd-floor]. As with all the other tunes
 on [Beyond Fantasy][beyond-fantasy], “{{ page.title }}” was created in
 [Impulse Tracker][impulse-tracker] on [MS-DOS][ms-dos].
 
-[3rd-floor]: /music/legacy/3rd-floor
-[beyond-fantasy]: /music/legacy/beyond-fantasy
+[3rd-floor]: /music/legacy/albums/3rd-floor
+[beyond-fantasy]: /music/legacy/albums/beyond-fantasy
 [impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
 [ms-dos]: https://en.wikipedia.org/wiki/MS-DOS
 [puma]: https://demozoo.org/sceners/106369/

@@ -24,7 +24,7 @@ before I'd ever heard ATB, which felt pretty cool at the time.
 As with all the other tunes on [3rd Floor][3rd-floor], “{{ page.title }}”
 was created in [Impulse Tracker][impulse-tracker] on [MS-DOS][ms-dos].
 
-[3rd-floor]: /music/legacy/3rd-floor
+[3rd-floor]: /music/legacy/albums/3rd-floor
 [atb]: https://en.wikipedia.org/wiki/ATB_(DJ)
 [impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
 [ms-dos]: https://en.wikipedia.org/wiki/MS-DOS

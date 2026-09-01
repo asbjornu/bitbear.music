@@ -23,7 +23,7 @@ the two mentioned albums on the [Power of Creation Bandcamp
 page][bandcamp].
 
 <div class="albums">
-  <a href="{{ '/music/legacy/beyond-fantasy' | relative_url }}"
+  <a href="{{ '/music/legacy/albums/beyond-fantasy' | relative_url }}"
      aria-description="Beyond Fantasy"
      data-tooltip="Beyond Fantasy">
     <img src="{{ '/assets/images/covers/beyond-fantasy.jpg' | relative_url }}"
@@ -31,7 +31,7 @@ page][bandcamp].
          sizes="(min-width: 745px) 20rem, 45vw"
          alt="Beyond Fantasy cover">
   </a>
-  <a href="{{ '/music/legacy/3rd-floor' | relative_url }}"
+  <a href="{{ '/music/legacy/albums/3rd-floor' | relative_url }}"
      aria-description="3rd Floor"
      data-tooltip="3rd Floor">
     <img src="{{ '/assets/images/covers/3rd-floor.jpg' | relative_url }}"
@@ -44,10 +44,10 @@ page][bandcamp].
 Before adopting the name "PoC" in December 1995, Bitbear briefly went by
 "PCi" while a member of the [ULTiMATE][ultimate] group.
 
-[3rd-floor]: /music/legacy/3rd-floor
+[3rd-floor]: /music/legacy/albums/3rd-floor
 [asbjornu]: https://asbjor.nu/
 [bandcamp]: https://power-of-creation.bandcamp.com/
-[beyond-fantasy]: /music/legacy/beyond-fantasy
+[beyond-fantasy]: /music/legacy/albums/beyond-fantasy
 [bitbear]: /
 [demoscene]: https://en.wikipedia.org/wiki/Demoscene
 [dupe]: https://demozoo.org/groups/23250/
