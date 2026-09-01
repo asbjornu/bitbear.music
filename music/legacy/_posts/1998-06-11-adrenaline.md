@@ -17,11 +17,11 @@ album:
   position: 2
 ---
 
-After a late night at work punching export invoices at UPS, a friend and
-colleague drove me home at what can only be described as "criminally high
-speed". Overtired and with adrenaline pumping from the ride, the outline
-for this tune was done before I knew it. It was completed a couple of
-weeks later.
+After a late night at work punching export invoices at [UPS][ups], a friend
+and colleague drove me home at what can only be described as "criminally
+high speed". Overtired and with adrenaline pumping from the ride, the
+outline for this tune was done before I knew it. It was completed a couple
+of weeks later.
 
 <!--more-->
 
@@ -32,3 +32,4 @@ page.title }}” was created in [Impulse Tracker][impulse-tracker] on
 [beyond-fantasy]: /music/legacy/albums/beyond-fantasy
 [impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
 [ms-dos]: https://en.wikipedia.org/wiki/MS-DOS
+[ups]: https://en.wikipedia.org/wiki/United_Parcel_Service
