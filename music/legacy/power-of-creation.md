@@ -4,6 +4,7 @@ layout: power-of-creation
 description: |
     Power of Creation, abbreviated PoC, was Bitbear's demoscene alter ego
     from 1995 to 2000, before he started producing music as Bitbear.
+image: /assets/images/power-of-creation-opengraph.png
 ---
 
 {:.jumbotron}

@@ -8,7 +8,9 @@ tags for the current page. Expects `include.title` and
 album's) so link previews show real cover art instead of a generic
 image. {%- endcomment -%}
 {%- assign og_cover = nil -%}
-{%- if page.media.cover -%}
+{%- if page.image -%}
+  {%- assign og_image = page.image | absolute_url -%}
+{%- elsif page.media.cover -%}
   {%- assign og_cover = page.media.cover -%}
 {%- elsif page.album.slug -%}
   {%- assign og_album_post = site.posts | where: 'slug', page.album.slug | first -%}
@@ -16,7 +18,8 @@ image. {%- endcomment -%}
     {%- assign og_cover = og_album_post.media.cover -%}
   {%- endif -%}
 {%- endif -%}
-{%- if og_cover -%}
+{%- if og_image -%}
+{%- elsif og_cover -%}
   {%- assign og_image = '/assets/images/covers/' | append: og_cover | absolute_url -%}
 {%- else -%}
   {%- comment -%}
