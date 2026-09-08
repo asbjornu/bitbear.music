@@ -95,7 +95,7 @@ one of my worst assets.
 [sinatra]: https://demozoo.org/sceners/238/
 [slummy]: https://demozoo.org/sceners/463/
 [solskogen-2019]: https://demozoo.org/parties/3679/
-[solskogen]: https://solskogen.scene.org/
+[solskogen]: https://web.archive.org/web/20250418021741/https://solskogen.scene.org/
 [steel]: https://demozoo.org/sceners/5091/
 [t-101]: https://demozoo.org/sceners/939/
 [xeche]: https://demozoo.org/sceners/21196/

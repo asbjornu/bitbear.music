@@ -132,7 +132,7 @@ PS: Yes, the bears are crying.
 [sandsmark]: https://demozoo.org/sceners/41263/
 [sinatra]: https://demozoo.org/sceners/238/
 [slummy]: https://demozoo.org/sceners/463/
-[solskogen]: https://solskogen.scene.org/
+[solskogen]: https://web.archive.org/web/20250418021741/https://solskogen.scene.org/
 [solskogen-music-compo]: https://demozoo.org/parties/3964/#competition_16008
 [steel]: https://demozoo.org/sceners/5091/
 [t-101]: https://demozoo.org/sceners/939/

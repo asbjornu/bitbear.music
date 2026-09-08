@@ -34,7 +34,7 @@ competition][trsac] in which it was awarded 1st place.
 Cover art by [liv][].
 
 [modulo-one]: https://moduloone.com
-[solskogen]: https://solskogen.scene.org/
+[solskogen]: https://web.archive.org/web/20250418021741/https://solskogen.scene.org/
 [trsac]: https://demozoo.org/parties/5116/#competition_20347
 [liv]: https://demozoo.org/sceners/150674/
 [sunset-through-the-rain]: /music/sunset-through-the-rain
