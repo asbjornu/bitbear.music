@@ -36,7 +36,7 @@ module Jekyll
     # Deliberately does not call super: Jekyll::Page#initialize reads
     # front matter from a backing file on disk, but this page is
     # synthesized in memory and has no such file.
-    # rubocop:disable Lint/MissingSuper
+    # rubocop:disable-next Lint/MissingSuper
     def initialize(site, tag)
       @site = site
       @base = site.source
@@ -51,6 +51,5 @@ module Jekyll
         'tag' => tag
       }
     end
-    # rubocop:enable Lint/MissingSuper
   end
 end
