@@ -8,11 +8,22 @@
     {%- assign has_youtube = false -%}
   {%- endif -%}
 
-  <div id="cover">
+  {%- assign cover_vt = '' -%}
+  {%- comment -%}album_slug comes from author-controlled front matter. Run it
+  through Liquid `slugify` so the result is a safe CSS `<custom-ident>`
+  (lowercase, alphanumerics/hyphens only) before interpolating into the
+  style attribute — this also neutralizes `;`, `:`, quotes, and `<` that
+  could otherwise break out of `--cover-vt:` and inject declarations.{%- endcomment -%}
+  {%- assign cover_slug = include.album_slug | slugify -%}
+  {%- if cover_slug != '' -%}
+    {%- assign cover_vt = 'cover-' | append: cover_slug -%}
+  {%- endif -%}
+
+  <div id="cover"{% if cover_vt != '' %} style="--cover-vt: {{ cover_vt }};"{% endif %}>
     <a class="cover-link" href="#cover-art"
       aria-description="Open the cover art {% if has_youtube -%}and play the “{{ include.title | escape }}” music video{% endif -%}"
       data-tooltip="Open the cover art {% if has_youtube -%}and play the “{{ include.title | escape }}” music video{% endif -%}">
-      <img src="{{ cover_url }}" alt="{{ include.title }} cover">
+      <img src="{{ cover_url }}" alt="{{ include.title | escape }} cover">
       {%- if has_youtube -%}
         <span class="cover-play" aria-hidden="true"></span>
       {%- endif -%}

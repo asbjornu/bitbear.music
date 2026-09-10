@@ -80,6 +80,9 @@ jobs:
       - name: markdown lint
         run: npm run lint:markdown
 
+      - name: scss lint
+        run: npm run lint:scss
+
       - name: rspec
         run: bundle exec rake spec
 
