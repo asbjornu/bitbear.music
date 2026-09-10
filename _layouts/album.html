@@ -72,7 +72,8 @@ layout: default
     </aside>
 
     {% if page.media.cover %}
-      {% include cover.html title=page.title cover=page.media.cover youtube=youtube_id %}
+      {% assign album_slug = page.album.slug | default: page.slug %}
+      {% include cover.html title=page.title cover=page.media.cover youtube=youtube_id album_slug=album_slug %}
     {% endif %}
   </div>
 {% endif %}

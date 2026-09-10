@@ -18,6 +18,43 @@
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
     <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/feed.xml">
     <link rel="stylesheet" href="{{ '/assets/scss/bitbear.css' | relative_url }}">
+    <script>
+      // Apply the view-transition direction as early as possible (during parse,
+      // before the incoming snapshot is captured). The direction is carried in
+      // the URL as `?vt=<dir>` (appended on click, stripped after the transition
+      // via history.replaceState). `event.activation.trigger` is unreliable in
+      // some browsers, so we read the URL instead of pagereveal. The value is
+      // attacker-controllable (it is a URL param), so only accept the exact
+      // direction tokens the click handler emits — each maps to a `nav-*`
+      // class that exists in the stylesheet. REL tokens (next/prev/home/index)
+      // are never stored in `vt`, so accepting them would add classes with no
+      // styling and silently break the transition.
+      (function () {
+        var ALLOWED = ['forward', 'back', 'up', 'down'];
+        // Skip when view transitions aren't supported, or when the user prefers
+        // reduced motion — the stylesheet opts out of transitions there, so
+        // adding `vt-active` would just lock scrolling for no reason.
+        if (!('startViewTransition' in document)) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        function release() {
+          var c = document.documentElement.classList;
+          c.remove('nav-forward', 'nav-back', 'nav-up', 'nav-down', 'vt-active');
+        }
+        try {
+          var d = new URLSearchParams(location.search).get('vt');
+          if (d && ALLOWED.indexOf(d) !== -1) {
+            var c = document.documentElement.classList;
+            c.remove('nav-forward', 'nav-back', 'nav-up', 'nav-down');
+            c.add('nav-' + d);
+            c.add('vt-active');
+            // Fallback: `view-transitions.js` normally releases this lock via
+            // `pagereveal`, but if that script fails to load (network/CSP/error)
+            // nothing else will — release on a timer so the scroll-lock can't stick.
+            window.setTimeout(release, 1000);
+          }
+        } catch (e) {}
+      }());
+    </script>
     <link rel="shortcut icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
     <link rel="shortcut icon" type="image/svg" href="{{ '/assets/images/logo.svg' | relative_url }}">
     <link rel="icon" type="image/svg" href="{{ '/assets/images/logo.svg' | relative_url }}">
@@ -34,7 +71,7 @@
           <a href="{{ '/' | relative_url }}">Bitbear</a>
         </h1>
         <ul>
-          {% include menu_item.html url = '/' title = 'Home' %}
+          {% include menu_item.html url = '/' title = 'Home' rel = 'home' %}
           {% include menu_item.html url = '/music/' title = 'Music' %}
           {% include menu_item.html url = '/music/legacy/' title = 'Legacy' %}
         </ul>
@@ -52,6 +89,7 @@
     </section>
 
     <script src="{{ '/assets/scripts/cover.js' | relative_url }}"></script>
+    <script src="{{ '/assets/scripts/view-transitions.js' | relative_url }}"></script>
     <script async src="{{ '/assets/scripts/ga.js' | relative_url }}"></script>
   </body>
 </html>

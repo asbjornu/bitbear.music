@@ -46,6 +46,133 @@
     )
 );
 
+// Cross-document view transitions are opt-in only when the user hasn't asked
+// for reduced motion; wrapping the at-rule in this media query means
+// `prefers-reduced-motion: reduce` users get a plain, instant navigation.
+@media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+        navigation: auto;
+    }
+}
+
+::view-transition {
+    background-color: var(--pico-background-color);
+}
+
+html.vt-active,
+html.vt-active body {
+    overflow: hidden;
+}
+
+#cover {
+    view-transition-name: var(--cover-vt, none);
+}
+
+html.nav-forward #cover,
+html.nav-back #cover,
+html.nav-up #cover,
+html.nav-down #cover {
+    view-transition-name: none;
+}
+
+@keyframes cover-slide-out-left {
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes cover-slide-in-right {
+    from {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes cover-slide-out-right {
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes cover-slide-in-left {
+    from {
+        transform: translateX(-100%);
+    }
+}
+
+html.nav-forward::view-transition-old(root) {
+    animation: cover-slide-out-left 280ms ease both;
+}
+
+html.nav-forward::view-transition-new(root) {
+    animation: cover-slide-in-right 280ms ease both;
+}
+
+html.nav-back::view-transition-old(root) {
+    animation: cover-slide-out-right 280ms ease both;
+}
+
+html.nav-back::view-transition-new(root) {
+    animation: cover-slide-in-left 280ms ease both;
+}
+
+@keyframes cover-slide-out-up {
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes cover-slide-in-up {
+    from {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes cover-slide-out-down {
+    to {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes cover-slide-in-down {
+    from {
+        transform: translateY(-100%);
+    }
+}
+
+html.nav-up::view-transition-old(root) {
+    animation: cover-slide-out-up 280ms ease both;
+}
+
+html.nav-up::view-transition-new(root) {
+    animation: cover-slide-in-up 280ms ease both;
+}
+
+html.nav-down::view-transition-old(root) {
+    animation: cover-slide-out-down 280ms ease both;
+}
+
+html.nav-down::view-transition-new(root) {
+    animation: cover-slide-in-down 280ms ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    // Defense-in-depth: if a transition is ever triggered (e.g. the at-rule is
+    // supported but this block is evaluated), disable both the directional
+    // slides and the default crossfade so nothing animates.
+    ::view-transition-old(root),
+    ::view-transition-new(root),
+    html.nav-forward::view-transition-old(root),
+    html.nav-forward::view-transition-new(root),
+    html.nav-back::view-transition-old(root),
+    html.nav-back::view-transition-new(root),
+    html.nav-up::view-transition-old(root),
+    html.nav-up::view-transition-new(root),
+    html.nav-down::view-transition-old(root),
+    html.nav-down::view-transition-new(root) {
+        animation: none;
+    }
+}
+
 :root {
     // Typography
     --pico-font-family: #{variables.$primary-font};

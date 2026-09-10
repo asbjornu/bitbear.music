@@ -86,7 +86,8 @@ layout: default
       {% endif %}
     {% endif %}
     {% if cover %}
-      {% include cover.html title=cover_title cover=cover youtube=youtube_id %}
+      {% assign post_album_slug = page.album.slug | default: page.slug %}
+      {% include cover.html title=cover_title cover=cover youtube=youtube_id album_slug=post_album_slug %}
     {% elsif youtube_link %}
       <div id="cover">
         <iframe

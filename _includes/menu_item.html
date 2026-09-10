@@ -5,5 +5,5 @@
 {%- endif -%}
 
 <li {{- active -}}>
-  <a href="{{ include.url }}">{{ include.title }}</a>
+  <a href="{{ include.url }}"{% if include.rel %} rel="{{ include.rel }}"{% endif %}>{{ include.title }}</a>
 </li>
