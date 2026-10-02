@@ -5,6 +5,7 @@ media:
   cover: beyond-fantasy.jpg
   filesize: 210944
   format: IT
+  isrc: QT6Y22559339
 links:
   - https://demozoo.org/music/266769/
   - https://power-of-creation.bandcamp.com/track/adrenaline

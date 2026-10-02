@@ -5,6 +5,7 @@ media:
   cover: beyond-fantasy.jpg
   filesize: 172032
   format: IT
+  isrc: QZS642445772
 links:
   - https://demozoo.org/music/266783/
   - https://power-of-creation.bandcamp.com/track/medieval-orphanage

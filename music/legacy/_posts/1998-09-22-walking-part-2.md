@@ -5,6 +5,7 @@ media:
   cover: beyond-fantasy.jpg
   filesize: 384000
   format: IT
+  isrc: QZKDK2609692
 links:
   - https://demozoo.org/music/266779/
   - https://power-of-creation.bandcamp.com/track/walking-part-2

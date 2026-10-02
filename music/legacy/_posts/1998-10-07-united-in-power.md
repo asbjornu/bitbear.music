@@ -5,6 +5,7 @@ media:
   cover: beyond-fantasy.jpg
   filesize: 122880
   format: IT
+  isrc: QZRPB2568554
 links:
   - https://demozoo.org/music/266781/
   - https://power-of-creation.bandcamp.com/track/united-in-power

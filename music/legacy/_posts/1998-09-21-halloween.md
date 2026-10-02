@@ -5,6 +5,7 @@ media:
   cover: beyond-fantasy.jpg
   filesize: 153600
   format: IT
+  isrc: QZFP52531848
 links:
   - https://demozoo.org/music/266773/
   - https://power-of-creation.bandcamp.com/track/halloween

@@ -5,6 +5,7 @@ media:
   cover: beyond-fantasy.jpg
   filesize: 208896
   format: IT
+  isrc: QZYB42544682
 links:
   - https://demozoo.org/music/266770/
   - https://power-of-creation.bandcamp.com/track/life-without-love

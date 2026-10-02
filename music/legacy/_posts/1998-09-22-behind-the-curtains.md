@@ -5,6 +5,7 @@ media:
   cover: beyond-fantasy.jpg
   filesize: 505856
   format: IT
+  isrc: QZRPB2530933
 links:
   - https://demozoo.org/music/266777/
   - https://power-of-creation.bandcamp.com/track/behind-the-curtains

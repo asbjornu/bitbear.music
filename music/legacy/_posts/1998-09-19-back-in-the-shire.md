@@ -5,6 +5,7 @@ media:
   cover: beyond-fantasy.jpg
   filesize: 240640
   format: IT
+  isrc: QZT852585918
 links:
   - https://demozoo.org/music/266782/
   - https://power-of-creation.bandcamp.com/track/back-in-the-shire

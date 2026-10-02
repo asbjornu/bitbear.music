@@ -5,6 +5,7 @@ media:
   cover: beyond-fantasy.jpg
   filesize: 427008
   format: IT
+  isrc: QZS652620702
 links:
   - https://demozoo.org/music/266786/
   - https://power-of-creation.bandcamp.com/track/lykke-liten

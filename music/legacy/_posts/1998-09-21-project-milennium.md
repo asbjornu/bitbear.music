@@ -5,6 +5,7 @@ media:
   cover: beyond-fantasy.jpg
   filesize: 186368
   format: IT
+  isrc: QZH5E2584985
 links:
   - https://demozoo.org/music/266771/
   - https://power-of-creation.bandcamp.com/track/project-millennium
