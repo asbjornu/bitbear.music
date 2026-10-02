@@ -1,5 +1,5 @@
 ---
-title: Project Milennium
+title: Project Millennium
 tags: [house, oldskool]
 media:
   cover: beyond-fantasy.jpg

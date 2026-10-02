@@ -58,7 +58,7 @@ describe 'JSON-LD MusicRecording isrcCode' do
       'intro' => 'QZTH82517193',
       'adrenaline' => 'QT6Y22559339',
       'life-without-love' => 'QZYB42544682',
-      'project-milennium' => 'QZH5E2584985',
+      'project-millennium' => 'QZH5E2584985',
       'one-ring' => 'QZT852517906',
       'halloween' => 'QZFP52531848',
       'rage' => 'QZT852582045',
