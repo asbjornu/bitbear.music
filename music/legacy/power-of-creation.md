@@ -15,13 +15,14 @@ to music production in 2012 as [Bitbear][bitbear].
 
 <!--more-->
 
-As PoC, and while a member of [Dupe][dupe], Bitbear tracked dozens of songs
-in [Scream Tracker][scream-tracker], [Fast Tracker II][fast-tracker], and
-ultimately [Impulse Tracker][impulse-tracker], releasing two full albums:
-[Beyond Fantasy][beyond-fantasy] and [3rd Floor][3rd-floor]. You can find
-all of Bitbear's PoC-era tracks in the [legacy] section of this site, and
-the two mentioned albums on the [Power of Creation Bandcamp
-page][bandcamp]. You can also find [Power of Creation on
+As PoC, and while a member of [Dupe][dupe], Bitbear tracked dozens of
+songs in [NoiseTracker] and [ProTracker], [Scream
+Tracker][scream-tracker], [Fast Tracker II][fast-tracker], and
+ultimately [Impulse Tracker][impulse-tracker], releasing two full
+albums: [Beyond Fantasy][beyond-fantasy] and [3rd Floor][3rd-floor].
+You can find all of Bitbear's PoC-era tracks in the [legacy] section
+of this site, and the two mentioned albums on the [Power of Creation
+Bandcamp page][bandcamp]. You can also find [Power of Creation on
 Apple Music][apple-music].
 
 <div class="albums">
@@ -57,5 +58,7 @@ Before adopting the name "PoC" in December 1995, Bitbear briefly went by
 [fast-tracker]: https://en.wikipedia.org/wiki/FastTracker_2
 [impulse-tracker]: https://en.wikipedia.org/wiki/Impulse_Tracker
 [legacy]: /music/legacy/
+[noisetracker]: https://en.wikipedia.org/wiki/NoiseTracker
+[protracker]: https://en.wikipedia.org/wiki/ProTracker
 [scream-tracker]: https://en.wikipedia.org/wiki/Scream_Tracker
 [ultimate]: https://demozoo.org/groups/106371/
