@@ -54,7 +54,26 @@ describe 'JSON-LD MusicRecording isrcCode' do
       'that-flateby-feeling' => 'QZMHN2462053',
       'sunset-through-the-rain' => 'QZMHL2450245',
       'the-king-and-the-priest' => 'QZK6H2181109',
-      'sunset-through-the-rain-modulo-ones-night-drive' => 'QZHPJ2689090'
+      'sunset-through-the-rain-modulo-ones-night-drive' => 'QZHPJ2689090',
+      'intro' => 'QZTH82517193',
+      'adrenaline' => 'QT6Y22559339',
+      'life-without-love' => 'QZYB42544682',
+      'project-millennium' => 'QZH5E2584985',
+      'one-ring' => 'QZT852517906',
+      'halloween' => 'QZFP52531848',
+      'rage' => 'QZT852582045',
+      'sweat' => 'QZYB32576664',
+      'uncherrished-bitch' => 'QZYB22528758',
+      'behind-the-curtains' => 'QZRPB2530933',
+      'walking-part-1' => 'QZMHM2641217',
+      'walking-part-2' => 'QZKDK2609692',
+      'walking-part-3' => 'QZMHL2692121',
+      'united-in-power' => 'QZRPB2568554',
+      'back-in-the-shire' => 'QZT852585918',
+      'medieval-orphanage' => 'QZS642445772',
+      'the-army' => 'QZMHM2400493',
+      'open-your-heart' => 'QZTH92518817',
+      'lykke-liten' => 'QZS652620702'
     }
   end
 
@@ -65,7 +84,9 @@ describe 'JSON-LD MusicRecording isrcCode' do
   def track_html(slug)
     candidates = [
       File.join(site_root, '_site', 'music', "#{slug}.html"),
-      File.join(site_root, '_site', 'music', slug, 'index.html')
+      File.join(site_root, '_site', 'music', slug, 'index.html'),
+      File.join(site_root, '_site', 'music', 'legacy', "#{slug}.html"),
+      File.join(site_root, '_site', 'music', 'legacy', slug, 'index.html')
     ]
     candidates.find { |path| File.exist?(path) }
   end

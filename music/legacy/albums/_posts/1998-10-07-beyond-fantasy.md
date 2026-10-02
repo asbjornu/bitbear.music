@@ -6,6 +6,7 @@ media:
   cover: beyond-fantasy.jpg
 links:
   - https://power-of-creation.bandcamp.com/album/beyond-fantasy
+  - https://music.apple.com/no/album/beyond-fantasy/6818199005
   - https://soundcloud.com/bitbear/sets/beyond-fantasy
   - https://open.spotify.com/album/5hsOU9nRllXkpPIiJxB6b0?si=jUVHM06cQbi-QZHQhkyEqQ
 album:

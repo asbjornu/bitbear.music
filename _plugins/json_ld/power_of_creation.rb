@@ -18,6 +18,7 @@ module Jekyll
       SAME_AS = [
         'https://bitbear.music',
         'https://power-of-creation.bandcamp.com/',
+        'https://music.apple.com/no/artist/power-of-creation/6818190524',
         'https://demozoo.org/sceners/30400/',
         'https://demozoo.org/groups/23250/',
         'https://demozoo.org/groups/106371/'

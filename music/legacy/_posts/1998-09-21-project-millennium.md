@@ -1,13 +1,15 @@
 ---
-title: Project Milennium
+title: Project Millennium
 tags: [house, oldskool]
 media:
   cover: beyond-fantasy.jpg
   filesize: 186368
   format: IT
+  isrc: QZH5E2584985
 links:
   - https://demozoo.org/music/266771/
   - https://power-of-creation.bandcamp.com/track/project-millennium
+  - https://music.apple.com/no/album/project-millennium/6818199005?i=6818199011
   - https://soundcloud.com/bitbear/poc-project-millennium
   - https://amp.dascene.net/downmod.php?index=168745
   - https://open.spotify.com/track/6w3ldP0FHH6ow27h4qbJoq

@@ -4,9 +4,11 @@ tags: [pop, oldskool]
 media:
   cover: beyond-fantasy.jpg
   format: IT
+  isrc: QZTH92518817
 links:
   - https://demozoo.org/music/266785/
   - https://power-of-creation.bandcamp.com/track/puma-open-your-heart
+  - https://music.apple.com/no/album/open-your-heart/6818199005?i=6818199087
   - https://soundcloud.com/bitbear/puma-open-your-heart
   - https://amp.dascene.net/downmod.php?index=168251
   - https://open.spotify.com/track/4STcUVp62ZWliGUpeg3OOT
