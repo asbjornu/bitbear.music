@@ -21,7 +21,8 @@ ultimately [Impulse Tracker][impulse-tracker], releasing two full albums:
 [Beyond Fantasy][beyond-fantasy] and [3rd Floor][3rd-floor]. You can find
 all of Bitbear's PoC-era tracks in the [legacy] section of this site, and
 the two mentioned albums on the [Power of Creation Bandcamp
-page][bandcamp].
+page][bandcamp]. You can also find [Power of Creation on
+Apple Music][apple-music].
 
 <div class="albums">
   <a href="{{ '/music/legacy/albums/beyond-fantasy' | relative_url }}"
@@ -46,6 +47,7 @@ Before adopting the name "PoC" in December 1995, Bitbear briefly went by
 "PCi" while a member of the [ULTiMATE][ultimate] group.
 
 [3rd-floor]: /music/legacy/albums/3rd-floor
+[apple-music]: https://music.apple.com/no/artist/power-of-creation/6818190524
 [asbjornu]: https://asbjor.nu/
 [bandcamp]: https://power-of-creation.bandcamp.com/
 [beyond-fantasy]: /music/legacy/albums/beyond-fantasy

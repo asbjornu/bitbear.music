@@ -9,6 +9,7 @@ media:
 links:
   - https://demozoo.org/music/266773/
   - https://power-of-creation.bandcamp.com/track/halloween
+  - https://music.apple.com/no/album/halloween/6818199005?i=6818199013
   - https://soundcloud.com/bitbear/poc-halloween
   - https://amp.dascene.net/downmod.php?index=168757
   - https://open.spotify.com/track/1OliiD5KcIGhqDp8oN2PJS
