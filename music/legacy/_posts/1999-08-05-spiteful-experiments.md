@@ -5,6 +5,7 @@ media:
   cover: 3rd-floor.jpg
   filesize: 522240
   format: IT
+  isrc: QZS632455843
 links:
   - https://demozoo.org/music/266767/
   - https://power-of-creation.bandcamp.com/track/spiteful-experiments

@@ -5,6 +5,7 @@ media:
   cover: soaked-in-orange.jpg
   filesize: 136192
   format: IT
+  isrc: QZNRS2560359
 links:
   - https://demozoo.org/music/266794/
   - https://power-of-creation.bandcamp.com/track/soaked-in-orange

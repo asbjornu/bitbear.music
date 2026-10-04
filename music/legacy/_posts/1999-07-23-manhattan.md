@@ -5,6 +5,7 @@ media:
   cover: 3rd-floor.jpg
   filesize: 190464
   format: IT
+  isrc: QT6Y32533858
 links:
   - https://demozoo.org/music/266799/
   - https://power-of-creation.bandcamp.com/track/manhattan

@@ -5,6 +5,7 @@ media:
   cover: 3rd-floor.jpg
   filesize: 259072
   format: IT
+  isrc: QZMHP2448353
 links:
   - https://demozoo.org/music/266788/
   - https://power-of-creation.bandcamp.com/track/below-the-surface

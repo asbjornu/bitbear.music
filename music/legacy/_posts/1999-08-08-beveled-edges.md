@@ -5,6 +5,7 @@ media:
   cover: 3rd-floor.jpg
   filesize: 411648
   format: IT
+  isrc: QZMHK2496763
 links:
   - https://demozoo.org/music/266790/
   - https://power-of-creation.bandcamp.com/track/beveled-edges

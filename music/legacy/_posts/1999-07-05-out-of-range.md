@@ -5,6 +5,7 @@ media:
   cover: 3rd-floor.jpg
   filesize: 277504
   format: IT
+  isrc: QZS652468315
 links:
   - https://demozoo.org/music/266792/
   - https://power-of-creation.bandcamp.com/track/out-of-range

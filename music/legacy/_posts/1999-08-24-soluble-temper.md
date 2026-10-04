@@ -5,6 +5,7 @@ media:
   cover: 3rd-floor.jpg
   filesize: 1392640
   format: IT
+  isrc: QZYB42548774
 links:
   - https://demozoo.org/music/266795/
   - https://power-of-creation.bandcamp.com/track/soluble-temper

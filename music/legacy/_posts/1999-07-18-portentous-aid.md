@@ -5,6 +5,7 @@ media:
   cover: 3rd-floor.jpg
   filesize: 392192
   format: IT
+  isrc: QZYB32524211
 links:
   - https://demozoo.org/music/266798/
   - https://power-of-creation.bandcamp.com/track/portentous-aid
