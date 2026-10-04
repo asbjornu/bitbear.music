@@ -9,6 +9,7 @@ media:
 links:
   - https://demozoo.org/music/266788/
   - https://power-of-creation.bandcamp.com/track/below-the-surface
+  - https://music.apple.com/no/album/below-the-surface/6818956580?i=6818956594
   - https://soundcloud.com/bitbear/poc-below-the-surface
   - https://amp.dascene.net/downmod.php?index=168759
 album:

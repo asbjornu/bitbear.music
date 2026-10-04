@@ -9,6 +9,7 @@ media:
 links:
   - https://demozoo.org/music/266798/
   - https://power-of-creation.bandcamp.com/track/portentous-aid
+  - https://music.apple.com/no/album/portentous-aid/6818956580?i=6818956758
   - https://soundcloud.com/bitbear/poc-portentous-aid
   - https://amp.dascene.net/downmod.php?index=168746
 album:

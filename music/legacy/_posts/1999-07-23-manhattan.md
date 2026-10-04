@@ -9,6 +9,7 @@ media:
 links:
   - https://demozoo.org/music/266799/
   - https://power-of-creation.bandcamp.com/track/manhattan
+  - https://music.apple.com/no/album/manhattan/6818956580?i=6818956759
   - https://soundcloud.com/bitbear/poc-manhattan
   - https://amp.dascene.net/downmod.php?index=168750
 album:

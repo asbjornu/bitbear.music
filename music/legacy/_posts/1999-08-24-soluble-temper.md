@@ -9,6 +9,7 @@ media:
 links:
   - https://demozoo.org/music/266795/
   - https://power-of-creation.bandcamp.com/track/soluble-temper
+  - https://music.apple.com/no/album/soluble-temper/6818956580?i=6818956755
   - https://soundcloud.com/bitbear/poc-soluble-temper
   - https://amp.dascene.net/downmod.php?index=168743
 album:
