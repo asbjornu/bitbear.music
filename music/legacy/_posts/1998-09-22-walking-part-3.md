@@ -15,7 +15,7 @@ links:
   - https://music.apple.com/no/album/walking-pt-3/6818199005?i=6818199082
   - https://soundcloud.com/bitbear/poc-walking-part-3
   - https://amp.dascene.net/downmod.php?index=168736
-  - https://open.spotify.com/track/58DprBkzp2dyXkM7lBy43f
+  - https://open.spotify.com/track/20l7dgQuZy5RSaovVfvYXQ
 album:
   slug: beyond-fantasy
   position: 13

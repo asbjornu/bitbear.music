@@ -9,6 +9,7 @@ media:
 links:
   - https://demozoo.org/music/266795/
   - https://power-of-creation.bandcamp.com/track/soluble-temper
+  - https://open.spotify.com/track/0sVV9nkm1NmNaQz40DZyXW
   - https://tidal.com/track/567016859
   - https://music.amazon.com/albums/B0HLXLJTR6/?trackAsin=B0HLXD1ZY5
   - https://www.deezer.com/track/4327079962

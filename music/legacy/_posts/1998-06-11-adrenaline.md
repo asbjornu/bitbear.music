@@ -16,7 +16,7 @@ links:
   - https://soundcloud.com/bitbear/poc-adrenaline
   - https://amp.dascene.net/downmod.php?index=159535
   - https://www.youtube.com/watch?v=nir_02352bM
-  - https://open.spotify.com/track/7DYkGFsAPfBLUQJ9hSjRWe
+  - https://open.spotify.com/track/32l8i8rBBXgzTNHC6cT6yB
 album:
   slug: beyond-fantasy
   position: 2

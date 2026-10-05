@@ -9,6 +9,7 @@ media:
 links:
   - https://demozoo.org/music/266788/
   - https://power-of-creation.bandcamp.com/track/below-the-surface
+  - https://open.spotify.com/track/1za0YyytmWKyCA1f91D0nl
   - https://tidal.com/track/567016852
   - https://music.amazon.com/albums/B0HLXLJTR6/?trackAsin=B0HLWYZSZP
   - https://www.deezer.com/track/4327079882

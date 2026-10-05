@@ -11,7 +11,7 @@ links:
   - https://music.youtube.com/playlist?list=OLAK5uy_mW06_OEcsrRVMBUiA3ybh5HlhkTDvBKlo
   - https://music.apple.com/no/album/beyond-fantasy/6818199005
   - https://soundcloud.com/bitbear/sets/beyond-fantasy
-  - https://open.spotify.com/album/5hsOU9nRllXkpPIiJxB6b0?si=jUVHM06cQbi-QZHQhkyEqQ
+  - https://open.spotify.com/album/41ElpAlcf8sajQgJl7y9VY
 album:
   kind: Album
 ---

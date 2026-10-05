@@ -9,6 +9,7 @@ media:
 links:
   - https://demozoo.org/music/266767/
   - https://power-of-creation.bandcamp.com/track/spiteful-experiments
+  - https://open.spotify.com/track/7GUoWwTbDXbiQ2fnH9BBY0
   - https://tidal.com/track/567016850
   - https://music.amazon.com/albums/B0HLXLJTR6/?trackAsin=B0HLXH73K5
   - https://www.deezer.com/track/4327079862
