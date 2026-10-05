@@ -13,12 +13,13 @@ module Jekyll
       /soundcloud\.com/i => 'soundcloud',
       /music\.apple\.com/i => 'apple-music',
       /open\.spotify\.com/i => 'spotify',
-      /listen\.tidal\.com/i => 'tidal',
+      /tidal\.com/i => 'tidal',
       /music\.amazon\.com/i => 'amazon-music',
       /(?:www\.)?deezer\.com/i => 'deezer',
       /(?:www\.)?pandora\.com/i => 'pandora',
       /mirlo\.space/i => 'mirlo',
       /demozoo\.org/i => 'demozoo',
+      /music\.youtube\.com/i => 'youtube-music',
       /youtube\.com|youtu\.be/i => 'youtube',
       /modarchive\.org/i => 'modarchive',
       /amp\.dascene\.net/i => 'amp',
@@ -42,7 +43,7 @@ module Jekyll
     # Order in which known brands should appear in a link list, lowest first.
     # `unknown` is last so unrecognized links always sink to the end.
     BRAND_PRIORITY = %w[
-      bandcamp mirlo soundcloud spotify apple-music tidal youtube
+      bandcamp mirlo soundcloud spotify apple-music tidal youtube youtube-music
       amazon-music deezer pandora nectarine modarchive amp demozoo unknown
     ].freeze
 

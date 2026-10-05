@@ -9,6 +9,9 @@ media:
 links:
   - https://demozoo.org/music/266783/
   - https://power-of-creation.bandcamp.com/track/medieval-orphanage
+  - https://tidal.com/track/566265802
+  - https://music.amazon.com/albums/B0HLQCN5DC/?trackAsin=B0HLQBR4RF
+  - https://music.youtube.com/watch?v=58GREdNyLzw
   - https://music.apple.com/no/album/medieval-orphanage/6818199005?i=6818199085
   - https://soundcloud.com/bitbear/poc-medieval-orphanage
   - https://amp.dascene.net/downmod.php?index=168749

@@ -9,6 +9,10 @@ media:
 links:
   - https://demozoo.org/music/266790/
   - https://power-of-creation.bandcamp.com/track/beveled-edges
+  - https://tidal.com/track/567016854
+  - https://music.amazon.com/albums/B0HLXLJTR6/?trackAsin=B0HLXB3V8B
+  - https://www.deezer.com/track/4327079902
+  - https://music.youtube.com/watch?v=zGKnsO5pHwk
   - https://music.apple.com/no/album/beveled-edges/6818956580?i=6818956748
   - https://soundcloud.com/bitbear/poc-beveled-edges
   - https://amp.dascene.net/downmod.php?index=168758

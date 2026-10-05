@@ -9,6 +9,9 @@ media:
 links:
   - https://demozoo.org/music/266769/
   - https://power-of-creation.bandcamp.com/track/adrenaline
+  - https://tidal.com/track/566265788
+  - https://music.amazon.com/albums/B0HLQCN5DC/?trackAsin=B0HLQ2Y2K6
+  - https://music.youtube.com/watch?v=Qu-1Oo2yLTk
   - https://music.apple.com/no/album/adrenaline/6818199005?i=6818199008
   - https://soundcloud.com/bitbear/poc-adrenaline
   - https://amp.dascene.net/downmod.php?index=159535

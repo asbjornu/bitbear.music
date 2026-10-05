@@ -9,6 +9,10 @@ media:
 links:
   - https://demozoo.org/music/266794/
   - https://power-of-creation.bandcamp.com/track/soaked-in-orange
+  - https://tidal.com/track/567016858
+  - https://music.amazon.com/albums/B0HLXLJTR6/?trackAsin=B0HLXD2ZR2
+  - https://www.deezer.com/track/4327079952
+  - https://music.youtube.com/watch?v=fsY7809pZZc
   - https://music.apple.com/no/album/soaked-in-orange/6818956580?i=6818956752
   - https://soundcloud.com/bitbear/poc-soaked-in-orange
   - https://amp.dascene.net/downmod.php?index=168744

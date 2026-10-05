@@ -418,6 +418,12 @@ section.footer footer a:hover {
         height: 1em;
     }
 
+    &.icon-youtube-music {
+        @include mask-image(url('/assets/images/services/youtube-music.svg'));
+        width: 1.1em;
+        height: 1.1em;
+    }
+
     &.icon-modarchive {
         @include mask-image(url('/assets/images/services/modarchive.svg'));
         width: 1.1em;

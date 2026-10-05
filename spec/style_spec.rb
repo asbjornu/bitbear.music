@@ -79,6 +79,11 @@ describe 'Pico CSS integration' do
       expect(css).to include('url("/assets/images/services/youtube.svg")')
     end
 
+    it 'masks the youtube music link icon with the youtube music asset' do
+      expect(css).to include('.icon.icon-youtube-music')
+      expect(css).to include('url("/assets/images/services/youtube-music.svg")')
+    end
+
     it 'masks the modarchive link icon with the M asset' do
       expect(css).to include('.icon.icon-modarchive')
       expect(css).to include('url("/assets/images/services/modarchive.svg")')

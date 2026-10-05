@@ -9,6 +9,9 @@ media:
 links:
   - https://demozoo.org/music/266777/
   - https://power-of-creation.bandcamp.com/track/behind-the-curtains
+  - https://tidal.com/track/566265796
+  - https://music.amazon.com/albums/B0HLQCN5DC/?trackAsin=B0HLQ42PH5
+  - https://music.youtube.com/watch?v=x0nBJQB90Is
   - https://music.apple.com/no/album/behind-the-curtains/6818199005?i=6818199018
   - https://soundcloud.com/bitbear/poc-behind-the-curtains
   - https://amp.dascene.net/downmod.php?index=168760

@@ -9,6 +9,10 @@ media:
 links:
   - https://demozoo.org/music/266767/
   - https://power-of-creation.bandcamp.com/track/spiteful-experiments
+  - https://tidal.com/track/567016850
+  - https://music.amazon.com/albums/B0HLXLJTR6/?trackAsin=B0HLXH73K5
+  - https://www.deezer.com/track/4327079862
+  - https://music.youtube.com/watch?v=W32kMNePN00
   - https://music.apple.com/no/album/spiteful-experiments/6818956580?i=6818956587
   - https://soundcloud.com/bitbear/poc-spiteful-experiments
   - https://amp.dascene.net/downmod.php?index=168742

@@ -9,6 +9,9 @@ media:
 links:
   - https://demozoo.org/music/266780/
   - https://power-of-creation.bandcamp.com/track/walking-part-3
+  - https://tidal.com/track/566265799
+  - https://music.amazon.com/albums/B0HLQCN5DC/?trackAsin=B0HLQCMCRW
+  - https://music.youtube.com/watch?v=09-rcEXg1fc
   - https://music.apple.com/no/album/walking-pt-3/6818199005?i=6818199082
   - https://soundcloud.com/bitbear/poc-walking-part-3
   - https://amp.dascene.net/downmod.php?index=168736
