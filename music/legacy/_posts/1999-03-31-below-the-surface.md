@@ -5,9 +5,16 @@ media:
   cover: 3rd-floor.jpg
   filesize: 259072
   format: IT
+  isrc: QZMHP2448353
 links:
   - https://demozoo.org/music/266788/
   - https://power-of-creation.bandcamp.com/track/below-the-surface
+  - https://open.spotify.com/track/1za0YyytmWKyCA1f91D0nl
+  - https://tidal.com/track/567016852
+  - https://music.amazon.com/albums/B0HLXLJTR6/?trackAsin=B0HLWYZSZP
+  - https://www.deezer.com/track/4327079882
+  - https://music.youtube.com/watch?v=Qiz-Y2i_zlE
+  - https://music.apple.com/no/album/below-the-surface/6818956580?i=6818956594
   - https://soundcloud.com/bitbear/poc-below-the-surface
   - https://amp.dascene.net/downmod.php?index=168759
 album:

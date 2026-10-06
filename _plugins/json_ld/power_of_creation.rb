@@ -19,6 +19,7 @@ module Jekyll
         'https://bitbear.music',
         'https://power-of-creation.bandcamp.com/',
         'https://music.apple.com/no/artist/power-of-creation/6818190524',
+        'https://open.spotify.com/artist/7c0PyDfbaJThhfFS7Gdx1y',
         'https://demozoo.org/sceners/30400/',
         'https://demozoo.org/groups/23250/',
         'https://demozoo.org/groups/106371/'

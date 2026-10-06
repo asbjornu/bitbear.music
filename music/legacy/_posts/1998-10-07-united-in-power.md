@@ -9,10 +9,13 @@ media:
 links:
   - https://demozoo.org/music/266781/
   - https://power-of-creation.bandcamp.com/track/united-in-power
+  - https://tidal.com/track/566265800
+  - https://music.amazon.com/albums/B0HLQCN5DC/?trackAsin=B0HLQ9F18B
+  - https://music.youtube.com/watch?v=lew7esvNLFU
   - https://music.apple.com/no/album/united-in-power/6818199005?i=6818199083
   - https://soundcloud.com/bitbear/poc-united-in-power
   - https://amp.dascene.net/downmod.php?index=168739
-  - https://open.spotify.com/track/1DisGIvK3q1DLsXWrChDlw
+  - https://open.spotify.com/track/2BMq3tbw0vH9ZNw5NEMEI3
 album:
   slug: beyond-fantasy
   position: 14

@@ -35,6 +35,7 @@
             {%- when 'nectarine' -%}Listen to
             {%- when 'demozoo' -%}View
             {%- when 'youtube' -%}Watch
+            {%- when 'youtube-music' -%}Listen to
             {%- when 'modarchive' -%}View
             {%- when 'amp' -%}View
           {%- endcase -%}
@@ -48,6 +49,8 @@
               on Apple Music
             {%- elsif key == 'amazon-music' -%}
               on Amazon Music
+            {%- elsif key == 'youtube-music' -%}
+              on YouTube Music
             {%- else -%}
               on {{ key | capitalize }}
             {%- endif -%}

@@ -9,10 +9,13 @@ media:
 links:
   - https://demozoo.org/music/266778/
   - https://power-of-creation.bandcamp.com/track/walking-part-1
+  - https://tidal.com/track/566265797
+  - https://music.amazon.com/albums/B0HLQCN5DC/?trackAsin=B0HLQ9FQCL
+  - https://music.youtube.com/watch?v=ZV4XJqn6E_w
   - https://music.apple.com/no/album/walking-pt-1/6818199005?i=6818199019
   - https://soundcloud.com/bitbear/poc-walking-part-1
   - https://amp.dascene.net/downmod.php?index=168738
-  - https://open.spotify.com/track/5qf37QHWUZnqrQaX099n8h
+  - https://open.spotify.com/track/2fSpMI1mkZJT9C92bsQv8k
 album:
   slug: beyond-fantasy
   position: 11

@@ -9,10 +9,13 @@ media:
 links:
   - https://demozoo.org/music/266786/
   - https://power-of-creation.bandcamp.com/track/lykke-liten
+  - https://tidal.com/track/566265805
+  - https://music.amazon.com/albums/B0HLQCN5DC/?trackAsin=B0HLQ8SZ3N
+  - https://music.youtube.com/watch?v=86q15j3LIG4
   - https://music.apple.com/no/album/lykke-liten/6818199005?i=6818199088
   - https://soundcloud.com/bitbear/poc-lykke-liten
   - https://amp.dascene.net/downmod.php?index=168751
-  - https://open.spotify.com/track/7vi2SgcIZgH0dSzv8IXdM4
+  - https://open.spotify.com/track/6KkvGE6JGeXvH0rRiEs2B9
 album:
   slug: beyond-fantasy
   position: 19

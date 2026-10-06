@@ -9,10 +9,13 @@ media:
 links:
   - https://demozoo.org/music/266771/
   - https://power-of-creation.bandcamp.com/track/project-millennium
+  - https://tidal.com/track/566265790
+  - https://music.amazon.com/albums/B0HLQCN5DC/?trackAsin=B0HLQ3QY9D
+  - https://music.youtube.com/watch?v=o1OfZlKZW9c
   - https://music.apple.com/no/album/project-millennium/6818199005?i=6818199011
   - https://soundcloud.com/bitbear/poc-project-millennium
   - https://amp.dascene.net/downmod.php?index=168745
-  - https://open.spotify.com/track/6w3ldP0FHH6ow27h4qbJoq
+  - https://open.spotify.com/track/0tnaKXAqPJrYo6EvaY2zyb
 album:
   slug: beyond-fantasy
   position: 4

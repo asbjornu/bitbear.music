@@ -73,7 +73,21 @@ describe 'JSON-LD MusicRecording isrcCode' do
       'medieval-orphanage' => 'QZS642445772',
       'the-army' => 'QZMHM2400493',
       'open-your-heart' => 'QZTH92518817',
-      'lykke-liten' => 'QZS652620702'
+      'lykke-liten' => 'QZS652620702',
+      'spiteful-experiments' => 'QZS632455843',
+      'veronica' => 'QZS632439502',
+      'below-the-surface' => 'QZMHP2448353',
+      'horizon' => 'QZS652411390',
+      'beveled-edges' => 'QZMHK2496763',
+      'blood' => 'QZS652436877',
+      'out-of-range' => 'QZS652468315',
+      'helium' => 'QM42K2433508',
+      'soaked-in-orange' => 'QZNRS2560359',
+      'soluble-temper' => 'QZYB42548774',
+      'tears' => 'QZFP52565697',
+      'the-prey' => 'QZT862597275',
+      'portentous-aid' => 'QZYB32524211',
+      'manhattan' => 'QT6Y32533858'
     }
   end
 

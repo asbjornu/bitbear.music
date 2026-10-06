@@ -9,10 +9,13 @@ media:
 links:
   - https://demozoo.org/music/266770/
   - https://power-of-creation.bandcamp.com/track/life-without-love
+  - https://tidal.com/track/566265789
+  - https://music.amazon.com/albums/B0HLQCN5DC/?trackAsin=B0HLQ9F18D
+  - https://music.youtube.com/watch?v=ZwJq_gOroQA
   - https://music.apple.com/no/album/life-without-love/6818199005?i=6818199009
   - https://soundcloud.com/bitbear/poc-life-without-love
   - https://amp.dascene.net/downmod.php?index=168752
-  - https://open.spotify.com/track/1OvSeoCcYwXLItLliAQ0p9
+  - https://open.spotify.com/track/1lyPbVOzrwh30fX0GtspPW
 album:
   slug: beyond-fantasy
   position: 3

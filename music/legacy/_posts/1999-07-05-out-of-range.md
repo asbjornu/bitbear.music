@@ -5,9 +5,16 @@ media:
   cover: 3rd-floor.jpg
   filesize: 277504
   format: IT
+  isrc: QZS652468315
 links:
   - https://demozoo.org/music/266792/
   - https://power-of-creation.bandcamp.com/track/out-of-range
+  - https://open.spotify.com/track/6f6lpX1Z2Ep2L4uY7BCQca
+  - https://tidal.com/track/567016856
+  - https://music.amazon.com/albums/B0HLXLJTR6/?trackAsin=B0HLXCS738
+  - https://www.deezer.com/track/4327079932
+  - https://music.youtube.com/watch?v=tsCc72RqGCw
+  - https://music.apple.com/no/album/out-of-range/6818956580?i=6818956750
   - https://soundcloud.com/bitbear/poc-out-of-range
   - https://amp.dascene.net/downmod.php?index=168747
 album:

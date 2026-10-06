@@ -9,10 +9,13 @@ media:
 links:
   - https://demozoo.org/music/266782/
   - https://power-of-creation.bandcamp.com/track/back-in-the-shire
+  - https://tidal.com/track/566265801
+  - https://music.amazon.com/albums/B0HLQCN5DC/?trackAsin=B0HLQ3QVFF
+  - https://music.youtube.com/watch?v=cAZahSC-Hhk
   - https://music.apple.com/no/album/back-in-the-shire/6818199005?i=6818199084
   - https://soundcloud.com/bitbear/poc-back-in-the-shire
   - https://amp.dascene.net/downmod.php?index=159538
-  - https://open.spotify.com/track/0yTTY4sVepHvYkxhkRhYV5
+  - https://open.spotify.com/track/5X8OKTmJUgPIZJ4RnM6DH2
 album:
   slug: beyond-fantasy
   position: 15
