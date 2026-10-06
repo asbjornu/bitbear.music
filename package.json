@@ -14,6 +14,6 @@
     "postcss-scss": "4.0.9",
     "remark-cli": "12.0.1",
     "remark-preset-lint-consistent": "6.0.1",
-    "stylelint": "17.15.0"
+    "stylelint": "17.16.0"
   }
 }
