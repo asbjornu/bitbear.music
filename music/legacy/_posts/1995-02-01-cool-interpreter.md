@@ -20,4 +20,4 @@ during {% date format: '%B %Y' %}.
 
 <!--more-->
 
-[fulgore]: https://demozoo.org/sceners/106369/
+[fulgore]: /music/legacy/puma
