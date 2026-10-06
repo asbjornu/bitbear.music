@@ -23,7 +23,7 @@ albums: [Beyond Fantasy][beyond-fantasy] and [3rd Floor][3rd-floor].
 You can find all of Bitbear's PoC-era tracks in the [legacy] section
 of this site, and the two mentioned albums on the [Power of Creation
 Bandcamp page][bandcamp]. You can also find Power of Creation on
-[Apple Music][apple-music] and [Spotify][spotify].
+[Apple Music][apple-music], [Spotify][spotify], and [NRK P3 Urørt][urort].
 
 <div class="albums">
   <a href="{{ '/music/legacy/albums/beyond-fantasy' | relative_url }}"
@@ -63,3 +63,4 @@ Before adopting the name "PoC" in December 1995, Bitbear briefly went by
 [scream-tracker]: https://en.wikipedia.org/wiki/Scream_Tracker
 [spotify]: https://open.spotify.com/artist/7c0PyDfbaJThhfFS7Gdx1y
 [ultimate]: https://demozoo.org/groups/106371/
+[urort]: https://urort.p3.no/artist/PowerofCreation

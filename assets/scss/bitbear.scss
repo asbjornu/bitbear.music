@@ -472,6 +472,12 @@ section.footer footer a:hover {
         height: 1.1em;
     }
 
+    &.icon-urort {
+        @include mask-image(url('/assets/images/services/urort.svg'));
+        width: 1.4em;
+        height: .9em;
+    }
+
     &.icon-mirlo {
         @include mask-image(url('/assets/images/services/mirlo.svg'));
         width: .9em;

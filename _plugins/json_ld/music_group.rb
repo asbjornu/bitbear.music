@@ -15,7 +15,6 @@ module Jekyll
       # current Bitbear alias, or are secondary/mirror accounts).
       EXTRA_SAME_AS = [
         'https://www.mixcloud.com/bitbearmusic/',
-        'https://urort.p3.no/artist/Bitbear',
         'https://mastodon.social/@bitbear',
         'https://modarchive.org/index.php?request=view_profile&query=84875'
       ].freeze

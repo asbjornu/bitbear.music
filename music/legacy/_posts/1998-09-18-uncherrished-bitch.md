@@ -14,6 +14,7 @@ links:
   - https://music.youtube.com/watch?v=rTNrzDuNUUY
   - https://music.apple.com/no/album/uncherrished-bitch/6818199005?i=6818199017
   - https://soundcloud.com/bitbear/poc-uncherrished-bitch
+  - https://urort.p3.no/track/PowerofCreation/uncherished-bitch
   - https://amp.dascene.net/downmod.php?index=168740
   - https://open.spotify.com/track/0OnihXCTfPz5yPE7fKcpFm
 album:

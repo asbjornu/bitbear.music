@@ -354,6 +354,8 @@ describe '#sort_by' do
       'https://music.amazon.com/artists/B005NCJWQI/bitbear' => 'amazon-music',
       'https://www.deezer.com/track/346053591' => 'deezer',
       'https://www.pandora.com/TR:189093909' => 'pandora',
+      'https://urort.p3.no/track/Bitbear/planeswalker' => 'urort',
+      'https://urort.p3.no/artist/PowerofCreation' => 'urort',
       'https://mirlo.space/bitbear/release/scene-so-far' => 'mirlo',
       'https://demozoo.org/music/141390/' => 'demozoo',
       'https://www.youtube.com/watch?v=y2SR58hnMAU' => 'youtube',

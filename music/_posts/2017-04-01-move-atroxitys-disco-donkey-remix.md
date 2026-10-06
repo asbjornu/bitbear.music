@@ -14,6 +14,7 @@ links:
   - https://www.pandora.com/TR:189093905
   - https://mirlo.space/bitbear/release/scene-so-far
   - https://soundcloud.com/bitbear/move-atroxitys-disco-donkey-remix
+  - https://urort.p3.no/track/Bitbear/move-atroxitys-disco-donkey-remix
 album:
   slug: scene-so-far
   position: 2

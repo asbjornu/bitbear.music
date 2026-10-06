@@ -33,6 +33,9 @@
 - name: Mixcloud
   icon: mixcloud
   url: https://www.mixcloud.com/bitbearmusic/
+- name: NRK P3 Urørt
+  icon: urort
+  url: https://urort.p3.no/artist/Bitbear
 - name: SoundCloud
   icon: soundcloud
   url: https://soundcloud.com/bitbear

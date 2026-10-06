@@ -18,6 +18,7 @@ links:
   - https://mirlo.space/bitbear/release/sunset-through-the-rain
   - https://demozoo.org/music/280486/
   - https://soundcloud.com/bitbear/sunset-through-the-rain
+  - https://urort.p3.no/track/Bitbear/sunset-through-the-rain
   - https://www.youtube.com/watch?v=y2SR58hnMAU
   - https://scenestream.net/demovibes/song/50420/
 album:
