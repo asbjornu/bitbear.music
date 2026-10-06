@@ -127,3 +127,36 @@ describe 'JSON-LD MusicRecording isrcCode' do
     expect(recording).not_to have_key('isrcCode')
   end
 end
+
+describe 'JSON-LD Puma Person' do
+  let(:site_root) { File.expand_path('..', __dir__) }
+
+  def read_utf8(path)
+    File.binread(path).force_encoding(Encoding::UTF_8)
+  end
+
+  let(:puma_html) { read_utf8(File.join(site_root, '_site', 'music', 'legacy', 'puma.html')) }
+
+  let(:person) do
+    json = puma_html[%r{<script type="application/ld\+json">(.*?)</script>}m, 1]
+    JSON.parse(json)['@graph'].find { |entity| entity['@type'] == 'Person' }
+  end
+
+  it 'emits a Person entity named Puma on the scener profile page' do
+    expect(person).not_to be_nil
+    expect(person['name']).to eq('Puma')
+  end
+
+  it 'lists Puma’s production aliases as alternateName' do
+    expect(person['alternateName']).to include('Fulgore', 'adMiXTURE')
+  end
+
+  it 'lists Puma’s group memberships as memberOf organizations' do
+    names = person['memberOf'].map { |group| group['name'] }
+    expect(names).to include('Dupe', 'ULTiMATE')
+  end
+
+  it 'links to Puma’s Demozoo scener profile as sameAs' do
+    expect(person['sameAs']).to include('https://demozoo.org/sceners/106369/')
+  end
+end
