@@ -26,16 +26,20 @@ Fantasy][beyond-fantasy] album: "[Open Your Heart][open-your-heart]",
 which he started but never finished, and "[Rage][rage]", which Bitbear
 built on the disharmony and sound effects initially created by Puma.
 
-Puma's own productions, such as "Consumed World", "Glowing lava" and
-"Endless sky", can be found on his [Demozoo profile][demozoo].
+Puma's own productions, such as "[Consumed World][consumed-world]",
+"[Glowing lava][glowing-lava]" and "[Endless sky][endless-sky]", can be
+found on his [Demozoo profile][demozoo].
 
 [bitbear]: /
 [beyond-fantasy]: /music/legacy/albums/beyond-fantasy
+[consumed-world]: https://demozoo.org/music/266808/
 [cool-interpreter]: /music/legacy/cool-interpreter
 [demoscene]: https://en.wikipedia.org/wiki/Demoscene
 [demozoo]: https://demozoo.org/sceners/106369/
 [digiton]: https://demozoo.org/groups/135824/
 [dupe]: https://demozoo.org/groups/23250/
+[endless-sky]: https://demozoo.org/music/266804/
+[glowing-lava]: https://demozoo.org/music/266805/
 [open-your-heart]: /music/legacy/open-your-heart
 [rage]: /music/legacy/rage
 [ultimate]: https://demozoo.org/groups/106371/
