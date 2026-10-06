@@ -128,6 +128,52 @@ describe 'JSON-LD MusicRecording isrcCode' do
   end
 end
 
+describe 'JSON-LD identifier UPC' do
+  let(:site_root) { File.expand_path('..', __dir__) }
+
+  def read_utf8(path)
+    File.binread(path).force_encoding(Encoding::UTF_8)
+  end
+
+  def entity_for(path, type)
+    html = read_utf8(File.join(site_root, '_site', path))
+    json = html[%r{<script type="application/ld\+json">(.*?)</script>}m, 1]
+    JSON.parse(json)['@graph'].find { |entity| entity['@type'] == type }
+  end
+
+  # Releases that carry a sourced `media.upc` value. Albums surface it as an
+  # `identifier` on their MusicAlbum entity; a single-track release with no
+  # album page (That Flateby Feeling) surfaces it on its MusicRecording.
+  let(:expected) do
+    [
+      { path: 'music/legacy/albums/beyond-fantasy.html', type: 'MusicAlbum', upc: '885975987477' },
+      { path: 'music/legacy/albums/3rd-floor.html', type: 'MusicAlbum', upc: '885975290867' },
+      { path: 'music/albums/scene-so-far.html', type: 'MusicAlbum', upc: '199811242539' },
+      { path: 'music/that-flateby-feeling.html', type: 'MusicRecording', upc: '734167904467' },
+      { path: 'music/albums/sunset-through-the-rain.html', type: 'MusicAlbum', upc: '823191444374' }
+    ]
+  end
+
+  it 'emits the sourced UPC as an identifier PropertyValue' do
+    expected.each do |release|
+      entity = entity_for(release[:path], release[:type])
+      expect(entity).not_to be_nil, "no #{release[:type]} JSON-LD at #{release[:path]}"
+      expect(entity['identifier']).to eq(
+        '@type' => 'PropertyValue',
+        'propertyID' => 'UPC',
+        'value' => release[:upc]
+      )
+    end
+  end
+
+  it 'omits identifier on releases that do not declare a UPC' do
+    # Planeswalker is a track post without a sourced UPC.
+    recording = entity_for('music/planeswalker.html', 'MusicRecording')
+    expect(recording).not_to be_nil
+    expect(recording).not_to have_key('identifier')
+  end
+end
+
 describe 'JSON-LD Puma Person' do
   let(:site_root) { File.expand_path('..', __dir__) }
 

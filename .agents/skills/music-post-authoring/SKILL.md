@@ -68,6 +68,10 @@ rather than guessing at a scener page.
   release (Deezer's `api.deezer.com/track/<id>` exposes `isrc`; the iTunes
   lookup API no longer does). Omit it for tracker modules / Bandcamp-only
   tracks that were never assigned an ISRC — never fabricate one.
+- `media.upc` (quoted string) on an album post, or on a single-track release
+  with no album page of its own, emits schema.org `identifier` as a
+  `PropertyValue` with `propertyID: "UPC"`. Quote the value so YAML keeps it a
+  string; only set it when the UPC is sourced from a real release.
 - If you add a new non-string front-matter type (beyond what's already
   handled), check `YAML.safe_load` call sites in specs
   (`remix_kit_spec.rb`, `cover_spec.rb`) — they need

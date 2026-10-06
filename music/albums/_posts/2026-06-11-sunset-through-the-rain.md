@@ -3,6 +3,7 @@ title: Sunset Through The Rain
 date: 2026-06-11 01:00:00 +0000
 media:
   cover: sunset-through-the-rain.jpg
+  upc: '823191444374'
 links:
   - https://bitbearmusic.bandcamp.com/album/sunset-through-the-rain
   - https://soundcloud.com/bitbear/sets/sunset-through-the-rain

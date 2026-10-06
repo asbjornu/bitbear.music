@@ -26,6 +26,16 @@ module Jekyll
 
         absolute_url("/assets/images/covers/#{cover}")
       end
+
+      def upc_identifier(upc)
+        return nil if upc.nil? || upc.to_s.strip.empty?
+
+        {
+          '@type' => 'PropertyValue',
+          'propertyID' => 'UPC',
+          'value' => upc.to_s
+        }
+      end
     end
   end
 end

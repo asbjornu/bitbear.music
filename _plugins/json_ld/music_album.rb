@@ -20,6 +20,7 @@ module Jekyll
         album = base
         apply_release_type!(album)
         apply_cover!(album)
+        apply_upc!(album)
         apply_tracks!(album)
         apply_links!(album)
         album
@@ -46,6 +47,11 @@ module Jekyll
         cover = @page['media'] && @page['media']['cover']
         image = cover_image_url(cover)
         album['image'] = image if image
+      end
+
+      def apply_upc!(album)
+        identifier = upc_identifier(@page['media'] && @page['media']['upc'])
+        album['identifier'] = identifier if identifier
       end
 
       def apply_tracks!(album)

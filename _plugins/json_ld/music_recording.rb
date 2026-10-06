@@ -20,6 +20,7 @@ module Jekyll
       def to_h
         recording = base
         apply_media!(recording)
+        apply_upc!(recording)
         apply_genre!(recording)
         apply_album!(recording)
         apply_isrc!(recording)
@@ -49,6 +50,11 @@ module Jekyll
 
       def cover
         (@page['media'] && @page['media']['cover']) || album_post&.data&.dig('media', 'cover')
+      end
+
+      def apply_upc!(recording)
+        identifier = upc_identifier(@page['media'] && @page['media']['upc'])
+        recording['identifier'] = identifier if identifier
       end
 
       def apply_genre!(recording)
