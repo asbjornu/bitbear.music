@@ -1,0 +1,13 @@
+---
+layout: default
+---
+
+{% if page.logo %}
+  <p class="logo">
+    <img src="{{ page.logo | relative_url }}" alt="{{ page.title }}">
+  </p>
+{% endif %}
+
+{{ content }}
+
+{% include iterator.html %}
