@@ -17,6 +17,7 @@ module Jekyll
       /music\.amazon\.com/i => 'amazon-music',
       /(?:www\.)?deezer\.com/i => 'deezer',
       /(?:www\.)?pandora\.com/i => 'pandora',
+      /urort\.p3\.no/i => 'urort',
       /mirlo\.space/i => 'mirlo',
       /demozoo\.org/i => 'demozoo',
       /music\.youtube\.com/i => 'youtube-music',
@@ -44,7 +45,7 @@ module Jekyll
     # `unknown` is last so unrecognized links always sink to the end.
     BRAND_PRIORITY = %w[
       bandcamp mirlo soundcloud spotify apple-music tidal youtube youtube-music
-      amazon-music deezer pandora nectarine modarchive amp demozoo unknown
+      amazon-music deezer pandora urort nectarine modarchive amp demozoo unknown
     ].freeze
 
     # Sorts a `links` array so entries appear in the fixed brand priority order

@@ -7,6 +7,7 @@ media:
 links:
   - https://demozoo.org/music/314213/
   - https://soundcloud.com/bitbear/black-lace-blitz-trsac-edit
+  - https://urort.p3.no/track/Bitbear/mono-magnus-x-bitbear-black-lace-blitz
 ---
 
 [MONO MAGNUS][mono-magnus] and Bitbear's entry for the [TRSAC 2022

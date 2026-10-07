@@ -118,6 +118,11 @@ describe 'Pico CSS integration' do
       expect(css).to include('.icon.icon-pandora')
       expect(css).to include('url("/assets/images/services/pandora.svg")')
     end
+
+    it 'masks the urort link icon with the monochrome P3 mark asset' do
+      expect(css).to include('.icon.icon-urort')
+      expect(css).to include('url("/assets/images/services/urort.svg")')
+    end
   end
 
   describe 'generated markup' do
@@ -223,8 +228,20 @@ describe 'Pico CSS integration' do
       end
     end
 
+    it 'renders urort links with the NRK P3 Urørt icon and a listen title' do
+      page = read_utf8(File.join(site_root, '_site', 'music', 'bitwerk.html'))
+      expect(page).to have_tag('li', with: { class: 'urort' }) do
+        with_tag('a', with: {
+                   href: 'https://urort.p3.no/track/Bitbear/bitwerk',
+                   target: '_blank',
+                   'aria-description' => 'Listen to “Bitwerk” on NRK P3 Urørt'
+                 })
+        with_tag('span', with: { class: 'icon icon-urort' })
+      end
+    end
+
     it 'does not render the expand/contract toggle when there are 3 or fewer links' do
-      page = read_utf8(File.join(site_root, '_site', 'music', 'vos-sako-rv.html'))
+      page = read_utf8(File.join(site_root, '_site', 'music', 'bitwerk.html'))
       expect(page).not_to have_tag('input', with: { class: 'expand-toggle-input' })
       expect(page).not_to have_tag('li', with: { class: 'expand-toggle' })
     end

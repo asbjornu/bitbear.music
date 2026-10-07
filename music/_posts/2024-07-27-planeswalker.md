@@ -10,6 +10,7 @@ media:
 links:
   - https://demozoo.org/music/353120/
   - https://soundcloud.com/bitbear/planeswalker
+  - https://urort.p3.no/track/Bitbear/planeswalker
   - https://www.youtube.com/watch?v=54cHqE3k22Y
   - https://scenestream.net/demovibes/song/50390/
 ---

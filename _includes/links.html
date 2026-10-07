@@ -31,6 +31,7 @@
             {%- when 'amazon-music' -%}Listen to
             {%- when 'deezer' -%}Listen to
             {%- when 'pandora' -%}Listen to
+            {%- when 'urort' -%}Listen to
             {%- when 'mirlo' -%}Buy
             {%- when 'nectarine' -%}Listen to
             {%- when 'demozoo' -%}View
@@ -51,6 +52,8 @@
               on Amazon Music
             {%- elsif key == 'youtube-music' -%}
               on YouTube Music
+            {%- elsif key == 'urort' -%}
+              on NRK P3 Urørt
             {%- else -%}
               on {{ key | capitalize }}
             {%- endif -%}

@@ -14,6 +14,7 @@ links:
   - https://www.pandora.com/TR:189093907
   - https://mirlo.space/bitbear/release/scene-so-far
   - https://soundcloud.com/bitbear/raise-the-dead-modulo-ones-flying-dead-remix
+  - https://urort.p3.no/track/Bitbear/raise-the-dead-modulo-ones-flying-dead-remix
 album:
   slug: scene-so-far
   position: 4

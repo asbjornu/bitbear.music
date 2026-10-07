@@ -14,6 +14,7 @@ links:
   - https://music.youtube.com/watch?v=o1OfZlKZW9c
   - https://music.apple.com/no/album/project-millennium/6818199005?i=6818199011
   - https://soundcloud.com/bitbear/poc-project-millennium
+  - https://urort.p3.no/track/PowerofCreation/projectmillennium
   - https://amp.dascene.net/downmod.php?index=168745
   - https://open.spotify.com/track/0tnaKXAqPJrYo6EvaY2zyb
 album:

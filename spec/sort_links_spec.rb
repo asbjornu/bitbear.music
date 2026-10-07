@@ -18,6 +18,16 @@ RSpec.describe 'sort_links' do # rubocop:disable RSpec/DescribeClass
     expect(brands).to eq(%w[bandcamp soundcloud spotify youtube modarchive unknown])
   end
 
+  it 'orders the urort brand between pandora and nectarine' do
+    links = [
+      'https://scenestream.net/demovibes/song/43928/',
+      'https://urort.p3.no/track/Bitbear/bitwerk',
+      'https://www.pandora.com/TR:189093909'
+    ]
+    brands = sort_links(links).map { |link| link_brand(link) }
+    expect(brands).to eq(%w[pandora urort nectarine])
+  end
+
   it 'sorts unknown links after every known brand' do
     links = [
       'https://example.com/a',

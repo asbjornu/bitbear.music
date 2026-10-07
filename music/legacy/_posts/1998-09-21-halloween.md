@@ -14,6 +14,7 @@ links:
   - https://music.youtube.com/watch?v=MJQfnbSPc-4
   - https://music.apple.com/no/album/halloween/6818199005?i=6818199013
   - https://soundcloud.com/bitbear/poc-halloween
+  - https://urort.p3.no/track/PowerofCreation/halloween
   - https://amp.dascene.net/downmod.php?index=168757
   - https://open.spotify.com/track/6zPWeQZzakXQwyv9ljY0b8
 album:
