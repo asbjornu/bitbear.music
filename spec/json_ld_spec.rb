@@ -205,4 +205,8 @@ describe 'JSON-LD Puma Person' do
   it 'links to Puma’s Demozoo scener profile as sameAs' do
     expect(person['sameAs']).to include('https://demozoo.org/sceners/106369/')
   end
+
+  it 'links to Puma’s Spotify artist profile as sameAs' do
+    expect(person['sameAs']).to include('https://open.spotify.com/artist/4dwnpqWrbPkERMO7CxH4xk')
+  end
 end
