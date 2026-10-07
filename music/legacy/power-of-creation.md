@@ -61,6 +61,6 @@ Before adopting the name "PoC" in December 1995, Bitbear briefly went by
 [noisetracker]: https://en.wikipedia.org/wiki/NoiseTracker
 [protracker]: https://en.wikipedia.org/wiki/ProTracker
 [scream-tracker]: https://en.wikipedia.org/wiki/Scream_Tracker
-[spotify]: https://open.spotify.com/artist/7c0PyDfbaJThhfFS7Gdx1y
+[spotify]: https://open.spotify.com/artist/1zyXHTBBLO791Mf4Z9frmJ
 [ultimate]: https://demozoo.org/groups/106371/
 [urort]: https://urort.p3.no/artist/PowerofCreation
