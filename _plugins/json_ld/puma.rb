@@ -22,7 +22,10 @@ module Jekyll
         { '@type' => 'Organization', 'name' => 'XeNoBlast', 'url' => 'https://demozoo.org/groups/106370/' }
       ].freeze
 
-      SAME_AS = ['https://demozoo.org/sceners/106369/'].freeze
+      SAME_AS = [
+        'https://demozoo.org/sceners/106369/',
+        'https://open.spotify.com/artist/4dwnpqWrbPkERMO7CxH4xk'
+      ].freeze
 
       def initialize(site, page, context)
         @site = site
