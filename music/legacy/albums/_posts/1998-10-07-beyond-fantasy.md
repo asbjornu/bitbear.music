@@ -4,6 +4,7 @@ layout: album
 date: 1998-10-07 01:00:00 +0000
 media:
   cover: beyond-fantasy.jpg
+  upc: '885975987477'
 links:
   - https://power-of-creation.bandcamp.com/album/beyond-fantasy
   - https://tidal.com/album/566265786
