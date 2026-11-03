@@ -1,5 +1,16 @@
 # frozen_string_literal: true
 
+# Start coverage collection before any project code is loaded. Only do it in CI
+# (or locally with COVER=1) so local spec runs stay fast, and emit a Cobertura
+# XML report for GitHub's built-in code coverage upload.
+if ENV.fetch('GITHUB_ACTIONS', false) || ENV.fetch('COVER', false)
+  require 'simplecov'
+  require 'simplecov-cobertura'
+
+  SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
+  SimpleCov.start
+end
+
 require 'fileutils'
 require 'jekyll'
 require 'rspec-html-matchers'
@@ -212,9 +223,4 @@ RSpec.configure do |config|
   # Include the shared context
   # config.include_context 'shared', :include_shared => true
   # config.shared_context_metadata_behavior = :apply_to_host_groups
-end
-
-if ENV.fetch('GITHUB_ACTIONS', false) || ENV.fetch('COVER', false)
-  require 'simplecov'
-  SimpleCov.start
 end

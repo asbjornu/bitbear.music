@@ -31,4 +31,5 @@ group :test do
   gem 'rspec', require: false
   gem 'rspec-html-matchers', require: false
   gem 'simplecov', require: false
+  gem 'simplecov-cobertura', require: false
 end

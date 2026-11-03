@@ -22,6 +22,11 @@ on:
 permissions:
   contents: read
   packages: read
+  # Required by actions/upload-code-coverage to upload the Cobertura report.
+  code-quality: write
+  # Used by the action to look up an open pull request for non-default-branch
+  # push events, where `gh pr list` runs against ${{ github.token }}.
+  pull-requests: read
 
 env:
   RUBY_VERSION: 4.0.5
@@ -86,11 +91,17 @@ jobs:
       - name: rspec
         run: bundle exec rake spec
 
-      - name: codecov upload
-        uses: codecov/codecov-action@v7
+      - name: upload coverage report
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+        uses: actions/upload-code-coverage@v1
         with:
-          files: coverage/.resultset.json
-          fail_ci_if_error: false
+          file: coverage/coverage.xml
+          language: Ruby
+          label: coverage
+          # Code Quality is only available on organization-owned repositories,
+          # so keep the upload non-fatal (like the Codecov step it replaces)
+          # until this repository lives in one with Code Quality enabled.
+          fail-on-error: false
 
       - name: rubocop
         run: bundle exec rubocop --fail-level warning --display-only-fail-level-offenses
