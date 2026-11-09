@@ -6,11 +6,11 @@ const path = require('path');
 // so the config works regardless of the working directory.
 //
 // The core `indentation` rule was removed in Stylelint 16; `@stylistic/stylelint-plugin`
-// provides the maintained `@stylistic/indentation` so the rule survives major upgrades.
+// provides the maintained SCSS-specific rule so it survives major upgrades.
 module.exports = {
   customSyntax: path.join(__dirname, 'scripts', 'stylelint-jekyll-scss.cjs'),
   plugins: ['@stylistic/stylelint-plugin'],
   rules: {
-    '@stylistic/indentation': 4,
+    '@stylistic/scss/indentation': 4,
   },
 };
