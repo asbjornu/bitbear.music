@@ -16,7 +16,7 @@ links:
   - https://music.youtube.com/watch?v=Q_QXj1L1owM
   - https://music.apple.com/no/album/manhattan/6818956580?i=6818956759
   - https://soundcloud.com/bitbear/poc-manhattan
-  - https://amp.dascene.net/downmod.php?index=168750
+  - https://amp.dascene.net/module/168750
 album:
   slug: 3rd-floor
   position: 14

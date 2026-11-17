@@ -11,7 +11,7 @@ links:
   - https://demozoo.org/music/317421/
   - https://www.youtube.com/watch?v=R7mHV_dyYeA
   - https://api.modarchive.org/downloads.php?moduleid=199582
-  - https://amp.dascene.net/downmod.php?index=159586
+  - https://amp.dascene.net/module/159586
 ---
 
 My first attempt at a cover song was of [Europe][europe]'s epic song [The Final

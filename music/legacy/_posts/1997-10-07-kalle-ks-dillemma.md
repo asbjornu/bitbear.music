@@ -7,7 +7,7 @@ media:
   format: IT
 links:
   - https://demozoo.org/music/266816/
-  - https://amp.dascene.net/downmod.php?index=168753
+  - https://amp.dascene.net/module/168753
 ---
 
 "Kalle K's Dillemma" was produced as [PoC][poc], short for "Power of Creation", back in {% date %}.
@@ -15,4 +15,4 @@ links:
 <!--more-->
 
 [poc]: /music/legacy/power-of-creation
-[amp]: https://amp.dascene.net/downmod.php?index=168753
+[amp]: https://amp.dascene.net/module/168753

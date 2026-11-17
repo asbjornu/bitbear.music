@@ -16,7 +16,7 @@ links:
   - https://music.youtube.com/watch?v=zGKnsO5pHwk
   - https://music.apple.com/no/album/beveled-edges/6818956580?i=6818956748
   - https://soundcloud.com/bitbear/poc-beveled-edges
-  - https://amp.dascene.net/downmod.php?index=168758
+  - https://amp.dascene.net/module/168758
 album:
   slug: 3rd-floor
   position: 5

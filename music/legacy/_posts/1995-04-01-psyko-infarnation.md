@@ -11,7 +11,7 @@ links:
   - https://demozoo.org/music/315976/
   - https://www.youtube.com/watch?v=YDvSWJMCyhM
   - https://api.modarchive.org/downloads.php?moduleid=199559
-  - https://amp.dascene.net/downmod.php?index=159588
+  - https://amp.dascene.net/module/159588
 ---
 
 "Psyko Infarnation" was the fourth tracker module I produced with Amiga

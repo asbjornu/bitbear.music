@@ -11,7 +11,7 @@ links:
   - https://demozoo.org/music/266811/
   - https://www.youtube.com/watch?v=wRvK1L1ghUk
   - https://api.modarchive.org/downloads.php?moduleid=199558
-  - https://amp.dascene.net/downmod.php?index=159579
+  - https://amp.dascene.net/module/159579
 ---
 
 "Bebob Renaissance" was the very first tracker module I produced with Amiga

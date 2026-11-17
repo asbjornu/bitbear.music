@@ -11,7 +11,7 @@ links:
   - https://demozoo.org/music/317401/
   - https://www.youtube.com/watch?v=DLzDOGB5iqk
   - https://api.modarchive.org/downloads.php?moduleid=199581
-  - https://amp.dascene.net/downmod.php?index=159581
+  - https://amp.dascene.net/module/159581
 ---
 
 This unconventional 3-channel [chiptune] was created with [Scream Tracker

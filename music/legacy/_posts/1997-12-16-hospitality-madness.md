@@ -7,7 +7,7 @@ media:
   format: S3M
 links:
   - https://demozoo.org/music/266817/
-  - https://amp.dascene.net/downmod.php?index=168721
+  - https://amp.dascene.net/module/168721
 ---
 
 "Hospitality Madness" was produced as [PoC][poc], short for "Power of Creation", back in {% date %}.
@@ -15,4 +15,4 @@ links:
 <!--more-->
 
 [poc]: /music/legacy/power-of-creation
-[amp]: https://amp.dascene.net/downmod.php?index=168721
+[amp]: https://amp.dascene.net/module/168721

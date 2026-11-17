@@ -15,7 +15,7 @@ links:
   - https://music.apple.com/no/album/adrenaline/6818199005?i=6818199008
   - https://soundcloud.com/bitbear/poc-adrenaline
   - https://urort.p3.no/track/PowerofCreation/adrenalin
-  - https://amp.dascene.net/downmod.php?index=159535
+  - https://amp.dascene.net/module/159535
   - https://www.youtube.com/watch?v=nir_02352bM
   - https://open.spotify.com/track/32l8i8rBBXgzTNHC6cT6yB
 album:

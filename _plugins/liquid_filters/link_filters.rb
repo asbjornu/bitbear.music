@@ -68,13 +68,14 @@ module Jekyll
     # original URL for brands with no such distinction.
     def link_page_url(input)
       url = link_url(input)
+      uri = URI.parse(url)
       case link_brand(input)
       when 'modarchive'
-        moduleid = URI.parse(url).query.to_s[/(?:^|&)moduleid=(\d+)/, 1]
+        moduleid = uri.query.to_s[/(?:^|&)moduleid=(\d+)/, 1]
         moduleid ? "https://modarchive.org/index.php?request=view_by_moduleid&query=#{moduleid}" : url
       when 'amp'
-        index = URI.parse(url).query.to_s[/(?:^|&)index=(\d+)/, 1]
-        index ? "https://amp.dascene.net/analyzer2.php?idx=#{index}" : url
+        module_id = uri.path[%r{/module/(\d+)}, 1]
+        module_id ? "https://amp.dascene.net/modules?id=#{module_id}" : url
       else
         url
       end

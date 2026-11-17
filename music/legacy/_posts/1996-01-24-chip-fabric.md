@@ -11,7 +11,7 @@ links:
   - https://demozoo.org/music/318103/
   - https://www.youtube.com/watch?v=hSs0DJxn6Us
   - https://api.modarchive.org/downloads.php?moduleid=199557
-  - https://amp.dascene.net/downmod.php?index=159577
+  - https://amp.dascene.net/module/159577
 ---
 
 Sound-wise, "Chip Fabric" isn't very chippy, but with a file size of less than

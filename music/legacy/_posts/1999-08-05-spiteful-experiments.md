@@ -17,7 +17,7 @@ links:
   - https://music.apple.com/no/album/spiteful-experiments/6818956580?i=6818956587
   - https://soundcloud.com/bitbear/poc-spiteful-experiments
   - https://urort.p3.no/track/PowerofCreation/spiteful-experiments
-  - https://amp.dascene.net/downmod.php?index=168742
+  - https://amp.dascene.net/module/168742
 album:
   slug: 3rd-floor
   position: 1

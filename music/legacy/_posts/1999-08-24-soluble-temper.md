@@ -16,7 +16,7 @@ links:
   - https://music.youtube.com/watch?v=CHwFJ-VZRGc
   - https://music.apple.com/no/album/soluble-temper/6818956580?i=6818956755
   - https://soundcloud.com/bitbear/poc-soluble-temper
-  - https://amp.dascene.net/downmod.php?index=168743
+  - https://amp.dascene.net/module/168743
 album:
   slug: 3rd-floor
   position: 10

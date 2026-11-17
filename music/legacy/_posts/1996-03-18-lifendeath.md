@@ -8,7 +8,7 @@ media:
   format: MOD
 links:
   - https://demozoo.org/music/266815/
-  - https://amp.dascene.net/downmod.php?index=159521
+  - https://amp.dascene.net/module/159521
   - https://api.modarchive.org/downloads.php?moduleid=214782
 ---
 
@@ -17,4 +17,4 @@ links:
 <!--more-->
 
 [poc]: /music/legacy/power-of-creation
-[amp]: https://amp.dascene.net/downmod.php?index=159521
+[amp]: https://amp.dascene.net/module/159521

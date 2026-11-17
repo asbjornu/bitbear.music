@@ -13,7 +13,7 @@ links:
   - https://music.youtube.com/watch?v=cNT0Psrj-f4
   - https://music.apple.com/no/album/open-your-heart/6818199005?i=6818199087
   - https://soundcloud.com/bitbear/puma-open-your-heart
-  - https://amp.dascene.net/downmod.php?index=168251
+  - https://amp.dascene.net/module/168251
   - https://open.spotify.com/track/0tfJGzVPKzZm0TECN8zIYG
 album:
   slug: beyond-fantasy
