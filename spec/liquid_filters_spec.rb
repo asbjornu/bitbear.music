@@ -344,7 +344,7 @@ describe '#sort_by' do
   end
 
   describe '#link_page_url' do
-    it 'maps an AMP module download URL to its module page' do
+    it 'maps an Amiga Music Preservation module download URL to its module page' do
       expect(instance.link_page_url('https://amp.dascene.net/module/159591'))
         .to eq('https://amp.dascene.net/modules?id=159591')
     end

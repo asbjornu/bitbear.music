@@ -191,7 +191,19 @@ describe 'Pico CSS integration' do
       page = read_utf8(File.join(site_root, '_site', 'music', 'legacy', 'final-countdown.html'))
       expect(page).to have_tag('a', with: {
                                  role: 'button',
-                                 href: 'https://api.modarchive.org/downloads.php?moduleid=199582'
+                                 href: 'https://api.modarchive.org/downloads.php?moduleid=199582',
+                                 'aria-label' => 'Download “Final Countdown” from ModArchive',
+                                 'data-tooltip' => 'Download “Final Countdown” from ModArchive'
+                               })
+    end
+
+    it 'names the amp download button after Amiga Music Preservation' do
+      page = read_utf8(File.join(site_root, '_site', 'music', 'sliding-away.html'))
+      expect(page).to have_tag('a', with: {
+                                 role: 'button',
+                                 href: 'https://amp.dascene.net/module/159567',
+                                 'aria-label' => 'Download “Sliding Away” from Amiga Music Preservation',
+                                 'data-tooltip' => 'Download “Sliding Away” from Amiga Music Preservation'
                                })
     end
 
@@ -207,7 +219,8 @@ describe 'Pico CSS integration' do
       expect(page).to have_tag('li', with: { class: 'amp' }) do
         with_tag('a', with: {
                    href: 'https://amp.dascene.net/modules?id=159586',
-                   target: '_blank'
+                   target: '_blank',
+                   'aria-description' => 'View “Final Countdown” on Amiga Music Preservation'
                  })
         with_tag('span', with: { class: 'icon icon-amp' })
       end
