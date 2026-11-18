@@ -90,6 +90,12 @@
 
     <script src="{{ '/assets/scripts/cover.js' | relative_url }}"></script>
     <script src="{{ '/assets/scripts/view-transitions.js' | relative_url }}"></script>
+    {% if page.media.module %}
+      {% assign module_soundcloud = page.links | link_by_brand: 'soundcloud' %}
+      {% unless module_soundcloud %}
+        <script src="{{ '/assets/scripts/module-player.js' | relative_url }}" defer></script>
+      {% endunless %}
+    {% endif %}
     <script async src="{{ '/assets/scripts/ga.js' | relative_url }}"></script>
   </body>
 </html>
