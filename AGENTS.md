@@ -128,4 +128,3 @@ to `main` in the primary checkout unless the user explicitly approves it.
 
 When you report back, include the preview URL if the change affects rendered
 output (§4).
-</content>
