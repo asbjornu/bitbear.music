@@ -21,8 +21,8 @@
 
   <div id="cover"{% if cover_vt != '' %} style="--cover-vt: {{ cover_vt }};"{% endif %}>
     <a class="cover-link" href="#cover-art"
-      aria-description="Open the cover art {% if has_youtube -%}and play the “{{ include.title | escape }}” music video{% endif -%}"
-      data-tooltip="Open the cover art {% if has_youtube -%}and play the “{{ include.title | escape }}” music video{% endif -%}">
+      aria-description="Open the cover art {% if has_youtube -%}and play the {{ include.title | escape | smart_quotes }} music video{% endif -%}"
+      data-tooltip="Open the cover art {% if has_youtube -%}and play the {{ include.title | escape | smart_quotes }} music video{% endif -%}">
       <img src="{{ cover_url }}" alt="{{ include.title | escape }} cover">
       {%- if has_youtube -%}
         <span class="cover-play" aria-hidden="true"></span>
@@ -43,8 +43,8 @@
              href="{{ youtube_url }}"
              target="_blank"
              rel="noopener"
-             aria-description="Play the “{{ include.title | escape }}” music video"
-             data-tooltip="Play the “{{ include.title | escape }}” music video"
+             aria-description="Play the {{ include.title | escape | smart_quotes }} music video"
+             data-tooltip="Play the {{ include.title | escape | smart_quotes }} music video"
              aria-label="Play on YouTube"></a>
         {%- endif -%}
       </div>

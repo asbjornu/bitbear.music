@@ -4,7 +4,8 @@ require 'bytesize'
 
 module Jekyll
   # Filters for formatting numeric/media values (file sizes, thousands
-  # separators) and building URLs for Git LFS-tracked assets.
+  # separators, tracker format descriptions) and building URLs for Git
+  # LFS-tracked assets.
   module FormatFilters
     def file_size(input)
       ByteSize.new(input).to_s
@@ -12,6 +13,22 @@ module Jekyll
 
     def thousands_separated(input, separator = '.')
       input.to_s.gsub(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1#{separator}")
+    end
+
+    # Describes a tracker module format abbreviation, reusing the same
+    # tracker software names introduced in music/legacy/index.md ("tracker
+    # modules in software such as ProTracker, Scream Tracker, Fast Tracker
+    # II, and Impulse Tracker").
+    def format_description(format)
+      case format.to_s.upcase
+      when 'MOD'  then 'ProTracker module'
+      when 'S3M'  then 'Scream Tracker 3 module'
+      when 'FST'  then 'Fast Tracker module'
+      when 'XM'   then 'Fast Tracker II module'
+      when 'IT'   then 'Impulse Tracker module'
+      when 'XRNS' then 'Renoise song'
+      else format.to_s
+      end
     end
 
     # Converts a `media.length` value such as "4:03" or "1:04:03" into an

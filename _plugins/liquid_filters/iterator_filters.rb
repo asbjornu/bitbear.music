@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'text_filters'
+
 module Jekyll
   # Filters that resolve the destination, `rel` attribute, visible label
   # and full-title tooltip for the nav.iterator "back" button, plus the
@@ -12,6 +14,8 @@ module Jekyll
   # into a single Ruby method, which is easier to read, extend and test
   # than deeply-nested Liquid conditionals.
   module IteratorFilters
+    include TextFilters
+
     # Returns a Hash with 'link', 'rel', 'text' and 'describe' keys
     # describing the iterator's back/index button for the given page.
     def iterator_back(page)
@@ -35,7 +39,7 @@ module Jekyll
     # release rather than a plain track.
     def describe_link(item, kind = 'track')
       kind = item['album']['kind'].downcase if item['album'] && item['album']['kind']
-      %(Go to the “#{item['title']}” #{kind})
+      %(Go to the #{smart_quotes(item['title'])} #{kind})
     end
 
     private
@@ -55,7 +59,7 @@ module Jekyll
         'link' => '/',
         'rel' => 'back index',
         'text' => 'Home',
-        'describe' => %(Go back to the “#{target && target.data['title']}” home page)
+        'describe' => %(Go back to the #{smart_quotes(target && target.data['title'])} home page)
       }
     end
 
@@ -66,7 +70,7 @@ module Jekyll
         'link' => release.url,
         'rel' => 'back',
         'text' => "Back to #{kind}",
-        'describe' => %(Go back to the “#{release.data['title']}” #{kind})
+        'describe' => %(Go back to the #{smart_quotes(release.data['title'])} #{kind})
       }
     end
 
@@ -86,7 +90,7 @@ module Jekyll
         'link' => music_page.url,
         'rel' => 'back',
         'text' => 'Back to Music',
-        'describe' => %(Go back to the “#{music_page.data['title']}” page)
+        'describe' => %(Go back to the #{smart_quotes(music_page.data['title'])} page)
       }
     end
 
@@ -94,7 +98,7 @@ module Jekyll
       link = "/#{segments.drop(1).join('/')}/"
       text = "Back to #{segments.last}"
       target = site.pages.find { |candidate| candidate.url == link }
-      describe = target ? %(Go back to the “#{target.data['title']}” page) : text
+      describe = target ? %(Go back to the #{smart_quotes(target.data['title'])} page) : text
 
       { 'link' => link, 'rel' => 'back', 'text' => text, 'describe' => describe }
     end

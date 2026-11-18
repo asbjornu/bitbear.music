@@ -452,6 +452,21 @@ describe '#sort_by' do
     end
   end
 
+  describe '#format_description' do
+    {
+      'MOD' => 'ProTracker module',
+      'S3M' => 'Scream Tracker 3 module',
+      'XM' => 'Fast Tracker II module',
+      'IT' => 'Impulse Tracker module',
+      'XRNS' => 'Renoise song',
+      'MP3' => 'MP3'
+    }.each do |format, description|
+      it "describes #{format} as #{description}" do
+        expect(instance.format_description(format)).to eq(description)
+      end
+    end
+  end
+
   describe '#smart_quotes' do
     it 'wraps text in typographic double quotes' do
       expect(instance.smart_quotes('Sliding Away')).to eq('“Sliding Away”')

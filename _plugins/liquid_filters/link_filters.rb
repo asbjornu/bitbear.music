@@ -126,22 +126,6 @@ module Jekyll
         "#{smart_quotes(cached.strip)} at #{link_host(input)}"
       end
     end
-
-    # Describes a tracker module format abbreviation, reusing the same
-    # tracker software names introduced in music/legacy/index.md ("tracker
-    # modules in software such as ProTracker, Scream Tracker, Fast Tracker
-    # II, and Impulse Tracker").
-    def format_description(format)
-      case format.to_s.upcase
-      when 'MOD'  then 'ProTracker module'
-      when 'S3M'  then 'Scream Tracker 3 module'
-      when 'FST'  then 'Fast Tracker module'
-      when 'XM'   then 'Fast Tracker II module'
-      when 'IT'   then 'Impulse Tracker module'
-      when 'XRNS' then 'Renoise song'
-      else format.to_s
-      end
-    end
   end
 end
 
