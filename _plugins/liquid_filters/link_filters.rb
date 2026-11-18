@@ -65,11 +65,12 @@ module Jekyll
       end.map(&:first)
     end
 
-    # Some services (e.g. ModArchive, AMP) only store a direct-download URL in
-    # `links`, but linking to that URL from anywhere other than the dedicated
-    # Download button should instead point at the service's HTML page for the
-    # module. This maps a stored link to that page URL, falling back to the
-    # original URL for brands with no such distinction.
+    # Some services (e.g. ModArchive, Amiga Music Preservation) only store a
+    # direct-download URL in `links`, but linking to that URL from anywhere
+    # other than the dedicated Download button should instead point at the
+    # service's HTML page for the module. This maps a stored link to that page
+    # URL, falling back to the original URL for brands with no such
+    # distinction.
     def link_page_url(input)
       url = link_url(input)
       uri = URI.parse(url)

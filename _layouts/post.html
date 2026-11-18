@@ -68,9 +68,15 @@ layout: default
       {% assign modarchive_link = page.links | link_by_brand: 'modarchive' %}
       {% assign amp_link = page.links | link_by_brand: 'amp' %}
       {% if modarchive_link %}
-        <a role="button" href="{{ modarchive_link }}">Download</a>
+        {% assign download_service = 'ModArchive' %}
+        {% assign download_link = modarchive_link %}
       {% elsif amp_link %}
-        <a role="button" href="{{ amp_link }}">Download</a>
+        {% assign download_service = 'Amiga Music Preservation' %}
+        {% assign download_link = amp_link %}
+      {% endif %}
+      {% if download_link %}
+        {% capture download_title %}Download {{ page.title | smart_quotes }} from {{ download_service }}{% endcapture %}
+        <a role="button" href="{{ download_link }}" aria-label="{{ download_title }}" data-tooltip="{{ download_title }}">Download</a>
       {% endif %}
     </aside>
 
