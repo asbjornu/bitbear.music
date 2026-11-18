@@ -20,6 +20,11 @@ links:
 album:
   slug: 3rd-floor
   position: 3
+sample_sources:
+  - source: 2nd-reality
+    evidence: "Exact `KettleDrum.5.Traditional` sample."
+  - source: keith303-samples
+    evidence: "Uses the `K303.trance.e-stm` sample."
 ---
 
 Has a liquid feel to it, thanks to the xylophone lead running throughout

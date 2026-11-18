@@ -57,6 +57,19 @@ describe 'Pico CSS integration' do
       )
     end
 
+    it 'restores the solid purple rule on tooltip table headers and cells' do
+      expect(css).to include('main table th[data-tooltip]:not([role=button]),main table td[data-tooltip]:not([role=button]){border-bottom:var(--pico-border-width) solid var(--pico-table-border-color)}')
+    end
+
+    it 'renders the MSM source icon as a single mask' do
+      expect(css).to include('.icon.icon-msm')
+      expect(css).to include('url("/assets/images/services/msm.svg")')
+    end
+
+    it 'lays out sample source icons in a wrapping row' do
+      expect(css).to include('.samples ul{display:flex;flex-wrap:wrap;align-items:center;gap:.35em')
+    end
+
     it 'masks the unknown link icon with the noun project asset' do
       expect(css).to include('.icon.icon-unknown')
       expect(css).to include('url("/assets/images/services/unknown.svg")')

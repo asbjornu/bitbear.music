@@ -20,6 +20,11 @@ links:
 album:
   slug: 3rd-floor
   position: 10
+sample_sources:
+  - source: keith303-samples
+    evidence: "Uses the `K303.trance.e-stm` sample."
+  - source: jmjay-tw-ic-samples
+    evidence: "Uses an `iC#` bass sample."
 ---
 
 A rather randomly named song — naming is the hardest thing in both

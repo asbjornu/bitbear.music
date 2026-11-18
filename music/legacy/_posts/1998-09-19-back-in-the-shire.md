@@ -19,6 +19,11 @@ links:
 album:
   slug: beyond-fantasy
   position: 15
+sample_sources:
+  - source: modulo-one-back-in-the-shire
+    evidence: "Remix of Modulo One/PAcMan’s original tune."
+  - source: 2nd-reality
+    evidence: "Uses the `HiStrings.HiQual` sample from 2nd Reality."
 ---
 
 A remix of [Modulo One][modulo-one]'s song of the same name. The original

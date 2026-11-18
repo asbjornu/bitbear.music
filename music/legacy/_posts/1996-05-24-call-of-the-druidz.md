@@ -8,6 +8,12 @@ media:
 links:
   - https://demozoo.org/music/266818/
   - https://amp.dascene.net/module/168728
+sample_sources:
+  - source: cool-city
+    evidence: "Nine exact samples. Cool City’s own sample text credits Outzider/Darkzone and “Debut, drumseqs 6, 15 and 16”."
+  - source: outzider-mork-sone-2
+    evidence: "Cool City credits these drum sequences to Outzider/DarkZone’s M0rk Sone 2, from the Debut demo; passed through into this track."
+    chain_after: cool-city
 ---
 
 "Call of the Druidz" was produced as [PoC][poc], short for "Power of Creation", back in {% date %}.

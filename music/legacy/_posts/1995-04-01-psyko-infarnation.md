@@ -12,6 +12,9 @@ links:
   - https://www.youtube.com/watch?v=YDvSWJMCyhM
   - https://api.modarchive.org/downloads.php?moduleid=199559
   - https://amp.dascene.net/module/159588
+sample_sources:
+  - source: pinball-fantasies-speed-devils
+    evidence: "The `carhorn` sample matches exactly; the post also recalls a Pinball Fantasies module."
 ---
 
 "Psyko Infarnation" was the fourth tracker module I produced with Amiga

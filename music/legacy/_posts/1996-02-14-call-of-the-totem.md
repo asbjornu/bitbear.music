@@ -12,6 +12,9 @@ links:
   - https://www.youtube.com/watch?v=J0H2jB3c3ck
   - https://api.modarchive.org/downloads.php?moduleid=199584
   - https://amp.dascene.net/module/159585
+sample_sources:
+  - source: colour-of-my-dreams
+    evidence: "Two exact samples, including `soul/movement`."
 ---
 
 This wall of utter noise was produced {% date %}, and is just published for the

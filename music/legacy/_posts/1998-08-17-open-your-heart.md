@@ -18,6 +18,9 @@ links:
 album:
   slug: beyond-fantasy
   position: 18
+sample_sources:
+  - source: puma-samples
+    evidence: "Puma recorded samples 1–11; the module text says the remaining samples were taken from other modules."
 ---
 
 "Open Your Heart" isn't really a [Power of Creation][poc] production. [Puma][puma]

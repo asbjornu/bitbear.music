@@ -1,0 +1,52 @@
+{% assign sources = include.sources %}
+{% if sources.size > 0 %}
+{% capture samples_tooltip %}The samples in {{ page.title | escape | smart_quotes }} is sourced as follows{% endcapture %}
+<tr>
+  <th scope="row" aria-description="{{ samples_tooltip | strip }}" data-tooltip="{{ samples_tooltip | strip }}">Samples:</th>
+  <td class="samples">
+    <ul class="sample-sources">
+      {% for credit in sources %}
+        {% assign source = site.data.sample_sources[credit.source] %}
+        {% if source %}
+          {% if credit.chain_after %}
+            <li class="sample-arrow" aria-hidden="true">&rarr;</li>
+          {% endif %}
+          <li class="sample-source">
+            {% capture sample_tooltip -%}
+              {{- source.title -}}
+              {%- if source.author %} by {{ source.author }}{% if source.group %} / {{ source.group }}{% endif %}{% endif -%}
+              {%- if source.note %} — {{ source.note }}{% endif -%}
+              {%- if credit.evidence %} {{ credit.evidence | markdownify | strip_html | strip }}{% endif -%}
+            {%- endcapture %}
+            {% assign tooltip = sample_tooltip | strip %}
+            {% assign has_source_link = false %}
+            {% if source.msm_url %}
+              <a href="{{ source.msm_url }}" aria-description="Sample matches at .mod Sample Master — {{ tooltip }}" data-tooltip="Sample matches at .mod Sample Master — {{ tooltip }}">
+                <span class="icon icon-msm" role="img" aria-label="Sample matches at .mod Sample Master — {{ tooltip }}"></span>
+              </a>
+            {% elsif source.url contains 'modsamplemaster.org' %}
+              <a href="{{ source.url }}" aria-description="Sample matches at .mod Sample Master — {{ tooltip }}" data-tooltip="Sample matches at .mod Sample Master — {{ tooltip }}">
+                <span class="icon icon-msm" role="img" aria-label="Sample matches at .mod Sample Master — {{ tooltip }}"></span>
+              </a>
+            {% endif %}
+            {% if source.url contains 'demozoo.org' %}
+              {% assign has_source_link = true %}
+              <a href="{{ source.url }}" aria-description="{{ tooltip }}" data-tooltip="{{ tooltip }}">
+                <span class="icon icon-demozoo" role="img" aria-label="{{ tooltip }}"></span>
+              </a>
+            {% elsif source.author_url contains 'demozoo.org' %}
+              {% assign has_source_link = true %}
+              <a href="{{ source.author_url }}" aria-description="{{ tooltip }}" data-tooltip="{{ tooltip }}">
+                <span class="icon icon-demozoo" role="img" aria-label="{{ tooltip }}"></span>
+              </a>
+            {% endif %}
+            {% unless has_source_link or source.msm_url or source.url contains 'modsamplemaster.org' %}
+              <span class="sample-name" aria-description="{{ tooltip }}" data-tooltip="{{ tooltip }}">{{ source.title }}</span>
+            {% endunless %}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </td>
+</tr>
+{% endif %}

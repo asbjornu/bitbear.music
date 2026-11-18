@@ -21,6 +21,9 @@ links:
 album:
   slug: beyond-fantasy
   position: 2
+sample_sources:
+  - source: keith303-samples
+    evidence: "The module greets Keith303 as “the god of samples/mods”; the sample set is consistent with his material."
 ---
 
 After a late night at work punching export invoices at [UPS][ups], a friend

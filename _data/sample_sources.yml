@@ -1,0 +1,145 @@
+# Sample sources credited on music posts.
+#
+# Posts reference these entries from front matter, e.g.
+#
+#   sample_sources:
+#     - source: 2nd-reality
+#       evidence: "Exact sample matches: KettleDrum.5.Traditional, ..."
+#
+# Keep this file as the single place for a source's title, author, group and
+# link. Prefer Demozoo links where a matching music, scener or group entry
+# exists. The per-post `evidence` explains why that source is credited on that
+# track.
+
+2nd-reality:
+  title: Unreal II - The Second Reality
+  author: Skaven
+  author_url: https://demozoo.org/sceners/356/
+  group: Future Crew
+  group_url: https://demozoo.org/groups/357/
+  url: https://demozoo.org/music/99580/
+  msm_url: https://modsamplemaster.org/module.php?hash=bbc5b062806a3faf38cb2b4ff325ba89e23c9afa
+  note: Future Crew’s 2nd Reality soundtrack module, also circulated as 2NDR-SK.S3M.
+
+soul-o-matic:
+  title: Soul-O-Matic
+  author: Purple Motion
+  author_url: https://demozoo.org/sceners/369/
+  group: Future Crew
+  group_url: https://demozoo.org/groups/357/
+  url: https://demozoo.org/music/134855/
+  msm_url: https://modsamplemaster.org/module.php?hash=01e2d115268fc042394c1fdea869de18e79dd239
+  note: Released 10 July 1993.
+
+cool-city:
+  title: Cool City - vol 1.2
+  author: Purple Motion
+  author_url: https://demozoo.org/sceners/369/
+  group: Future Crew
+  group_url: https://demozoo.org/groups/357/
+  url: https://demozoo.org/music/134852/
+  msm_url: https://modsamplemaster.org/module.php?hash=88bb776095f9093e6073de5c9a0aa5e64c67ea59
+  note: Released 28 December 1993.
+
+outzider-mork-sone-2:
+  title: M0rk Sone 2
+  author: Outzider
+  author_url: https://demozoo.org/sceners/7851/
+  group: DarkZone
+  group_url: https://demozoo.org/groups/7852/
+  url: https://demozoo.org/music/70416/
+  note: Featured in the DarkZone demo Debut.
+
+pinball-fantasies-speed-devils:
+  title: Pinball Fantasies – Speeddevils
+  author: Olof Gustafsson
+  author_url: https://demozoo.org/sceners/35/
+  url: https://demozoo.org/music/140567/
+  msm_url: https://modsamplemaster.org/module.php?hash=ed91daaf44d68ada59f9db7b14464b12570a86e6
+  note: 1992 Digital Illusions pinball soundtrack.
+
+looting-bandits:
+  title: Looting Bandits
+  artist: Breeze (FI)
+  url: https://modsamplemaster.org/module.php?hash=75f7730b843aaec3bf8a71ac9d792ddff9fe143f
+  note: The same five drum samples also appear in “30 minutes”.
+
+30-minutes:
+  title: 30 minutes
+  artist: Unknown
+  url: https://modsamplemaster.org/module.php?hash=b897022f0bd8f977e25ecdae7c4c5cfdc60e8760
+  note: Shares its TechScream/TechRun drum samples with Looting Bandits.
+
+colour-of-my-dreams:
+  title: Colour of My Dreams
+  author: Yabbo
+  author_url: https://demozoo.org/sceners/50749/
+  group: Speedy
+  group_url: https://demozoo.org/groups/66190/
+  url: https://demozoo.org/music/211588/
+  msm_url: https://modsamplemaster.org/module.php?hash=1977010aa07a25c2f702b3e2261fad58e60d4666
+  note: Released 28 December 1994.
+
+let-da-basedrum-go:
+  title: Let Da BaSeDrUm Go
+  artist: Unknown (MAS_BDGO.XM)
+  note: Musicdisk module from the HBE “jungle” release.
+
+fraggle-rock-theme:
+  title: fraggle.rock.theme
+  artist: Unknown
+  url: https://modsamplemaster.org/module.php?hash=464f4018b7e15b8c99acc3f1f030aa8e3bf5eacf
+
+anno-domini:
+  title: Anno Domini
+  author: Windy City
+  author_url: https://demozoo.org/sceners/227/
+  group: Proxima
+  group_url: https://demozoo.org/groups/1172/
+  url: https://demozoo.org/music/178997/
+  msm_url: https://modsamplemaster.org/module.php?hash=ad2b192cbcd3156f002e093a051f0db9e1c4857c
+  note: Samples credited to Marvel/FC.
+
+out-on-the-hills:
+  title: Out On The Hills
+  artist: Ivanhoe
+  url: https://modsamplemaster.org/module.php?hash=ee30134562730936cc7db0d447b514db70278884
+
+void-r-mixed:
+  title: Void-R-MIXED
+  artist: Unknown
+  url: https://modsamplemaster.org/module.php?hash=565b1284222e93cca0d51ce3edffd36b8cf4c018
+
+modulo-one-back-in-the-shire:
+  title: Back in the Shire
+  author: PAcMan (Modulo One)
+  author_url: https://demozoo.org/sceners/4306/
+  note: The original tune this remix is based on.
+
+beam-med:
+  title: BEAM-MED.XM
+  artist: Unknown
+  note: Named directly in Medieval Orphanage’s sample slots.
+
+puma-samples:
+  title: Puma sample set
+  author: Puma
+  author_url: https://demozoo.org/sceners/106369/
+  note: Used with permission on Rage.
+
+keith303-samples:
+  title: Keith303 sample set
+  author: Keith303
+  author_url: https://demozoo.org/sceners/822/
+  note: The K303.* samples; Adrenaline greets Keith303 as “the god of samples/mods”.
+
+jmjay-tw-ic-samples:
+  title: JMJay / TW / iC sample set
+  artist: JMJay, TW and iC
+  note: Drums, filtered leads and picks reused across the Blood/Sweat/Tears family.
+
+st-xx:
+  title: ST-00/ST-01 sample library
+  artist: Amiga SoundTracker scene
+  url: https://aminet.net/mods/inst
+  note: Public Amiga sample disks; not a single tracker module.

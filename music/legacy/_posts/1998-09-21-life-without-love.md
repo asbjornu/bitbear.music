@@ -20,6 +20,13 @@ links:
 album:
   slug: beyond-fantasy
   position: 3
+sample_sources:
+  - source: let-da-basedrum-go
+    evidence: "Five exact samples (`a.1`–`a.5`)."
+  - source: keith303-samples
+    evidence: "Kept source names `K303.awex.sbass` and `K303.trance.e-stm`."
+  - source: puma-samples
+    evidence: "Kept source name `puma.sinewave`."
 ---
 
 A hysterically cheesy house tune built over a lead melody I'm sure I lifted
