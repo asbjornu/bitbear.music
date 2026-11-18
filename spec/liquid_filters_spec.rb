@@ -451,4 +451,32 @@ describe '#sort_by' do
       expect(instance.link_host('https://localhost:4000/music/move')).to eq('localhost:4000')
     end
   end
+
+  describe '#format_description' do
+    {
+      'MOD' => 'ProTracker module',
+      'S3M' => 'Scream Tracker 3 module',
+      'XM' => 'Fast Tracker II module',
+      'IT' => 'Impulse Tracker module',
+      'XRNS' => 'Renoise song',
+      'MP3' => 'MP3'
+    }.each do |format, description|
+      it "describes #{format} as #{description}" do
+        expect(instance.format_description(format)).to eq(description)
+      end
+    end
+  end
+
+  describe '#smart_quotes' do
+    it 'wraps text in typographic double quotes' do
+      expect(instance.smart_quotes('Sliding Away')).to eq('“Sliding Away”')
+    end
+  end
+
+  describe '#link_title' do
+    it 'wraps a cached page title in smart quotes' do
+      expect(instance.link_title('https://vitno.org/2018/01/23/amigavibes-podcast-68/'))
+        .to eq('“AmigaVibes Podcast 68, Solskogen Nuskool – Vintage is the New Old” at vitno.org')
+    end
+  end
 end

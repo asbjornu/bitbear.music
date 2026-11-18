@@ -128,7 +128,7 @@ information.</p>
          item_label=back_label %}
     {% endif %}
     {% assign remix_kits_page = site.pages | where: 'url', '/music/remix-kits/' | first %}
-    {% capture remix_kits_describe %}Go to page “{{ remix_kits_page.title }}”{% endcapture %}
+    {% capture remix_kits_describe %}Go to page {{ remix_kits_page.title | smart_quotes }}{% endcapture %}
     {% include iterator_item.html
        item_href='/music/remix-kits/'
        item_rel='index'

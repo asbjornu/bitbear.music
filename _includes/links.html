@@ -45,7 +45,7 @@
           {%- if key == 'unknown' -%}
             {{- url | link_title -}}
           {%- else -%}
-            {{- links_verb }} “{{ page.title }}” {% comment %}{% endcomment %}
+            {{- links_verb }} {{ page.title | smart_quotes }} {% comment %}{% endcomment %}
             {%- if key == 'apple-music' -%}
               on Apple Music
             {%- elsif key == 'amazon-music' -%}

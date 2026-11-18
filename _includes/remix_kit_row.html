@@ -3,7 +3,7 @@
   <tr class="remix-kit-row">
     <th scope="row">Remix kit</th>
     <td class="remix-kit">
-      {% capture title %}View the “{{ page.title }}” remix kit{% endcapture %}
+      {% capture title %}View the {{ page.title | smart_quotes }} remix kit{% endcapture %}
       <a href="{{ page.slug | prepend: '/music/' | append: '/remix-kit/' }}" aria-description="{{ title }}" data-tooltip="{{ title }}">
         <span class="icon icon-remix-kit" role="img" aria-label="{{ title }}"></span>
       </a>
