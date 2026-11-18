@@ -58,3 +58,6 @@ rake covers:generate
 3. Run `rake covers:2x` to generate the paired `@2x` twin.
 4. Run `bundle exec rspec spec/cover_spec.rb` to confirm the pairing check
    passes.
+5. Serve the site on a free port and share the post's URL so the new cover can
+   be inspected (see the "Preview server" section of the
+   `jekyll-build-verify` skill).

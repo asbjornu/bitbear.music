@@ -11,7 +11,12 @@ before any git, gpg, or Ruby command:
 ```sh
 BREW_PREFIX="/usr/local"; [ "$(uname -m)" = "arm64" ] && BREW_PREFIX="/opt/homebrew"
 export PATH="$BREW_PREFIX/bin:$BREW_PREFIX/opt/ruby/bin:$PATH"
+export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 ```
+
+The `LANG`/`LC_ALL` exports matter: the harness shell defaults to the `C`
+locale (Ruby's default external encoding is US-ASCII), which makes Jekyll
+abort with `invalid byte sequence in US-ASCII` while scanning posts.
 
 Verify: `ruby --version` (must be `4.x`, not the system `/usr/bin/ruby`
 2.6.10), `git lfs version` (`3.x`), `gpg --list-secret-keys --keyid-format LONG`
@@ -34,14 +39,14 @@ to a worktree afterwards. If you find you've done this by mistake, undo it
 immediately (e.g. `git checkout -- <file>` in the primary checkout) and
 redo the work in a worktree from scratch. Only remove the worktree
 (`git worktree remove ../bitbear.music-<agent-name>`) after the commit
-described in §8 is done, and only leave `main` in the primary checkout
+described in §9 is done, and only leave `main` in the primary checkout
 untouched unless the user has explicitly approved merging/pushing there.
 
 Notes:
 - `.git` (incl. the LFS object cache) is shared across worktrees; `node_modules`
   is not — either let `npm ci` run per worktree or symlink one in from
   `/Users/bitbear/Dev/bitbear.music/node_modules`.
-- Use a distinct `--port` if running `jekyll serve` in more than one worktree.
+- When previewing (§4), serve each worktree on its own free port.
 
 ## 3. Ruby & Jekyll
 
@@ -50,14 +55,43 @@ Notes:
 - For the full build/test/troubleshooting workflow (stale `_site`, worktree
   setup, Tidy prettification), use the `jekyll-build-verify` skill.
 
-## 4. Rubocop
+## 4. Preview build-affecting changes in a server
+
+Any change that alters the rendered site — posts under `music/_posts`, pages,
+`_layouts`, `_includes`, `assets/**`, `_data`, `_plugins/**`, `_config.yml` —
+must be checked in a browser, not just by a passing build. Start (or keep) a
+Jekyll server on an unused port and hand the user the URL.
+
+Changes that never reach rendered output — `AGENTS.md`, `readme.md`, `spec/**`,
+`.agents/skills/**`, `.github/**`, `Rakefile`, `Gemfile*`, `package*.json` —
+need no preview. Say why in one line; don't spin up a server for them.
+
+```sh
+# Ask the OS for a free port, then serve on it.
+PORT=$(ruby -rsocket -e 's = TCPServer.new("127.0.0.1", 0); puts s.addr[1]; s.close')
+bundle exec jekyll serve --host 127.0.0.1 --port "$PORT"
+```
+
+- Always pass an explicit `--port` and never rely on the default `4000` — other
+  sessions serve their own worktrees concurrently. Never kill or reuse a server
+  you did not start.
+- Report the full URL, pointing at the deepest affected path, e.g.
+  `http://127.0.0.1:51234/music/2024/01/05/some-track/` — not just "the build
+  passed".
+- Start the server *after* `rake build` / `rake spec` / `rake htmlproofer`, as
+  the running server owns `_site`; stop it first if you need a clean rebuild.
+- Leave it running once you are done unless the user asks otherwise. If it
+  dies (or the worktree was recreated), restart it on a fresh port and share
+  the new URL.
+
+## 5. Rubocop
 
 - Run `bundle exec rubocop -A` before considering `_plugins/**/*.rb` work
   done — it isn't covered by `rake spec` or `rake build`. For house rules on
   fixing violations (`Lint/MissingSuper`, `Metrics/*`), use the
   `rubocop-plugins-cleanup` skill.
 
-## 5. Node.js & Pico CSS
+## 6. Node.js & Pico CSS
 
 - Pico CSS runs in classless mode — style semantic HTML, not utility classes.
   Sass config lives in `_config.yml` / `assets/scss/bitbear.scss`
@@ -69,13 +103,13 @@ Notes:
 - For cover art (generation, `@2x` pairing, auto-generation fallback), use
   the `cover-art-workflow` skill.
 
-## 6. Content authoring (music posts)
+## 7. Content authoring (music posts)
 
 For sourcing rules, scener alias links, front-matter conventions, genre/format
 pages, and JSON-LD gotchas when adding or editing a post under `music/_posts`,
 use the `music-post-authoring` skill.
 
-## 7. Commit conventions
+## 8. Commit conventions
 
 - Header ≤50 chars, plain text, no cropping — if it wouldn't fit, put the
   full sentence as the first line of the body instead. Body wrapped at 72
@@ -84,11 +118,14 @@ use the `music-post-authoring` skill.
   make a new commit for new/separate content, even in the same file.
 - Always `git commit -S` (signing key `C3D5E883`).
 
-## 8. Before finishing
+## 9. Before finishing
 
 Verify (`rake build`/`rake spec`/`rake htmlproofer` etc., as relevant) inside
 the worktree, then commit there once verification passes — do not leave
 verified work uncommitted. After committing, `git fetch origin main && git
 rebase origin/main` in the worktree. Never merge, push, or apply the change
 to `main` in the primary checkout unless the user explicitly approves it.
+
+When you report back, include the preview URL if the change affects rendered
+output (§4).
 </content>

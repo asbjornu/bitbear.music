@@ -101,3 +101,8 @@ rather than guessing at a scener page.
 After adding or editing a post, run the relevant specs before considering the
 change done — see the `jekyll-build-verify` skill for the full build/test
 workflow (`rake spec`, `rake htmlproofer`, cover pairing checks, etc.).
+
+Then serve the post on a free port and give the user the URL of the rendered
+page (e.g. `http://127.0.0.1:51234/music/2024/01/05/some-track/`) — see the
+"Preview server" section of the `jekyll-build-verify` skill. A passing spec run
+is not a substitute for a link.
