@@ -14,7 +14,7 @@ links:
   - https://music.youtube.com/watch?v=58GREdNyLzw
   - https://music.apple.com/no/album/medieval-orphanage/6818199005?i=6818199085
   - https://soundcloud.com/bitbear/poc-medieval-orphanage
-  - https://amp.dascene.net/downmod.php?index=168749
+  - https://amp.dascene.net/module/168749
   - https://open.spotify.com/track/4yuvU50YbvKEtWn9B13GKl
 album:
   slug: beyond-fantasy

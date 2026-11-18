@@ -8,7 +8,7 @@ links:
   - https://demozoo.org/music/378972/
   - https://soundcloud.com/bitbear/i-feel-you-impulse-tracker-mix
   - https://scenestream.net/demovibes/song/51366/
-  - https://amp.dascene.net/downmod.php?index=178134
+  - https://amp.dascene.net/module/178134
   - https://radio.ericade.net/profiles/song/15337/i-feel-you
 ---
 

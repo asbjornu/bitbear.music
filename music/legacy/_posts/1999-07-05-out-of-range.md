@@ -16,7 +16,7 @@ links:
   - https://music.youtube.com/watch?v=tsCc72RqGCw
   - https://music.apple.com/no/album/out-of-range/6818956580?i=6818956750
   - https://soundcloud.com/bitbear/poc-out-of-range
-  - https://amp.dascene.net/downmod.php?index=168747
+  - https://amp.dascene.net/module/168747
 album:
   slug: 3rd-floor
   position: 7

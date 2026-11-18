@@ -11,7 +11,7 @@ links:
   - https://demozoo.org/music/315974/
   - https://www.youtube.com/watch?v=WfWNZNDsp_w
   - https://api.modarchive.org/downloads.php?moduleid=199555
-  - https://amp.dascene.net/downmod.php?index=159591
+  - https://amp.dascene.net/module/159591
 ---
 
 "The Floote Ride" was one of the the first tracker modules I feel somewhat

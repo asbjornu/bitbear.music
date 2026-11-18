@@ -8,7 +8,7 @@ media:
   format: MOD
   length: 01:28
 links:
-  - https://amp.dascene.net/downmod.php?index=159590
+  - https://amp.dascene.net/module/159590
 ---
 
 Besides the lead devolving into [Carmen, Act II: Votre toast][toreador] 30

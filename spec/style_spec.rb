@@ -206,7 +206,7 @@ describe 'Pico CSS integration' do
       end
       expect(page).to have_tag('li', with: { class: 'amp' }) do
         with_tag('a', with: {
-                   href: 'https://amp.dascene.net/analyzer2.php?idx=159586',
+                   href: 'https://amp.dascene.net/modules?id=159586',
                    target: '_blank'
                  })
         with_tag('span', with: { class: 'icon icon-amp' })

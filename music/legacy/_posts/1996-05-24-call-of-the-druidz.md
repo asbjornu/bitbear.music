@@ -7,7 +7,7 @@ media:
   format: S3M
 links:
   - https://demozoo.org/music/266818/
-  - https://amp.dascene.net/downmod.php?index=168728
+  - https://amp.dascene.net/module/168728
 ---
 
 "Call of the Druidz" was produced as [PoC][poc], short for "Power of Creation", back in {% date %}.
@@ -15,4 +15,4 @@ links:
 <!--more-->
 
 [poc]: /music/legacy/power-of-creation
-[amp]: https://amp.dascene.net/downmod.php?index=168728
+[amp]: https://amp.dascene.net/module/168728

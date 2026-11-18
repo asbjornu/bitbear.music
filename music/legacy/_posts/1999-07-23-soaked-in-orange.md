@@ -16,7 +16,7 @@ links:
   - https://music.youtube.com/watch?v=fsY7809pZZc
   - https://music.apple.com/no/album/soaked-in-orange/6818956580?i=6818956752
   - https://soundcloud.com/bitbear/poc-soaked-in-orange
-  - https://amp.dascene.net/downmod.php?index=168744
+  - https://amp.dascene.net/module/168744
 album:
   slug: 3rd-floor
   position: 9

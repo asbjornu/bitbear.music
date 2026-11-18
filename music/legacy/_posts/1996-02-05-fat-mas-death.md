@@ -11,7 +11,7 @@ links:
   - https://demozoo.org/music/317751/
   - https://www.youtube.com/watch?v=u3N50SZ6Bdg
   - https://api.modarchive.org/downloads.php?moduleid=199583
-  - https://amp.dascene.net/downmod.php?index=159545
+  - https://amp.dascene.net/module/159545
 ---
 
 This horribly named [chiptune] produced in early February 1996 was my first

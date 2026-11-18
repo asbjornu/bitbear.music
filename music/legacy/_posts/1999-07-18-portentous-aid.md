@@ -16,7 +16,7 @@ links:
   - https://music.youtube.com/watch?v=-_JFBQJ8LwA
   - https://music.apple.com/no/album/portentous-aid/6818956580?i=6818956758
   - https://soundcloud.com/bitbear/poc-portentous-aid
-  - https://amp.dascene.net/downmod.php?index=168746
+  - https://amp.dascene.net/module/168746
 album:
   slug: 3rd-floor
   position: 13

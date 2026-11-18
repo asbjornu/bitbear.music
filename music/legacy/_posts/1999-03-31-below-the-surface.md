@@ -16,7 +16,7 @@ links:
   - https://music.youtube.com/watch?v=Qiz-Y2i_zlE
   - https://music.apple.com/no/album/below-the-surface/6818956580?i=6818956594
   - https://soundcloud.com/bitbear/poc-below-the-surface
-  - https://amp.dascene.net/downmod.php?index=168759
+  - https://amp.dascene.net/module/168759
 album:
   slug: 3rd-floor
   position: 3

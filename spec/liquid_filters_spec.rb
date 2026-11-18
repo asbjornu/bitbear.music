@@ -343,6 +343,23 @@ describe '#sort_by' do
     end
   end
 
+  describe '#link_page_url' do
+    it 'maps an AMP module download URL to its module page' do
+      expect(instance.link_page_url('https://amp.dascene.net/module/159591'))
+        .to eq('https://amp.dascene.net/modules?id=159591')
+    end
+
+    it 'maps a ModArchive download URL to its module page' do
+      expect(instance.link_page_url('https://api.modarchive.org/downloads.php?moduleid=199555'))
+        .to eq('https://modarchive.org/index.php?request=view_by_moduleid&query=199555')
+    end
+
+    it 'leaves a URL without a known page representation unchanged' do
+      expect(instance.link_page_url('https://soundcloud.com/bitbear/planeswalker'))
+        .to eq('https://soundcloud.com/bitbear/planeswalker')
+    end
+  end
+
   describe '#link_brand' do
     {
       'https://bitbearmusic.bandcamp.com/album/scene-so-far' => 'bandcamp',
@@ -362,7 +379,7 @@ describe '#sort_by' do
       'https://music.youtube.com/watch?v=W32kMNePN00' => 'youtube-music',
       'https://music.youtube.com/playlist?list=OLAK5uy_krxM1WvU5sTsCEq-czK01HRIGuE9s_yC0' => 'youtube-music',
       'https://api.modarchive.org/downloads.php?moduleid=199555' => 'modarchive',
-      'https://amp.dascene.net/downmod.php?index=159591' => 'amp',
+      'https://amp.dascene.net/module/159591' => 'amp',
       'https://scenestream.net/demovibes/song/43928/' => 'nectarine'
     }.each do |url, brand|
       it "classifies #{url} as #{brand}" do

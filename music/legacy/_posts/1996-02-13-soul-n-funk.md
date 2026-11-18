@@ -8,5 +8,5 @@ media:
   length: 1:09 (looped)
 links:
   - https://demozoo.org/music/315975/
-  - https://amp.dascene.net/downmod.php?index=159578
+  - https://amp.dascene.net/module/159578
 ---

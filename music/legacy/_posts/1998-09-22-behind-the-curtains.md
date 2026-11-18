@@ -14,7 +14,7 @@ links:
   - https://music.youtube.com/watch?v=x0nBJQB90Is
   - https://music.apple.com/no/album/behind-the-curtains/6818199005?i=6818199018
   - https://soundcloud.com/bitbear/poc-behind-the-curtains
-  - https://amp.dascene.net/downmod.php?index=168760
+  - https://amp.dascene.net/module/168760
   - https://open.spotify.com/track/6AdKEZtnWiDFCIzGZzrR3I
 album:
   slug: beyond-fantasy
