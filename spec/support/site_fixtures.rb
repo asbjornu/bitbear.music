@@ -17,6 +17,7 @@ module SiteFixtures
   end
 
   def front_matter(path)
-    YAML.safe_load(File.read(path).split(/^---\s*$/)[1], permitted_classes: [Date, Time, Symbol], aliases: true)
+    raw = File.binread(path).force_encoding(Encoding::UTF_8)
+    YAML.safe_load(raw.split(/^---\s*$/)[1], permitted_classes: [Date, Time, Symbol], aliases: true)
   end
 end

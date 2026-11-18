@@ -12,6 +12,11 @@ links:
   - https://www.youtube.com/watch?v=EhEYH32g_pw
   - https://api.modarchive.org/downloads.php?moduleid=199726
   - https://amp.dascene.net/module/168718
+sample_sources:
+  - source: fraggle-rock-theme
+    evidence: "Two exact hi-hat samples (`bassdr.openhihat`, `bassdr.closedhihat`)."
+  - source: st-xx
+    evidence: "The remaining instruments are ST-xx library sounds, including `ST-66:Pind1`."
 ---
 
 This horrible song is shamefully published for completeness and nothing else.

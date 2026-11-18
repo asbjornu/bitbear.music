@@ -12,6 +12,9 @@ links:
   - https://www.youtube.com/watch?v=TmzT199VCl4
   - https://api.modarchive.org/downloads.php?moduleid=199725
   - https://amp.dascene.net/module/168724
+sample_sources:
+  - source: void-r-mixed
+    evidence: "Exact matches for `Looped Lame Bass` and `BassDrum (Ripped) Ooops..`."
 ---
 
 I have no idea when I actually produced "First Techno Attempt" as the date on

@@ -430,6 +430,12 @@ section.footer footer a:hover {
         height: 1.1em;
     }
 
+    &.icon-msm {
+        @include mask-image(url('/assets/images/services/msm.svg'));
+        width: 1.36em;
+        height: 1.1em;
+    }
+
     &.icon-amp {
         @include mask-image(url('/assets/images/services/amp.svg'));
         width: 1em;
@@ -1098,6 +1104,13 @@ main {
             padding-right: 0;
         }
 
+        // Pico gives any [data-tooltip] element a dotted bottom border;
+        // table headers and cells should use the normal solid purple rule.
+        th[data-tooltip]:not([role="button"]),
+        td[data-tooltip]:not([role="button"]) {
+            border-bottom: var(--pico-border-width) solid var(--pico-table-border-color);
+        }
+
         .r {
             text-align: right;
         }
@@ -1108,13 +1121,6 @@ main {
             .kind {
                 width: 7em;
                 white-space: nowrap;
-            }
-
-            // Pico gives any [data-tooltip] element a dotted bottom border;
-            // on the Released header that reads as a stray underline, so
-            // restore the normal solid header rule instead.
-            thead th[data-tooltip] {
-                border-bottom: var(--pico-border-width) solid var(--pico-table-border-color);
             }
         }
     }
@@ -1632,6 +1638,44 @@ section.footer {
 
     section.footer footer {
         padding: 0;
+    }
+}
+
+.samples {
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: .35em;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    li {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .sample-arrow {
+        opacity: .6;
+        line-height: 1;
+        transform: translateY(-0.15em);
+    }
+
+    .sample-name {
+        font-size: .8em;
+    }
+
+    .icon {
+        margin: 0;
+        flex: none;
+    }
+
+    .icon-msm {
+        margin-right: .35em;
     }
 }
 

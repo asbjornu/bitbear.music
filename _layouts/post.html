@@ -49,6 +49,9 @@ layout: default
           {% if page.links %}
             {% include links.html %}
           {% endif %}
+          {% if page.sample_sources %}
+            {% include sample_sources.html sources=page.sample_sources %}
+          {% endif %}
           {% if soundcloud_link %}
             <tr>
               <th scope="row">Listen</th>

@@ -20,6 +20,9 @@ links:
 album:
   slug: 3rd-floor
   position: 14
+sample_sources:
+  - source: 2nd-reality
+    evidence: "Uses the `HiStrings.HiQual` sample name; binary match not confirmed."
 ---
 
 Created not long after a school trip to New York. Finding great instrument

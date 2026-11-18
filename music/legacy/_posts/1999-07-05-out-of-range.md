@@ -20,6 +20,9 @@ links:
 album:
   slug: 3rd-floor
   position: 7
+sample_sources:
+  - source: 2nd-reality
+    evidence: "Exact `BigPizzicato.2.Warm` sample and the `HiStrings.HiQual` name."
 ---
 
 An orchestral trance tune made after falling in love with a violin pluck

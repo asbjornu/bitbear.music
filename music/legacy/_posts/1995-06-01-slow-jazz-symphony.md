@@ -12,6 +12,13 @@ links:
   - https://www.youtube.com/watch?v=YaDVNchhDRE
   - https://api.modarchive.org/downloads.php?moduleid=199723
   - https://amp.dascene.net/module/168715
+sample_sources:
+  - source: anno-domini
+    evidence: "Exact `Mr. Piano` and `Mr. SoloViolin` samples; Anno Domini credits Marvel/FC as its own sample source."
+  - source: fraggle-rock-theme
+    evidence: "Exact open/closed hi-hat samples."
+  - source: st-xx
+    evidence: "The remaining instruments are ST-xx library sounds."
 ---
 
 While being neither jazz, nor a symphony, I'm quite content with some parts of

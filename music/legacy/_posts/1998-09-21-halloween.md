@@ -20,6 +20,9 @@ links:
 album:
   slug: beyond-fantasy
   position: 6
+sample_sources:
+  - source: 2nd-reality
+    evidence: "Exact `KettleDrum.5.Traditional`, `Mass Orchestra.Brass` and `BigPizzicato.2.Warm` samples."
 ---
 
 My second orchestral tune. Because of its harmonies, "Halloween" felt like

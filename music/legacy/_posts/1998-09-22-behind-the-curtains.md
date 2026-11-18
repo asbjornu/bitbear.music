@@ -19,6 +19,9 @@ links:
 album:
   slug: beyond-fantasy
   position: 10
+sample_sources:
+  - source: jmjay-tw-ic-samples
+    evidence: "JMJay drums, TW filtered leads and iC picks; the same set as Sweat, Blood and Tears."
 ---
 
 A trance tune built on a blippy lead, transitioning into a circus-inspired

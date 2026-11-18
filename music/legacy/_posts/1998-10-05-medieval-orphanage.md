@@ -19,6 +19,11 @@ links:
 album:
   slug: beyond-fantasy
   position: 16
+sample_sources:
+  - source: 2nd-reality
+    evidence: "Exact `KettleDrum.5.Traditional` and `BigPizzicato.2.Warm` samples."
+  - source: beam-med
+    evidence: "Four sample slots are named `BEAM-MED.XM`, pointing to another source module."
 ---
 
 My first attempt at creating something orchestral and cinematic. Since most

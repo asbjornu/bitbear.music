@@ -9,4 +9,7 @@ media:
 links:
   - https://demozoo.org/music/315975/
   - https://amp.dascene.net/module/159578
+sample_sources:
+  - source: soul-o-matic
+    evidence: "15 exact sample hashes; the module text says all samples were collected from this MOD."
 ---

@@ -21,6 +21,9 @@ links:
 album:
   slug: 3rd-floor
   position: 1
+sample_sources:
+  - source: keith303-samples
+    evidence: "Uses the `K303.trance.e-stm` sample."
 ---
 
 Inspired by a vocal "aaahh" sound running throughout the song. I found a

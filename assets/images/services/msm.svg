@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 500">
+  <defs>
+    <mask id="msm-stroke" maskUnits="userSpaceOnUse" x="0" y="0" width="620" height="500">
+      <rect width="620" height="500" fill="#000"/>
+      <g fill="#fff" stroke="#000" stroke-width="24" stroke-linejoin="round" stroke-linecap="round">
+        <path d="m23 16h240q23 0 37 24l10 15 10-15q14-24 35-24h243q8 0 8 8v452q0 8-8 8h-270q-18 0-18-18 0 18-18 18h-269q-8 0-8-8v-452q0-8 8-8z"/>
+        <path d="m310 55v61m-80 21c20 51 47 113 80 113s60-62 80-113m-80 113v216"/>
+      </g>
+    </mask>
+  </defs>
+  <rect width="620" height="500" fill="#fff" mask="url(#msm-stroke)"/>
+</svg>

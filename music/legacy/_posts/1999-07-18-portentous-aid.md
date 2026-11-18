@@ -20,6 +20,13 @@ links:
 album:
   slug: 3rd-floor
   position: 13
+sample_sources:
+  - source: 2nd-reality
+    evidence: "Uses the `HiStrings.HiQual` sample name; binary match not confirmed."
+  - source: keith303-samples
+    evidence: "Uses `K303.awex.sbass` and `K303.trance.e-stm`."
+  - source: jmjay-tw-ic-samples
+    evidence: "Uses an `iC#` bass sample."
 ---
 
 A stupidly named tune I'm rather pleased with. It's a trance tune with a

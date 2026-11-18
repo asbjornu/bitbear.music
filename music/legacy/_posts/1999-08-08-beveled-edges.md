@@ -20,6 +20,11 @@ links:
 album:
   slug: 3rd-floor
   position: 5
+sample_sources:
+  - source: jmjay-tw-ic-samples
+    evidence: "JMJay drum set."
+  - source: keith303-samples
+    evidence: "K303 bass sample."
 ---
 
 A simple trance tune built around a piano lead in the break, with a start
