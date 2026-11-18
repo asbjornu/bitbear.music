@@ -3,9 +3,10 @@ title: Walking (Part 2)
 tags: [rock, oldskool]
 media:
   cover: beyond-fantasy.jpg
-  filesize: 384000
+  filesize: 417085
   format: IT
   isrc: QZKDK2609692
+  module: poc_walking-part-2.it
 links:
   - https://demozoo.org/music/266779/
   - https://power-of-creation.bandcamp.com/track/walking-part-2

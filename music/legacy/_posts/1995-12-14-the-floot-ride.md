@@ -7,6 +7,7 @@ media:
   channels: 4
   format: MOD
   length: '1:21'
+  module: poc_the-floot-ride.mod
 links:
   - https://demozoo.org/music/315974/
   - https://www.youtube.com/watch?v=WfWNZNDsp_w

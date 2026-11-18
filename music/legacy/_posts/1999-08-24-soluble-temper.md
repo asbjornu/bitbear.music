@@ -3,9 +3,10 @@ title: Soluble Temper
 tags: [trance, oldskool]
 media:
   cover: 3rd-floor.jpg
-  filesize: 1392640
+  filesize: 1431943
   format: IT
   isrc: QZYB42548774
+  module: poc_soluble-temper.it
 links:
   - https://demozoo.org/music/266795/
   - https://power-of-creation.bandcamp.com/track/soluble-temper

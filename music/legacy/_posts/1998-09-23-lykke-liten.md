@@ -3,9 +3,10 @@ title: Lykke Liten!
 tags: [house, oldskool]
 media:
   cover: beyond-fantasy.jpg
-  filesize: 427008
+  filesize: 475934
   format: IT
   isrc: QZS652620702
+  module: poc_lykke-liten.it
 links:
   - https://demozoo.org/music/266786/
   - https://power-of-creation.bandcamp.com/track/lykke-liten

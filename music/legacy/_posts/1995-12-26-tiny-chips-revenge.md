@@ -7,6 +7,7 @@ media:
   format: S3M
   length: 1:25 (looped)
   cover: tiny-chips-revenge.jpg
+  module: poc_tiny-chips-revenge.s3m
 links:
   - https://demozoo.org/music/174672/
   - https://soundcloud.com/bitbear/tiny-chips-revenge

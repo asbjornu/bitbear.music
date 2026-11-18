@@ -3,9 +3,10 @@ title: Walking (Part 1)
 tags: [rock, oldskool]
 media:
   cover: beyond-fantasy.jpg
-  filesize: 384000
+  filesize: 417465
   format: IT
   isrc: QZMHM2641217
+  module: poc_walking-part-1.it
 links:
   - https://demozoo.org/music/266778/
   - https://power-of-creation.bandcamp.com/track/walking-part-1

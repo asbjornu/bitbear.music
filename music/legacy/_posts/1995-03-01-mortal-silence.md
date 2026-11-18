@@ -7,6 +7,7 @@ media:
   channels: 8
   format: S3M
   length: '01:36'
+  module: poc_mortal-silence.s3m
 links:
   - https://demozoo.org/music/318331/
   - https://www.youtube.com/watch?v=EhEYH32g_pw

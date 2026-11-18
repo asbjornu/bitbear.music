@@ -3,9 +3,10 @@ title: United in Power
 tags: [house, oldskool]
 media:
   cover: beyond-fantasy.jpg
-  filesize: 122880
+  filesize: 163707
   format: IT
   isrc: QZRPB2568554
+  module: poc_united-in-power.it
 links:
   - https://demozoo.org/music/266781/
   - https://power-of-creation.bandcamp.com/track/united-in-power

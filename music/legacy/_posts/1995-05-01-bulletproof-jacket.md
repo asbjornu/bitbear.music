@@ -7,6 +7,7 @@ media:
   channels: 8
   format: S3M
   length: '2:24'
+  module: poc_bulletproof-jacket.s3m
 links:
   - https://demozoo.org/music/266813/
   - https://www.youtube.com/watch?v=7AL5nFhvvWk

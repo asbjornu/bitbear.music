@@ -7,6 +7,7 @@ media:
   filesize: 55748
   format: MOD
   length: '1:25'
+  module: poc_cool-interpreter.mod
 links:
   - https://demozoo.org/music/266810/
   - https://www.youtube.com/watch?v=a7mRZm0wLTQ

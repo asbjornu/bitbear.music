@@ -3,9 +3,10 @@ title: Uncherrished Bitch
 tags: [acid, oldskool]
 media:
   cover: beyond-fantasy.jpg
-  filesize: 140288
+  filesize: 168772
   format: IT
   isrc: QZYB22528758
+  module: poc_uncherrished-bitch.it
 links:
   - https://demozoo.org/music/266776/
   - https://power-of-creation.bandcamp.com/track/uncherrished-bitch

@@ -3,9 +3,10 @@ title: Life'n'Death
 tags: [oldskool]
 media:
   cover: lifendeath.jpg
-  filesize: 89088
+  filesize: 173510
   channels: 8
   format: MOD
+  module: poc_lifendeath.mod
 links:
   - https://demozoo.org/music/266815/
   - https://amp.dascene.net/module/159521

@@ -3,9 +3,10 @@ title: Out of Range
 tags: [trance, oldskool]
 media:
   cover: 3rd-floor.jpg
-  filesize: 277504
+  filesize: 306455
   format: IT
   isrc: QZS652468315
+  module: poc_out-of-range.it
 links:
   - https://demozoo.org/music/266792/
   - https://power-of-creation.bandcamp.com/track/out-of-range

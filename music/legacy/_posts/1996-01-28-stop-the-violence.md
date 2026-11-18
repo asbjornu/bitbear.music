@@ -7,6 +7,7 @@ media:
   channels: 3
   format: S3M
   length: 0:54 (looped)
+  module: poc_stop-the-violence.s3m
 links:
   - https://demozoo.org/music/317113/
   - https://www.youtube.com/watch?v=FVsP3Ii7aaw

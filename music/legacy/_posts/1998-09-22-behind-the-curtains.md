@@ -3,9 +3,10 @@ title: Behind the Curtains
 tags: [trance, oldskool]
 media:
   cover: beyond-fantasy.jpg
-  filesize: 505856
+  filesize: 556369
   format: IT
   isrc: QZRPB2530933
+  module: poc_behind-the-curtains.it
 links:
   - https://demozoo.org/music/266777/
   - https://power-of-creation.bandcamp.com/track/behind-the-curtains

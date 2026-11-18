@@ -3,9 +3,10 @@ title: Life Without Love
 tags: [house, oldskool]
 media:
   cover: beyond-fantasy.jpg
-  filesize: 208896
+  filesize: 232698
   format: IT
   isrc: QZYB42544682
+  module: poc_life-without-love.it
 links:
   - https://demozoo.org/music/266770/
   - https://power-of-creation.bandcamp.com/track/life-without-love

@@ -3,9 +3,10 @@ title: Back in the Shire
 tags: [trance, oldskool]
 media:
   cover: beyond-fantasy.jpg
-  filesize: 240640
+  filesize: 300252
   format: IT
   isrc: QZT852585918
+  module: poc_back-in-the-shire.it
 links:
   - https://demozoo.org/music/266782/
   - https://power-of-creation.bandcamp.com/track/back-in-the-shire

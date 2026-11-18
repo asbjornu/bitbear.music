@@ -7,6 +7,7 @@ media:
   format: MOD
   channels: 4
   length: '1:35'
+  module: poc_bebob-renaissance.mod
 links:
   - https://demozoo.org/music/266811/
   - https://www.youtube.com/watch?v=wRvK1L1ghUk

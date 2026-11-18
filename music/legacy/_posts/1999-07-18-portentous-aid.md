@@ -3,9 +3,10 @@ title: Portentous Aid
 tags: [trance, oldskool]
 media:
   cover: 3rd-floor.jpg
-  filesize: 392192
+  filesize: 527553
   format: IT
   isrc: QZYB32524211
+  module: poc_portentous-aid.it
 links:
   - https://demozoo.org/music/266798/
   - https://power-of-creation.bandcamp.com/track/portentous-aid

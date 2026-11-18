@@ -7,6 +7,7 @@ media:
   channels: 4
   format: MOD
   length: '0:55'
+  module: poc_psyko-infarnation.mod
 links:
   - https://demozoo.org/music/315976/
   - https://www.youtube.com/watch?v=YDvSWJMCyhM

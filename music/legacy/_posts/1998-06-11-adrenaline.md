@@ -3,9 +3,10 @@ title: Adrenaline
 tags: [techno, oldskool]
 media:
   cover: beyond-fantasy.jpg
-  filesize: 210944
+  filesize: 264639
   format: IT
   isrc: QT6Y22559339
+  module: poc_adrenaline.it
 links:
   - https://demozoo.org/music/266769/
   - https://power-of-creation.bandcamp.com/track/adrenaline

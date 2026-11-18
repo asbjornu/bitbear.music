@@ -7,6 +7,7 @@ media:
   channels: 3
   format: MOD
   length: 0:37 (looped)
+  module: poc_cant-move-that-block.mod
 links:
   - https://demozoo.org/music/317401/
   - https://www.youtube.com/watch?v=DLzDOGB5iqk

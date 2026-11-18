@@ -2,9 +2,11 @@
 title: Open Your Heart
 tags: [pop, oldskool]
 media:
+  filesize: 658767
   cover: beyond-fantasy.jpg
   format: IT
   isrc: QZTH92518817
+  module: poc_open-your-heart.it
 links:
   - https://demozoo.org/music/266785/
   - https://power-of-creation.bandcamp.com/track/puma-open-your-heart

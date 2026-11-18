@@ -7,6 +7,7 @@ media:
   channels: 10
   format: S3M
   length: '3:18'
+  module: poc_slow-jazz-symphony.s3m
 links:
   - https://demozoo.org/music/318367/
   - https://www.youtube.com/watch?v=YaDVNchhDRE
