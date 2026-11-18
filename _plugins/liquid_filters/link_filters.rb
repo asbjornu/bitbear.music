@@ -3,11 +3,15 @@
 require 'uri'
 require 'yaml'
 
+require_relative 'text_filters'
+
 module Jekyll
   # Filters for working with `links` front matter entries: identifying which
   # brand/service a link belongs to, and deriving the right URL to show for
   # it in different contexts.
   module LinkFilters
+    include TextFilters
+
     LINK_BRAND_PATTERNS = {
       /bandcamp\.com/i => 'bandcamp',
       /soundcloud\.com/i => 'soundcloud',
@@ -97,8 +101,6 @@ module Jekyll
     # committed to the repo. Loaded lazily and memoized so builds stay offline
     # and deterministic; only the manual fetch task ever touches the network.
     LINK_TITLES_PATH = File.expand_path('_data/link_titles.yml', Dir.pwd)
-    LEFT_DOUBLE_QUOTE = "\u201C"
-    RIGHT_DOUBLE_QUOTE = "\u201D"
 
     def link_titles
       return @link_titles if defined?(@link_titles_loaded) && @link_titles_loaded
@@ -121,7 +123,7 @@ module Jekyll
       if cached.to_s.strip.empty?
         link_host(input)
       else
-        "#{LEFT_DOUBLE_QUOTE}#{cached.strip}#{RIGHT_DOUBLE_QUOTE} at #{link_host(input)}"
+        "#{smart_quotes(cached.strip)} at #{link_host(input)}"
       end
     end
 
