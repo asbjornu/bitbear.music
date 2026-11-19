@@ -17,6 +17,10 @@
     <meta name="noairobots" content="noai, noimageai">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
     <link rel="alternate" type="application/atom+xml" title="Atom feed" href="/feed.xml">
+    {%- assign page_soundcloud = page.links | link_by_brand: 'soundcloud' -%}
+    {%- if page_soundcloud %}
+      <link rel="preconnect" href="https://w.soundcloud.com">
+    {%- endif %}
     <link rel="stylesheet" href="{{ '/assets/scss/bitbear.css' | relative_url }}">
     <script>
       // Apply the view-transition direction as early as possible (during parse,

@@ -1516,6 +1516,10 @@ main {
             height: 100%;
             border: 0;
             background-color: #000;
+
+            &.is-preload {
+                visibility: hidden;
+            }
         }
 
         &.is-playing {

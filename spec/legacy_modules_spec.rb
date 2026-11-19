@@ -124,9 +124,12 @@ describe 'legacy tracker modules' do
           expect(page).to include(%(data-soundcloud="#{CGI.escapeHTML(soundcloud_url(data))}"))
           expect(page).to include('data-default="soundcloud"')
           expect(page).to include('data-source="soundcloud" aria-pressed="true"')
+          # The embed itself is created (and preloaded) by cover.js.
           expect(page).not_to include('w.soundcloud.com/player')
+          expect(page).to include('<link rel="preconnect" href="https://w.soundcloud.com">')
         else
           expect(page).not_to include('data-soundcloud=')
+          expect(page).not_to include('w.soundcloud.com')
         end
 
         if youtube?(data)
