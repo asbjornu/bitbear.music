@@ -1342,38 +1342,6 @@ main {
         }
     }
 
-    .module-player {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: .5em;
-
-        &__toggle {
-            width: auto;
-            margin: 0;
-            padding: .25em .75em;
-            font-size: .8rem;
-            line-height: 1.5;
-        }
-
-        &__seek {
-            flex: 1 1 6em;
-            min-width: 4em;
-            margin: 0;
-        }
-
-        &__time {
-            font-size: .8rem;
-            font-variant-numeric: tabular-nums;
-            white-space: nowrap;
-        }
-
-        &__status {
-            font-size: .8rem;
-            color: var(--pico-muted-color);
-        }
-    }
-
     .contents {
         overflow-wrap: anywhere;
 
@@ -1505,6 +1473,26 @@ main {
                 float: none;
                 margin: 0;
             }
+
+            .cover-sources {
+                display: flex;
+                flex: 0 0 auto;
+                flex-wrap: wrap;
+                gap: .35em;
+
+                button {
+                    width: auto;
+                    margin: 0;
+                    padding: .15em .6em;
+                    font-size: .7rem;
+                    line-height: 1.6;
+                }
+
+                button[aria-pressed="true"] {
+                    background-color: var(--pico-primary-background);
+                    color: var(--pico-primary-inverse);
+                }
+            }
         }
     }
 
@@ -1540,6 +1528,10 @@ main {
             }
         }
 
+        &.is-visualising img {
+            filter: brightness(.55) saturate(.85);
+        }
+
         #cover-play {
             position: absolute;
             top: 50%;
@@ -1547,6 +1539,8 @@ main {
             transform: translate(-50%, -50%);
             width: 6rem;
             height: 6rem;
+            padding: 0;
+            border: 0;
             border-radius: 50%;
             background-color: rgba(#000, .75);
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M5 5v14l14-7z'/%3E%3C/svg%3E");
@@ -1561,6 +1555,71 @@ main {
                 background-color: variables.$bg-color-light;
             }
         }
+    }
+}
+
+.cover-audio {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    pointer-events: none;
+
+    &__canvas {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__controls {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: .5em;
+        margin: .75em;
+        padding: .5em .75em;
+        border-radius: 10px;
+        background-color: rgba(#000, .65);
+        pointer-events: auto;
+    }
+
+    &__toggle {
+        width: auto;
+        margin: 0;
+        padding: .25em .75em;
+        font-size: .8rem;
+        line-height: 1.5;
+    }
+
+    &__seek {
+        flex: 1 1 6em;
+        min-width: 4em;
+        margin: 0;
+    }
+
+    &__time {
+        font-size: .8rem;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+    }
+
+    &.is-failed .cover-audio__time {
+        color: var(--pico-del-color);
+    }
+}
+
+.inline-audio {
+    position: relative;
+    min-height: 6rem;
+    margin-top: .5em;
+
+    &__play {
+        width: auto;
+        margin: 0;
     }
 }
 

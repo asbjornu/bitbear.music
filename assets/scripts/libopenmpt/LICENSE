@@ -1,17 +1,17 @@
 Third-party JavaScript in this directory
 ========================================
 
-These files are vendored unmodified from Demozoo's player frontend:
-
-  https://github.com/demozoo/demozoo/tree/main/productions/static/productions/js/cowbell
-
-  cowbell.min.js   Cowbell, the player and UI framework
-  openmpt.min.js   Cowbell's libopenmpt backend adapter
   libopenmpt.js    libopenmpt compiled to JavaScript + WebAssembly (Emscripten)
   libopenmpt.wasm  the same, as a WebAssembly binary
 
-Cowbell is used by Demozoo to play tracker modules in the browser; this site
-only adds its own controls (assets/scripts/module-player.js).
+These are the unmodified build that Demozoo ships for its Cowbell player:
+
+  https://github.com/demozoo/demozoo/tree/main/productions/static/productions/js/cowbell
+
+They are driven here by assets/scripts/cover-audio.js, which renders the
+module to an AnalyserNode so the cover art can carry a spectrum visualiser.
+The Cowbell player and adapter themselves (cowbell.min.js, openmpt.min.js)
+are not vendored.
 
 
 Cowbell

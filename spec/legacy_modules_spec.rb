@@ -88,33 +88,57 @@ describe 'legacy tracker modules' do
     Array(data['links']).any? { |link| link.to_s.match?(/soundcloud\.com/i) }
   end
 
-  it 'plays SoundCloud when a track has it, and the module player otherwise' do
-    soundcloud = 0
-    modules = 0
+  def soundcloud_url(data)
+    Array(data['links']).find { |link| link.to_s.match?(/soundcloud\.com/i) }.to_s
+  end
 
+  def youtube?(data)
+    Array(data['links']).any? do |link|
+      url = link.to_s
+      url.match?(/youtube\.com|youtu\.be/i) && !url.match?(/music\.youtube\.com/i)
+    end
+  end
+
+  it 'puts the available sources behind the play button on the cover art' do
     track_posts.each do |file, data|
       slug = file.sub(/\A\d{4}-\d{2}-\d{2}-/, '').sub(/\.md\z/, '')
       page = read_utf8(File.join(source_root, '_site', 'music', 'legacy', "#{slug}.html"))
 
+      # The play button replaces the old inline players.
+      expect(page).not_to include('class="module-player"')
+      expect(page).not_to include(%(src="/assets/scripts/module-player.js"))
+
       # libopenmpt must never be loaded eagerly — only when play is pressed.
       expect(page).not_to include('libopenmpt.js')
 
-      if soundcloud?(data)
-        soundcloud += 1
-        expect(page).to include('w.soundcloud.com/player')
-        expect(page).not_to include('class="module-player"')
-        expect(page).not_to include(%(src="/assets/scripts/module-player.js"))
+      # The tracker module is always an option, and the player script is
+      # loaded up front so the click can open an AudioContext.
+      expect(page).to include(%(data-module="/assets/modules/#{data.dig('media', 'module')}"))
+      expect(page).to include(%(src="/assets/scripts/cover-audio.js"))
+
+      if page.include?('<dialog id="cover-art">')
+        expect(page).to include('id="cover-play"')
+        expect(page).not_to include('>Listen<')
+
+        if soundcloud?(data)
+          expect(page).to include(%(data-soundcloud="#{CGI.escapeHTML(soundcloud_url(data))}"))
+          expect(page).to include('data-default="soundcloud"')
+          expect(page).to include('data-source="soundcloud" aria-pressed="true"')
+          expect(page).not_to include('w.soundcloud.com/player')
+        else
+          expect(page).not_to include('data-soundcloud=')
+        end
+
+        if youtube?(data)
+          expect(page).to include('data-source="video"')
+        else
+          expect(page).not_to include('data-video=')
+        end
       else
-        modules += 1
-        expect(page).to include('class="module-player"')
-        expect(page).to include(%(data-module="/assets/modules/#{data.dig('media', 'module')}"))
-        expect(page).to include(%(data-title="#{CGI.escapeHTML(data['title'])}"))
-        expect(page).to include(%(src="/assets/scripts/module-player.js"))
-        expect(page).not_to include('w.soundcloud.com/player')
+        # No cover art to hang the player on (see cover_art_generator.rb).
+        expect(page).to include('class="inline-audio"')
+        expect(page).not_to include('id="cover-play"')
       end
     end
-
-    expect(soundcloud).to be > 0
-    expect(modules).to be > 0
   end
 end

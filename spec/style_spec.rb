@@ -52,8 +52,8 @@ describe 'Pico CSS integration' do
     end
 
     it 'lays the tracker module player controls out on one line' do
-      expect(css).to include('.module-player{display:flex;flex-wrap:wrap;align-items:center;gap:.5em}')
-      expect(css).to include('.module-player__seek{flex:1 1 6em;min-width:4em;margin:0}')
+      expect(css).to include('.cover-audio{position:absolute;inset:0;display:flex')
+      expect(css).to include('.cover-audio__seek{flex:1 1 6em;min-width:4em;margin:0}')
     end
 
     it 'keeps the iterator buttons equally spaced with no outer margins' do
