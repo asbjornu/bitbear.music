@@ -1533,7 +1533,7 @@ main {
         }
 
         &.is-visualising img {
-            filter: brightness(.55) saturate(.85);
+            filter: brightness(.3) saturate(.65);
         }
 
         // Keep the pattern readable behind the central pause button.
@@ -1651,40 +1651,73 @@ main {
     flex-direction: column;
     min-height: 0;
     margin: .75em .75em 0;
-    padding: .35em .5em;
+    padding: .35em .5em .3em;
     overflow: hidden;
     border-radius: 10px;
-    background-color: rgba(#000, .72);
+    background-color: rgba(#000, .82);
     color: #d9d2ff;
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: .55rem;
-    line-height: 1.25;
+    font-size: var(--pattern-font, .55rem);
+    line-height: 1.35;
     white-space: pre;
 
     &__meta {
-        margin-bottom: .2em;
+        margin-bottom: .25em;
         color: rgba(#fff, .5);
-        font-size: .85em;
+        font-size: max(9px, .8em);
         letter-spacing: .04em;
         text-transform: uppercase;
     }
 
+    &__channels {
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: .2em;
+        border-bottom: 1px solid rgba(#fff, .12);
+        overflow: hidden;
+    }
+
+    &__num {
+        flex: 0 0 3ch;
+        color: rgba(#fff, .35);
+    }
+
+    &__channel {
+        flex: 1 1 0;
+        min-width: 0;
+        overflow: hidden;
+        font-size: max(8px, .8em);
+        font-weight: 600;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
     &__viewport {
         position: relative;
+        display: flex;
         flex: 1 1 auto;
+        flex-direction: column;
+        justify-content: center;
         min-height: 0;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scrollbar-width: none;
+        overflow: hidden;
+    }
 
-        &::-webkit-scrollbar {
-            display: none;
+    &__row {
+        display: flex;
+        align-items: baseline;
+        white-space: pre;
+
+        &.is-current {
+            background-color: rgba(157, 123, 255, .22);
+            box-shadow: inset 0 0 0 1px rgba(157, 123, 255, .35);
         }
     }
 
-    &__row.is-current {
-        background-color: rgba(157, 123, 255, .45);
-        color: #fff;
+    &__cell {
+        flex: 1 1 0;
+        min-width: 0;
+        overflow: hidden;
+        white-space: pre;
     }
 }
 

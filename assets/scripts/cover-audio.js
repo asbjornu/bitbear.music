@@ -2,18 +2,47 @@
     'use strict';
 
     // Plays a tracker module over the cover art in the #cover-art dialog,
-    // using libopenmpt (the engine behind Demozoo's Cowbell player) driven by
-    // a Web Audio graph with an AnalyserNode, so the artwork can carry a
-    // spectrum visualiser. Neither libopenmpt nor the module loads until the
-    // visitor presses play.
+    // using libopenmpt (the engine behind Demozoo's Cowbell player). The
+    // artwork carries a ProTracker-style view: one colour-coded column per
+    // channel, a static window of pattern rows that follows playback, the
+    // sample/instrument currently loaded on each channel, and a meter per
+    // channel along the bottom. Nothing loads until the visitor presses play.
 
     var script = document.currentScript;
     var base = script && script.src ? script.src.replace(/[^/]*$/, '') : '/assets/scripts/';
 
+    // One colour per channel, cycling for modules with more channels than this.
+    var PALETTE = [
+        '#a78bfa', '#38bdf8', '#f472b6', '#fbbf24', '#34d399', '#fb7185',
+        '#c084fc', '#4ade80', '#fdba74', '#93c5fd', '#f9a8d4', '#a3e635'
+    ];
+
     var context = null;
     var libPromise = null;
     var session = null;
-    var decoder = new TextDecoder('utf-8');
+    var utf8 = new TextDecoder('utf-8');
+    var latin1 = new TextDecoder('windows-1252');
+
+    function readString(lib, pointer) {
+        var heap = lib.HEAPU8;
+        var end = pointer;
+        var bytes;
+        var text;
+
+        if (!pointer) {
+            return '';
+        }
+
+        while (heap[end] !== 0) {
+            end += 1;
+        }
+
+        bytes = heap.subarray(pointer, end);
+        text = utf8.decode(bytes);
+
+        // Old modules label samples in Latin-1, not UTF-8.
+        return text.indexOf('\uFFFD') === -1 ? text : latin1.decode(bytes);
+    }
 
     function audioContext() {
         var AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -55,21 +84,6 @@
         return libPromise;
     }
 
-    function readString(lib, pointer) {
-        var heap = lib.HEAPU8;
-        var end = pointer;
-
-        if (!pointer) {
-            return '';
-        }
-
-        while (heap[end] !== 0) {
-            end += 1;
-        }
-
-        return decoder.decode(heap.subarray(pointer, end));
-    }
-
     function clock(seconds) {
         var total = Math.floor(seconds || 0);
         var minutes = Math.floor(total / 60);
@@ -87,6 +101,7 @@
         var time = document.createElement('span');
         var pattern = null;
         var meta = null;
+        var channels = null;
         var viewport = null;
         var rows = null;
 
@@ -97,16 +112,19 @@
         if (withPattern) {
             pattern = document.createElement('div');
             meta = document.createElement('div');
+            channels = document.createElement('div');
             viewport = document.createElement('div');
             rows = document.createElement('div');
             pattern.className = 'cover-pattern';
             meta.className = 'cover-pattern__meta';
+            channels.className = 'cover-pattern__channels';
             viewport.className = 'cover-pattern__viewport';
             rows.className = 'cover-pattern__rows';
-            // It is a visualisation of the module, not readable content.
+            // A visualisation of the module, not readable content.
             pattern.setAttribute('aria-hidden', 'true');
             viewport.appendChild(rows);
             pattern.appendChild(meta);
+            pattern.appendChild(channels);
             pattern.appendChild(viewport);
             root.appendChild(pattern);
         }
@@ -143,6 +161,7 @@
             time: time,
             pattern: pattern,
             meta: meta,
+            channels: channels,
             viewport: viewport,
             rows: rows
         };
@@ -160,10 +179,6 @@
             current.processor.onaudioprocess = null;
         }
 
-        if (current.analyser) {
-            current.analyser.disconnect();
-        }
-
         if (current.lib) {
             if (current.module) {
                 current.lib._openmpt_module_destroy(current.module);
@@ -174,7 +189,6 @@
         }
 
         current.processor = null;
-        current.analyser = null;
         current.module = null;
     }
 
@@ -204,23 +218,16 @@
             ctx: audioContext(),
             ui: build(media, title, media.id === 'cover-media'),
             patterns: {},
+            names: {},
+            labels: [],
+            lastInstrument: [],
             patternIndex: -1,
             rowIndex: -1,
-            rowEls: [],
-            rowHeight: 0,
             metaText: '',
-            lib: null,
-            module: null,
-            processor: null,
-            analyser: null,
-            left: 0,
-            right: 0,
-            duration: 0,
-            playing: false,
-            failed: false,
-            frame: 0,
-            data: null,
-            render: null
+            bars: [],
+            fontSize: 0,
+            windowRows: 0,
+            centre: 0
         };
 
         session = current;
@@ -230,7 +237,7 @@
         current.ui.toggle.setAttribute('aria-label', 'Loading \u201c' + title + '\u201d');
         current.ui.toggle.addEventListener('click', function () {
             if (current.failed) {
-                play(media, url);
+                play(media, url, onChange);
             } else if (current.playing) {
                 pause(current);
             } else {
@@ -287,15 +294,15 @@
         var ui = current.ui;
         var module = current.module;
         var processor = ctx.createScriptProcessor(4096, 0, 2);
-        var analyser = ctx.createAnalyser();
-
-        analyser.fftSize = 2048;
-        analyser.smoothingTimeConstant = 0.75;
 
         current.duration = lib._openmpt_module_get_duration_seconds(module);
-        current.analyser = analyser;
+        current.channels = lib._openmpt_module_get_num_channels(module);
         current.processor = processor;
-        current.data = new Uint8Array(analyser.frequencyBinCount);
+
+        if (!ui.pattern) {
+            // The inline player has no pattern columns to align to.
+            measureMeters(current);
+        }
         current.left = lib._malloc(16384);
         current.right = lib._malloc(16384);
 
@@ -324,8 +331,6 @@
             }
         };
 
-        analyser.connect(ctx.destination);
-
         ui.seek.disabled = false;
         ui.seek.addEventListener('input', function () {
             ui.time.textContent = clock((ui.seek.value / 1000) * current.duration) +
@@ -335,12 +340,10 @@
             lib._openmpt_module_set_position_seconds(module, (ui.seek.value / 1000) * current.duration);
         });
 
-        current.channels = lib._openmpt_module_get_num_channels(module);
-
         current.render = function () {
             var position = lib._openmpt_module_get_position_seconds(module);
 
-            draw(current);
+            drawMeters(current);
             ui.time.textContent = clock(position) + ' / ' + clock(current.duration);
             ui.seek.value = String(Math.round((position / current.duration) * 1000));
 
@@ -357,21 +360,27 @@
         resume(current);
     }
 
-    // Formats every cell of a pattern once, so scrolling the tracker view is
-    // just DOM work. Strings come back from the wasm heap and must be freed.
-    function formatPattern(current, pattern, columns) {
+    // ---- pattern view ----------------------------------------------------
+
+    // Formats every cell of a pattern once; strings come from the wasm heap
+    // and must be freed.
+    function patternData(current, pattern) {
         var lib = current.lib;
         var module = current.module;
         var rows = lib._openmpt_module_get_pattern_num_rows(module, pattern);
-        var data = { columns: columns, rows: [] };
+        var data = { rows: [] };
         var row;
         var channel;
         var pointer;
 
+        if (current.patterns[pattern]) {
+            return current.patterns[pattern];
+        }
+
         for (row = 0; row < rows; row += 1) {
             var cells = [];
 
-            for (channel = 0; channel < columns; channel += 1) {
+            for (channel = 0; channel < current.channels; channel += 1) {
                 pointer = lib._openmpt_module_format_pattern_row_channel(module, pattern, row, channel, 0, 1);
                 cells.push(readString(lib, pointer));
 
@@ -383,70 +392,193 @@
             data.rows.push(cells);
         }
 
+        current.patterns[pattern] = data;
+
         return data;
     }
 
-    function charWidth(current) {
-        var probe;
-        var width;
+    function instrumentName(current, number) {
+        var lib = current.lib;
+        var pointer;
+        var name = '';
 
-        if (current.charWidth) {
-            return current.charWidth;
+        if (current.names[number] !== undefined) {
+            return current.names[number];
         }
 
-        probe = document.createElement('span');
-        probe.textContent = 'MMMMMMMMMM';
-        probe.style.position = 'absolute';
-        probe.style.visibility = 'hidden';
-        probe.style.whiteSpace = 'pre';
-        current.ui.viewport.appendChild(probe);
-        width = probe.getBoundingClientRect().width / 10;
-        current.ui.viewport.removeChild(probe);
-        current.charWidth = width || 5;
+        if (lib._openmpt_module_get_instrument_name) {
+            pointer = lib._openmpt_module_get_instrument_name(current.module, number - 1);
+            name = readString(lib, pointer);
 
-        return current.charWidth;
-    }
-
-    function columnCount(current) {
-        var viewport = current.ui.viewport;
-        var width = viewport ? viewport.clientWidth : 0;
-        var columns;
-
-        if (!width) {
-            return Math.min(current.channels, 8);
+            if (pointer) {
+                lib._openmpt_free_string(pointer);
+            }
         }
 
-        // One column is libopenmpt's 13-character cell plus a separating space.
-        columns = Math.floor((width - 24) / (14 * charWidth(current)));
+        if (!name && lib._openmpt_module_get_sample_name) {
+            pointer = lib._openmpt_module_get_sample_name(current.module, number - 1);
+            name = readString(lib, pointer);
 
-        return Math.max(2, Math.min(current.channels, columns));
+            if (pointer) {
+                lib._openmpt_free_string(pointer);
+            }
+        }
+
+        current.names[number] = name.replace(/\s+/g, ' ').trim();
+
+        return current.names[number];
     }
 
-    function renderPattern(current, pattern) {
-        var columns = columnCount(current);
-        var key = pattern + ':' + columns;
-        var data = current.patterns[key] || formatPattern(current, pattern, columns);
-        var fragment = document.createDocumentFragment();
-        var rows = current.ui.rows;
+    // Shrink the font until every channel column fits the modal width.
+    function fitFont(current, columns) {
+        var width = current.ui.viewport.clientWidth || 0;
+        var size = width ? ((width - 24) / columns) / 8.5 : 9;
 
-        current.patterns[key] = data;
+        size = Math.max(5, Math.min(16, size));
+        current.fontSize = size;
+        current.ui.pattern.style.setProperty('--pattern-font', size + 'px');
+    }
+
+    function windowRows(current, patternRows) {
+        var height = current.ui.viewport.clientHeight || 0;
+        var count = Math.min(patternRows, Math.floor(height / ((current.fontSize || 9) * 1.35)));
+
+        if (count % 2 === 0) {
+            count -= 1;
+        }
+
+        return Math.max(5, count);
+    }
+
+    function renderPattern(current, pattern, row) {
+        var ui = current.ui;
+        var columns = current.channels;
+        var index;
+        var channel;
+        var line;
+        var cells;
+
+        var data = patternData(current, pattern);
+
         current.patternIndex = pattern;
+        fitFont(current, columns);
+        current.windowRows = windowRows(current, data.rows.length);
+        current.centre = Math.floor(current.windowRows / 2);
         current.rowIndex = -1;
-        current.rowEls = [];
-        rows.textContent = '';
-        rows.style.transform = 'translateY(0)';
 
-        data.rows.forEach(function (cells, row) {
-            var element = document.createElement('div');
+        ui.channels.textContent = '';
+        ui.channels.appendChild(gutter());
+        for (channel = 0; channel < columns; channel += 1) {
+            cells = document.createElement('span');
+            cells.className = 'cover-pattern__channel';
+            cells.style.color = PALETTE[channel % PALETTE.length];
+            cells.textContent = current.labels[channel] || '';
+            ui.channels.appendChild(cells);
+        }
 
-            element.className = 'cover-pattern__row';
-            element.textContent = (row < 10 ? '0' : '') + row + ' ' + cells.join(' ');
-            fragment.appendChild(element);
-            current.rowEls.push(element);
-        });
+        ui.rows.textContent = '';
+        current.cells = [];
+        current.currentEl = null;
+        for (index = 0; index < current.windowRows; index += 1) {
+            line = document.createElement('div');
+            line.className = 'cover-pattern__row';
+            line.appendChild(gutter());
+            cells = [];
+            for (channel = 0; channel < columns; channel += 1) {
+                var cell = document.createElement('span');
+                cell.className = 'cover-pattern__cell';
+                cell.style.color = PALETTE[channel % PALETTE.length];
+                line.appendChild(cell);
+                cells.push(cell);
+            }
 
-        rows.appendChild(fragment);
-        current.rowHeight = current.rowEls.length ? current.rowEls[0].offsetHeight : 0;
+            ui.rows.appendChild(line);
+            current.cells.push({
+                element: line,
+                number: line.firstChild,
+                cells: cells
+            });
+        }
+
+        fillWindow(current, row);
+        measureMeters(current);
+    }
+
+    function gutter() {
+        var element = document.createElement('span');
+
+        element.className = 'cover-pattern__num';
+
+        return element;
+    }
+
+    function fillWindow(current, row) {
+        var data = current.patterns[current.patternIndex];
+        var start = Math.max(0, Math.min(row - current.centre, data.rows.length - current.windowRows));
+        var index;
+        var channel;
+        var patternRow;
+        var line;
+
+        for (index = 0; index < current.windowRows; index += 1) {
+            patternRow = start + index;
+            line = current.cells[index];
+            line.number.textContent = patternRow >= data.rows.length ? '' : (patternRow < 10 ? '0' : '') + patternRow;
+
+            for (channel = 0; channel < current.channels; channel += 1) {
+                line.cells[channel].textContent = data.rows[patternRow] ?
+                    data.rows[patternRow][channel] : '';
+            }
+        }
+
+        if (current.currentEl) {
+            current.currentEl.classList.remove('is-current');
+        }
+
+        line = current.cells[row - start];
+        current.currentEl = line ? line.element : null;
+
+        if (current.currentEl) {
+            current.currentEl.classList.add('is-current');
+        }
+
+        updateLabels(current, row);
+    }
+
+    // Sample/instrument names stick until the channel starts something new.
+    function updateLabels(current, row) {
+        var line = current.patterns[current.patternIndex].rows[row];
+        var channel;
+        var cell;
+        var note;
+        var instrument;
+        var name;
+
+        if (!line) {
+            return;
+        }
+
+        for (channel = 0; channel < current.channels; channel += 1) {
+            cell = line[channel] || '';
+            note = cell.slice(0, 3);
+            instrument = cell.slice(4, 6);
+
+            if (note === '...' || note === '' || !/^\d\d$/.test(instrument)) {
+                continue;
+            }
+
+            name = instrumentName(current, parseInt(instrument, 10));
+
+            if (!name) {
+                continue;
+            }
+
+            current.labels[channel] = name;
+
+            if (current.ui.channels.children[channel + 1]) {
+                current.ui.channels.children[channel + 1].textContent = name;
+            }
+        }
     }
 
     function updatePattern(current) {
@@ -457,41 +589,109 @@
         var order = lib._openmpt_module_get_current_order(module);
         var bpm = Math.round(lib._openmpt_module_get_current_estimated_bpm(module));
         var meta = 'ord ' + (order + 1) + ' \u00b7 pat ' + (pattern + 1) + ' \u00b7 ' + bpm + ' bpm';
-        var previous = current.rowEls[current.rowIndex];
-        var visible;
-        var offset;
 
         if (pattern !== current.patternIndex) {
-            renderPattern(current, pattern);
-            previous = null;
+            renderPattern(current, pattern, row);
+        } else if (row !== current.rowIndex) {
+            fillWindow(current, row);
         }
 
-        if (row !== current.rowIndex) {
-            if (previous) {
-                previous.classList.remove('is-current');
-            }
-
-            if (current.rowEls[row]) {
-                current.rowEls[row].classList.add('is-current');
-            }
-
-            current.rowIndex = row;
-
-            if (current.rowHeight && current.ui.viewport) {
-                visible = Math.max(1, Math.floor(current.ui.viewport.clientHeight / current.rowHeight));
-                offset = Math.min(
-                    Math.max(0, row - Math.floor(visible / 2)),
-                    Math.max(0, current.rowEls.length - visible)
-                );
-                current.ui.rows.style.transform = 'translateY(-' + (offset * current.rowHeight) + 'px)';
-            }
-        }
+        current.rowIndex = row;
 
         if (meta !== current.metaText) {
             current.metaText = meta;
             current.ui.meta.textContent = meta;
         }
     }
+
+    // ---- per-channel meters ---------------------------------------------
+
+    function measureMeters(current) {
+        var rect = current.ui.canvas.getBoundingClientRect();
+        var headers = current.ui.channels ?
+            current.ui.channels.querySelectorAll('.cover-pattern__channel') : [];
+        var width = current.ui.canvas.clientWidth;
+        var index;
+
+        if (!rect.width) {
+            current.bars = [];
+            return;
+        }
+
+        if (headers.length) {
+            current.bars = Array.prototype.map.call(headers, function (element) {
+                var box = element.getBoundingClientRect();
+
+                return { x: box.left - rect.left, width: box.width };
+            });
+
+            return;
+        }
+
+        // No pattern view (inline player): spread the meters over the canvas.
+        current.bars = [];
+        for (index = 0; index < current.channels; index += 1) {
+            current.bars.push({
+                x: (width / current.channels) * index,
+                width: width / current.channels
+            });
+        }
+    }
+
+    function drawMeters(current) {
+        var canvas = current.ui.canvas;
+        var width = canvas.clientWidth;
+        var height = canvas.clientHeight;
+        var ratio = window.devicePixelRatio || 1;
+        var context2d = canvas.getContext('2d');
+        var index;
+        var bar;
+        var barWidth;
+        var level;
+
+        if (!width || !height || !context2d || !current.module) {
+            return;
+        }
+
+        if (!current.bars.length) {
+            measureMeters(current);
+        }
+
+        if (canvas.width !== Math.round(width * ratio) || canvas.height !== Math.round(height * ratio)) {
+            canvas.width = Math.round(width * ratio);
+            canvas.height = Math.round(height * ratio);
+        }
+
+        context2d.setTransform(ratio, 0, 0, ratio, 0, 0);
+        context2d.clearRect(0, 0, width, height);
+
+        for (index = 0; index < current.bars.length && index < current.channels; index += 1) {
+            bar = current.bars[index];
+            level = Math.max(
+                current.lib._openmpt_module_get_current_channel_vu_left(current.module, index),
+                current.lib._openmpt_module_get_current_channel_vu_right(current.module, index)
+            );
+            level = Math.min(1, Math.max(0, level));
+
+            if (level < 0.005) {
+                continue;
+            }
+
+            context2d.fillStyle = PALETTE[index % PALETTE.length];
+            context2d.globalAlpha = 0.9;
+            barWidth = Math.min(bar.width * 0.7, 24);
+            context2d.fillRect(
+                bar.x + (bar.width - barWidth) / 2,
+                height - level * height,
+                barWidth,
+                level * height
+            );
+        }
+
+        context2d.globalAlpha = 1;
+    }
+
+    // ---- transport -------------------------------------------------------
 
     function pause(current) {
         if (!current.playing) {
@@ -513,7 +713,7 @@
         }
 
         current.playing = true;
-        current.processor.connect(current.analyser);
+        current.processor.connect(current.ctx.destination);
         current.ui.toggle.textContent = 'Pause';
         current.ui.toggle.setAttribute('aria-label', 'Pause \u201c' + current.title + '\u201d');
         loop(current);
@@ -533,7 +733,7 @@
         current.ui.toggle.setAttribute('aria-label', 'Play \u201c' + current.title + '\u201d');
         current.ui.seek.value = 0;
         current.ui.time.textContent = clock(0) + ' / ' + clock(current.duration);
-        draw(current);
+        drawMeters(current);
         notify(current);
     }
 
@@ -546,57 +746,6 @@
             current.render();
             loop(current);
         });
-    }
-
-    function draw(current) {
-        var canvas = current.ui.canvas;
-        var width = canvas.clientWidth;
-        var height = canvas.clientHeight;
-        var ratio = window.devicePixelRatio || 1;
-        var context2d = canvas.getContext('2d');
-        var bars = 48;
-        var step;
-        var index;
-        var bar;
-        var value;
-        var gradient;
-
-        if (!width || !height || !context2d) {
-            return;
-        }
-
-        if (canvas.width !== Math.round(width * ratio)) {
-            canvas.width = Math.round(width * ratio);
-            canvas.height = Math.round(height * ratio);
-        }
-
-        context2d.setTransform(ratio, 0, 0, ratio, 0, 0);
-        context2d.clearRect(0, 0, width, height);
-
-        if (!current.analyser) {
-            return;
-        }
-
-        current.analyser.getByteFrequencyData(current.data);
-        step = current.data.length;
-
-        gradient = context2d.createLinearGradient(0, height, 0, height * 0.25);
-        gradient.addColorStop(0, 'rgba(157, 123, 255, .35)');
-        gradient.addColorStop(1, 'rgba(255, 255, 255, .9)');
-        context2d.fillStyle = gradient;
-
-        for (bar = 0; bar < bars; bar += 1) {
-            // Logarithmic spacing, so the (usually empty) top octaves don't
-            // squeeze all the visible energy into the first few bars.
-            index = Math.min(step - 1, Math.round(Math.pow(step * 0.75, bar / (bars - 1))));
-            value = current.data[index] / 255;
-            context2d.fillRect(
-                bar * (width / bars) + (width / bars) * 0.2,
-                height - height * 0.9 * value,
-                (width / bars) * 0.6,
-                height * 0.9 * value
-            );
-        }
     }
 
     function active() {
