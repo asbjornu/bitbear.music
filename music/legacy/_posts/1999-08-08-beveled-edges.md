@@ -3,9 +3,10 @@ title: Beveled Edges
 tags: [trance, oldskool]
 media:
   cover: 3rd-floor.jpg
-  filesize: 411648
+  filesize: 496063
   format: IT
   isrc: QZMHK2496763
+  module: poc_beveled-edges.it
 links:
   - https://demozoo.org/music/266790/
   - https://power-of-creation.bandcamp.com/track/beveled-edges

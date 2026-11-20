@@ -7,6 +7,7 @@ media:
   channels: 4
   format: MOD
   length: 0:44 (looped)
+  module: poc_call-of-the-totem.mod
 links:
   - https://demozoo.org/music/318145/
   - https://www.youtube.com/watch?v=J0H2jB3c3ck

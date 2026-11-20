@@ -3,9 +3,10 @@ title: Halloween
 tags: [orchestral, oldskool]
 media:
   cover: beyond-fantasy.jpg
-  filesize: 153600
+  filesize: 186159
   format: IT
   isrc: QZFP52531848
+  module: poc_halloween.it
 links:
   - https://demozoo.org/music/266773/
   - https://power-of-creation.bandcamp.com/track/halloween

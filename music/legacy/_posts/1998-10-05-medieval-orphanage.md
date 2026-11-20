@@ -3,9 +3,10 @@ title: Medieval Orphanage
 tags: [orchestral, oldskool]
 media:
   cover: beyond-fantasy.jpg
-  filesize: 172032
+  filesize: 187908
   format: IT
   isrc: QZS642445772
+  module: poc_medieval-orphanage.it
 links:
   - https://demozoo.org/music/266783/
   - https://power-of-creation.bandcamp.com/track/medieval-orphanage

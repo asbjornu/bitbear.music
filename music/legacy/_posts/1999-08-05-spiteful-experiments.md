@@ -3,9 +3,10 @@ title: Spiteful Experiments
 tags: [trance, oldskool]
 media:
   cover: 3rd-floor.jpg
-  filesize: 522240
+  filesize: 594508
   format: IT
   isrc: QZS632455843
+  module: poc_spiteful-experiments.it
 links:
   - https://demozoo.org/music/266767/
   - https://power-of-creation.bandcamp.com/track/spiteful-experiments

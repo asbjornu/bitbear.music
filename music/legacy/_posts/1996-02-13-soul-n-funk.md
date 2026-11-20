@@ -6,6 +6,7 @@ media:
   channels: 4
   format: MOD
   length: 1:09 (looped)
+  module: poc_soul-n-funk.mod
 links:
   - https://demozoo.org/music/315975/
   - https://amp.dascene.net/module/159578

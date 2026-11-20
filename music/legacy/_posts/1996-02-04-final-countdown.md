@@ -7,6 +7,7 @@ media:
   channels: 4
   format: MOD
   length: 0:58 (looped)
+  module: poc_final-countdown.mod
 links:
   - https://demozoo.org/music/317421/
   - https://www.youtube.com/watch?v=R7mHV_dyYeA

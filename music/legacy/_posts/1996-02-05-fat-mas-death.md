@@ -7,6 +7,7 @@ media:
   channels: 4
   format: MOD
   length: 1:45 (looped)
+  module: poc_fat-mas-death.mod
 links:
   - https://demozoo.org/music/317751/
   - https://www.youtube.com/watch?v=u3N50SZ6Bdg

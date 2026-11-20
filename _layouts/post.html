@@ -8,6 +8,19 @@ layout: default
   {% assign soundcloud_link = page.links | link_by_brand: 'soundcloud' %}
   {% assign youtube_link = page.links | link_by_brand: 'youtube' %}
   {% assign youtube_id = youtube_link | youtube_id %}
+
+  {% assign cover = nil %}
+  {% assign cover_title = page.title %}
+  {% if page.media.cover %}
+    {% assign cover = page.media.cover %}
+  {% elsif page.album.slug %}
+    {% assign album_post = site.posts | where: 'slug', page.album.slug | first %}
+    {% if album_post.media.cover %}
+      {% assign cover = album_post.media.cover %}
+      {% assign cover_title = album_post.title %}
+    {% endif %}
+  {% endif %}
+
   <div class="media">
     <aside>
       <table>
@@ -52,19 +65,34 @@ layout: default
           {% if page.sample_sources %}
             {% include sample_sources.html sources=page.sample_sources %}
           {% endif %}
-          {% if soundcloud_link %}
-            <tr>
-              <th scope="row">Listen</th>
-              <td>
-                <iframe width="100%"
-                        height="20"
-                        scrolling="no"
-                        frameborder="no"
-                        allow="autoplay; encrypted-media"
-                        src="https://w.soundcloud.com/player/?url={{ soundcloud_link | url_encode }}&color=%2341228e&inverse=true&auto_play=false&show_user=true"></iframe>
-              </td>
-            </tr>
-          {% endif %}
+          {% comment %}
+            Playback lives behind the cover art's play button. Posts without
+            any cover art to put it on fall back to an inline player here.
+          {% endcomment %}
+          {% unless cover %}
+            {% if soundcloud_link or page.media.module %}
+              <tr>
+                <th scope="row">Listen</th>
+                <td>
+                  {% if soundcloud_link %}
+                    <iframe width="100%"
+                            height="20"
+                            scrolling="no"
+                            frameborder="no"
+                            allow="autoplay; encrypted-media"
+                            src="https://w.soundcloud.com/player/?url={{ soundcloud_link | url_encode }}&color=%2341228e&inverse=true&auto_play=false&show_user=true"></iframe>
+                  {% endif %}
+                  {% if page.media.module %}
+                    <div class="inline-audio"
+                         data-module="{{ '/assets/modules/' | append: page.media.module | relative_url }}"
+                         data-title="{{ page.title | escape }}">
+                      <button type="button" class="inline-audio__play">Play</button>
+                    </div>
+                  {% endif %}
+                </td>
+              </tr>
+            {% endif %}
+          {% endunless %}
         </tbody>
       </table>
 
@@ -83,20 +111,9 @@ layout: default
       {% endif %}
     </aside>
 
-    {% assign cover = nil %}
-    {% assign cover_title = page.title %}
-    {% if page.media.cover %}
-      {% assign cover = page.media.cover %}
-    {% elsif page.album.slug %}
-      {% assign album_post = site.posts | where: 'slug', page.album.slug | first %}
-      {% if album_post.media.cover %}
-        {% assign cover = album_post.media.cover %}
-        {% assign cover_title = album_post.title %}
-      {% endif %}
-    {% endif %}
     {% if cover %}
       {% assign post_album_slug = page.album.slug | default: page.slug %}
-      {% include cover.html title=cover_title cover=cover youtube=youtube_id album_slug=post_album_slug %}
+      {% include cover.html title=cover_title cover=cover youtube=youtube_id album_slug=post_album_slug soundcloud=soundcloud_link module=page.media.module %}
     {% elsif youtube_link %}
       <div id="cover">
         <iframe

@@ -7,6 +7,7 @@ media:
   channels: 4
   format: MOD
   length: 0:22 (looped)
+  module: poc_chip-fabric.mod
 links:
   - https://demozoo.org/music/318103/
   - https://www.youtube.com/watch?v=hSs0DJxn6Us

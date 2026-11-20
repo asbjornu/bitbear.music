@@ -7,6 +7,7 @@ media:
   channels: 4
   format: MOD
   length: 01:28
+  module: poc_short-hip-tune.mod
 links:
   - https://amp.dascene.net/module/159590
 sample_sources:

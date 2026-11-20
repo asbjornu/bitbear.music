@@ -3,8 +3,9 @@ title: Hospitality Madness
 tags: [oldskool]
 media:
   cover: hospitality-madness.jpg
-  filesize: 140288
+  filesize: 214320
   format: S3M
+  module: poc_hospitality-madness.s3m
 links:
   - https://demozoo.org/music/266817/
   - https://amp.dascene.net/module/168721

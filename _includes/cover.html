@@ -1,11 +1,34 @@
 {%- if include.cover -%}
   {%- assign cover_url = '/assets/images/covers/' | append: include.cover -%}
   {%- assign cover_2x = cover_url | replace: '.jpg', '@2x.jpg' -%}
-  {%- if include.youtube -%}
-    {%- assign youtube_url = 'https://www.youtube.com/watch?v=' | append: include.youtube -%}
-    {%- assign has_youtube = true -%}
-  {%- else -%}
-    {%- assign has_youtube = false -%}
+  {%- assign title = include.title | escape -%}
+
+  {%- assign youtube_id = include.youtube | default: '' -%}
+  {%- assign soundcloud_url = include.soundcloud | default: '' -%}
+  {%- assign module_file = include.module | default: '' -%}
+  {%- assign module_url = '' -%}
+  {%- if module_file != '' -%}
+    {%- assign module_url = '/assets/modules/' | append: module_file | relative_url -%}
+  {%- endif -%}
+
+  {%- comment -%}
+    Modules win over SoundCloud and YouTube: the tracker version is the
+    authentic one. SoundCloud is only offered when a track has no module at
+    all, and a video stays reachable through the switcher.
+  {%- endcomment -%}
+  {%- assign default_source = '' -%}
+  {%- if module_url != '' -%}
+    {%- assign default_source = 'module' -%}
+  {%- elsif soundcloud_url != '' -%}
+    {%- assign default_source = 'soundcloud' -%}
+  {%- elsif youtube_id != '' -%}
+    {%- assign default_source = 'video' -%}
+  {%- endif -%}
+  {%- assign playable = false -%}
+  {%- if default_source != '' -%}{%- assign playable = true -%}{%- endif -%}
+  {%- assign has_switcher = false -%}
+  {%- if youtube_id != '' and default_source != 'video' -%}
+    {%- assign has_switcher = true -%}
   {%- endif -%}
 
   {%- assign cover_vt = '' -%}
@@ -21,10 +44,10 @@
 
   <div id="cover"{% if cover_vt != '' %} style="--cover-vt: {{ cover_vt }};"{% endif %}>
     <a class="cover-link" href="#cover-art"
-      aria-description="Open the cover art {% if has_youtube -%}and play the {{ include.title | escape | smart_quotes }} music video{% endif -%}"
-      data-tooltip="Open the cover art {% if has_youtube -%}and play the {{ include.title | escape | smart_quotes }} music video{% endif -%}">
-      <img src="{{ cover_url }}" alt="{{ include.title | escape }} cover">
-      {%- if has_youtube -%}
+      aria-description="Open the cover art {% if playable -%}and play the {{ title | smart_quotes }} track{% endif -%}"
+      data-tooltip="Open the cover art {% if playable -%}and play the {{ title | smart_quotes }} track{% endif -%}">
+      <img src="{{ cover_url }}" alt="{{ title }} cover">
+      {%- if playable -%}
         <span class="cover-play" aria-hidden="true"></span>
       {%- endif -%}
     </a>
@@ -34,18 +57,29 @@
     <article>
       <header>
         <h3>{{ include.title }}</h3>
+        {%- if has_switcher -%}
+          <nav class="cover-sources" aria-label="Choose a player">
+            {%- if default_source == 'module' -%}
+              <button type="button" data-source="module" aria-pressed="true">Module</button>
+            {%- elsif default_source == 'soundcloud' -%}
+              <button type="button" data-source="soundcloud" aria-pressed="true">SoundCloud</button>
+            {%- endif -%}
+            <button type="button" data-source="video" aria-pressed="false">Video</button>
+          </nav>
+        {%- endif -%}
         <a href="#" class="close" aria-label="Close"></a>
       </header>
-      <div id="cover-media">
-        <img src="{{ cover_url }}" srcset="{{ cover_url }} 1080w, {{ cover_2x }} 2160w" sizes="100vw" alt="{{ include.title | escape }} cover">
-        {%- if has_youtube -%}
-          <a id="cover-play"
-             href="{{ youtube_url }}"
-             target="_blank"
-             rel="noopener"
-             aria-description="Play the {{ include.title | escape | smart_quotes }} music video"
-             data-tooltip="Play the {{ include.title | escape | smart_quotes }} music video"
-             aria-label="Play on YouTube"></a>
+      <div id="cover-media"
+        data-title="{{ title }}"
+        {%- if youtube_id != '' %} data-video="{{ youtube_id }}"{% endif -%}
+        {%- if default_source == 'soundcloud' %} data-soundcloud="{{ soundcloud_url | escape }}"{% endif -%}
+        {%- if module_url != '' %} data-module="{{ module_url }}"{% endif -%}
+        {%- if playable %} data-default="{{ default_source }}"{% endif %}>
+        <img src="{{ cover_url }}" srcset="{{ cover_url }} 1080w, {{ cover_2x }} 2160w" sizes="100vw" alt="{{ title }} cover">
+        {%- if playable -%}
+          <button type="button" id="cover-play"
+                  aria-label="Play the {{ title | smart_quotes }} track"
+                  data-tooltip="Play the {{ title | smart_quotes }} track"></button>
         {%- endif -%}
       </div>
     </article>

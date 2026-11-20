@@ -7,6 +7,7 @@ media:
   channels: 6
   format: S3M
   length: 2:04 (looped)
+  module: poc_first-techno-attempt.s3m
 links:
   - https://demozoo.org/music/318399/
   - https://www.youtube.com/watch?v=TmzT199VCl4

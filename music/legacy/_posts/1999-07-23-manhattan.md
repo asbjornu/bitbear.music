@@ -3,9 +3,10 @@ title: Manhattan
 tags: [rock, oldskool]
 media:
   cover: 3rd-floor.jpg
-  filesize: 190464
+  filesize: 228938
   format: IT
   isrc: QT6Y32533858
+  module: poc_manhattan.it
 links:
   - https://demozoo.org/music/266799/
   - https://power-of-creation.bandcamp.com/track/manhattan

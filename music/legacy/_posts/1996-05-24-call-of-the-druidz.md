@@ -3,8 +3,9 @@ title: Call of the Druidz
 tags: [oldskool]
 media:
   cover: call-of-the-druidz.jpg
-  filesize: 280576
+  filesize: 428546
   format: S3M
+  module: poc_call-of-the-druidz.s3m
 links:
   - https://demozoo.org/music/266818/
   - https://amp.dascene.net/module/168728

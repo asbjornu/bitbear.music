@@ -7,6 +7,7 @@ media:
   filesize: 9112
   format: MOD
   length: 0:32 (looped)
+  module: poc_crossed-heart.mod
 links:
   - https://demozoo.org/music/316669/
   - https://www.youtube.com/watch?v=hQ1v_RDo0vU

@@ -3,9 +3,10 @@ title: Soaked in Orange
 tags: [jazz, oldskool]
 media:
   cover: soaked-in-orange.jpg
-  filesize: 136192
+  filesize: 157946
   format: IT
   isrc: QZNRS2560359
+  module: poc_soaked-in-orange.it
 links:
   - https://demozoo.org/music/266794/
   - https://power-of-creation.bandcamp.com/track/soaked-in-orange
