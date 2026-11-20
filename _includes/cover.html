@@ -11,12 +11,25 @@
     {%- assign module_url = '/assets/modules/' | append: module_file | relative_url -%}
   {%- endif -%}
 
-  {%- assign source_count = 0 -%}
-  {%- if soundcloud_url != '' -%}{%- assign source_count = source_count | plus: 1 -%}{%- endif -%}
-  {%- if youtube_id != '' -%}{%- assign source_count = source_count | plus: 1 -%}{%- endif -%}
-  {%- if module_url != '' -%}{%- assign source_count = source_count | plus: 1 -%}{%- endif -%}
+  {%- comment -%}
+    Modules win over SoundCloud and YouTube: the tracker version is the
+    authentic one. SoundCloud is only offered when a track has no module at
+    all, and a video stays reachable through the switcher.
+  {%- endcomment -%}
+  {%- assign default_source = '' -%}
+  {%- if module_url != '' -%}
+    {%- assign default_source = 'module' -%}
+  {%- elsif soundcloud_url != '' -%}
+    {%- assign default_source = 'soundcloud' -%}
+  {%- elsif youtube_id != '' -%}
+    {%- assign default_source = 'video' -%}
+  {%- endif -%}
   {%- assign playable = false -%}
-  {%- if source_count > 0 -%}{%- assign playable = true -%}{%- endif -%}
+  {%- if default_source != '' -%}{%- assign playable = true -%}{%- endif -%}
+  {%- assign has_switcher = false -%}
+  {%- if youtube_id != '' and default_source != 'video' -%}
+    {%- assign has_switcher = true -%}
+  {%- endif -%}
 
   {%- assign cover_vt = '' -%}
   {%- comment -%}album_slug comes from author-controlled front matter. Run it
@@ -44,26 +57,23 @@
     <article>
       <header>
         <h3>{{ include.title }}</h3>
-        {%- if source_count > 1 -%}
+        {%- if has_switcher -%}
           <nav class="cover-sources" aria-label="Choose a player">
-            {%- if soundcloud_url != '' -%}
+            {%- if default_source == 'module' -%}
+              <button type="button" data-source="module" aria-pressed="true">Module</button>
+            {%- elsif default_source == 'soundcloud' -%}
               <button type="button" data-source="soundcloud" aria-pressed="true">SoundCloud</button>
             {%- endif -%}
-            {%- if youtube_id != '' -%}
-              <button type="button" data-source="video" aria-pressed="false">Video</button>
-            {%- endif -%}
-            {%- if module_url != '' -%}
-              <button type="button" data-source="module" aria-pressed="false">Module</button>
-            {%- endif -%}
+            <button type="button" data-source="video" aria-pressed="false">Video</button>
           </nav>
         {%- endif -%}
         <a href="#" class="close" aria-label="Close"></a>
       </header>
       <div id="cover-media"
         {%- if youtube_id != '' %} data-video="{{ youtube_id }}"{% endif -%}
-        {%- if soundcloud_url != '' %} data-soundcloud="{{ soundcloud_url | escape }}"{% endif -%}
+        {%- if default_source == 'soundcloud' %} data-soundcloud="{{ soundcloud_url | escape }}"{% endif -%}
         {%- if module_url != '' %} data-module="{{ module_url }}"{% endif -%}
-        {%- if soundcloud_url != '' %} data-default="soundcloud"{% elsif youtube_id != '' %} data-default="video"{% elsif module_url != '' %} data-default="module"{% endif %}>
+        {%- if playable %} data-default="{{ default_source }}"{% endif %}>
         <img src="{{ cover_url }}" srcset="{{ cover_url }} 1080w, {{ cover_2x }} 2160w" sizes="100vw" alt="{{ title }} cover">
         {%- if playable -%}
           <button type="button" id="cover-play"

@@ -120,22 +120,20 @@ describe 'legacy tracker modules' do
         expect(page).to include('id="cover-play"')
         expect(page).not_to include('>Listen<')
 
-        if soundcloud?(data)
-          expect(page).to include(%(data-soundcloud="#{CGI.escapeHTML(soundcloud_url(data))}"))
-          expect(page).to include('data-default="soundcloud"')
-          expect(page).to include('data-source="soundcloud" aria-pressed="true"')
-          # The embed itself is created (and preloaded) by cover.js.
-          expect(page).not_to include('w.soundcloud.com/player')
-          expect(page).to include('<link rel="preconnect" href="https://w.soundcloud.com">')
-        else
-          expect(page).not_to include('data-soundcloud=')
-          expect(page).not_to include('w.soundcloud.com')
-        end
+        # The module is always the preferred source, and SoundCloud is never
+        # offered as an alternative to it.
+        expect(page).to include('data-default="module"')
+        expect(page).not_to include('data-soundcloud=')
+        expect(page).not_to include('data-source="soundcloud"')
+        expect(page).not_to include('w.soundcloud.com')
 
         if youtube?(data)
-          expect(page).to include('data-source="video"')
+          expect(page).to include('data-video=')
+          expect(page).to include('data-source="module" aria-pressed="true"')
+          expect(page).to include('data-source="video" aria-pressed="false"')
         else
           expect(page).not_to include('data-video=')
+          expect(page).not_to include('data-source=')
         end
       else
         # No cover art to hang the player on (see cover_art_generator.rb).
