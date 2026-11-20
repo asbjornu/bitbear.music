@@ -1536,6 +1536,16 @@ main {
             filter: brightness(.55) saturate(.85);
         }
 
+        // Keep the pattern readable behind the central pause button.
+        &.is-visualising #cover-play {
+            background-color: rgba(#000, .45);
+
+            &:hover,
+            &:focus-visible {
+                background-color: rgba(#000, .8);
+            }
+        }
+
         // The big central button is the play/pause toggle, so the control bar
         // only needs the seek slider and the time.
         .cover-audio__toggle {
@@ -1546,6 +1556,7 @@ main {
             position: absolute;
             top: 50%;
             left: 50%;
+            z-index: 3;
             transform: translate(-50%, -50%);
             width: 6rem;
             height: 6rem;
@@ -1588,20 +1599,19 @@ main {
     pointer-events: none;
 
     &__canvas {
-        position: absolute;
-        inset: 0;
         display: block;
+        flex: 0 0 auto;
         width: 100%;
-        height: 100%;
+        height: 3.5rem;
     }
 
     &__controls {
-        position: relative;
         display: flex;
+        flex: 0 0 auto;
         flex-wrap: wrap;
         align-items: center;
         gap: .5em;
-        margin: .75em;
+        margin: .5em .75em .75em;
         padding: .5em .75em;
         border-radius: 10px;
         background-color: rgba(#000, .65);
@@ -1633,10 +1643,65 @@ main {
     }
 }
 
+.cover-pattern {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-height: 0;
+    margin: .75em .75em 0;
+    padding: .35em .5em;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: rgba(#000, .72);
+    color: #d9d2ff;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .55rem;
+    line-height: 1.25;
+    white-space: pre;
+
+    &__meta {
+        margin-bottom: .2em;
+        color: rgba(#fff, .5);
+        font-size: .85em;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+    }
+
+    &__viewport {
+        position: relative;
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &__row.is-current {
+        background-color: rgba(157, 123, 255, .45);
+        color: #fff;
+    }
+}
+
 .inline-audio {
     position: relative;
-    min-height: 6rem;
     margin-top: .5em;
+
+    // No cover to overlay, so the player takes its own height instead of
+    // floating above an artwork box.
+    .cover-audio {
+        position: relative;
+        inset: auto;
+    }
+
+    .cover-audio__canvas {
+        height: 2.5rem;
+    }
 
     &__play {
         width: auto;
