@@ -137,6 +137,24 @@
         }
 
         current.playing = null;
+        setButton('paused');
+    }
+
+    // The big central button doubles as play/pause for the module player.
+    function setButton(state) {
+        var button = current && current.media.querySelector('#cover-play');
+        var label;
+
+        if (!button) {
+            return;
+        }
+
+        label = state === 'playing' ? 'Pause' : (state === 'loading' ? 'Loading' : 'Play');
+        label = label + ' \u201c' + (current.media.getAttribute('data-title') || '') + '\u201d';
+        button.setAttribute('data-state', state);
+        button.setAttribute('aria-label', label);
+        button.setAttribute('data-tooltip', label);
+        button.disabled = state === 'loading';
     }
 
     function mark(source) {
@@ -187,7 +205,10 @@
             playSoundcloud();
         } else if (source === 'module' && window.CoverAudio) {
             current.media.classList.add('is-visualising');
-            window.CoverAudio.play(current.media, current.media.getAttribute('data-module'));
+            setButton('loading');
+            window.CoverAudio.play(current.media, current.media.getAttribute('data-module'), function (playing) {
+                setButton(playing ? 'playing' : 'paused');
+            });
         } else {
             return;
         }
@@ -211,6 +232,12 @@
         current = { media: media, frame: null, playing: null };
 
         playButton.addEventListener('click', function () {
+            if (window.CoverAudio && window.CoverAudio.active()) {
+                window.CoverAudio.toggle();
+
+                return;
+            }
+
             play(media.getAttribute('data-default') || 'module');
         });
 

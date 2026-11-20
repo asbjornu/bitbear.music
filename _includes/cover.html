@@ -70,6 +70,7 @@
         <a href="#" class="close" aria-label="Close"></a>
       </header>
       <div id="cover-media"
+        data-title="{{ title }}"
         {%- if youtube_id != '' %} data-video="{{ youtube_id }}"{% endif -%}
         {%- if default_source == 'soundcloud' %} data-soundcloud="{{ soundcloud_url | escape }}"{% endif -%}
         {%- if module_url != '' %} data-module="{{ module_url }}"{% endif -%}

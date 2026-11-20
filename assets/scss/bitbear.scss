@@ -1536,6 +1536,12 @@ main {
             filter: brightness(.55) saturate(.85);
         }
 
+        // The big central button is the play/pause toggle, so the control bar
+        // only needs the seek slider and the time.
+        .cover-audio__toggle {
+            display: none;
+        }
+
         #cover-play {
             position: absolute;
             top: 50%;
@@ -1557,6 +1563,17 @@ main {
 
             &:hover {
                 background-color: variables.$bg-color-light;
+            }
+
+            &[data-state="playing"] {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M7 4h4v16H7zM13 4h4v16h-4z'/%3E%3C/svg%3E");
+                background-size: 2.2rem;
+                background-position: 50% 50%;
+            }
+
+            &[data-state="loading"] {
+                cursor: progress;
+                opacity: .65;
             }
         }
     }

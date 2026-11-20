@@ -107,6 +107,12 @@
         };
     }
 
+    function notify(current) {
+        if (current.onChange) {
+            current.onChange(current.playing);
+        }
+    }
+
     function cleanup(current) {
         if (current.processor) {
             current.processor.disconnect();
@@ -147,12 +153,13 @@
         }
     }
 
-    function play(media, url) {
+    function play(media, url, onChange) {
         stop();
 
         var title = media.getAttribute('data-title') || document.title;
         var current = {
             title: title,
+            onChange: typeof onChange === 'function' ? onChange : null,
             ctx: audioContext(),
             ui: build(media, title),
             lib: null,
@@ -223,6 +230,7 @@
                 current.ui.toggle.textContent = 'Retry';
                 current.ui.toggle.setAttribute('aria-label', 'Retry playing \u201c' + title + '\u201d');
                 current.ui.time.textContent = 'Playback failed';
+                notify(current);
             });
     }
 
@@ -303,6 +311,7 @@
         current.ui.toggle.textContent = 'Play';
         current.ui.toggle.setAttribute('aria-label', 'Play \u201c' + current.title + '\u201d');
         current.render();
+        notify(current);
     }
 
     function resume(current) {
@@ -315,6 +324,7 @@
         current.ui.toggle.textContent = 'Pause';
         current.ui.toggle.setAttribute('aria-label', 'Pause \u201c' + current.title + '\u201d');
         loop(current);
+        notify(current);
     }
 
     function finish(current) {
@@ -331,6 +341,7 @@
         current.ui.seek.value = 0;
         current.ui.time.textContent = clock(0) + ' / ' + clock(current.duration);
         draw(current);
+        notify(current);
     }
 
     function loop(current) {
@@ -391,8 +402,28 @@
         }
     }
 
+    function active() {
+        return Boolean(session && session.processor);
+    }
+
+    function toggle() {
+        if (!active()) {
+            return false;
+        }
+
+        if (session.playing) {
+            pause(session);
+        } else {
+            resume(session);
+        }
+
+        return session.playing;
+    }
+
     window.CoverAudio = {
         play: play,
-        stop: stop
+        stop: stop,
+        active: active,
+        toggle: toggle
     };
 })(window, document);
